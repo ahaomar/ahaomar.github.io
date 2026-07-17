@@ -5,7 +5,7 @@ delivered for the United Nations and the international development
 sector, spanning the UN Migration Network Hub, the CLIMB data-for-policy
 platform, and the IOM Global Migration Data Portal, among others.
 
-**Live site:** (https://ahaomar.github.io/projects.html) 
+**Live site:** [https://ahaomar.github.io/](https://ahaomar.github.io/)
 
 ## Structure
 
@@ -23,6 +23,7 @@ dependency, no external services beyond Google Fonts.
 
 ## Contact
 
+- Email: [contactomarfarooq-github@yahoo.com](mailto:contactomarfarooq-github@yahoo.com)
 - LinkedIn: [linkedin.com/in/ahaomar](https://linkedin.com/in/ahaomar)
 
 ---
