@@ -11,7 +11,7 @@ platform, and the IOM Global Migration Data Portal, among others.
 
 | Page | Contents |
 |---|---|
-| `index.html` | Profile summary, career history, technical expertise |
+| `index.html` | About me, Profile summary, career history, technical expertise |
 | `projects.html` | Case studies for six production platforms |
 | `blog.html` | Writing on platform architecture and Drupal at scale |
 | `contact.html` | Contact details and CV download |
