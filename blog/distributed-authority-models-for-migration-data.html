@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GQ7ME7B2GR');
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distributed authority models for migration data governance — Omar Farooq</title>
+<meta name="description" content="How 64 UN agencies coordinate on a shared knowledge graph without a central database: role based access control, entity reference caching, and multi level editorial workflows at scale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="../index.html" class="wordmark">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR PLATFORM ARCHITECT</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+    <nav class="nav">
+      <a href="../index.html">About</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../blog.html" aria-current="page">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero" style="padding-bottom:10px;">
+    <div class="wrap col">
+      <p class="kicker"><a href="../blog.html" style="color:inherit; text-decoration:none;">← Field notes</a></p>
+      <article class="post">
+        <p class="post-meta">Distributed systems · Jul 19, 2026 · 7 min read</p>
+        <h1 style="font-size:clamp(1.7rem,3.4vw,2.3rem);">Distributed authority models for migration data governance</h1>
+
+        <p>The UN Migration Network Hub is not a multi tenant SaaS with configuration tables for each agency. It is 64 distinct organizations — the IOM itself, United Nations entities like OCHA and UNEP, intergovernmental bodies such as OECD and World Bank, plus country level chapters from Argentina to Zambia all contributing different types of content under mutually agreed editorial contracts.</p>
+
+        <p>This coordination happens without a central database. Each agency owns its own instances while referencing shared concepts — refugees, forced displacement scenarios, climate migration events — through entity relationships that traverse institutional boundaries. The question is not how you replicate data across replicas; it is where authority lives for each piece of information and what rules enforce the boundary between who can author content versus who can see it.</p>
+
+        <h2>The architecture pattern</h2>
+
+        <p>We built this on Drupal 10, which gives us three primitives: sites are logical units with their own user repositories and role definitions; users belong to multiple of these administrative contexts without losing membership elsewhere; content types define what information exists while entity reference fields establish cross site connections. When an OCHA field officer uploads a displacement report that UNEP will later annotate with climate vulnerability metadata, the system enforces this workflow through permissions defined at each organizational boundary.</p>
+
+        <blockquote>The distinction between authority (who can change data) and visibility (who can see it) is why access control cannot be an afterthought. It must exist in every design decision from content type definition onward.</blockquote>
+
+        <h2>Role based editorial contracts</h2>
+
+        <p>I have worked across several different deployments where agencies requested a central repository to host all migration data for easier collaboration and better search results. The problem was that when you give one agency write access, they inherit authority over what others built there, which means the entire system's content model breaks whenever someone with elevated privileges makes changes without consulting affected teams.</p>
+
+        <h2>The three layer permission pattern</h2>
+
+        <h3>Datum level (entity fields)</h3>
+        <p>This is where a country chapter author can edit only their own displacement reports while leaving shared vocabulary tables untouched. Each entity type defines its own field permissions — the metadata schema for refugee flows differs from editorial notes on humanitarian corridors.</p>
+
+        <h3>Type level (content types and bundles)</h3>
+        <p>An intergovernmental body might have write access to all displacement scenario entities but not migration statistics, since national statistical offices guard their methodologies. Within content types themselves you can define subtypes that further partition authority — an OCHA user could manage situation reports within the broader humanitarian intelligence model without affecting policy documents maintained by IOM headquarters.</p>
+
+        <h3>Suite level (sites and administrative domains)</h3>
+        <p>This is where each member state defines their own organizational boundaries, whether as separate Drupal instances federated through entity API calls or modules installed across multiple systems. A World Bank economist reviewing global migration statistics might only have visibility into datasets marked for public consumption while the internal analytical workspaces remain isolated to agencies that classified them there.</p>
+
+        <h2>Educating stakeholders on permission semantics</h2>
+
+        <p>The hardest conversations involve convincing technical directors from partner organizations why we cannot just give everyone admin access so they can fix whatever is broken. When an organization understands the distinction between read write and full control, their requests become more realistic about what permissions are necessary for specific tasks.</p>
+
+        <h2>Cross site entity relationships</h2>
+
+        <p>The UN Migration Network Hub uses custom modules to extend Drupal's built in cross instance linking without duplicating data. An OCHA displacement report references a migration corridor defined by IOM while UNEP adds climate context from their own content type, all resolved through API endpoints that respect permission boundaries at each hop.</p>
+
+        <h2>Maintaining coherence across 64 instances</h2>
+
+        <p>This coordination happens without imposing uniformity. Some agencies operate on Pantheon cloud environments; others prefer bare metal infrastructure in their sovereign data centers with custom caching layers for performance optimization during peak reporting periods. When a new content type schema lands at IOM headquarters, we provide migration paths that allow each partner to adopt it according to their own development velocity while contributing enhancements back through pull requests organized within the shared codebase.</p>
+
+        <blockquote>Uniformity becomes coercion if you demand identical versions across all deployments without understanding why particular agencies need different capabilities. Flexibility means providing multiple implementation patterns for common requirements and letting organizations choose what fits their operational model.</blockquote>
+
+        <h2>The editorial contract mechanism</h2>
+
+        <p>We document these relationships through configuration files that encode who maintains each content type, how cross references get resolved during publishing, and which agency signs off on changes to shared schemas. An OCHA analyst submitting a displacement report for Syria must reference an existing migration corridor entity; the system will reject submissions attempting to create corridors without approval from IOM's editorial board.</p>
+
+        <h2>Caching across distributed systems</h2>
+
+        <p>We use Redis clusters configured per institutional boundary with shared read caches that respect permission sets. When OCHA queries displacement statistics for a particular corridor, their session reads cached data while write operations require fresh API calls routed to the owning agency's instance. This pattern scales without compromising authority boundaries.</p>
+
+        <h2>The next decade</h2>
+
+        <p>As we migrate from Drupal 10 toward AI integrated content workflows, these permission patterns remain foundational for multi organizational systems where autonomous teams need different capabilities over shared information resources. The question is no longer whether institutions can coordinate without a central authority; it is how you design systems that survive contact with multiple independent operators while maintaining coherent global views of migration data.</p>
+
+        <h2>Talk to me</h2>
+
+        <p>I am currently leading technical architecture work for the UN Migration Network Hub and would discuss multi agency platform patterns or Drupal governance at scale over a call. Reach out via email listed in contact section, including subject line about distributed systems.</p>
+
+      </article>
+    </div>
+  </section>
+</main>
+
+<div class="cta">
+  <div class="wrap cta-inner">
+    <div>
+      <p class="section-sub" style="margin-bottom:6px;">Related</p>
+      <p>Skip the CMS conversation and apply governance primitives at scale.</p>
+    </div>
+    <a href="../blog.html?post=what-drupal-is-actually-good-at" class="btn">What Drupal is actually good at →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p>© 2026 Omar Farooq. Built for GitHub Pages.</p>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:contactomarfarooq-github@yahoo.com">Email</a>
+      <a href="../assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
