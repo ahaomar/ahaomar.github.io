@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why governance is the first thing you design, not the last — M. Omar Farooq</title>
+<meta name="description" content="Notes on building the UN Migration Network Hub for 195 member states, and why most platform failures inside multi agency systems are governance failures wearing a technical disguise.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="../index.html" class="wordmark">
+      <strong>M. OMAR FAROOQ</strong>
+      <span>SENIOR PLATFORM ARCHITECT</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+    <nav class="nav">
+      <a href="../index.html">Index</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../blog.html" aria-current="page">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero" style="padding-bottom:10px;">
+    <div class="wrap col">
+      <p class="kicker"><a href="../blog.html" style="color:inherit; text-decoration:none;">← Field notes</a></p>
+      <article class="post">
+        <p class="post-meta">Platform architecture · 6 min read</p>
+        <h1 style="font-size:clamp(1.7rem,3.4vw,2.3rem);">Why governance is the first thing you design, not the last</h1>
+
+        <p>Every multi agency platform I have built starts with the same wrong question from stakeholders: which CMS should we use. It is the wrong first question because by the time you are choosing software, you have already skipped the decision that determines whether the platform survives contact with real institutions.</p>
+
+        <p>The decision that matters first is governance. Who owns which piece of content. Which agency can publish without review, and which cannot. What happens when two UN entities disagree about how a dataset should be labeled. Who has the authority to take a page down. None of that is a technical question, and none of it can be retrofitted cheaply once forty organizations are already using the system.</p>
+
+        <h2>What this looked like on the UN Migration Network Hub</h2>
+        <p>When I architected the UN Migration Network Hub, the platform needed to serve 195 member states and dozens of UN agencies inside a single Drupal 10 ecosystem, without any single agency feeling like a guest in someone else's system. That is a governance problem before it is an infrastructure problem.</p>
+
+        <p>The technical answer was a federated content and permission model: every agency operates inside clearly scoped boundaries, with its own editorial workflow, but all of it sits on shared infrastructure that stays secure and consistent for 195 member states at once. Building that model required sitting with the actual governance structure of the Global Compact for Migration before a single content type was defined, and then encoding that structure directly into the permission system rather than bolting it on afterward.</p>
+
+        <blockquote>A platform that gets the technology right and the governance wrong does not fail slowly. It fails the first time two stakeholders disagree about who is allowed to do what.</blockquote>
+
+        <h2>The pattern repeats everywhere I have seen it</h2>
+        <p>The same pattern showed up when I built the CLIMB platform for IOM and the Platform on Disaster Displacement. The hard part was never rendering GIS layers or building the data pipeline, real as those problems were. The hard part was designing a data model that let policy experts trust the provenance of every figure a G7 delegation might cite, which is a governance requirement disguised as a data engineering one.</p>
+
+        <p>If you are architecting a platform for an institution rather than a company, treat the org chart, the approval chain, and the accountability structure as your first spec document. The CMS choice, the hosting decision, the caching layer: all of that follows from getting the governance model right, and none of it can compensate for getting it wrong.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<div class="cta">
+  <div class="wrap cta-inner">
+    <div>
+      <p class="section-sub" style="margin-bottom:6px;">Related</p>
+      <p>See how this played out on the UN Migration Network Hub.</p>
+    </div>
+    <a href="../projects.html" class="btn">View the project →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p>© 2026 M. Omar Farooq. Built for GitHub Pages.</p>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:ahaomar@yahoo.com">Email</a>
+      <a href="../assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
