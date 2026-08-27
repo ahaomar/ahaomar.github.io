@@ -47,14 +47,13 @@ body {
 .masthead-inner { padding: 28px 0 20px; }
 .kicker {
   font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--un-blue-dark); font-weight:700 margin-bottom:10px;
+  color:var(--un-blue-dark); font-weight:700 ; margin-bottom:10px;
 }
 h1 {
   font-family:var(--font-display);
   font-size: clamp(1.6rem, 3vw, 2.3rem);
   font-weight:400;
-  letter-spacing:-.01em;
-  max-width:24ch;
+  letter-spacing:-.01em;  
 }
 .standfirst { margin-top:10px; max-width:64ch; color:var(--ink-soft); }
 
@@ -166,6 +165,64 @@ h1 em {
   font-style: normal;
   color: var(--un-blue-dark);
 }
+
+/* ==========================================================
+   RESPONSIVE — tablet & mobile
+   ========================================================== */
+
+/* Tablets: stack map + profile side-by-side grid to single column */
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;   /* map above, profile below */
+  }
+  #map { height: 400px; }
+  .masthead-inner { padding: 20px 0 16px; }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  body { font-size: 14px; }
+
+  .shell { padding: 0 14px; }
+
+  /* masthead: let headline wrap naturally, tighten spacing */
+  .masthead-inner { padding: 16px 0 14px; }
+  h1 { font-size: 1.35rem; line-height: 1.3; }
+  .standfirst { font-size: .92rem; }
+
+  /* meta strip: cells stack full-width instead of cramped row */
+  .meta-strip { flex-direction: column; }
+  .meta-cell { border-right: none; border-bottom: 1px solid var(--hairline); }
+  .meta-cell:last-child { border-bottom: none; }
+
+  /* controls: dropdowns full width, stacked */
+  .controls { flex-direction: column; align-items: stretch; gap: 10px; }
+  .controls label { margin-bottom: -6px; }
+  select { min-width: 0; width: 100%; }
+  #countNote { text-align: center; }
+
+  /* map: taller thumbs-friendly height */
+  #map { height: 320px; }
+
+  /* legend: smaller so it doesn't cover the map on phones */
+  .legend { font-size: .68rem; padding: 8px 10px; line-height: 1.7; }
+
+  /* profile panel spacing */
+  .insight-body { padding: 16px 14px; }
+  .country-name { font-size: 1.25rem; }
+  .chart-holder { height: 260px; }
+
+  /* footer stacks */
+  .source-block { grid-template-columns: 1fr; gap: 18px; }
+  .colophon { flex-direction: column; gap: 4px; }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  h1 { font-size: 1.15rem; }
+  #map { height: 280px; }
+}
+
 </style>
 </head>
 <body>
