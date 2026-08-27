@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Real Aid - Global Explorer</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
+  body { background:#0d1b2a; color:#e0e1dd; }
+
+  header { padding:22px 40px 6px; }
+  header h1 { font-size:1.8rem; color:#ffd166; }
+  header p { color:#a8b2c1; margin-top:4px; font-size:.95rem; }
+
+  #status { padding:14px 40px; color:#ffd166; font-size:.95rem; }
+
+  .controls { padding:10px 40px; display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  .controls label { font-size:.8rem; color:#8d99ae; text-transform:uppercase; letter-spacing:1px; }
+  select {
+    background:#1b263b; color:#e0e1dd; border:1px solid #2c3e50;
+    border-radius:8px; padding:10px 14px; font-size:1rem; min-width:220px; cursor:pointer;
+  }
+
+  .main { display:flex; gap:20px; padding:14px 40px; flex-wrap:wrap; }
+  .box { background:#1b263b; border-radius:14px; padding:18px; border:1px solid #2c3e50; }
+  #mapBox { flex:1.4; min-width:500px; }
+  #chartBox { flex:1; min-width:400px; }
+  .box h2 { font-size:1rem; color:#ffd166; margin-bottom:10px; }
+  #map { height:540px; border-radius:10px; }
+  #countryChart { max-height:420px; }
+
+  .countryTitle { text-align:center; margin-bottom:4px; }
+  .countryTitle .cname { font-size:1.3rem; font-weight:700; }
+  .countryTitle .cyear { font-size:.8rem; color:#8d99ae; }
+  .ratioLine { text-align:center; margin:8px 0 14px; }
+  .ratioLine b { color:#2ec4b6; font-size:1.2rem; }
+  .emptyMsg { color:#8d99ae; text-align:center; margin-top:60px; line-height:1.8; }
+
+  .note { padding:0 40px 26px; color:#8d99ae; font-size:.75rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>&#128176; The Real Aid - Global Explorer</h1>
+  <p>Remittances sent by migrant workers vs. government aid (ODA)</p>
+</header>
+
+<div id="status">Step 0/5: starting...</div>
+
+<div id="app" style="display:none;">
+  <div class="controls">
+    <label>Region</label>
+    <select id="regionSelect"><option value="">-- Select Region --</option></select>
+    <label>Country</label>
+    <select id="countrySelect" disabled><option value="">-- Select Country --</option></select>
+  </div>
+
+  <div class="main">
+    <div class="box" id="mapBox">
+      <h2>Remittances as % of GDP (darker = higher)</h2>
+      <div id="map"></div>
+    </div>
+    <div class="box" id="chartBox">
+      <div id="countryPanel">
+        <div class="emptyMsg">
+          &#128072; Select a country from the dropdown<br>or click any country on the map
+        </div>
+      </div>
+      <div id="chartWrap" style="display:none;">
+        <div class="countryTitle" id="countryTitle"></div>
+        <div class="ratioLine" id="ratioLine"></div>
+        <canvas id="countryChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">Source: World Bank Indicators API (2018-2023). Remittances = personal remittances received. ODA = net ODA received.</p>
+</div>
+
+<script>
+"use strict";
+
+/* ---------- state ---------- */
+var countriesMeta = {};
+var remitUSD = {};
+var remitPct = {};
+var odaUSD = {};
+var geoLayer = null;
+var chart = null;
+var selected = null;
+var map = null;
+
+/* ---------- helpers ---------- */
+function setStatus(txt) {
+  document.getElementById("status").textContent = txt;
+  console.log("STATUS: " + txt);
+}
+
+function latest(obj) {
+  if (!obj) return { year: null, value: null };
+  var ys = Object.keys(obj).map(Number).sort(function(a, b) { return b - a; });
+  if (!ys.length) return { year: null, value: null };
+  return { year: ys[0], value: obj[ys[0]] };
+}
+
+async function fetchJSON(url) {
+  var res = await fetch(url);
+  if (!res.ok) { throw new Error("HTTP " + res.status); }
+  return res.json();
+}
+
+function reshape(rows) {
+  var out = {};
+  for (var i = 0; i < rows.length; i++) {
+    var r = rows[i];
+    if (!r.value || !r.countryiso3code) { continue; }
+    var c = r.countryiso3code;
+    if (!out[c]) { out[c] = {}; }
+    out[c][parseInt(r.date, 10)] = r.value;
+  }
+  return out;
+}
+
+/* ---------- data loading, one step at a time ---------- */
+async function loadAll() {
+  var YEARS = "2018:2023";
+
+  setStatus("Step 1/5: fetching remittances in USD...");
+  var j1 = await fetchJSON(
+    "https://api.worldbank.org/v2/country/all/indicator/BX.TRF.PWKR.CD" +
+    "?format=json&date=" + YEARS + "&per_page=20000"
+  );
+  remitUSD = reshape(j1[1] || []);
+
+  setStatus("Step 2/5: fetching remittances as % of GDP...");
+  var j2 = await fetchJSON(
+    "https://api.worldbank.org/v2/country/all/indicator/BX.TRF.PWKR.DT.GD.ZS" +
+    "?format=json&date=" + YEARS + "&per_page=20000"
+  );
+  remitPct = reshape(j2[1] || []);
+
+  setStatus("Step 3/5: fetching ODA...");
+  var j3 = await fetchJSON(
+    "https://api.worldbank.org/v2/country/all/indicator/DT.ODA.ODAT.CD" +
+    "?format=json&date=" + YEARS + "&per_page=20000"
+  );
+  odaUSD = reshape(j3[1] || []);
+
+  setStatus("Step 4/5: fetching country list...");
+  var j4 = await fetchJSON(
+    "https://api.worldbank.org/v2/country?format=json&per_page=400"
+  );
+  var rows = j4[1] || [];
+  for (var i = 0; i < rows.length; i++) {
+    var r = rows[i];
+    if (!r.id || r.region.value === "Aggregates") { continue; }
+    countriesMeta[r.id] = { name: r.name, region: r.region.value };
+  }
+
+  setStatus("Step 5/5: fetching world map boundaries...");
+  var geo = await fetchJSON(
+    "https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json"
+  );
+
+  setStatus("Done! " + Object.keys(countriesMeta).length + " countries loaded.");
+
+  document.getElementById("app").style.display = "block";
+  document.getElementById("status").textContent = "";
+
+  buildDropdowns();
+  initMap(geo);
+}
+
+/* ---------- map ---------- */
+function shadeColor(pct) {
+  if (pct === null || pct === undefined) { return "#3a4a5a"; }
+  if (pct > 20) { return "#044f45"; }
+  if (pct > 10) { return "#0a6e60"; }
+  if (pct > 5)  { return "#128d7c"; }
+  if (pct > 2)  { return "#2ec4b6"; }
+  if (pct > 1)  { return "#6fd8cc"; }
+  return "#b9ece6";
+}
+
+function initMap(geo) {
+  map = L.map("map").setView([20, 10], 2);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+    attribution: "&copy; OpenStreetMap &copy; CARTO"
+  }).addTo(map);
+
+  var legend = L.control({ position: "bottomright" });
+  legend.onAdd = function() {
+    var div = L.DomUtil.create("div");
+    div.style.cssText = "background:#1b263b;padding:10px 14px;border-radius:8px;" +
+      "font-size:12px;border:1px solid #2c3e50;line-height:1.9;";
+    div.innerHTML =
+      "<b style='color:#ffd166'>Remittances % of GDP</b><br>" +
+      '<span style="display:inline-block;width:14px;height:14px;background:#044f45;border-radius:3px;margin-right:6px;vertical-align:middle;"></span>over 20%<br>' +
+      '<span style="display:inline-block;width:14px;height:14px;background:#0a6e60;border-radius:3px;margin-right:6px;vertical-align:middle;"></span>10-20%<br>' +
+      '<span style="display:inline-block;width:14px;height:14px;background:#128d7c;border-radius:3px;margin-right:6px;vertical-align:middle;"></span>5-10%<br>' +
+      '<span style="display:inline-block;width:14px;height:14px;background:#2ec4b6;border-radius:3px;margin-right:6px;vertical-align:middle;"></span>2-5%<br>' +
+      '<span style="display:inline-block;width:14px;height:14px;background:#6fd8cc;border-radius:3px;margin-right:6px;vertical-align:middle;"></span>1-2%<br>' +
+      '<span style="display:inline-block;width:14px;height:14px;background:#b9ece6;border-radius:3px;margin-right:6px;vertical-align:middle;"></span>under 1%<br>' +
+      '<span style="display:inline-block;width:14px;height:14px;background:#3a4a5a;border-radius:3px;margin-right:6px;vertical-align:middle;"></span>no data';
+    return div;
+  };
+  legend.addTo(map);
+
+  geoLayer = L.geoJSON(geo, {
+    style: function(feature) {
+      var pct = latest(remitPct[feature.id]).value;
+      return {
+        color: "#0d1b2a",
+        weight: 0.6,
+        fillColor: shadeColor(pct),
+        fillOpacity: 0.85
+      };
+    },
+    onEachFeature: function(feature, layer) {
+      var meta = countriesMeta[feature.id];
+      if (!meta) { return; }
+      layer.bindTooltip(meta.name, { sticky: true });
+      layer.on("click", function() {
+        selectCountry(feature.id);
+      });
+    }
+  }).addTo(map);
+}
+
+/* ---------- dropdowns ---------- */
+function buildDropdowns() {
+  var regions = {};
+  var iso;
+  for (iso in countriesMeta) {
+    regions[countriesMeta[iso].region] = true;
+  }
+
+  var sel = document.getElementById("regionSelect");
+  var regionNames = Object.keys(regions).sort();
+  for (var i = 0; i < regionNames.length; i++) {
+    var opt = document.createElement("option");
+    opt.value = regionNames[i];
+    opt.textContent = regionNames[i];
+    sel.appendChild(opt);
+  }
+
+  sel.addEventListener("change", onRegionChange);
+  document.getElementById("countrySelect").addEventListener("change", function() {
+    selectCountry(this.value);
+  });
+}
+
+function onRegionChange() {
+  var region = document.getElementById("regionSelect").value;
+  var cSel = document.getElementById("countrySelect");
+  cSel.innerHTML = '<option value="">-- Select Country --</option>';
+  cSel.disabled = !region;
+  if (!region) { return; }
+
+  var list = [];
+  var iso;
+  for (iso in countriesMeta) {
+    if (countriesMeta[iso].region === region) { list.push(iso); }
+  }
+  list.sort(function(a, b) {
+    return countriesMeta[a].name.localeCompare(countriesMeta[b].name);
+  });
+  for (var i = 0; i < list.length; i++) {
+    var opt = document.createElement("option");
+    opt.value = list[i];
+    opt.textContent = countriesMeta[list[i]].name;
+    cSel.appendChild(opt);
+  }
+}
+
+/* ---------- selection + chart ---------- */
+function selectCountry(iso) {
+  if (!iso || !countriesMeta[iso]) { return; }
+  selected = iso;
+
+  document.getElementById("regionSelect").value = countriesMeta[iso].region;
+  onRegionChange();
+  document.getElementById("countrySelect").value = iso;
+
+  document.getElementById("countryPanel").style.display = "none";
+  document.getElementById("chartWrap").style.display = "block";
+
+  var meta = countriesMeta[iso];
+  var r = latest(remitUSD[iso]);
+  var o = latest(odaUSD[iso]);
+
+  document.getElementById("countryTitle").innerHTML =
+    '<div class="cname">' + meta.name + '</div>' +
+    '<div class="cyear">Latest year: ' + r.year + " | World Bank data</div>";
+
+  var ratio = (r.value && o.value) ? (r.value / o.value) : null;
+  document.getElementById("ratioLine").innerHTML = ratio
+    ? "Migrant workers send <b>" + ratio.toFixed(1) + "x</b> more than government aid"
+    : "ODA data not available for comparison";
+
+  renderChart(iso);
+  highlightSelected();
+}
+
+function highlightSelected() {
+  if (!geoLayer) { return; }
+  geoLayer.eachLayer(function(layer) {
+    var isSel = (layer.feature.id === selected);
+    layer.setStyle({
+      weight: isSel ? 2.5 : 0.6,
+      color: isSel ? "#ffd166" : "#0d1b2a",
+      fillOpacity: isSel ? 1 : 0.85
+    });
+    if (isSel) {
+      map.flyToBounds(layer.getBounds(), { padding: [40, 40], duration: 0.8 });
+    }
+  });
+}
+
+function renderChart(iso) {
+  if (chart) { chart.destroy(); }
+
+  var years = [2018, 2019, 2020, 2021, 2022, 2023];
+  var remitSeries = [];
+  var odaSeries = [];
+  for (var i = 0; i < years.length; i++) {
+    var y = years[i];
+    var rv = (remitUSD[iso] && remitUSD[iso][y]) ? remitUSD[iso][y] / 1e9 : null;
+    var ov = (odaUSD[iso] && odaUSD[iso][y]) ? odaUSD[iso][y] / 1e9 : null;
+    remitSeries.push(rv);
+    odaSeries.push(ov);
+  }
+
+  chart = new Chart(document.getElementById("countryChart"), {
+    type: "bar",
+    data: {
+      labels: years,
+      datasets: [
+        {
+          type: "line",
+          label: "Remittances ($B)",
+          data: remitSeries,
+          borderColor: "#2ec4b6",
+          backgroundColor: "rgba(46,196,182,0.25)",
+          fill: true,
+          tension: 0.3,
+          borderWidth: 2.5
+        },
+        {
+          type: "line",
+          label: "Government aid ODA ($B)",
+          data: odaSeries,
+          borderColor: "#e07a5f",
+          backgroundColor: "rgba(224,122,95,0.15)",
+          fill: true,
+          tension: 0.3,
+          borderWidth: 2.5
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: "#a8b2c1" } }
+      },
+      scales: {
+        x: { ticks: { color: "#8d99ae" }, grid: { color: "#2c3e50" } },
+        y: {
+          title: { display: true, text: "US$ billion", color: "#8d99ae" },
+          ticks: { color: "#a8b2c1" },
+          grid: { color: "#2c3e50" },
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+/* ---------- go ---------- */
+loadAll().catch(function(err) {
+  console.error(err);
+  setStatus("ERROR: " + err.message + " - see Console (F12)");
+});
+</script>
+</body>
+</html>
