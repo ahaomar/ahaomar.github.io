@@ -167,6 +167,17 @@ h1 em {
   color: var(--un-blue-dark);
 }
 
+.meta-cell.stat b {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--un-blue-dark);
+}
+.meta-cell.stat small {
+  font-weight: 400;
+  color: #8895a4;
+  margin-left: 4px;
+}
+
 /* ==========================================================
    RESPONSIVE — tablet & mobile
    ========================================================== */
@@ -242,6 +253,18 @@ h1 em {
       <div class="meta-cell"><span>Coverage</span>~200 economies</div>
       <div class="meta-cell"><span>Period</span>2018–2023</div>
       <div class="meta-cell"><span>Data</span>World Bank live API</div>
+      <div class="meta-cell stat">
+        <span>Migrant remittances &middot; world</span>
+        <b id="totalRemit">&mdash;</b>
+      </div>
+      <div class="meta-cell stat">
+        <span>Official development assistance &middot; world</span>
+        <b id="totalODA">&mdash;</b>
+      </div>
+      <div class="meta-cell stat">
+        <span>Ratio</span>
+        <b id="totalRatio">&mdash;</b>
+      </div>
     </div>
   </div>
 </header>
@@ -421,6 +444,7 @@ async function loadAll() {
 
   buildDropdowns();
   initMap(geo);
+  renderTotals();
 }
 
 /* ---------- choropleth ---------- */
@@ -702,6 +726,50 @@ loadAll().catch(function(err) {
   document.getElementById("status").textContent =
     "ERROR: " + err.message + " — see Console (F12)";
 });
+
+
+/* ---------- world totals for masthead ---------- */
+function fmtMoney(v) {
+  if (!v) return "—";
+  return v >= 1e12
+    ? "$" + (v / 1e12).toFixed(2) + "T"
+    : "$" + Math.round(v / 1e9) + "B";
+}
+
+function worldTotal(dataObj) {
+  /* Preferred: WB's own "World" aggregate */
+  if (dataObj["WLD"] && Object.keys(dataObj["WLD"]).length) {
+    return latest(dataObj["WLD"]);
+  }
+  /* Fallback: sum member countries per year, skip aggregates */
+  var sums = {};
+  for (var y = 2018; y <= 2023; y++) {
+    var s = 0, n = 0;
+    for (var iso in countriesMeta) {
+      if (dataObj[iso] && dataObj[iso][y]) { s += dataObj[iso][y]; n++; }
+    }
+    if (n >= 100) sums[y] = s;
+  }
+  return latest(sums);
+}
+
+function renderTotals() {
+  var wr = worldTotal(remitUSD);
+  var wo = worldTotal(odaUSD);
+
+  document.getElementById("totalRemit").innerHTML =
+    fmtMoney(wr.value) + "<small>" + (wr.year || "") + "</small>";
+  document.getElementById("totalODA").innerHTML =
+    fmtMoney(wo.value) + "<small>" + (wo.year || "") + "</small>";
+
+  var rr = document.getElementById("totalRatio");
+  if (wr.value && wo.value) {
+    rr.innerHTML =
+      "&#8776; " + (wr.value / wo.value).toFixed(1) + "&times;<small>more than aid</small>";
+  }
+}
+
+
 </script>
 </body>
 </html>
