@@ -103,11 +103,8 @@
               <span class="code-card-title">deployment.log</span>
               <span class="status status--ok">200 OK</span>
             </div>
-            <pre class="code-card-body"><code><span class="tok-prompt">$</span> <span class="tok-cmd">drush</span> <span class="tok-arg">migrate:import</span> <span class="tok-arg">un_migration_hub</span> <span class="tok-flag">--batch=500</span>
-<span class="tok-prompt">$</span> <span class="tok-cmd">drush</span> <span class="tok-arg">cache:rebuild</span>
-<span class="tok-comment"># Cache rebuilt in 2.3s</span>
-<span class="tok-prompt">$</span> <span class="tok-cmd">curl</span> <span class="tok-arg">-X GET</span> <span class="tok-arg">https://migrationnetwork.un.org/api/v1/health</span>
-<span class="tok-comment"># {"status":"healthy","uptime":"99.97%"}</span></code></pre>
+            <pre class="code-card-body"><code><span class="tok-prompt">$</span><span class="tok-arg"> git push origin main</span><br><span class="tok-comment"># Code deployed</span><br><span class="tok-prompt">$</span><span class="tok-arg"> drush updatedb</span> <span class="tok-flag">--yes</span><br><span class="tok-comment"># Success</span><br><span class="tok-prompt">$</span> <span class="tok-arg">drush</span> <span class="tok-arg">cache:rebuild</span><br><span class="tok-comment"># Cache rebuilt in 2.3s</span></code>
+          </pre>
           </div>
         </div>
       </div>
