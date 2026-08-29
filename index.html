@@ -349,12 +349,12 @@
               <span class="code-card-dot"></span>
               <span class="code-card-dot"></span>
               <span class="code-card-dot"></span>
-              <span class="code-card-title">un_migration_hub.module</span>
+              <span class="code-card-title">customers.module</span>
               <span class="status status--ok">Drupal 10</span>
             </div>
             <pre class="code-card-body"><code><span class="tok-key">use</span> <span class="tok-ns">Drupal\Core\Entity\EntityInterface</span>;
 <span class="tok-key">use</span> <span class="tok-ns">Drupal\migrate\MigrateExecutable</span>;
-<span class="tok-key">use</span> <span class="tok-ns">Drupal\un_migration_hub\Service\UnDataSync</span>;
+<span class="tok-key">use</span> <span class="tok-ns">Drupal\customers\Service\UnDataSync</span>;
 
 <span class="tok-key">class</span> <span class="tok-class">MigrationHubService</span> {
   <span class="tok-key">public</span> <span class="tok-key">function</span> <span class="tok-fn">syncEntityData</span>(<span class="tok-type">EntityInterface</span> <span class="tok-var">$entity</span>): <span class="tok-type">void</span> {
