@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-GQ7ME7B2GR');
 </script>
 <!-- Google tag (gtag.js) end -->
@@ -16,70 +15,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog — Omar Farooq</title>
 <meta name="description" content="Writing on platform architecture, Drupal at scale, and building digital infrastructure for the United Nations and international development sector.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header class="topbar">
+<header class="topbar" role="banner">
   <div class="topbar-inner">
-    <a href="index.html" class="wordmark">
+    <a href="index.html" class="wordmark" aria-label="Omar Farooq — Home">
       <strong>OMAR FAROOQ</strong>
       <span>SENIOR PLATFORM ARCHITECT</span>
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
-    <nav class="nav">
+    <nav class="nav" role="navigation" aria-label="Primary">
       <a href="index.html">About</a>
       <a href="projects.html">Projects</a>
       <a href="skills.html">Skills</a>
       <a href="blog.html" aria-current="page">Blog</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
+      <kbd><span>⌘</span>K</kbd>
+    </button>
   </div>
 </header>
 
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="index.html">About — Profile & history</button>
+          <button class="cmdk-item" role="option" data-href="projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="blog.html">Blog — Field notes</button>
+          <button class="cmdk-item" role="option" data-href="contact.html">Contact — Open to roles</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
 <main>
-  <section class="page-hero">
+  <section class="page-hero reveal">
     <div class="wrap">
       <p class="kicker">Field notes / platform architecture for institutions</p>
       <h1>Notes from the system.</h1>
-      <p class="lede">Writing on what it actually takes to build digital infrastructure for organizations that cannot afford downtime: governance heavy platforms, multi agency data systems, and Drupal at a scale most teams never see.</p>
+      <p class="lede">Writing on what it actually takes to build digital infrastructure for organizations that cannot afford downtime: governance-heavy platforms, multi-agency data systems, and Drupal at a scale most teams never see.</p>
     </div>
   </section>
 
-  <section style="padding-top:20px;">
-    <div class="wrap col">
+  <section class="reveal">
+    <div class="wrap col" style="max-width: 780px; margin: 0 auto;">
 
-      <article class="post-card" href="blog/distributed-authority-models-for-migration-data.html">
-        <p class="post-meta">Distributed systems · Jul 19, 2026</p>
-        <h2>Distributed authority models for migration data governance</h2>
-        <a href="blog/distributed-authority-models-for-migration-data.html" style="text-decoration:none; color:inherit;">How 64 UN agencies coordinate on a shared knowledge graph without a central database. Role based access control, entity reference caching patterns and multi level editorial workflows at scale.</a>
+      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); text-decoration: none; color: inherit; display: block;">
+        <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">Distributed systems · Jul 19, 2026</p>
+        <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; transition: color var(--duration-fast) var(--ease-out);">Distributed authority models for migration data governance</h2>
+        <a href="blog/distributed-authority-models-for-migration-data.html" style="display: block; margin-top: var(--space-3); color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6; transition: color var(--duration-fast) var(--ease-out);">How 64 UN agencies coordinate on a shared knowledge graph without a central database. Role-based access control, entity reference caching patterns and multi-level editorial workflows at scale.</a>
       </article>
 
-      <article class="post-card" href="blog/drupal-ai-content-pipelines-at-governance-scale.html">
-        <p class="post-meta">AI content systems · Jul 20, 2026</p>
-        <h2>Drupal AI content pipelines at governance scale</h2>
-        <a href="blog/drupal-ai-content-pipelines-at-governance-scale.html" style="text-decoration:none; color:inherit;">AI integrated into UN migration platforms where LLMs read structured data first then generate natural language with human in the loop approval gates and complete audit trails.</a>
+      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); text-decoration: none; color: inherit; display: block;">
+        <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">AI content systems · Jul 20, 2026</p>
+        <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; transition: color var(--duration-fast) var(--ease-out);">Drupal AI content pipelines at governance scale</h2>
+        <a href="blog/drupal-ai-content-pipelines-at-governance-scale.html" style="display: block; margin-top: var(--space-3); color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6; transition: color var(--duration-fast) var(--ease-out);">AI integrated into UN migration platforms where LLMs read structured data first then generate natural language with human-in-the-loop approval gates and complete audit trails.</a>
       </article>
 
-      <article class="post-card" href="blog/governance-first-architecture.html">
-        <p class="post-meta">Platform architecture · Jul 18, 2026</p>
-        <h2>Why governance is the first thing you design, not the last</h2>
-        <a href="blog/governance-first-architecture.html" style="text-decoration:none; color:inherit;">Most platform failures inside multi agency systems are governance failures wearing a technical disguise.</a>
+      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); text-decoration: none; color: inherit; display: block;">
+        <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">Platform architecture · Jul 18, 2026</p>
+        <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; transition: color var(--duration-fast) var(--ease-out);">Why governance is the first thing you design, not the last</h2>
+        <a href="blog/governance-first-architecture.html" style="display: block; margin-top: var(--space-3); color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6; transition: color var(--duration-fast) var(--ease-out);">Most platform failures inside multi-agency systems are governance failures wearing a technical disguise.</a>
       </article>
 
-      <article class="post-card" href="blog/what-drupal-is-actually-good-at.html">
-        <p class="post-meta">Drupal as application framework · Jul 18, 2026</p>
-        <h2>What Drupal is actually good at once you are past the CMS conversation</h2>
-        <a href="blog/what-drupal-is-actually-good-at.html" style="text-decoration:none; color:inherit;">A case for treating Drupal as an application framework for structured governed data rather than a website builder.</a>
+      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); border-bottom: 1px solid var(--color-rule); text-decoration: none; color: inherit; display: block;">
+        <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">Drupal as application framework · Jul 18, 2026</p>
+        <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; transition: color var(--duration-fast) var(--ease-out);">What Drupal is actually good at once you are past the CMS conversation</h2>
+        <a href="blog/what-drupal-is-actually-good-at.html" style="display: block; margin-top: var(--space-3); color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6; transition: color var(--duration-fast) var(--ease-out);">A case for treating Drupal as an application framework for structured governed data rather than a website builder.</a>
       </article>
 
     </div>
   </section>
 </main>
 
-<footer>
+<footer class="footer" role="contentinfo">
   <div class="wrap footer-inner">
     <p>© 2026 Omar Farooq. Built for GitHub Pages.</p>
     <div class="footer-links">

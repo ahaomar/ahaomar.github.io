@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQ7ME7B2GR');
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboards — Omar Farooq</title>
+<meta name="description" content="AI and data visualizations for platform architecture: World Bank remittance dashboards, UN migration analytics, and climate displacement intelligence systems.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="index.html" class="wordmark" aria-label="Omar Farooq — Home">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR PLATFORM ARCHITECT</span>
+    </a>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a href="index.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="skills.html">Skills</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboards.html" aria-current="page">Dashboards</a>
+    </nav>
+    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
+      <kbd><span>⌘</span>K</kbd>
+    </button>
+  </div>
+</header>
+
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="index.html">About — Profile & history</button>
+          <button class="cmdk-item" role="option" data-href="projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="blog.html">Blog — Field notes</button>
+          <button class="cmdk-item" role="option" data-href="contact.html">Contact — Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="dashboards.html">Dashboards — AI & data visualizations</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="page-hero reveal">
+    <div class="wrap">
+      <p class="kicker">AI & data visualizations / platform analytics</p>
+      <h1>Decision-ready intelligence.</h1>
+      <p class="lede">Interactive dashboards and analytics platforms built for the United Nations, World Bank, and international development sector — turning complex migration, climate, and governance data into actionable intelligence for policymakers and G7 delegations.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="wrap">
+
+      <article class="dashboard-card reveal" style="margin-bottom: var(--space-12); padding: var(--space-10) var(--space-8); border: 1px solid var(--color-rule); border-radius: var(--radius-lg); background: var(--color-paper);">
+        <div style="height: 200px; background: var(--color-paper-1); border-radius: var(--radius-sm); margin: -var(--space-8) -var(--space-8) var(--space-8); display: flex; align-items: center; justify-content: center; color: var(--color-ink-muted); font-size: var(--text-sm); font-family: var(--font-mono); margin: -var(--space-8) -var(--space-8) var(--space-6);">
+          <span>🌍</span>
+        </div>
+        <h3 style="margin: var(--space-4) 0 var(--space-2); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent);">The Invisible Lifeline</h3>
+        <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">
+          World Bank remittances vs official development assistance dashboard. Choropleth map + time-series bar chart comparing migrant remittances against ODA across 195 economies (2018–2023). Real-time API integration with auto-generated takeaways.
+        </p>
+        <div style="margin-top: var(--space-4);">
+          <a href="worldbank/dashboards/remittances-migrant-vs-oda/index.html" class="btn btn--ghost" style="font-size: var(--text-xs);">View dashboard →</a>
+        </div>
+      </article>
+
+      <article class="dashboard-card reveal" style="margin-bottom: var(--space-12); padding: var(--space-10) var(--space-8); border: 1px solid var(--color-rule); border-radius: var(--radius-lg); background: var(--color-paper);">
+        <div style="height: 200px; background: var(--color-paper-1); border-radius: var(--radius-sm); margin: -var(--space-8) -var(--space-8) var(--space-8); display: flex; align-items: center; justify-content: center; color: var(--color-ink-muted); font-size: var(--text-sm); font-family: var(--font-mono); margin: -var(--space-8) -var(--space-8) var(--space-6);">
+          <span>📊</span>
+        </div>
+        <h3 style="margin: var(--space-4) 0 var(--space-2); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent);">UN Migration Platform Architecture</h3>
+        <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">
+          Six-platform architecture visualization: Interface → API Layer → Data → Infrastructure. Interactive stack showing governance model, API ecosystem, data pipelines, and infrastructure layer serving 195 member states through the UN Migration Network Hub.
+        </p>
+        <div style="margin-top: var(--space-4);">
+          <a href="projects.html" class="btn btn--ghost" style="font-size: var(--text-xs);">View platforms →</a>
+        </div>
+      </article>
+
+      <article class="dashboard-card reveal" style="margin-bottom: var(--space-12); padding: var(--space-10) var(--space-8); border: 1px solid var(--color-rule); border-radius: var(--radius-lg); background: var(--color-paper);">
+        <div style="height: 200px; background: var(--color-paper-1); border-radius: var(--radius-sm); margin: -var(--space-8) -var(--space-8) var(--space-8); display: flex; align-items: center; justify-content: center; color: var(--color-ink-muted); font-size: var(--text-sm); font-family: var(--font-mono); margin: -var(--space-8) -var(--space-8) var(--space-6);">
+          <span>🧠</span>
+        </div>
+        <h3 style="margin: var(--space-4) 0 var(--space-2); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent);">CLIMB: Climate & Migration Intelligence</h3>
+        <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6>
+          Data-for-policy platform integrating multi-source climate and migration datasets with GIS layers and human mobility databases. Built for G7 delegations and UN decision makers to act on climate-induced displacement intelligence.
+        </p>
+        <div style="margin-top: var(--space-4);">
+          <a href="projects.html" class="btn btn--ghost" style="font-size: var(--text-xs);">View project →</a>
+        </div>
+      </article>
+
+      <article class="dashboard-card reveal" style="margin-bottom: var(--space-12); padding: var(--space-10) var(--space-8); border: 1px solid var(--color-rule); border-radius: var(--radius-lg); background: var(--color-paper);">
+        <div style="height: 200px; background: var(--color-paper-1); border-radius: var(--radius-sm); margin: -var(--space-8) -var(--space-8) var(--space-8); display: flex; align-items: center; justify-content: center; color: var(--color-ink-muted); font-size: var(--text-sm); font-family: var(--font-mono); margin: -var(--space-8) -var(--space-8) var(--space-6);">
+          <span>📈</span>
+        </div>
+        <h3 style="margin: var(--space-4) 0 var(--space-2); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent);">Global Migration Data Portal</h3>
+        <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">
+          Authoritative one-stop shop for global migration statistics. Interactive visualization and custom analytics from 50+ data sources. Decision-ready intelligence for policymakers, researchers, and the international development community.
+        </p>
+        <div style="margin-top: var(--space-4);">
+          <a href="projects.html" class="btn btn--ghost" style="font-size: var(--text-xs);">View portal →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<section class="cta reveal" data-theme="dark">
+  <div class="wrap cta-inner">
+    <div>
+      <p class="kicker">Next</p>
+      <p>Read the field notes on platform architecture.</p>
+    </div>
+    <a href="blog.html" class="btn btn--primary">Read the blog →</a>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="wrap footer-inner">
+    <p>© 2026 Omar Farooq. Built for GitHub Pages.</p>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:contactomarfarooq-github@yahoo.com">Email</a>
+      <a href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
