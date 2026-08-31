@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "myprovider": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "My Provider BAI",
+      "options": {
+        "baseURL": "https://api.b.ai/v1",
+        "apiKey": "sk-wp8ohhl1mxifmo4cd14vba8bt8yifudx"
+      },
+      "models": {
+        "deepseek-v4-flash": { "name": "BAi Deepseek-v4-flash" },
+        "deepseek-v4-flash-vision-exp": { "name": "BAi Deepseek-v4-flash-vision-exp" },
+        "hy3": { "name": "BAi hy3" },
+        "mimo-v2.5": { "name": "BAi mimo-v2.5" },
+        "glm-5.3-flash": { "name": "BAi OX Alhpa glm-5.3-flash" },
+        "qwen3.8-flash": { "name": "BAi qwen3.8-flash" }
+      }
+    }
+  }
+}

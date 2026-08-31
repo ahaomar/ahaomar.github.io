@@ -13,8 +13,17 @@ platform, and the IOM Global Migration Data Portal, among others.
 |---|---|
 | `index.html` | About me, Profile summary, career history, technical expertise |
 | `projects.html` | Case studies for six production platforms |
-| `blog.html` | Writing on platform architecture and Drupal at scale |
+| `skills.html` | Technical skills and practice areas |
+| `blog.html` | Blog listing — writing on platform architecture and Drupal at scale |
+| `blog/` | Individual blog posts (detail views) |
 | `contact.html` | Contact details and CV download |
+| `dashboards.html` | Dashboards listing — AI-built data visualizations |
+| `dashboards/worldbank/remittances-migrant-vs-oda/` | World Bank remittances vs ODA dashboard (detail view) |
+| `assets/` | CV (PDF) |
+| `css/`, `js/` | Stylesheets and shared JavaScript |
+
+Listings live at the root (`blog.html`, `dashboards.html`); each section's
+folder holds the detail views, mirroring the blog pattern.
 
 ## Built with
 
