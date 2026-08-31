@@ -1,0 +1,22 @@
+LINKEDIN POST — OPTION B (Technical / Data narrative lens)
+For: hiring managers, data teams, platform architects
+============================================================
+
+I built a dashboard that visualises 26.4 million people displaced by disasters in a single year – using only open data and a static HTML page.
+
+The challenge: how do you communicate the scale of climate-induced displacement to decision-makers in a way they can *see* and *explore*?
+
+"Displaced by Disaster – Who Extreme Weather Moves" is a data brief I built on GitHub Pages:
+
+• Choropleth map of people newly displaced by floods, storms and droughts (2008–2023)
+• Year selector – the map, totals and trends update instantly
+• Click any country to see its displacement timeline, peak year, climate-risk context, and refugee data (UNHCR)
+• Auto-generated takeaways – no manual interpretation
+
+All data comes live from the World Bank Indicators API. No backend. No database. Just client-side JavaScript, Leaflet, and Chart.js.
+
+402 million people have been displaced by disasters since 2008. The data is public. Making it *usable* is a design choice.
+
+Explore the dashboard: [your-link]
+
+#DataVisualization #ClimateData #Displacement #OpenData #WorldBank #JavaScript #Leaflet #ChartJS #DataEngineering #HumanitarianTech
