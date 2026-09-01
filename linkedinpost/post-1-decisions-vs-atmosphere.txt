@@ -1,0 +1,28 @@
+LINKEDIN POST — "Decisions vs. the Atmosphere: 31 COPs, One Curve"
+For: climate policy, UNFCCC/COP followers, data-for-policy audiences, hiring managers
+============================================================
+
+31 climate summits. One CO₂ curve. Did any of them bend it?
+
+That question sits at the heart of every COP — and now you can explore the answer, summit by summit, year by year.
+
+I built "Decisions vs. the Atmosphere" — an interactive timeline of all 31 conferences from COP1 Berlin 1995 to COP31 Antalya 2026, plotted directly against the CO₂ curve those decisions were meant to bend:
+
+• Every COP's host city, presidency, dates and landmark outcomes — Kyoto Protocol, Bali Action Plan, Durban Platform, Paris Agreement, Glasgow Pact, the Loss and Damage Fund, the first Global Stocktake
+• A live CO₂ curve with every summit marked on it — click any dot to inspect that COP
+• Toggle between annual CO₂, cumulative emissions and global temperature anomaly
+• The verdict engine: for each summit, CO₂ growth in the 5 years after is compared with the 5 years before — the atmosphere, not the author, delivers the verdict
+
+Some of what the data says:
+
+When COP1 met in Berlin, the world emitted 23.5 Gt of CO₂. Today it emits over 38.6 Gt — up roughly 64%, across three decades of climate diplomacy. 2024 came in at +1.5°C above pre-industrial levels.
+
+Kyoto's aftermath: growth barely paused (8.3% → 7.7%). Paris 2015 is the first summit after which the five-year growth curve genuinely bent.
+
+There is no official UNFCCC API — the COP record is curated and embedded for instant load, while the atmospheric data streams live from Our World in Data (Global Carbon Project, HadCRUT5).
+
+One static HTML/JS page. GitHub Pages. No backend, no database. Press Play and walk through 31 years of climate diplomacy in under a minute.
+
+Explore it here: https://ahaomar.github.io/dashboards/unfccc/decisions-vs-atmosphere/index.html
+
+#COP31 #ClimatePolicy #UNFCCC #ParisAgreement #ClimateData #DataVisualization #DataForPolicy #LossAndDamage #OpenData #EvidenceBased

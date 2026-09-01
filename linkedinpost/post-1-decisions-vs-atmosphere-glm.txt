@@ -1,0 +1,32 @@
+LINKEDIN POST — "Decisions vs. the Atmosphere: 31 COPs, One Curve"
+DRAFTED BY: GLM (glm-5.3-flash)
+FORMAT: plain text, LinkedIn-ready — copy everything below the line
+============================================================
+
+Every year since 1995, negotiators flew home from a COP with a new decision.
+Every year since 1995, the CO₂ curve kept climbing anyway.
+
+So I put the argument in one place: "Decisions vs. the Atmosphere" — all 31 conferences, Berlin 1995 to Antalya 2026, plotted directly onto the curve they were meant to bend.
+
+How it works:
+
+• Press Play and walk 31 summits in about a minute — host city, presidency, landmark outcomes, one stop at a time
+• A verdict engine scores every summit from live data: CO₂ growth in the five years after versus the five years before
+• Toggle annual CO₂, cumulative emissions, or global temperature anomaly — the curve, the budget, and the thermometer in one view
+
+What the verdicts show:
+
+Kyoto 1997 promised binding cuts. The growth rate barely flinched.
+
+Paris 2015 is the first summit where the curve visibly bends. The first — not the last word.
+
+And the stakes, measured: 23.5 Gt of CO₂ when COP1 opened in Berlin. 38.6 Gt today. Up 64% across three decades of climate diplomacy — with the planet now +1.5°C above pre-industrial levels.
+
+One more thing. UNFCCC has no public API for its own decision record — the documents are bot-walled. So I curated all 31 summits from official records: hosts, presidencies, landmark decisions. The atmospheric data streams live on every page load from Our World in Data (Global Carbon Project, HadCRUT5).
+
+One static page. No backend, no database. The atmosphere grades the homework.
+
+Judge each summit yourself:
+https://ahaomar.github.io/dashboards/unfccc/decisions-vs-atmosphere/index.html
+
+#COP31 #UNFCCC #ParisAgreement #ClimateData #DataVisualization #DataForPolicy #OpenData #ClimateDiplomacy

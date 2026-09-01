@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQ7ME7B2GR');
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decisions vs. the Atmosphere — 31 COPs, One Curve</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="../../../index.html" class="wordmark" aria-label="Omar Farooq — Home">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR PLATFORM ARCHITECT</span>
+    </a>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a href="../../../index.html">About</a>
+      <a href="../../../projects.html">Projects</a>
+      <a href="../../../skills.html">Skills</a>
+      <a href="../../../blog.html">Blog</a>
+      <a href="../../../contact.html">Contact</a>
+      <a href="../../../dashboards.html" aria-current="page">Dashboards</a>
+    </nav>
+    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
+      <kbd><span>⌘</span>K</kbd>
+    </button>
+  </div>
+</header>
+
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="../../../index.html">About — Profile & history</button>
+          <button class="cmdk-item" role="option" data-href="../../../projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="../../../skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../../../blog.html">Blog — Field notes</button>
+          <button class="cmdk-item" role="option" data-href="../../../contact.html">Contact — Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="../../../dashboards.html">Dashboards — AI & data visualizations</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="../../../assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div class="kicker">UNFCCC Conferences of the Parties &middot; Interactive Data Brief</div>
+    <h1>Decisions vs. the Atmosphere: <em>31 COPs, One Curve</em></h1>
+    <p class="standfirst">
+      Every COP since Berlin 1995 &mdash; its host, presidency and landmark decisions &mdash;
+      plotted against the CO<sub>2</sub> curve those decisions were meant to bend.
+      Scrub the timeline and judge each summit by the atmosphere, not the communiqu&eacute;.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-cell stat"><span>CO<sub>2</sub> when COP1 met</span><b id="statFirst">&mdash;</b></div>
+      <div class="meta-cell stat"><span>CO<sub>2</sub> latest</span><b id="statLast">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Change since Berlin</span><b id="statDelta">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Warming above 1850&ndash;1900</span><b id="statWarm">&mdash;</b></div>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div id="status">Loading data&hellip;</div>
+  <div id="app" style="display:none;">
+
+    <section class="timeline" aria-label="COP timeline">
+      <div class="timeline-top">
+        <div class="timeline-year" id="yearDisplay">COP 3 &middot; 1997</div>
+        <div class="timeline-caption" id="yearCaption">Kyoto, Japan — the Kyoto Protocol is adopted.</div>
+      </div>
+      <div class="timeline-track">
+        <input type="range" id="copSlider" min="0" max="30" step="1" value="2"
+               aria-label="Select COP" oninput="onSlide(this.value)">
+      </div>
+      <div class="timeline-buttons">
+        <button type="button" class="tl-btn active" id="playBtn" onclick="togglePlay()">&#9654; Play 31 COPs</button>
+        <button type="button" class="tl-btn" onclick="jumpTo(20)">&#9733; Paris 2015</button>
+        <button type="button" class="tl-btn" onclick="jumpTo(26)">&#9733; Loss &amp; Damage 2022</button>
+        <button type="button" class="tl-btn" onclick="jumpTo(0)">&#8634; Berlin 1995</button>
+        <span class="tl-note" id="copNote"></span>
+      </div>
+    </section>
+
+    <div class="content">
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title" id="chartTitle">Global CO<sub>2</sub> emissions, 1990&ndash;2024</span>
+          <span class="panel-sub">COP markers on the curve</span>
+        </div>
+        <div class="chart-holder"><canvas id="co2Chart"></canvas></div>
+        <div class="chart-foot">
+          <div class="chart-toggle">
+            <button type="button" class="tgl-btn active" id="tglAnnual" onclick="setMode('annual')">Annual CO<sub>2</sub></button>
+            <button type="button" class="tgl-btn" id="tglCumulative" onclick="setMode('cumulative')">Cumulative</button>
+            <button type="button" class="tgl-btn" id="tglTemp" onclick="setMode('temp')">Temperature</button>
+          </div>
+          <span class="chart-note" id="chartModeNote">Live from Our World in Data (Global Carbon Project)</span>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <div class="insight-body">
+          <div id="copPanel">
+            <div class="empty-note">&#9664;&nbsp; Drag the slider or press Play to walk through 31 years of climate diplomacy — and see what the atmosphere did next.</div>
+          </div>
+          <div id="copWrap" style="display:none;">
+            <span class="cop-tag" id="copTag"></span>
+            <div class="cop-name" id="copName"></div>
+            <div class="cop-meta" id="copMeta"></div>
+            <div class="verdict" id="copVerdict"></div>
+            <div class="delta-grid" id="deltaGrid"></div>
+            <div class="cop-decisions">
+              <h4>Landmark outcomes</h4>
+              <ul class="decision-list" id="copDecisions"></ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="panel" style="margin-bottom:var(--space-8);">
+      <div class="panel-head">
+        <span class="panel-title">All 31 conferences at a glance</span>
+        <span class="panel-sub">★ = landmark summit · click to inspect</span>
+      </div>
+      <div class="insight-body" id="allCopsTable"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell footer-inner">
+    <h3>Data Sources &amp; Methodology</h3>
+    <div class="source-block">
+      <div><b>Atmospheric data (live)</b>
+        <p><a href="https://ourworldindata.org/grapher/annual-co2-emissions-per-country" rel="noopener">Our World in Data</a> — annual &amp; cumulative CO<sub>2</sub> (Global Carbon Project), World entity, 1750&ndash;2024; temperature anomaly vs 1850&ndash;1900 baseline (HadCRUT5), 1850&ndash;2026. CC BY 4.0.</p>
+      </div>
+      <div><b>COP record (curated)</b>
+        <p>Conference hosts, presidencies and landmark decisions compiled from <a href="https://unfccc.int/process/bodies/supreme-body-conferences-of-the-parties-unfccc-cop" rel="noopener">UNFCCC</a> official records and public documentation, COP1&ndash;COP31. Embedded for instant load; update annually.</p>
+      </div>
+      <div><b>Method</b>
+        <p>Verdict lines are computed live from the data: CO<sub>2</sub> growth in the 5 years after each COP is compared with the 5 years before it. The atmosphere, not the author, decides the verdict.</p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Decisions vs. the Atmosphere &mdash; an independent data explainer</span>
+      <span>Atmospheric series refreshed automatically on each page load</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="../../../js/main.js"></script>
+</body>
+</html>
