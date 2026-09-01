@@ -17,6 +17,6 @@ All data comes live from the World Bank Indicators API. No backend. No database.
 
 402 million people have been displaced by disasters since 2008. The data is public. Making it *usable* is a design choice.
 
-Explore the dashboard: [your-link]
+Explore the dashboard: https://ahaomar.github.io/dashboards/worldbank/climate-migration-nexus/index.html
 
 #DataVisualization #ClimateData #Displacement #OpenData #WorldBank #JavaScript #Leaflet #ChartJS #DataEngineering #HumanitarianTech

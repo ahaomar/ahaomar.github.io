@@ -21,7 +21,7 @@ The dashboard is a single static HTML/JS page – hosted on GitHub Pages, no bac
 
 I built this because I believe policy intelligence should be public, accessible, and grounded in official data.
 
-Explore it here: [your-link]
+Explore it here: https://ahaomar.github.io/dashboards/worldbank/climate-migration-nexus/index.html
 
 Built with World Bank, UNHCR, and open-source tools.
 

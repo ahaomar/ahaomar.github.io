@@ -16,6 +16,17 @@
         "glm-5.3-flash": { "name": "BAi OX Alhpa glm-5.3-flash" },
         "qwen3.8-flash": { "name": "BAi qwen3.8-flash" }
       }
+    },
+    "tokenrounter": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "My Token Router",
+      "options": {
+        "baseURL": "https://api.tokenrouter.com/v1",
+        "apiKey": "sk-PDzCxEtuir2muybk37FLQylQhTaeCcEtAQY6SAcZjaa5iW0t"
+      },
+      "models": {
+        "z-ai/glm-5.3-free": { "name": "Token Rounter GLM 5.3 Free" }
+      }
     }
   }
 }
