@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQ7ME7B2GR');
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>275 Years of Carbon — Who Emits, Who Emitted, 1750–2024</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="../../../index.html" class="wordmark" aria-label="Omar Farooq — Home">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR PLATFORM ARCHITECT</span>
+    </a>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a href="../../../index.html">About</a>
+      <a href="../../../projects.html">Projects</a>
+      <a href="../../../skills.html">Skills</a>
+      <a href="../../../blog.html">Blog</a>
+      <a href="../../../contact.html">Contact</a>
+      <a href="../../../dashboards.html" aria-current="page">Dashboards</a>
+    </nav>
+    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
+      <kbd><span>⌘</span>K</kbd>
+    </button>
+  </div>
+</header>
+
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="../../../index.html">About — Profile & history</button>
+          <button class="cmdk-item" role="option" data-href="../../../projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="../../../skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../../../blog.html">Blog — Field notes</button>
+          <button class="cmdk-item" role="option" data-href="../../../contact.html">Contact — Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="../../../dashboards.html">Dashboards — AI & data visualizations</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="../../../assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div class="kicker">Global Carbon Project &middot; Interactive Data Brief</div>
+    <h1>275 Years of Carbon: <em>Who Emits, Who Emitted</em></h1>
+    <p class="standfirst">
+      Every tonne of CO<sub>2</sub> since the Industrial Revolution, by country, 1750&ndash;2024 &mdash;
+      press play and watch a handful of nations paint the map. Switch between what a country
+      emits <em>this year</em>, what it has emitted <em>since 1750</em>, and what each person emits &mdash;
+      three views, three very different stories.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-cell stat"><span>World 1750</span><b id="stat1750">&mdash;</b></div>
+      <div class="meta-cell stat"><span>World 1850</span><b id="stat1850">&mdash;</b></div>
+      <div class="meta-cell stat"><span>World 1900</span><b id="stat1900">&mdash;</b></div>
+      <div class="meta-cell stat"><span>World 2024</span><b id="stat2024">&mdash;</b></div>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div id="status">Loading data&hellip;</div>
+  <div id="app" style="display:none;">
+
+    <section class="timeline" aria-label="Year timeline">
+      <div class="timeline-top">
+        <div class="timeline-year" id="yearDisplay">1750</div>
+        <div class="timeline-caption" id="yearCaption">The Industrial Revolution begins &mdash; the entire world emits less than a small city does today.</div>
+      </div>
+      <div class="timeline-track">
+        <input type="range" id="yearSlider" min="1750" max="2024" step="1" value="1750"
+               aria-label="Select year" oninput="onSlide(this.value)">
+      </div>
+      <div class="timeline-buttons">
+        <button type="button" class="tl-btn active" id="playBtn" onclick="togglePlay()">&#9654; Play 275 years</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(1888)">&#8593; US overtakes UK 1888</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2006)">&#8593; China overtakes US 2006</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2024)">&#8634; Today</button>
+        <span class="tl-note" id="worldNote"></span>
+      </div>
+    </section>
+
+    <div class="controls">
+      <div class="mode-toggle" role="group" aria-label="Metric mode">
+        <button type="button" class="tgl-btn active" id="tglAnnual" onclick="setMode('annual')">Annual CO<sub>2</sub></button>
+        <button type="button" class="tgl-btn" id="tglCumulative" onclick="setMode('cumulative')">Cumulative since 1750</button>
+        <button type="button" class="tgl-btn" id="tglCapita" onclick="setMode('perCapita')">Per capita</button>
+      </div>
+      <span id="countNote"></span>
+    </div>
+
+    <div class="content">
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title" id="mapTitle">Annual CO<sub>2</sub> emissions, <span id="mapYearLabel">1750</span></span>
+          <span class="panel-sub">click a country</span>
+        </div>
+        <div id="map"></div>
+      </section>
+      <aside class="panel">
+        <div class="insight-body">
+          <div id="countryPanel">
+            <div class="empty-note">&#9664;&nbsp; Click any country, drag the year slider, or press Play to watch 275 years of carbon unfold. Then switch to <b>Cumulative</b> and see the map invert.</div>
+          </div>
+          <div id="chartWrap" style="display:none;">
+            <div class="country-name" id="countryName"></div>
+            <div class="country-year" id="countryYear"></div>
+            <div class="ratio-callout" id="ratioLine"></div>
+            <div class="chart-holder"><canvas id="countryChart"></canvas></div>
+            <ul class="takeaways" id="takeaways"></ul>
+            <div class="top-list">
+              <h4 id="topListTitle">Top emitters this year</h4>
+              <div id="topList"></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell footer-inner">
+    <h3>Data Sources &amp; Methodology</h3>
+    <div class="source-block">
+      <div><b>CO<sub>2</sub> emissions (live)</b>
+        <p><a href="https://ourworldindata.org/co2-and-greenhouse-gas-emissions" rel="noopener">Our World in Data</a> &mdash; annual, cumulative and per-capita CO<sub>2</sub> by country, 1750&ndash;2024 (Global Carbon Project). CC BY 4.0.</p>
+      </div>
+      <div><b>Boundaries</b>
+        <p>Open world.geo.json dataset. Country matching by ISO3 code.</p>
+      </div>
+      <div><b>Method</b>
+        <p>Cumulative values are the Global Carbon Project's running totals since 1750 &mdash; the "historical responsibility" view. Per-capita uses population-matched annual figures. All takeaways are computed live from the data.</p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>275 Years of Carbon &mdash; an independent data explainer built on the Global Carbon Project via Our World in Data</span>
+      <span>Refreshed automatically on each page load</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="../../../js/main.js"></script>
+</body>
+</html>
