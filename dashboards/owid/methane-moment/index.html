@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQ7ME7B2GR');
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Methane Moment — The Climate Forcer We Keep Ignoring</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="../../../index.html" class="wordmark" aria-label="Omar Farooq — Home">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR PLATFORM ARCHITECT</span>
+    </a>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a href="../../../index.html">About</a>
+      <a href="../../../projects.html">Projects</a>
+      <a href="../../../skills.html">Skills</a>
+      <a href="../../../blog.html">Blog</a>
+      <a href="../../../contact.html">Contact</a>
+      <a href="../../../dashboards.html" aria-current="page">Dashboards</a>
+    </nav>
+    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
+      <kbd><span>⌘</span>K</kbd>
+    </button>
+  </div>
+</header>
+
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="../../../index.html">About — Profile & history</button>
+          <button class="cmdk-item" role="option" data-href="../../../projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="../../../skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../../../blog.html">Blog — Field notes</button>
+          <button class="cmdk-item" role="option" data-href="../../../contact.html">Contact — Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="../../../dashboards.html">Dashboards — AI & data visualizations</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="../../../assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div class="kicker">Global Carbon Project &middot; Interactive Data Brief</div>
+    <h1>The Methane Moment: <em>The Forcer We Keep Ignoring</em></h1>
+    <p class="standfirst">
+      Methane causes over 80&times; more warming than CO<sub>2</sub> over 20 years &mdash; and it breaks down in
+      about a decade. Cut it, and the climate pays you back within our lifetime. This is the short game
+      of climate policy, visualised &mdash; live from the Global Carbon Project.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-cell stat"><span>World CH<sub>4</sub>, 1850</span><b id="stat1850">&mdash;</b></div>
+      <div class="meta-cell stat"><span>World CH<sub>4</sub>, 1950</span><b id="stat1950">&mdash;</b></div>
+      <div class="meta-cell stat"><span>World CH<sub>4</sub>, latest</span><b id="statLatest">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Warming power vs CO<sub>2</sub></span><b>82&times;<small>over 20 yrs</small></b></div>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div id="status">Loading data&hellip;</div>
+  <div id="app" style="display:none;">
+
+    <section class="timeline" aria-label="Year timeline">
+      <div class="timeline-top">
+        <div class="timeline-year" id="yearDisplay">1850</div>
+        <div class="timeline-caption" id="yearCaption">Agriculture and wetlands — humanity's methane story begins with rice and cattle.</div>
+      </div>
+      <div class="timeline-track">
+        <input type="range" id="yearSlider" min="1850" max="2024" step="1" value="1850"
+               aria-label="Select year" oninput="onSlide(this.value)">
+      </div>
+      <div class="timeline-buttons">
+        <button type="button" class="tl-btn active" id="playBtn" onclick="togglePlay()">&#9654; Play 175 years</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(1950)">&#8593; Postwar surge 1950</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2024)">&#8634; Today</button>
+        <span class="tl-note" id="worldNote"></span>
+      </div>
+    </section>
+
+    <div class="split-grid">
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title">World methane emissions, 1850&ndash;2024</span>
+          <span class="panel-sub">annual, Mt CH<sub>4</sub></span>
+        </div>
+        <div class="chart-md"><canvas id="worldChart"></canvas></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title" id="topTitle">Top methane emitters, 1850</span>
+          <span class="panel-sub">annual, Mt CH<sub>4</sub></span>
+        </div>
+        <div class="insight-body">
+          <div class="top-emitters-bar" id="topEmitters"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="split-grid">
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Methane vs CO<sub>2</sub> — two different clocks</span>
+          <span class="panel-sub">indexed to 1900 = 1</span>
+        </div>
+        <div class="chart-md"><canvas id="compareChart"></canvas></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Why methane matters now</span>
+          <span class="panel-sub">the short game of climate policy</span>
+        </div>
+        <div class="insight-body">
+          <div class="ch4-note">
+            <b>The 20-year view.</b> Over 20 years, one tonne of methane warms the planet
+            <b>82&times;</b> more than one tonne of CO<sub>2</sub>. Over 100 years, still
+            <b>29&times;</b>. Methane lives in the atmosphere for roughly a decade — CO<sub>2</sub>
+            for centuries.
+          </div>
+          <div class="ch4-note">
+            <b>The political consequence.</b> Because CH<sub>4</sub> decays fast, cutting it pays
+            back within <b>a decade</b> — it's the only lever that visibly slows warming before 2050.
+            That's why the Global Methane Pledge (COP26, 2021) targets a 30% cut by 2030.
+          </div>
+          <div class="era-strip">
+            <div class="fact-card"><span>Top source</span><b>Agriculture</b>≈40% — cattle &amp; rice</div>
+            <div class="fact-card"><span>Second</span><b>Fossil fuels</b>≈35% — gas leaks, coal</div>
+            <div class="fact-card"><span>Third</span><b>Waste</b>≈18% — landfills</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" style="margin-bottom:var(--space-8);">
+      <div class="panel-head">
+        <span class="panel-title" id="countryTitle">Country explorer</span>
+        <span class="panel-sub">click any country bar above, or select below</span>
+      </div>
+      <div class="insight-body">
+        <div class="controls">
+          <label for="countrySelect">Country</label>
+          <select id="countrySelect"><option value="">Select a country</option></select>
+        </div>
+        <div id="countryDetail" style="display:none; margin-top:var(--space-5);">
+          <div class="country-name" id="cName"></div>
+          <div class="country-year" id="cYear"></div>
+          <div class="ratio-callout" id="cCallout"></div>
+          <div class="chart-md" style="padding:var(--space-2) 0 0;"><canvas id="countryChart"></canvas></div>
+          <ul class="takeaways" id="cTakeaways"></ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell footer-inner">
+    <h3>Data Sources &amp; Methodology</h3>
+    <div class="source-block">
+      <div><b>Methane &amp; CO<sub>2</sub> (live)</b>
+        <p><a href="https://ourworldindata.org/emissions-by-gas" rel="noopener">Our World in Data</a> — annual methane emissions including land use, 1850&ndash;2024, and annual CO<sub>2</sub>, 1750&ndash;2024 (Global Carbon Project). CC BY 4.0.</p>
+      </div>
+      <div><b>Climate context</b>
+        <p>Warming-potentials (82&times; over 20 years, 29&times; over 100 years) from IPCC AR6. Source-share estimates (agriculture, fossil fuels, waste) per UNEP Global Methane Assessment.</p>
+      </div>
+      <div><b>Method</b>
+        <p>Comparison chart indexes both gases to 1900 = 1 to contrast growth rates. All takeaways computed live from the data.</p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>The Methane Moment &mdash; an independent data explainer</span>
+      <span>Refreshed automatically on each page load</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="../../../js/main.js"></script>
+</body>
+</html>

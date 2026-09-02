@@ -27,18 +27,6 @@
       "models": {
         "z-ai/glm-5.3-free": { "name": "Token Rounter GLM 5.3 Free" }
       }
-    },
-    "tabitoken": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Tabi Token",
-      "options": {
-        "baseURL": "https://tabitoken.com/v1",
-        "apiKey": "sk-9r1o4GYCkJWrYj0R18GurTYdmgJBB7TJAdSGRG8uWMrSCjkG"
-      },
-      "models": {
-        "claude-opus-4-8": { "name": "Tabi Token claude-opus-4-8" },
-        "claude-opus-5": { "name": "Tabi Token claude-opus-5" }
-      }
     }
   }
 }

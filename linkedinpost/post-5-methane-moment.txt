@@ -1,0 +1,28 @@
+LINKEDIN POST — "The Methane Moment: The Forcer We Keep Ignoring"
+For: climate policy, COP audiences, energy/data professionals, hiring managers
+============================================================
+
+Methane warms the planet 82× more than CO₂ over 20 years — then mostly breaks down within a decade.
+
+That single fact makes it the only climate lever that visibly slows warming before 2050. Yet methane is still the side-note of climate policy.
+
+I built "The Methane Moment" to give it the front page — 175 years of methane data, live from the Global Carbon Project:
+
+• World methane since 1850, animated year by year — from 1,239Mt (mostly rice paddies and cattle) to 9,417Mt today
+• Top 10 emitters, redrawn for every year: China (1,591Mt), India (859Mt), the US (818Mt), Brazil (580Mt), Russia (474Mt)
+• A side-by-side "two clocks" chart: methane and CO₂ indexed to 1900 — watch CO₂ grow 20× while methane grows 5×, but remember which one is 82× stronger
+• Country explorer with live-computed takeaways: peak year, trend, global rank, and the CO₂-equivalent warming power
+
+Why this matters for policy:
+
+A tonne of methane avoided is worth 82 tonnes of CO₂ avoided over the next two decades. No other emissions cut pays back so fast — which is exactly why the Global Methane Pledge (COP26, Glasgow) targets a 30% cut by 2030.
+
+The sources tell the story: agriculture (~40% — cattle and rice), fossil fuels (~35% — gas leaks and coal mines), waste (~18% — landfills). Fixing leaky gas infrastructure is cheap; changing dinner menus is harder.
+
+One detail the comparison chart makes visible: methane's growth curve has a distinct pause in the 1990s–2000s — largely collapsing Soviet industry — before climbing again. Emissions are a policy choice, and the data remembers.
+
+All data streams live from Our World in Data on every page load. One static HTML/CSS/JS page on GitHub Pages. No backend, no database.
+
+Explore it here: https://ahaomar.github.io/dashboards/owid/methane-moment/index.html
+
+#Methane #ClimatePolicy #GlobalMethanePledge #COP26 #ClimateData #Emissions #DataVisualization #EnergyTransition #OpenData #ClimateAction

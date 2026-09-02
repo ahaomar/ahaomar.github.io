@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQ7ME7B2GR');
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Too Hot to Stay — Climate Exposure and Displacement, Country by Country</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="../../../index.html" class="wordmark" aria-label="Omar Farooq — Home">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR PLATFORM ARCHITECT</span>
+    </a>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a href="../../../index.html">About</a>
+      <a href="../../../projects.html">Projects</a>
+      <a href="../../../skills.html">Skills</a>
+      <a href="../../../blog.html">Blog</a>
+      <a href="../../../contact.html">Contact</a>
+      <a href="../../../dashboards.html" aria-current="page">Dashboards</a>
+    </nav>
+    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
+      <kbd><span>⌘</span>K</kbd>
+    </button>
+  </div>
+</header>
+
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="../../../index.html">About — Profile & history</button>
+          <button class="cmdk-item" role="option" data-href="../../../projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="../../../skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../../../blog.html">Blog — Field notes</button>
+          <button class="cmdk-item" role="option" data-href="../../../contact.html">Contact — Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="../../../dashboards.html">Dashboards — AI & data visualizations</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="../../../assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div class="kicker">World Bank Climate &middot; Interactive Data Brief</div>
+    <h1>Too Hot to Stay: <em>Climate Exposure &times; Displacement</em></h1>
+    <p class="standfirst">
+      Which countries are most exposed to climate extremes &mdash; and which are already seeing
+      people displaced by disasters? Every nation plotted on one map of risk: the top-right
+      corner is tomorrow's crisis watchlist. Live from the World Bank Indicators API.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-cell stat"><span>Countries assessed</span><b id="statCountries">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Disaster displacement, 2023</span><b id="statDisplaced">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Watchlist (high &times; high)</span><b id="statWatch">&mdash;</b></div>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div id="status">Loading data&hellip;</div>
+  <div id="app" style="display:none;">
+
+    <section class="timeline" aria-label="Controls">
+      <div class="timeline-top">
+        <div class="timeline-year" id="yearDisplay">2023</div>
+        <div class="timeline-caption" id="yearCaption">Disaster displacement year — drag to see how the risk map shifts.</div>
+      </div>
+      <div class="timeline-track">
+        <input type="range" id="yearSlider" min="2015" max="2023" step="1" value="2023"
+               aria-label="Displacement year" oninput="onSlide(this.value)">
+      </div>
+      <div class="timeline-buttons">
+        <button type="button" class="tl-btn active" id="playBtn" onclick="togglePlay()">&#9654; Play years</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2023)">&#8634; Latest year</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2022)">&#8593; Pakistan floods 2022</button>
+        <span class="tl-note" id="scatterNote"></span>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-bottom:var(--space-8);">
+      <div class="panel-head">
+        <span class="panel-title">Climate exposure vs disaster displacement</span>
+        <span class="panel-sub">hover any point for details</span>
+      </div>
+      <div class="chart-xl"><canvas id="scatterChart"></canvas></div>
+      <div class="quadrant-note">
+        <span>&#8597; y-axis: % of population displaced by disasters</span>
+        <span>&#8596; x-axis: % exposed to droughts, floods, extreme temps (1990&ndash;2009)</span>
+      </div>
+      <div class="chart-foot">
+        <span class="chart-note" id="chartModeNote">Bubble size = population exposed · top-right = high exposure &times; high displacement = the crisis watchlist</span>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell footer-inner">
+    <h3>Data Sources &amp; Methodology</h3>
+    <div class="source-block">
+      <div><b>Climate exposure</b>
+        <p>World Bank Indicators API &mdash; EN.CLC.MDAT.ZS: droughts, floods and extreme temperatures, % of population affected, average 1990&ndash;2009 (single benchmark).</p>
+      </div>
+      <div><b>Disaster displacement</b>
+        <p>World Bank Indicators API &mdash; VC.IDP.NWDS: internally displaced persons, new displacement associated with disasters, 2015&ndash;2023.</p>
+      </div>
+      <div><b>Method</b>
+        <p>162 countries have both series. Quadrants split at exposure = 3% and displacement = 0.5% of population. Bubble size &prop; population. All takeaways computed live from the data.</p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Too Hot to Stay &mdash; an independent data explainer</span>
+      <span>Refreshed automatically on each page load</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="../../../js/main.js"></script>
+</body>
+</html>

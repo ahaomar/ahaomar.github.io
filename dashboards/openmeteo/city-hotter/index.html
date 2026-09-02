@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQ7ME7B2GR');
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is Your City Hotter Than It Used to Be? — 85 Years of Local Warming</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="../../../index.html" class="wordmark" aria-label="Omar Farooq — Home">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR PLATFORM ARCHITECT</span>
+    </a>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a href="../../../index.html">About</a>
+      <a href="../../../projects.html">Projects</a>
+      <a href="../../../skills.html">Skills</a>
+      <a href="../../../blog.html">Blog</a>
+      <a href="../../../contact.html">Contact</a>
+      <a href="../../../dashboards.html" aria-current="page">Dashboards</a>
+    </nav>
+    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
+      <kbd><span>⌘</span>K</kbd>
+    </button>
+  </div>
+</header>
+
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="../../../index.html">About — Profile & history</button>
+          <button class="cmdk-item" role="option" data-href="../../../projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="../../../skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../../../blog.html">Blog — Field notes</button>
+          <button class="cmdk-item" role="option" data-href="../../../contact.html">Contact — Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="../../../dashboards.html">Dashboards — AI & data visualizations</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="../../../assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div class="kicker">Copernicus ERA5 &middot; Interactive Data Brief</div>
+    <h1>Is Your City Hotter <em>Than It Used to Be?</em></h1>
+    <p class="standfirst">
+      Global averages hide what warming feels like. This dashboard goes local: search any city on Earth
+      and compare its climate today with 85 years ago &mdash; daily reanalysis data since 1940,
+      straight from the Copernicus ERA5 archive.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-cell stat"><span>Data coverage</span><b>1940&ndash;2025<small>daily</small></b></div>
+      <div class="meta-cell stat"><span>Source</span><b>ERA5<small>reanalysis</small></b></div>
+      <div class="meta-cell stat"><span>Coverage</span><b>Any city<small>worldwide</small></b></div>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div id="status">Loading&hellip;</div>
+  <div id="app" style="display:none;">
+
+    <section class="timeline" aria-label="City search">
+      <div class="timeline-top">
+        <div class="timeline-year" id="cityDisplay">Pick a city</div>
+        <div class="timeline-caption" id="cityCaption">Search any city — from Karachi to Reykjav&iacute;k &mdash; and see how its climate has shifted in 85 years.</div>
+      </div>
+      <div class="city-search">
+        <label for="cityInput">City</label>
+        <div class="suggestion-box">
+          <input type="text" id="cityInput" placeholder="Type a city name… e.g. Karachi, Nairobi, Toronto" autocomplete="off">
+          <div class="suggestion-list" id="suggestions" style="display:none;"></div>
+        </div>
+      </div>
+      <div class="preset-chips" aria-label="Quick picks">
+        <button type="button" class="chip" onclick="loadPreset('Karachi')">Karachi</button>
+        <button type="button" class="chip" onclick="loadPreset('Nairobi')">Nairobi</button>
+        <button type="button" class="chip" onclick="loadPreset('London')">London</button>
+        <button type="button" class="chip" onclick="loadPreset('New York')">New York</button>
+        <button type="button" class="chip" onclick="loadPreset('Dubai')">Dubai</button>
+        <button type="button" class="chip" onclick="loadPreset('Toronto')">Toronto</button>
+      </div>
+    </section>
+
+    <div id="resultArea" style="display:none;">
+
+      <div class="delta-hero">
+        <div class="delta-num" id="deltaNum">&mdash;</div>
+        <div class="delta-label" id="deltaLabel">warming, 1940s vs 2015&ndash;2024</div>
+      </div>
+
+      <section class="panel" style="margin-bottom:var(--space-4);">
+        <div class="panel-head">
+          <span class="panel-title" id="tempTitle">Temperature distribution — then vs now</span>
+          <span class="panel-sub">daily means, hottest decade band</span>
+        </div>
+        <div class="chart-xl" style="height:440px;"><canvas id="distChart"></canvas></div>
+        <div class="chart-foot">
+          <span class="chart-note" id="distNote">1940s baseline vs the most recent decade</span>
+        </div>
+      </section>
+
+      <div class="month-grid">
+        <section class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Average by month — then vs now</span>
+          </div>
+          <div class="chart-md" style="height:340px; padding:var(--space-3);"><canvas id="monthChart"></canvas></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Year-by-year average</span>
+          </div>
+          <div class="chart-md" style="height:340px; padding:var(--space-3);"><canvas id="annualChart"></canvas></div>
+        </section>
+      </div>
+
+      <section class="panel" style="margin-bottom:var(--space-8);">
+        <div class="panel-head">
+          <span class="panel-title">The decades, side by side</span>
+          <span class="panel-sub">average daily mean temperature</span>
+        </div>
+        <div class="insight-body">
+          <div class="decade-grid" id="decadeGrid"></div>
+          <ul class="takeaways" id="takeaways" style="margin-top:var(--space-6);"></ul>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell footer-inner">
+    <h3>Data Sources &amp; Methodology</h3>
+    <div class="source-block">
+      <div><b>Temperature data (live)</b>
+        <p><a href="https://open-meteo.com/en/docs/historical-weather-api" rel="noopener">Open-Meteo Historical Weather API</a> &mdash; Copernicus ERA5 reanalysis, daily mean temperature 2m, 1940&ndash;present. Free, no API key.</p>
+      </div>
+      <div><b>City search</b>
+        <p>Open-Meteo Geocoding API (powered by GeoNames) &mdash; city names to coordinates, worldwide.</p>
+      </div>
+      <div><b>Method</b>
+        <p>"Then" = 1941&ndash;1950 mean; "now" = 2015&ndash;2024 mean. Distribution chart shows daily means per period. All takeaways computed live from the data.</p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Is Your City Hotter &mdash; an independent data explainer</span>
+      <span>Data fetched live on each search</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="../../../js/main.js"></script>
+</body>
+</html>
