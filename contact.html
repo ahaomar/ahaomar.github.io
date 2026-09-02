@@ -21,8 +21,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.className += ' js';</script>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="topbar" role="banner">
   <div class="topbar-inner">
@@ -30,17 +33,26 @@
       <strong>OMAR FAROOQ</strong>
       <span>SENIOR PLATFORM ARCHITECT</span>
     </a>
-    <nav class="nav" role="navigation" aria-label="Primary">
+
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
       <a href="index.html">About</a>
       <a href="projects.html">Projects</a>
       <a href="skills.html">Skills</a>
+      <a href="dashboards.html">Dashboards</a>
       <a href="blog.html">Blog</a>
       <a href="contact.html" aria-current="page">Contact</a>
-      <a href="dashboards.html">Dashboards</a>
+      <a href="assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
     </nav>
-    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
-      <kbd><span>⌘</span>K</kbd>
-    </button>
+
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -55,12 +67,12 @@
       <section class="cmdk-section" aria-label="Navigation">
         <h3 class="cmdk-section-title">Go to</h3>
         <div class="cmdk-group" role="listbox">
-          <button class="cmdk-item" role="option" data-href="index.html">About — Profile & history</button>
-          <button class="cmdk-item" role="option" data-href="projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="index.html">About — Profile &amp; record</button>
+          <button class="cmdk-item" role="option" data-href="projects.html">Projects — UN platform case studies</button>
           <button class="cmdk-item" role="option" data-href="skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="dashboards.html">Dashboards — Data visualisations</button>
           <button class="cmdk-item" role="option" data-href="blog.html">Blog — Field notes</button>
           <button class="cmdk-item" role="option" data-href="contact.html">Contact — Open to roles</button>
-          <button class="cmdk-item" role="option" data-href="dashboards.html">Dashboards — AI & data visualizations</button>
         </div>
       </section>
       <section class="cmdk-section" aria-label="External">
@@ -78,42 +90,113 @@
   </div>
 </div>
 
-<main>
-  <section class="page-hero reveal">
-    <div class="wrap">
-      <p class="kicker">Contact / open to senior remote architecture roles</p>
-      <h1>Let's build something that has to work.</h1>
-      <p class="lede">I am the architect who builds the systems that enable your mission. If you are running a platform where downtime, data conflicts, or governance failure carry real consequences, that is exactly the kind of problem I take on. Reach out directly.</p>
+<main id="main">
 
-      <div class="contact-block reveal" style="margin-top: var(--space-10); padding: var(--space-8); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper);">
-        <div style="display: grid; grid-template-columns: 140px 1fr; gap: var(--space-4) var(--space-6); margin-bottom: var(--space-6);">
-          <div><span style="font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent);">Email</span></div>
-          <div><a href="mailto:contactomarfarooq-github@yahoo.com" style="font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-ink-soft); word-break: break-all;">contactomarfarooq-github@yahoo.com</a></div>
-          <div><span style="font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent);">LinkedIn</span></div>
-          <div><a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener" style="font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-ink-soft);">linkedin.com/in/ahaomar</a></div>
-          <div><span style="font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent);">Based</span></div>
-          <div style="font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-ink-soft);">Pakistan, remote worldwide</div>
-          <div><span style="font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent);">Status</span></div>
-          <div style="font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-ink-soft);">Open to senior remote roles</div>
+  <!-- ============ PAGE HEAD ============ -->
+  <section class="page-head" aria-labelledby="page-heading">
+    <div class="wrap">
+      <div class="dip">
+        <div class="dip__text">
+          <p class="kicker">Contact · open to remote roles globally</p>
+          <h1 id="page-heading">If the platform has to work, I am a reasonable person to talk to.</h1>
+          <p class="lede">I architect systems where downtime, data conflict or governance failure carries a real cost — for UN agencies, international organisations and enterprises with the same constraints. If that describes your problem, get in touch directly.</p>
         </div>
 
-        <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
-          <a class="btn btn--primary" href="mailto:contactomarfarooq-github@yahoo.com">Email me →</a>
-          <a class="btn ghost" href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+        <aside class="dip__proof" aria-labelledby="details-heading">
+          <h2 class="hm-panel-title" id="details-heading">Details</h2>
+          <dl class="record">
+            <div class="record__row">
+              <dt>Email</dt>
+              <dd><a href="mailto:contactomarfarooq-github@yahoo.com">contactomarfarooq-github@yahoo.com</a></dd>
+            </div>
+            <div class="record__row">
+              <dt>LinkedIn</dt>
+              <dd><a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">linkedin.com/in/ahaomar</a></dd>
+            </div>
+            <div class="record__row">
+              <dt>Based</dt>
+              <dd>Pakistan — working remote worldwide</dd>
+            </div>
+            <div class="record__row">
+              <dt>Current role</dt>
+              <dd>Senior Drupal Developer &amp; Architect, IOM · UN Migration (Geneva, remote)</dd>
+            </div>
+            <div class="record__row">
+              <dt>Languages</dt>
+              <dd>English C2 · Urdu native · Punjabi native · Spanish A1 · German A1</dd>
+            </div>
+            <div class="record__row">
+              <dt>Status</dt>
+              <dd><span class="dot-live" aria-hidden="true"></span>Open to senior remote roles</dd>
+            </div>
+          </dl>
+
+          <div class="contact-actions">
+            <a class="btn btn--primary" href="mailto:contactomarfarooq-github@yahoo.com">Email me</a>
+            <a class="btn btn--ghost" href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">Download&nbsp;CV&nbsp;(PDF)</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT I TAKE ON ============ -->
+  <section class="dashboards-dip" aria-labelledby="fit-heading">
+    <div class="wrap">
+      <div class="dip dip--rev">
+        <div class="dip__text">
+          <p class="kicker">Fit</p>
+          <h2 id="fit-heading">The problems worth writing to me about.</h2>
+          <p>I am most useful where the technical problem and the institutional problem are the same problem — federated publishing across agencies with competing mandates, data that must keep its provenance through every transformation, platforms that have to survive a decade of staff turnover.</p>
+          <p>I am less useful as a pair of hands on a greenfield product with no governance constraints. That work is well served by people who enjoy it more than I do.</p>
+        </div>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Good fit</h3>
+          <dl class="notes">
+            <div>
+              <dt>Governance-scale platforms</dt>
+              <dd>Multi-agency or multi-tenant systems where publishing authority is distributed and conflicts are a design problem, not a bug.</dd>
+            </div>
+            <div>
+              <dt>Data-for-policy work</dt>
+              <dd>Multi-source ingestion, GIS layers, and visualisation intended for decision makers rather than analysts.</dd>
+            </div>
+            <div>
+              <dt>Long-horizon Drupal</dt>
+              <dd>Architecture that has to stay upgradable across major versions, with a custom surface that does not trap the institution.</dd>
+            </div>
+            <div>
+              <dt>Technical authority roles</dt>
+              <dd>Architect-of-record positions where the decision and the accountability sit together.</dd>
+            </div>
+          </dl>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta reveal" aria-labelledby="cta-heading">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker" id="cta-heading">Before you write</p>
+        <p>The case studies will tell you more than a CV summary can.</p>
+      </div>
+      <a href="projects.html" class="btn btn--primary">View case studies</a>
+    </div>
+  </section>
 </main>
 
-<footer class="footer" role="contentinfo">
-  <div class="wrap footer-inner">
-    <p>© 2026 Omar Farooq. Built for GitHub Pages.</p>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:contactomarfarooq-github@yahoo.com">Email</a>
-      <a href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-    </div>
+<footer class="footer footer--hm-colophon" role="contentinfo">
+  <div class="wrap">
+    <p class="hm-colophon">
+      M. Omar Farooq — Senior Drupal Developer &amp; Architect, IOM · UN Migration, Geneva, Switzerland (remote). In commercial practice since 2002. Master of Computer Science, cum laude, American International University, Lahore, 2002. Bachelor of Commerce, first class, University of the Punjab, 2000. English C2, Urdu native, Punjabi native, Spanish A1, German A1. Open to remote roles globally. Built as static HTML and CSS — no framework, no build step — and served from GitHub Pages. © 2026.
+    </p>
+    <ul class="hm-colophon-links">
+      <li><a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:contactomarfarooq-github@yahoo.com">Email</a></li>
+      <li><a href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV&nbsp;(PDF)</a></li>
+    </ul>
   </div>
 </footer>
 

@@ -21,8 +21,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.className += ' js';</script>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="topbar" role="banner">
   <div class="topbar-inner">
@@ -30,17 +33,26 @@
       <strong>OMAR FAROOQ</strong>
       <span>SENIOR PLATFORM ARCHITECT</span>
     </a>
-    <nav class="nav" role="navigation" aria-label="Primary">
+
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
       <a href="index.html">About</a>
       <a href="projects.html">Projects</a>
       <a href="skills.html" aria-current="page">Skills</a>
+      <a href="dashboards.html">Dashboards</a>
       <a href="blog.html">Blog</a>
       <a href="contact.html">Contact</a>
-      <a href="dashboards.html">Dashboards</a>
+      <a href="assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
     </nav>
-    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
-      <kbd><span>⌘</span>K</kbd>
-    </button>
+
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -55,12 +67,12 @@
       <section class="cmdk-section" aria-label="Navigation">
         <h3 class="cmdk-section-title">Go to</h3>
         <div class="cmdk-group" role="listbox">
-          <button class="cmdk-item" role="option" data-href="index.html">About — Profile & history</button>
-          <button class="cmdk-item" role="option" data-href="projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="index.html">About — Profile &amp; record</button>
+          <button class="cmdk-item" role="option" data-href="projects.html">Projects — UN platform case studies</button>
           <button class="cmdk-item" role="option" data-href="skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="dashboards.html">Dashboards — Data visualisations</button>
           <button class="cmdk-item" role="option" data-href="blog.html">Blog — Field notes</button>
           <button class="cmdk-item" role="option" data-href="contact.html">Contact — Open to roles</button>
-          <button class="cmdk-item" role="option" data-href="dashboards.html">Dashboards — AI & data visualizations</button>
         </div>
       </section>
       <section class="cmdk-section" aria-label="External">
@@ -78,132 +90,250 @@
   </div>
 </div>
 
-<main>
-  <section class="page-hero reveal">
+<main id="main">
+
+  <!-- ============ PAGE HEAD ============ -->
+  <section class="page-head" aria-labelledby="page-heading">
     <div class="wrap">
-      <p class="kicker">Competencies / 20+ years, platform scale</p>
-      <h1>Technical practice.</h1>
-      <p class="lede">My expertise spans platform architecture, AI and intelligent systems, data visualization, frontend technologies, DevOps infrastructure, technical leadership, and governance frameworks — all built to serve mission-critical workloads where reliability isn't optional.</p>
+      <div class="dip">
+        <div class="dip__text">
+          <p class="kicker">Technical practice</p>
+          <h1 id="page-heading">What I work with, and where it has been proven.</h1>
+        </div>
+        <div class="dip__proof">
+          <p class="lede">Twenty years of platform architecture, concentrated on governance-scale Drupal, data and GIS systems, and the infrastructure that keeps them running. The stack below is the one behind the UN Migration Network Hub, CLIMB and the Migration Data Portal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CORE STACK — spec sheet ============ -->
+  <section class="expertise-spec" aria-labelledby="stack-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="stack-heading">Core stack</h2>
+      <table class="spec spec--stack">
+        <caption class="visually-hidden">Technical expertise by domain</caption>
+        <tbody>
+          <tr>
+            <th scope="row">Platform architecture</th>
+            <td>Drupal 8/9/10 at governance scale · PHP 8+ · Symfony · WordPress · REST APIs · headless CMS · multi-site architecture · federated deployments across agency ecosystems</td>
+          </tr>
+          <tr>
+            <th scope="row">AI &amp; intelligent systems</th>
+            <td>Drupal AI module ecosystem · LLM integration · RAG pipelines grounded in verified sources · automated content workflows with human-in-the-loop gates · intelligent data pipelines that preserve provenance</td>
+          </tr>
+          <tr>
+            <th scope="row">Data, GIS &amp; visualisation</th>
+            <td>MySQL · MariaDB · PostgreSQL · Apache Solr · PostGIS spatial queries · Apache Superset · interactive mapping · policy-grade dashboards</td>
+          </tr>
+          <tr>
+            <th scope="row">Frontend</th>
+            <td>JavaScript ES6+ · HTML5 semantic markup · CSS3 / SASS · React integration within Drupal · responsive design · progressive enhancement</td>
+          </tr>
+          <tr>
+            <th scope="row">DevOps &amp; infrastructure</th>
+            <td>Docker · Git · CI/CD · Varnish · Redis · AWS · Pantheon · Acquia Cloud · infrastructure as code</td>
+          </tr>
+          <tr>
+            <th scope="row">Integrations &amp; APIs</th>
+            <td>SAP ERP integration · Salesforce connectors · Google Maps Platform and GIS services · REST and GraphQL API design · webhook event systems · decoupled content delivery</td>
+          </tr>
+          <tr>
+            <th scope="row">Security &amp; compliance</th>
+            <td>OWASP remediation · security audits for diplomatic-grade platforms · GDPR and data-residency requirements · penetration-test coordination · role-based access control architecture</td>
+          </tr>
+          <tr>
+            <th scope="row">Performance engineering</th>
+            <td>Drupal tuning under load · query optimisation · caching strategy · CDN configuration · load balancing · profiling and bottleneck elimination in production</td>
+          </tr>
+          <tr>
+            <th scope="row">Leadership &amp; governance</th>
+            <td>Technical leadership across distributed teams · Agile / Scrum · vendor and stakeholder management · UN/IOM governance frameworks · zero-downtime upgrade strategy</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
   <hr class="rule" aria-hidden="true">
 
-  <section class="reveal">
+  <!-- ============ FOCUS AREAS — alternating diptychs, each with its proof ============ -->
+  <section class="history" aria-labelledby="focus-heading">
     <div class="wrap">
-      <h2 class="section-title">Core competencies</h2>
+      <h2 class="section-title" id="focus-heading">Focus areas</h2>
 
-      <div class="skills-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5);">
-        <article class="skill-card" style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper); transition: border-color var(--duration-fast) var(--ease-out);">
-          <h3 style="font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: var(--space-3);">Platform architecture</h3>
-          <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">Drupal 8/9/10 at governance scale, PHP 8+, Symfony, WordPress, REST APIs, headless CMS architectures, multi-site patterns, secure federated deployments across UN agency ecosystems.</p>
-        </article>
+      <article class="dip dip--role">
+        <div class="dip__text">
+          <h3>Drupal governance platforms</h3>
+          <p>Multi-tenant, federated Drupal where data sovereignty and cross-agency collaboration have to coexist. Custom modules that extend core without closing off the upgrade path — because a UN platform has to survive staff turnover, budget cycles and a decade of production life.</p>
+        </div>
+        <div class="dip__proof">
+          <h4 class="hm-panel-title">Proven on</h4>
+          <ul class="proof-list">
+            <li>
+              <strong>UN Migration Network Hub</strong>
+              <span>Drupal 10 governance platform for the Global Compact for Migration, integrating dozens of UN agencies and serving 195 member states.</span>
+            </li>
+            <li>
+              <strong>Bionorica global multi-site</strong>
+              <span>Drupal 8 on Pantheon, dozens of country and brand sites from one codebase, with a governance model that let non-technical regional teams publish safely.</span>
+            </li>
+          </ul>
+        </div>
+      </article>
 
-        <article class="skill-card" style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper); transition: border-color var(--duration-fast) var(--ease-out);">
-          <h3 style="font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: var(--space-3);">AI & intelligent systems</h3>
-          <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">Drupal AI module ecosystem integration, LLM orchestration and RAG pipelines, automated content workflows with guardrails, intelligent data pipelines that preserve provenance, ethical AI governance at enterprise scale.</p>
-        </article>
+      <article class="dip dip--role dip--rev">
+        <div class="dip__text">
+          <h3>Data, GIS and evidence-to-decision pipelines</h3>
+          <p>Ingesting sources that disagree with each other, harmonising them without flattening provenance, and rendering the result so a policymaker reaches a defensible reading quickly. Spatial queries at the scale where naïve approaches stop returning.</p>
+        </div>
+        <div class="dip__proof">
+          <h4 class="hm-panel-title">Proven on</h4>
+          <ul class="proof-list">
+            <li>
+              <strong>CLIMB &amp; the Human Mobility and Climate Change Database</strong>
+              <span>PostGIS-backed data-for-policy platform turning multi-source displacement research into queryable intelligence for G7 delegations.</span>
+            </li>
+            <li>
+              <strong>Global Migration Data Portal</strong>
+              <span>Interactive dashboards and visualisation modules over dozens of statistical sources.</span>
+            </li>
+            <li>
+              <strong>Five independent dashboards</strong>
+              <span>Built against the live public APIs of UNHCR, UNFCCC, the World Bank and Our World in Data.</span>
+            </li>
+          </ul>
+        </div>
+      </article>
 
-        <article class="skill-card" style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper); transition: border-color var(--duration-fast) var(--ease-out);">
-          <h3 style="font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: var(--space-3);">Data, GIS & visualization</h3>
-          <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">MySQL, MariaDB, PostgreSQL, Apache Solr search layers, PostGIS spatial queries, Apache Superset dashboards, interactive mapping libraries, policy-grade visualizations that translate complex datasets into decision-ready intelligence.</p>
-        </article>
+      <article class="dip dip--role">
+        <div class="dip__text">
+          <h3>AI in content operations, with guardrails</h3>
+          <p>Adding AI to an established editorial workflow without surrendering editorial control. The pattern I use: the model reads structured data first, generates language second, and a human approves before anything publishes — with an audit trail that survives scrutiny.</p>
+          <a href="blog/drupal-ai-content-pipelines-at-governance-scale.html" class="btn btn--ghost">Read the field note</a>
+        </div>
+        <div class="dip__proof">
+          <h4 class="hm-panel-title">Components</h4>
+          <ul class="proof-list">
+            <li>
+              <strong>RAG grounded in verified sources</strong>
+              <span>Retrieval over the institution's own vetted corpus, so generated text can be traced to a document rather than to a model's memory.</span>
+            </li>
+            <li>
+              <strong>Human-in-the-loop approval gates</strong>
+              <span>Nothing reaches a public surface without a named reviewer, which is a governance requirement before it is a technical one.</span>
+            </li>
+            <li>
+              <strong>Provenance preserved through the pipeline</strong>
+              <span>Every derived field keeps a pointer back to its source record.</span>
+            </li>
+          </ul>
+        </div>
+      </article>
 
-        <article class="skill-card" style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper); transition: border-color var(--duration-fast) var(--ease-out);">
-          <h3 style="font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: var(--space-3);">Frontend technologies</h3>
-          <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">JavaScript ES6+, HTML5 semantic markup, CSS3/SASS workflows, React component integration within Drupal ecosystems, responsive design patterns, progressive enhancement strategies.</p>
-        </article>
+      <article class="dip dip--role dip--rev">
+        <div class="dip__text">
+          <h3>Field systems under real constraints</h3>
+          <p>Building for operations that run from a well-equipped Geneva headquarters to a low-connectivity field site in a conflict-affected region — on the same platform, with the same data integrity guarantees.</p>
+        </div>
+        <div class="dip__proof">
+          <h4 class="hm-panel-title">Proven on</h4>
+          <ul class="proof-list">
+            <li>
+              <strong>Ahlan Simsim mobile API backend</strong>
+              <span>Drupal REST backend for a UNICEF-funded programme, deployed across multiple conflict-affected countries on intermittent connections.</span>
+            </li>
+            <li>
+              <strong>Secure field data portal</strong>
+              <span>Role-based portal letting IRC field staff analyse programme data and reallocate resources in real time.</span>
+            </li>
+          </ul>
+        </div>
+      </article>
 
-        <article class="skill-card" style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper); transition: border-color var(--duration-fast) var(--ease-out);">
-          <h3 style="font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: var(--space-3);">DevOps & infrastructure</h3>
-          <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">Docker containerization, Git version control workflows, CI/CD pipelines, Varnish caching, Redis memoization, AWS cloud services, Pantheon and Acquia Cloud deployments, infrastructure as code patterns.</p>
-        </article>
+      <article class="dip dip--role">
+        <div class="dip__text">
+          <h3>Technical leadership</h3>
+          <p>Leading distributed engineering teams across time zones: code review standards, documentation practice, and roadmaps that balance new work against the stability an institution depends on. Largest team led was ten engineers.</p>
+        </div>
+        <div class="dip__proof">
+          <h4 class="hm-panel-title">Record</h4>
+          <dl class="record record--compact">
+            <div class="record__row">
+              <dt>Largest team</dt>
+              <dd><span class="tnum">10</span> engineers — Bionorica global platform</dd>
+            </div>
+            <div class="record__row">
+              <dt>Tenure as lead</dt>
+              <dd><span class="tnum">2011</span> — present, across three organisations</dd>
+            </div>
+            <div class="record__row">
+              <dt>Frameworks</dt>
+              <dd>Agile / Scrum · vendor management · UN/IOM governance</dd>
+            </div>
+          </dl>
+        </div>
+      </article>
 
-        <article class="skill-card" style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper); transition: border-color var(--duration-fast) var(--ease-out);">
-          <h3 style="font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: var(--space-3);">Leadership & governance</h3>
-          <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">Technical leadership across distributed teams, Agile/Scrum delivery frameworks, vendor and stakeholder management within UN governance structures, security hardening for sensitive diplomatic data, zero-downtime upgrade strategies.</p>
-        </article>
-
-        <article class="skill-card" style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper); transition: border-color var(--duration-fast) var(--ease-out);">
-          <h3 style="font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: var(--space-3);">Integrations & APIs</h3>
-          <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">SAP enterprise ERP integration patterns, Salesforce CRM connectors, Google Maps Platform and GIS services, REST/GraphQL API design, webhook event systems, headless architecture with decoupled content delivery.</p>
-        </article>
-
-        <article class="skill-card" style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper); transition: border-color var(--duration-fast) var(--ease-out);">
-          <h3 style="font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: var(--space-3);">Security & compliance</h3>
-          <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">OWASP vulnerability remediation, security audits for diplomatic-grade platforms, GDPR and international data residency requirements, penetration testing coordination, role-based access control architecture.</p>
-        </article>
-
-        <article class="skill-card" style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper); transition: border-color var(--duration-fast) var(--ease-out);">
-          <h3 style="font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: var(--space-3);">Performance engineering</h3>
-          <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-soft); line-height: 1.6;">Drupal performance tuning under load, database query optimization, caching strategy design, CDN configuration, load balancing patterns, profiling and bottleneck elimination at production scale.</p>
-        </article>
-      </div>
     </div>
   </section>
 
   <hr class="rule" aria-hidden="true">
 
-  <section class="reveal">
-    <div class="wrap col" style="max-width: 780px; margin: 0 auto;">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-8); margin-bottom: var(--space-8);">
-        <h2>Detailed focus areas</h2>
-        <span style="font-family: var(--font-body); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em;">01 / EXPERTISE</span>
+  <!-- ============ EDUCATION & LANGUAGES ============ -->
+  <section class="credentials" aria-labelledby="credentials-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="credentials-heading">Education &amp; languages</h2>
+      <div class="cred-grid">
+        <div>
+          <h3 class="hm-panel-title">Education</h3>
+          <dl class="record record--compact">
+            <div class="record__row">
+              <dt class="tnum">2000 — 2002</dt>
+              <dd><strong>Master of Computer Science</strong> — cum laude<br>American International University, Lahore, Pakistan</dd>
+            </div>
+            <div class="record__row">
+              <dt class="tnum">1998 — 2000</dt>
+              <dd><strong>Bachelor of Commerce</strong> — first class<br>University of the Punjab, Lahore, Pakistan</dd>
+            </div>
+          </dl>
+        </div>
+        <div>
+          <h3 class="hm-panel-title">Languages</h3>
+          <dl class="record record--compact">
+            <div class="record__row"><dt>English</dt><dd>C2 — professional working</dd></div>
+            <div class="record__row"><dt>Urdu</dt><dd>Native</dd></div>
+            <div class="record__row"><dt>Punjabi</dt><dd>Native</dd></div>
+            <div class="record__row"><dt>Spanish</dt><dd>A1</dd></div>
+            <div class="record__row"><dt>German</dt><dd>A1</dd></div>
+          </dl>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div style="display: grid; gap: var(--space-6);">
-        <article style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper);">
-          <h3 style="margin-bottom: var(--space-3);">Drupal governance platforms</h3>
-          <p style="margin: 0; color: var(--color-ink-soft); line-height: 1.7;">Enterprise-scale Drupal deployments serving 195 member states. Architecture patterns for multi-tenant, federated systems where data sovereignty and cross-agency collaboration must coexist without conflict. Custom module development that extends core while maintaining upgrade paths. Module ecosystem curation and contribution strategies.</p>
-        </article>
-
-        <article style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper);">
-          <h3 style="margin-bottom: var(--space-3);">AI for content operations</h3>
-          <p style="margin: 0; color: var(--color-ink-soft); line-height: 1.7;">Integrating AI capabilities into established CMS workflows without compromising data integrity or editorial control. RAG (Retrieval-Augmented Generation) pipelines that ground LLM outputs in verified source documents. Automated content moderation and quality assurance with human-in-the-loop oversight. Intelligent summarization and translation services for multilingual policy audiences.</p>
-        </article>
-
-        <article style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper);">
-          <h3 style="margin-bottom: var(--space-3);">Data architecture</h3>
-          <p style="margin: 0; color: var(--color-ink-soft); line-height: 1.7;">Designing scalable data models that handle complex, interconnected information without performance degradation. Database optimization for query-intensive analytics workloads. ETL pipeline architecture that harmonizes disparate sources into unified views. Data governance frameworks that balance accessibility with sensitivity requirements.</p>
-        </article>
-
-        <article style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper);">
-          <h3 style="margin-bottom: var(--space-3);">Technical leadership</h3>
-          <p style="margin: 0; color: var(--color-ink-soft); line-height: 1.7;">Mentoring and leading distributed engineering teams across time zones. Establishing code review standards, documentation practices, and continuous learning cultures. Technical roadmap planning that balances innovation with stability requirements. Cross-functional collaboration with policy experts, product managers, and design teams.</p>
-        </article>
-
-        <article style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper);">
-          <h3 style="margin-bottom: var(--space-3);">International development context</h3>
-          <p style="margin: 0; color: var(--color-ink-soft); line-height: 1.7;">Building systems for UN and humanitarian organizations where failures have real-world consequences. Working within strict governance frameworks that serve diplomatic processes. Adapting technology solutions for operations across regions with vastly different infrastructure conditions, from well-equipped Geneva headquarters to low-connectivity field environments.</p>
-        </article>
-
-        <article style="padding: var(--space-6); border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper);">
-          <h3 style="margin-bottom: var(--space-3);">Security posture</h3>
-          <p style="margin: 0; color: var(--color-ink-soft); line-height: 1.7;">Maintaining security hygiene across distributed development environments. Coordinating vulnerability assessments and remediation without production impact. Implementing defense-in-depth strategies appropriate for platforms handling sensitive diplomatic communications and personally identifiable information.</p>
-        </article>
+  <!-- ============ CTA ============ -->
+  <section class="cta reveal" aria-labelledby="cta-heading">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker" id="cta-heading">Next</p>
+        <p>See the systems this stack was built on.</p>
       </div>
+      <a href="projects.html" class="btn btn--primary">View case studies</a>
     </div>
   </section>
 </main>
 
-<section class="cta reveal" data-theme="dark">
-  <div class="wrap cta-inner">
-    <div>
-      <p class="kicker">Next</p>
-      <p>See the systems these skills power.</p>
-    </div>
-    <a href="projects.html" class="btn btn--primary">View projects →</a>
-  </div>
-</section>
-
-<footer class="footer" role="contentinfo">
-  <div class="wrap footer-inner">
-    <p>© 2026 Omar Farooq. Built for GitHub Pages.</p>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:contactomarfarooq-github@yahoo.com">Email</a>
-      <a href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-    </div>
+<footer class="footer footer--hm-colophon" role="contentinfo">
+  <div class="wrap">
+    <p class="hm-colophon">
+      M. Omar Farooq — Senior Drupal Developer &amp; Architect, IOM · UN Migration, Geneva, Switzerland (remote). In commercial practice since 2002. Master of Computer Science, cum laude, American International University, Lahore, 2002. Bachelor of Commerce, first class, University of the Punjab, 2000. English C2, Urdu native, Punjabi native, Spanish A1, German A1. Open to remote roles globally. Built as static HTML and CSS — no framework, no build step — and served from GitHub Pages. © 2026.
+    </p>
+    <ul class="hm-colophon-links">
+      <li><a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:contactomarfarooq-github@yahoo.com">Email</a></li>
+      <li><a href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV&nbsp;(PDF)</a></li>
+    </ul>
   </div>
 </footer>
 

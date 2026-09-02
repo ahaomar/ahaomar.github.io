@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="stylesheet" href="css/style.css">
 
+<script>document.documentElement.className += ' js';</script>
 </head>
 
 <body>
@@ -32,17 +33,26 @@
       <strong>OMAR FAROOQ</strong>
       <span>SENIOR PLATFORM ARCHITECT</span>
     </a>
-    <nav class="nav" role="navigation" aria-label="Primary">
+
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
       <a href="../../../index.html">About</a>
       <a href="../../../projects.html">Projects</a>
       <a href="../../../skills.html">Skills</a>
+      <a href="../../../dashboards.html" aria-current="page">Dashboards</a>
       <a href="../../../blog.html">Blog</a>
       <a href="../../../contact.html">Contact</a>
-      <a href="../../../dashboards.html" aria-current="page">Dashboards</a>
+      <a href="../../../assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
     </nav>
-    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
-      <kbd><span>⌘</span>K</kbd>
-    </button>
+
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
 

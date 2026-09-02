@@ -18,26 +18,38 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
+<script>document.documentElement.className += ' js';</script>
 </head>
 <body>
 
-<header class="topbar">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar" role="banner">
   <div class="topbar-inner">
-    <a href="../index.html" class="wordmark">
+    <a href="../index.html" class="wordmark" aria-label="Omar Farooq — Home">
       <strong>OMAR FAROOQ</strong>
       <span>SENIOR PLATFORM ARCHITECT</span>
     </a>
-    <nav class="nav">
+
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
       <a href="../index.html">About</a>
       <a href="../projects.html">Projects</a>
       <a href="../skills.html">Skills</a>
+      <a href="../dashboards.html">Dashboards</a>
       <a href="../blog.html" aria-current="page">Blog</a>
       <a href="../contact.html">Contact</a>
-      <a href="../dashboards.html">Dashboards</a>
+      <a href="../assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
     </nav>
-    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
-      <kbd><span>⌘</span>K</kbd>
-    </button>
+
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -52,12 +64,12 @@
       <section class="cmdk-section" aria-label="Navigation">
         <h3 class="cmdk-section-title">Go to</h3>
         <div class="cmdk-group" role="listbox">
-          <button class="cmdk-item" role="option" data-href="../index.html">About — Profile & history</button>
-          <button class="cmdk-item" role="option" data-href="../projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="../index.html">About — Profile &amp; record</button>
+          <button class="cmdk-item" role="option" data-href="../projects.html">Projects — UN platform case studies</button>
           <button class="cmdk-item" role="option" data-href="../skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../dashboards.html">Dashboards — Data visualisations</button>
           <button class="cmdk-item" role="option" data-href="../blog.html">Blog — Field notes</button>
           <button class="cmdk-item" role="option" data-href="../contact.html">Contact — Open to roles</button>
-          <button class="cmdk-item" role="option" data-href="../dashboards.html">Dashboards — AI & data visualizations</button>
         </div>
       </section>
       <section class="cmdk-section" aria-label="External">
@@ -75,55 +87,71 @@
   </div>
 </div>
 
-<main>
-  <section class="page-hero" >
-    <div class="wrap col">
-      <p class="kicker"><a href="../blog.html" >← Field notes</a></p>
-      <article class="post reveal">
+<main id="main">
+
+  <!-- ============ POST HEAD ============ -->
+  <section class="post-head">
+    <div class="wrap">
+      <div class="col">
+        <p class="post-back"><a href="../blog.html">← Field notes</a></p>
         <p class="post-meta">Platform architecture · Jul 18, 2026 · 5 min read</p>
-        <h1 >Why governance is the first thing you design, not the last</h1>
+        <h1>Why governance is the first thing you design, not the last</h1>
+      </div>
+    </div>
+  </section>
 
-        <p>Most platform failures inside multi agency systems are governance failures wearing a technical disguise. The symptoms look like performance problems, data conflicts, or integration bugs—but the root cause is almost always an unresolved question about who has authority over what, and who decided that.</p>
+  <!-- ============ POST BODY ============ -->
+  <section class="post">
+    <div class="wrap">
+      <article class="col">
 
-        <p>I learned this building the UN Migration Network Hub, a Drupal 10 platform serving 195 member states and 64 UN agencies. The platform doesn't just host content; it encodes the diplomatic contracts between organizations that fundamentally disagree on data ownership, editorial workflows, and visibility rules. Every content type, every permission, every entity reference is a governance decision rendered in code.</p>
 
-        <h2>The governance layer is the architecture</h2>
-        <p>When a platform serves multiple sovereign organizations, the architecture isn't the database schema or the API layer—it's the permission model. The technical implementation merely enforces what the governance layer defines. If you design the schema first and figure out permissions later, you'll rebuild the schema. Every time.</p>
 
-        <p>The UN Migration Network Hub has three organizational tiers, each with distinct authority boundaries: IOM headquarters (platform steward), 64 UN agencies (content authorities for their domains), and 195 member states (consumers and occasional contributors). The platform doesn't impose uniformity—it provides the primitives for each tier to define its own rules while maintaining cross-referential integrity.</p>
+      <p>Most platform failures inside multi agency systems are governance failures wearing a technical disguise. The symptoms look like performance problems, data conflicts, or integration bugs—but the root cause is almost always an unresolved question about who has authority over what, and who decided that.</p>
 
-        <blockquote>The CMS conversation asks what software renders your pages. The real question is what system enforces who is allowed to say what, to whom, and that question has nothing to do with themes.</blockquote>
+      <p>I learned this building the UN Migration Network Hub, a Drupal 10 platform serving 195 member states and 64 UN agencies. The platform doesn't just host content; it encodes the diplomatic contracts between organizations that fundamentally disagree on data ownership, editorial workflows, and visibility rules. Every content type, every permission, every entity reference is a governance decision rendered in code.</p>
 
-        <h2>Where the skepticism is fair</h2>
-        <p>None of this means Drupal is the right tool for everything. If your product is a fast moving consumer app with a small, trusted team and no governance complexity, a lighter framework will move faster and cost less to run. The skepticism about Drupal is earned when it is used as a website builder for a problem that never needed one. It stops being earned the moment your real problem is structured data with real ownership rules attached to it, because that is exactly the problem Drupal was built to solve.</p>
+      <h2>The governance layer is the architecture</h2>
+      <p>When a platform serves multiple sovereign organizations, the architecture isn't the database schema or the API layer—it's the permission model. The technical implementation merely enforces what the governance layer defines. If you design the schema first and figure out permissions later, you'll rebuild the schema. Every time.</p>
 
-        <h2>Entities, not pages</h2>
-        <p>The part of Drupal that does the real work in institutional platforms is the entity system: structured content types with fields, relationships, and revisions, exposed consistently through an API layer whether you are building a public statistics portal or an internal governance tool. Once you stop thinking in pages and start thinking in entities, Drupal stops being a CMS and starts being what it actually is—a framework for building data driven applications on top of a mature, security audited core.</p>
+      <p>The UN Migration Network Hub has three organizational tiers, each with distinct authority boundaries: IOM headquarters (platform steward), 64 UN agencies (content authorities for their domains), and 195 member states (consumers and occasional contributors). The platform doesn't impose uniformity—it provides the primitives for each tier to define its own rules while maintaining cross-referential integrity.</p>
 
-        <p>That framing matters when you are choosing a stack for an institution rather than a product. A startup can rewrite its stack in eighteen months if the bet does not pay off. A UN agency cannot. The platforms I build need to survive staff turnover, budget cycles, and a decade or more of production life. Drupal's content model, its permission system, and its enormous surface area of vetted contributed modules exist precisely because thousands of other institutions have needed the same governance primitives before.</p>
+      <blockquote>The CMS conversation asks what software renders your pages. The real question is what system enforces who is allowed to say what, to whom, and that question has nothing to do with themes.</blockquote>
+
+      <h2>Where the skepticism is fair</h2>
+      <p>None of this means Drupal is the right tool for everything. If your product is a fast moving consumer app with a small, trusted team and no governance complexity, a lighter framework will move faster and cost less to run. The skepticism about Drupal is earned when it is used as a website builder for a problem that never needed one. It stops being earned the moment your real problem is structured data with real ownership rules attached to it, because that is exactly the problem Drupal was built to solve.</p>
+
+      <h2>Entities, not pages</h2>
+      <p>The part of Drupal that does the real work in institutional platforms is the entity system: structured content types with fields, relationships, and revisions, exposed consistently through an API layer whether you are building a public statistics portal or an internal governance tool. Once you stop thinking in pages and start thinking in entities, Drupal stops being a CMS and starts being what it actually is—a framework for building data driven applications on top of a mature, security audited core.</p>
+
+      <p>That framing matters when you are choosing a stack for an institution rather than a product. A startup can rewrite its stack in eighteen months if the bet does not pay off. A UN agency cannot. The platforms I build need to survive staff turnover, budget cycles, and a decade or more of production life. Drupal's content model, its permission system, and its enormous surface area of vetted contributed modules exist precisely because thousands of other institutions have needed the same governance primitives before.</p>
+
       </article>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta reveal" aria-labelledby="cta-heading">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker" id="cta-heading">Related</p>
+        <p>See how this played out on the UN Migration Network Hub.</p>
+      </div>
+      <a href="../projects.html" class="btn btn--primary">View the case study</a>
     </div>
   </section>
 </main>
 
-<div class="cta reveal">
-  <div class="wrap cta-inner">
-    <div>
-      <p class="section-sub" >Related</p>
-      <p>See how this played out on the UN Migration Network Hub.</p>
-    </div>
-    <a href="../projects.html" class="btn">View the project →</a>
-  </div>
-</div>
-
-<footer>
-  <div class="wrap footer-inner">
-    <p>© 2026 Omar Farooq. Built for GitHub Pages.</p>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:contactomarfarooq-github@yahoo.com">Email</a>
-      <a href="../assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-    </div>
+<footer class="footer footer--hm-colophon" role="contentinfo">
+  <div class="wrap">
+    <p class="hm-colophon">
+      M. Omar Farooq — Senior Drupal Developer &amp; Architect, IOM · UN Migration, Geneva, Switzerland (remote). In commercial practice since 2002. Master of Computer Science, cum laude, American International University, Lahore, 2002. Bachelor of Commerce, first class, University of the Punjab, 2000. English C2, Urdu native, Punjabi native, Spanish A1, German A1. Open to remote roles globally. Built as static HTML and CSS — no framework, no build step — and served from GitHub Pages. © 2026.
+    </p>
+    <ul class="hm-colophon-links">
+      <li><a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:contactomarfarooq-github@yahoo.com">Email</a></li>
+      <li><a href="../assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV&nbsp;(PDF)</a></li>
+    </ul>
   </div>
 </footer>
 

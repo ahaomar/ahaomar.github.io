@@ -21,8 +21,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.className += ' js';</script>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="topbar" role="banner">
   <div class="topbar-inner">
@@ -30,17 +33,26 @@
       <strong>OMAR FAROOQ</strong>
       <span>SENIOR PLATFORM ARCHITECT</span>
     </a>
-    <nav class="nav" role="navigation" aria-label="Primary">
+
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
       <a href="index.html">About</a>
       <a href="projects.html" aria-current="page">Projects</a>
       <a href="skills.html">Skills</a>
+      <a href="dashboards.html">Dashboards</a>
       <a href="blog.html">Blog</a>
       <a href="contact.html">Contact</a>
-      <a href="dashboards.html">Dashboards</a>
+      <a href="assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
     </nav>
-    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
-      <kbd><span>⌘</span>K</kbd>
-    </button>
+
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -55,12 +67,12 @@
       <section class="cmdk-section" aria-label="Navigation">
         <h3 class="cmdk-section-title">Go to</h3>
         <div class="cmdk-group" role="listbox">
-          <button class="cmdk-item" role="option" data-href="index.html">About — Profile & history</button>
-          <button class="cmdk-item" role="option" data-href="projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="index.html">About — Profile &amp; record</button>
+          <button class="cmdk-item" role="option" data-href="projects.html">Projects — UN platform case studies</button>
           <button class="cmdk-item" role="option" data-href="skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="dashboards.html">Dashboards — Data visualisations</button>
           <button class="cmdk-item" role="option" data-href="blog.html">Blog — Field notes</button>
           <button class="cmdk-item" role="option" data-href="contact.html">Contact — Open to roles</button>
-          <button class="cmdk-item" role="option" data-href="dashboards.html">Dashboards — AI & data visualizations</button>
         </div>
       </section>
       <section class="cmdk-section" aria-label="External">
@@ -78,178 +90,251 @@
   </div>
 </div>
 
-<main>
-  <section class="page-hero reveal">
+<main id="main">
+
+  <!-- ============ PAGE HEAD ============ -->
+  <section class="page-head" aria-labelledby="page-heading">
     <div class="wrap">
-      <p class="kicker">Portfolio / six platforms, one architecture practice</p>
-      <h1>Selected systems.</h1>
-      <p class="lede">Each entry below is a platform I architected from the ground up: infrastructure, data model, and governance logic — not just a build I contributed code to. Every system here still runs in production, serving UN agencies, G7 delegations, and humanitarian field teams.</p>
+      <div class="dip">
+        <div class="dip__text">
+          <p class="kicker">Case studies · six platforms</p>
+          <h1 id="page-heading">Systems I architected, still in production.</h1>
+        </div>
+        <div class="dip__proof">
+          <p class="lede">Each entry is a platform I architected from the ground up — infrastructure, data model and governance logic — not a build I contributed code to. Where the work was a contribution rather than an architecture mandate, it says so.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="reveal">
+  <section class="history" aria-label="Platform case studies">
     <div class="wrap">
 
-      <article class="project-card reveal" style="margin-bottom: var(--space-12); padding-bottom: var(--space-12); border-bottom: 1px solid var(--color-rule);">
-        <div class="project-head">
-          <span class="project-num">01 / 06</span>
-          <p class="project-role">Lead Technical Architect</p>
+      <!-- 01 — UN Migration Network Hub -->
+      <article class="case dip">
+        <div class="dip__text">
+          <p class="case-num">01 / 06</p>
+          <h2>UN Migration Network Hub</h2>
+          <p class="case-role">Lead technical architect</p>
+          <ul class="tags">
+            <li class="tag">Drupal 10</li>
+            <li class="tag">PHP 8+</li>
+            <li class="tag">MySQL</li>
+            <li class="tag">Apache Solr</li>
+            <li class="tag">Varnish</li>
+          </ul>
+          <p class="case-summary">The central digital platform for the UN system&rsquo;s engagement on the Global Compact for Migration. It integrates dozens of UN agencies and partners in one secure Drupal 10 ecosystem serving 195 member states and their delegations.</p>
+          <a class="case-link" href="https://migrationnetwork.un.org" target="_blank" rel="noopener">migrationnetwork.un.org →</a>
         </div>
-        <h2 class="project-title">UN Migration Network Hub</h2>
-        <div class="tags">
-          <span class="tag">Drupal 10</span><span class="tag">PHP 8+</span><span class="tag">MySQL</span><span class="tag">Apache Solr</span><span class="tag">Varnish</span>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Detail</h3>
+          <dl class="notes">
+            <div>
+              <dt>Contribution</dt>
+              <dd>Architected the platform from the ground up, designing infrastructure for mission-critical workloads. Led technical strategy for custom module development, continuous security patching and zero-downtime version upgrades, coordinating distributed development teams across time zones.</dd>
+            </div>
+            <div>
+              <dt>Hard problem</dt>
+              <dd>A federated governance model that lets 195 member states and dozens of agencies publish into shared surfaces without data conflicts — each with its own mandate, review chain and provenance requirements.</dd>
+            </div>
+            <div>
+              <dt>Recognition</dt>
+              <dd>Formal appreciation from IOM Director General António Vitorino for strategic technical contributions at the International Migration Review Forum 2022.</dd>
+            </div>
+          </dl>
         </div>
-        <p>The central digital platform for the United Nations system's engagement on the Global Compact for Migration. Integrates 195 member states, dozens of UN agencies, and G7 delegations in a secure, scalable Drupal 10 ecosystem, serving as the definitive governance tool for global migration policy coordination.</p>
-
-        <h4>My contribution</h4>
-        <p>Architected the platform from the ground up, designing scalable infrastructure for mission-critical workloads. Led technical strategy for complex custom module development, continuous security patching, and zero-downtime version upgrades. Managed distributed development teams across multiple time zones. Formally recognized by IOM Director General António Vitorino for strategic technical leadership during the International Migration Review Forum 2022.</p>
-
-        <h4>Key challenges solved</h4>
-        <p>A federated governance model that lets 195+ member states collaborate without data conflicts. Real-time synchronization across distributed UN agencies. Performance tuning for a high-traffic global policy platform. Security hardening for sensitive diplomatic data.</p>
-
-        <h4>Impact</h4>
-        <p>Serves as the technical backbone for global migration policy coordination, adopted by G7 delegations and UN decision makers as the primary reference tool for International Migration Review Forum deliberations.</p>
-
-        <a class="project-link" href="https://migrationnetwork.un.org" target="_blank" rel="noopener">migrationnetwork.un.org →</a>
       </article>
 
-      <article class="project-card reveal" style="margin-bottom: var(--space-12); padding-bottom: var(--space-12); border-bottom: 1px solid var(--color-rule);">
-        <div class="project-head">
-          <span class="project-num">02 / 06</span>
-          <p class="project-role">Lead Architect & Developer</p>
+      <!-- 02 — CLIMB -->
+      <article class="case dip dip--rev">
+        <div class="dip__text">
+          <p class="case-num">02 / 06</p>
+          <h2>CLIMB — climate, migration &amp; biodiversity data-for-policy tool</h2>
+          <p class="case-role">Lead architect &amp; developer</p>
+          <ul class="tags">
+            <li class="tag">Drupal</li>
+            <li class="tag">PHP 8+</li>
+            <li class="tag">PostgreSQL + PostGIS</li>
+            <li class="tag">GIS</li>
+            <li class="tag">Data visualisation</li>
+          </ul>
+          <p class="case-summary">A full-stack data-for-policy platform that turns environmental displacement research into intelligence G7 and UN decision makers can act on, integrating multi-source climate and migration datasets with interactive GIS layers.</p>
+          <a class="case-link" href="https://migrationnetwork.un.org/climb" target="_blank" rel="noopener">migrationnetwork.un.org/climb →</a>
         </div>
-        <h2 class="project-title">CLIMB Platform: Climate, Migration & Biodiversity Data-for-Policy Tool</h2>
-        <div class="tags">
-          <span class="tag">Drupal</span><span class="tag">PHP 8+</span><span class="tag">PostgreSQL + PostGIS</span><span class="tag">GIS</span><span class="tag">Data Visualization</span>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Detail</h3>
+          <dl class="notes">
+            <div>
+              <dt>Contribution</dt>
+              <dd>Architected the backend and database schema from scratch. Designed the APIs and PostGIS spatial queries that process large geospatial datasets, built the ingestion pipelines that harmonise sources, and worked directly with policy experts to translate research into an interface a non-technical delegate can use.</dd>
+            </div>
+            <div>
+              <dt>Hard problem</dt>
+              <dd>Real-time GIS layer rendering across global datasets without performance degradation, plus validating data accuracy across multiple independent and sometimes disagreeing sources.</dd>
+            </div>
+            <div>
+              <dt>Where it landed</dt>
+              <dd>Adopted across UN agencies as a reference tool for climate-migration policy, and integrated with the Human Mobility and Climate Change Database.</dd>
+            </div>
+          </dl>
         </div>
-        <p>A full-stack data-for-policy platform that turns complex environmental displacement research into intelligence G7 and UN decision makers can act on. Integrates multi-source climate and migration datasets with interactive GIS layers and policy-grade visualizations.</p>
-
-        <h4>My contribution</h4>
-        <p>Architected the entire backend system and database schema from the ground up. Designed high-performance APIs and PostGIS spatial queries to process large geospatial datasets. Integrated interactive mapping libraries for real-time data exploration. Built custom data ingestion pipelines to harmonize datasets from diverse sources. Worked closely with policy experts to translate complex research into an intuitive user experience.</p>
-
-        <h4>Key challenges solved</h4>
-        <p>Managing terabytes of climate migration data without performance degradation. Real-time GIS layer rendering across global datasets. Data accuracy validation across multiple independent sources. Interfaces built for non-technical policymakers exploring complex datasets.</p>
-
-        <h4>Impact</h4>
-        <p>Adopted by policymakers across UN agencies as a primary reference tool for climate migration policy decisions, directly informing G7 and UN decision making on environmental displacement.</p>
-
-        <a class="project-link" href="https://migrationnetwork.un.org/climb" target="_blank" rel="noopener">migrationnetwork.un.org/climb →</a>
       </article>
 
-      <article class="project-card reveal" style="margin-bottom: var(--space-12); padding-bottom: var(--space-12); border-bottom: 1px solid var(--color-rule);">
-        <div class="project-head">
-          <span class="project-num">03 / 06</span>
-          <p class="project-role">Senior Developer & Technical Architect</p>
+      <!-- 03 — Global Migration Data Portal -->
+      <article class="case dip">
+        <div class="dip__text">
+          <p class="case-num">03 / 06</p>
+          <h2>Global Migration Data Portal</h2>
+          <p class="case-role">Contributor — dashboards &amp; visualisation modules</p>
+          <ul class="tags">
+            <li class="tag">Drupal</li>
+            <li class="tag">PHP</li>
+            <li class="tag">MySQL</li>
+            <li class="tag">Data visualisation</li>
+            <li class="tag">API integration</li>
+          </ul>
+          <p class="case-summary">IOM GMDAC&rsquo;s public interface for authoritative global migration statistics, serving policymakers, national statistics officers, researchers and the public.</p>
+          <a class="case-link" href="https://www.migrationdataportal.org" target="_blank" rel="noopener">migrationdataportal.org →</a>
         </div>
-        <h2 class="project-title">Global Migration Data Portal</h2>
-        <div class="tags">
-          <span class="tag">Drupal</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Data Visualization</span><span class="tag">API Integration</span>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Detail</h3>
+          <dl class="notes">
+            <div>
+              <dt>Contribution</dt>
+              <dd>Developed key sections of the portal: data ingestion and normalisation pipelines, custom Drupal modules that structure statistical data from dozens of sources without conflict or redundancy, and the interactive dashboards and visualisation modules on top.</dd>
+            </div>
+            <div>
+              <dt>Hard problem</dt>
+              <dd>Harmonising migration data from competing and overlapping sources, keeping every visualisation accurate under continuous updates.</dd>
+            </div>
+            <div>
+              <dt>Scope note</dt>
+              <dd>This was a contribution to an existing platform, not an architecture mandate — the distinction matters and the CV states it the same way.</dd>
+            </div>
+          </dl>
         </div>
-        <p>The world's leading one-stop shop for authoritative global migration statistics and analysis, serving policymakers, researchers, and the international development community with curated data from dozens of sources through interactive visualization and custom analytics.</p>
-
-        <h4>My contribution</h4>
-        <p>Led backend development for complex data ingestion and normalization pipelines. Architected custom Drupal modules to structure and present statistical data from 50+ sources without conflicts or redundancy. Built troubleshooting and debugging workflows that keep data accurate across every visualization. Tuned performance for a high-traffic global audience. Worked with data scientists and policy experts to make complex statistics accessible.</p>
-
-        <h4>Key challenges solved</h4>
-        <p>Harmonizing migration data from competing and overlapping sources. Visualization systems that stay accurate under continuous data updates. Real-time performance for a global audience without any loss of data integrity. Interfaces built for non-technical users exploring complex statistical datasets.</p>
-
-        <h4>Impact</h4>
-        <p>The authoritative reference for global migration statistics, adopted by governments, international organizations, and researchers worldwide, and a direct input to migration policy decisions at UN, World Bank, and G7 level.</p>
-
-        <a class="project-link" href="https://www.migrationdataportal.org" target="_blank" rel="noopener">migrationdataportal.org →</a>
       </article>
 
-      <article class="project-card reveal" style="margin-bottom: var(--space-12); padding-bottom: var(--space-12); border-bottom: 1px solid var(--color-rule);">
-        <div class="project-head">
-          <span class="project-num">04 / 06</span>
-          <p class="project-role">Senior Drupal Architect</p>
+      <!-- 04 — Ahlan Simsim -->
+      <article class="case dip dip--rev">
+        <div class="dip__text">
+          <p class="case-num">04 / 06</p>
+          <h2>Ahlan Simsim — early childhood development platform</h2>
+          <p class="case-role">Senior Drupal architect · International Rescue Committee</p>
+          <ul class="tags">
+            <li class="tag">Drupal</li>
+            <li class="tag">PHP</li>
+            <li class="tag">REST APIs</li>
+            <li class="tag">Custom modules</li>
+            <li class="tag">Mobile backend</li>
+          </ul>
+          <p class="case-summary">A UNICEF-funded early childhood development programme operating across conflict-affected regions. The backend and mobile APIs serve field teams working in crisis contexts, where platform failure has a humanitarian cost rather than a revenue cost.</p>
+          <p class="case-private">Case study engagement — not public facing</p>
         </div>
-        <h2 class="project-title">Ahlan Simsim: Early Childhood Development Platform</h2>
-        <div class="tags">
-          <span class="tag">Drupal</span><span class="tag">PHP</span><span class="tag">REST APIs</span><span class="tag">Custom Modules</span><span class="tag">Mobile Backend</span>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Detail</h3>
+          <dl class="notes">
+            <div>
+              <dt>Contribution</dt>
+              <dd>Engineered the full Drupal REST API backend powering the mobile field application, deployed across multiple conflict-affected countries, and architected a secure role-based portal letting IRC staff analyse programme data and reallocate resources in real time.</dd>
+            </div>
+            <div>
+              <dt>Hard problem</dt>
+              <dd>APIs that stay correct on intermittent, low-bandwidth connections, with data integrity and security holding for sensitive humanitarian field data.</dd>
+            </div>
+          </dl>
         </div>
-        <p>A landmark UNICEF-funded early childhood development initiative operating across conflict-affected regions. The backend infrastructure and mobile application APIs serve field teams working in crisis contexts, where platform failure has direct humanitarian consequences.</p>
-
-        <h4>My contribution</h4>
-        <p>Architected and engineered the complete backend system and REST APIs powering the mobile application used by field teams across multiple countries. Designed a secure, role-based data portal enabling IRC staff to analyse programme data and optimise operations in real time. Built custom Drupal modules for complex data handling in low-bandwidth environments. Managed third-party integrations for mobile synchronization and offline data handling.</p>
-
-        <h4>Key challenges solved</h4>
-        <p>Robust APIs for mobile apps running in low-connectivity conflict zones. Data integrity and security for sensitive humanitarian field data. Systems that hold up under intermittent connectivity. Real-time optimization of resource allocation from field data. Uptime maintained where humanitarian operations depend on it.</p>
-
-        <h4>Impact</h4>
-        <p>Directly improved humanitarian response capability in conflict-affected regions. Field teams gained faster decision making and better resource optimization, with system reliability that mattered for life-saving operations across multiple countries.</p>
-
-        <span class="badge-private">Case study engagement, not public facing</span>
       </article>
 
-      <article class="project-card reveal" style="margin-bottom: var(--space-12); padding-bottom: var(--space-12); border-bottom: 1px solid var(--color-rule);">
-        <div class="project-head">
-          <span class="project-num">05 / 06</span>
-          <p class="project-role">Lead Architect & Developer</p>
+      <!-- 05 — Pledging Dashboard -->
+      <article class="case dip">
+        <div class="dip__text">
+          <p class="case-num">05 / 06</p>
+          <h2>UN Migration Network — the Pledging Dashboard</h2>
+          <p class="case-role">Lead architect &amp; developer</p>
+          <ul class="tags">
+            <li class="tag">Drupal</li>
+            <li class="tag">JavaScript</li>
+            <li class="tag">GIS mapping</li>
+            <li class="tag">Data visualisation</li>
+          </ul>
+          <p class="case-summary">An interactive dashboard visualising global pledges and commitments to the Global Compact for Migration, turning pledge records into country-level visualisation and interactive global mapping for delegations.</p>
+          <a class="case-link" href="https://migrationnetwork.un.org/the-pledging-dashboard" target="_blank" rel="noopener">migrationnetwork.un.org/the-pledging-dashboard →</a>
         </div>
-        <h2 class="project-title">UN Migration Network: The Pledging Dashboard</h2>
-        <div class="tags">
-          <span class="tag">Drupal</span><span class="tag">JavaScript</span><span class="tag">GIS Mapping</span><span class="tag">Data Visualization</span>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Detail</h3>
+          <dl class="notes">
+            <div>
+              <dt>Contribution</dt>
+              <dd>Architected the whole path from ingestion to visualisation: a schema flexible enough to model heterogeneous pledge data, mapping integration tuned for real-time updates, and drill-down filtering by country, sector and theme.</dd>
+            </div>
+            <div>
+              <dt>Hard problem</dt>
+              <dd>Rendering thousands of map data points without performance loss while pledges land live during negotiations — and keeping the interface usable for non-technical diplomats.</dd>
+            </div>
+            <div>
+              <dt>Where it landed</dt>
+              <dd>Became the tracking tool for global commitments during the International Migration Review Forum.</dd>
+            </div>
+          </dl>
         </div>
-        <p>A highly interactive, real-time dashboard visualizing global pledges and commitments to the Global Compact for Migration, turning pledge data into dynamic country-level visualization and interactive global mapping for policymakers and UN delegations.</p>
-
-        <h4>My contribution</h4>
-        <p>Architected the complete system, from data ingestion to interactive visualization. Designed the database schema for flexible pledge data modeling. Integrated mapping libraries with high-performance rendering for real-time pledge updates. Implemented advanced filtering and drill-down capability so policymakers can analyze commitments by country, sector, and theme.</p>
-
-        <h4>Key challenges solved</h4>
-        <p>Real-time map rendering for thousands of data points without performance loss. Interactive filtering across multiple pledge dimensions. An interface intuitive enough for non-technical diplomats. Dynamic updates as new pledges land during diplomatic negotiations.</p>
-
-        <h4>Impact</h4>
-        <p>Became the primary tool for tracking and visualizing global commitments during the International Migration Review Forum, giving UN delegations and policymakers real-time visibility into pledge progress.</p>
-
-        <a class="project-link" href="https://migrationnetwork.un.org/the-pledging-dashboard" target="_blank" rel="noopener">migrationnetwork.un.org/the-pledging-dashboard →</a>
       </article>
 
-      <article class="project-card reveal" style="margin-bottom: var(--space-12);">
-        <div class="project-head">
-          <span class="project-num">06 / 06</span>
-          <p class="project-role">Lead Architect & Developer</p>
+      <!-- 06 — Moving Voices -->
+      <article class="case dip dip--rev">
+        <div class="dip__text">
+          <p class="case-num">06 / 06</p>
+          <h2>Moving Voices — interactive migrant storytelling platform</h2>
+          <p class="case-role">Lead architect &amp; developer</p>
+          <ul class="tags">
+            <li class="tag">Drupal</li>
+            <li class="tag">JavaScript</li>
+            <li class="tag">Video integration</li>
+            <li class="tag">Responsive design</li>
+          </ul>
+          <p class="case-summary">An interactive storytelling platform carrying migrant experience through immersive media and personal narrative — built to connect policymakers and public audiences with the human dimension of migration along the world&rsquo;s most dangerous routes.</p>
+          <a class="case-link" href="https://movingvoices.org/" target="_blank" rel="noopener">movingvoices.org →</a>
         </div>
-        <h2 class="project-title">Moving Voices: Interactive Migrant Storytelling Platform</h2>
-        <div class="tags">
-          <span class="tag">Drupal</span><span class="tag">JavaScript</span><span class="tag">Video Integration</span><span class="tag">Responsive Design</span>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Detail</h3>
+          <dl class="notes">
+            <div>
+              <dt>Contribution</dt>
+              <dd>Architected the experience in Drupal with custom modules for video embedding, narrative sequencing and multimedia content management, including 360-degree playback and editorial workflows non-technical storytellers can publish through unaided.</dd>
+            </div>
+            <div>
+              <dt>Hard problem</dt>
+              <dd>Multimedia that loads reliably across widely varying global connection speeds, with large video assets handled efficiently at scale.</dd>
+            </div>
+          </dl>
         </div>
-        <p>An interactive storytelling platform bringing migrant experience and resilience to life through immersive digital media, personal narrative, and multimedia content, built to connect policymakers and global audiences with the human dimension of migration along the world's most dangerous routes.</p>
-
-        <h4>My contribution</h4>
-        <p>Architected the entire digital experience in Drupal, with custom modules for video embedding, interactive narrative sequencing, and multimedia content management. Built responsive, mobile-first interfaces for storytelling. Integrated video frameworks for immersive and 360-degree playback. Designed content workflows that let non-technical storytellers publish without technical help. Optimized for reach across diverse network conditions worldwide.</p>
-
-        <h4>Key challenges solved</h4>
-        <p>Multimedia experiences that load reliably across widely varying global connection speeds. Content management interfaces built for non-technical storytellers. Narrative design that lands with both policymakers and general audiences. Efficient handling of large video assets at global scale. Accessibility across devices and connectivity conditions.</p>
-
-        <h4>Impact</h4>
-        <p>Connected policymakers with migrant experience in a way that shaped migration policy perspective, reached global audiences with storytelling on dangerous migration routes, and became a reference model for humanitarian storytelling in the migration policy community.</p>
-
-        <a class="project-link" href="https://movingvoices.org/" target="_blank" rel="noopener">movingvoices.org →</a>
       </article>
 
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta reveal" aria-labelledby="cta-heading">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker" id="cta-heading">Next</p>
+        <p>Read how these systems are reasoned about, or see the data work.</p>
+      </div>
+      <a href="blog.html" class="btn btn--primary">Read the field notes</a>
     </div>
   </section>
 </main>
 
-<section class="cta reveal" data-theme="dark">
-  <div class="wrap cta-inner">
-    <div>
-      <p class="kicker">Next</p>
-      <p>Read how I think about building these systems.</p>
-    </div>
-    <a href="blog.html" class="btn btn--primary">Read the blog →</a>
-  </div>
-</section>
-
-<footer class="footer" role="contentinfo">
-  <div class="wrap footer-inner">
-    <p>© 2026 Omar Farooq. Built for GitHub Pages.</p>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:contactomarfarooq-github@yahoo.com">Email</a>
-      <a href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-    </div>
+<footer class="footer footer--hm-colophon" role="contentinfo">
+  <div class="wrap">
+    <p class="hm-colophon">
+      M. Omar Farooq — Senior Drupal Developer &amp; Architect, IOM · UN Migration, Geneva, Switzerland (remote). In commercial practice since 2002. Master of Computer Science, cum laude, American International University, Lahore, 2002. Bachelor of Commerce, first class, University of the Punjab, 2000. English C2, Urdu native, Punjabi native, Spanish A1, German A1. Open to remote roles globally. Built as static HTML and CSS — no framework, no build step — and served from GitHub Pages. © 2026.
+    </p>
+    <ul class="hm-colophon-links">
+      <li><a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:contactomarfarooq-github@yahoo.com">Email</a></li>
+      <li><a href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV&nbsp;(PDF)</a></li>
+    </ul>
   </div>
 </footer>
 

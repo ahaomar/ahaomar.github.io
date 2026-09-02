@@ -18,26 +18,38 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
+<script>document.documentElement.className += ' js';</script>
 </head>
 <body>
 
-<header class="topbar">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar" role="banner">
   <div class="topbar-inner">
-    <a href="../index.html" class="wordmark">
+    <a href="../index.html" class="wordmark" aria-label="Omar Farooq — Home">
       <strong>OMAR FAROOQ</strong>
       <span>SENIOR PLATFORM ARCHITECT</span>
     </a>
-    <nav class="nav">
+
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
       <a href="../index.html">About</a>
       <a href="../projects.html">Projects</a>
       <a href="../skills.html">Skills</a>
+      <a href="../dashboards.html">Dashboards</a>
       <a href="../blog.html" aria-current="page">Blog</a>
       <a href="../contact.html">Contact</a>
-      <a href="../dashboards.html">Dashboards</a>
+      <a href="../assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
     </nav>
-    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
-      <kbd><span>⌘</span>K</kbd>
-    </button>
+
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -52,12 +64,12 @@
       <section class="cmdk-section" aria-label="Navigation">
         <h3 class="cmdk-section-title">Go to</h3>
         <div class="cmdk-group" role="listbox">
-          <button class="cmdk-item" role="option" data-href="../index.html">About — Profile & history</button>
-          <button class="cmdk-item" role="option" data-href="../projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="../index.html">About — Profile &amp; record</button>
+          <button class="cmdk-item" role="option" data-href="../projects.html">Projects — UN platform case studies</button>
           <button class="cmdk-item" role="option" data-href="../skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../dashboards.html">Dashboards — Data visualisations</button>
           <button class="cmdk-item" role="option" data-href="../blog.html">Blog — Field notes</button>
           <button class="cmdk-item" role="option" data-href="../contact.html">Contact — Open to roles</button>
-          <button class="cmdk-item" role="option" data-href="../dashboards.html">Dashboards — AI & data visualizations</button>
         </div>
       </section>
       <section class="cmdk-section" aria-label="External">
@@ -75,102 +87,118 @@
   </div>
 </div>
 
-<main>
-  <section class="page-hero" >
-    <div class="wrap col">
-      <p class="kicker"><a href="../blog.html" >← Field notes</a></p>
-      <article class="post reveal">
+<main id="main">
+
+  <!-- ============ POST HEAD ============ -->
+  <section class="post-head">
+    <div class="wrap">
+      <div class="col">
+        <p class="post-back"><a href="../blog.html">← Field notes</a></p>
         <p class="post-meta">AI content systems · Jul 20, 2026 · 8 min read</p>
-        <h1 >Drupal AI content pipelines at governance scale</h1>
+        <h1>Drupal AI content pipelines at governance scale</h1>
+      </div>
+    </div>
+  </section>
 
-        <p>The IOM CLIMB platform now ingests thousands of migration research papers daily from climate science journals and development policy repositories, extracting structured variables that populate its database for G7 delegations to reference during negotiation sessions. This is not chat boxes pretending to understand data; it is a system where machine learning models read the world's most rigorous academic standards before generating summaries available to national ministers.</p>
+  <!-- ============ POST BODY ============ -->
+  <section class="post">
+    <div class="wrap">
+      <article class="col">
 
-        <h2>The integration pattern</h2>
 
-        <p>We approach AI differently than product companies selling automated writing tools that produce copy without human oversight. In international development platforms, every piece of content must survive contact with 195 member states and maintain fidelity across languages including those from indigenous communities where precision about forced displacement scenarios carries legal implications.</p>
 
-        <blockquote>Languages matter when you work in multilateral settings because mistranslation affects policy outcomes directly. A subtle semantic shift can alter how nations understand their climate adaptation obligations under existing frameworks they already signed.</blockquote>
+      <p>The IOM CLIMB platform now ingests thousands of migration research papers daily from climate science journals and development policy repositories, extracting structured variables that populate its database for G7 delegations to reference during negotiation sessions. This is not chat boxes pretending to understand data; it is a system where machine learning models read the world's most rigorous academic standards before generating summaries available to national ministers.</p>
 
-        <h2>The ingestion layer</h2>
+      <h2>The integration pattern</h2>
 
-        <p>This is where the system retrieves documents from sources like UNDP research, academic publications and government statistics bureaus through API integrations or scheduled crawlers that respect robots.txt files while prioritizing peer reviewed materials over opinion pieces. Documents arrive in various formats — PDF exports with embedded tables, HTML snapshots of journal pages, spreadsheet data dumps exported by national statistical offices.</p>
+      <p>We approach AI differently than product companies selling automated writing tools that produce copy without human oversight. In international development platforms, every piece of content must survive contact with 195 member states and maintain fidelity across languages including those from indigenous communities where precision about forced displacement scenarios carries legal implications.</p>
 
-        <h2>The extraction pipeline</h2>
+      <blockquote>Languages matter when you work in multilateral settings because mistranslation affects policy outcomes directly. A subtle semantic shift can alter how nations understand their climate adaptation obligations under existing frameworks they already signed.</blockquote>
 
-        <p>We use OCR for scanned documents combined with layout analysis that understands academic paper structures: abstracts separate from methodology sections; results distinguished from policy recommendations. The system maps extracted fields to Drupal content types — climate variables become database entities linked through structured relationships rather than free text descriptions.</p>
+      <h2>The ingestion layer</h2>
 
-        <h2>The approval workflow</h2>
+      <p>This is where the system retrieves documents from sources like UNDP research, academic publications and government statistics bureaus through API integrations or scheduled crawlers that respect robots.txt files while prioritizing peer reviewed materials over opinion pieces. Documents arrive in various formats — PDF exports with embedded tables, HTML snapshots of journal pages, spreadsheet data dumps exported by national statistical offices.</p>
 
-        <p>This is where human in the loop processes matter: a senior researcher reviews automated summaries and either approves for publication, requests clarification on ambiguous findings or rejects content that misrepresents original data. Approval decisions create audit trails showing who verified which outputs and why some did not advance to publication.</p>
+      <h2>The extraction pipeline</h2>
 
-        <blockquote>The most advanced AI system fails at governance scale when you trust it over domain experts whose work has been scrutinized for years while the model trains on months of scraped internet noise containing half true statements presented as fact without citation.</blockquote>
+      <p>We use OCR for scanned documents combined with layout analysis that understands academic paper structures: abstracts separate from methodology sections; results distinguished from policy recommendations. The system maps extracted fields to Drupal content types — climate variables become database entities linked through structured relationships rather than free text descriptions.</p>
 
-        <h2>Multilingual generation patterns</h2>
+      <h2>The approval workflow</h2>
 
-        <p>We integrate LLM APIs that support translation into UN official languages — Arabic, Chinese, English, French, Russian and Spanish plus indigenous varieties like Darija spoken in Moroccan migration corridors. This is not simple text replacement; the system understands context around how technical terms translate differently depending on which regional terminology standard applies.</p>
+      <p>This is where human in the loop processes matter: a senior researcher reviews automated summaries and either approves for publication, requests clarification on ambiguous findings or rejects content that misrepresents original data. Approval decisions create audit trails showing who verified which outputs and why some did not advance to publication.</p>
 
-        <h2>The content enrichment layer</h2>
+      <blockquote>The most advanced AI system fails at governance scale when you trust it over domain experts whose work has been scrutinized for years while the model trains on months of scraped internet noise containing half true statements presented as fact without citation.</blockquote>
 
-        <p>This runs after humans approve initial drafts but before publishing publicly: adding structured metadata tags that describe source reliability, date ranges covered by original research and policy contexts from UN documents. The system surfaces related entities so researchers can connect new climate migration findings to existing frameworks without rewriting previous work.</p>
+      <h2>Multilingual generation patterns</h2>
 
-        <h2>Differentiation between content categories</h2>
+      <p>We integrate LLM APIs that support translation into UN official languages — Arabic, Chinese, English, French, Russian and Spanish plus indigenous varieties like Darija spoken in Moroccan migration corridors. This is not simple text replacement; the system understands context around how technical terms translate differently depending on which regional terminology standard applies.</p>
 
-        <p>We do not apply the same AI patterns across all platforms because government sensitive data about displacement operations requires different handling than public statistics that agencies share freely. For operational security classification levels, we run entirely offline models on local infrastructure without external API calls while public dashboards leverage cloud based services with encryption in transit.</p>
+      <h2>The content enrichment layer</h2>
 
-        <h2>Educating stakeholders about AI governance</h2>
+      <p>This runs after humans approve initial drafts but before publishing publicly: adding structured metadata tags that describe source reliability, date ranges covered by original research and policy contexts from UN documents. The system surfaces related entities so researchers can connect new climate migration findings to existing frameworks without rewriting previous work.</p>
 
-        <p>I have worked across organizations where technical directors wanted to deploy chat interfaces over internal documentation without understanding how training data choices affect output quality. My job involves explaining why we use curated research repositories rather than scrapes from social media platforms, and how prompt templates for academic summary tasks differ dramatically from ones optimized for blog post generation.</p>
+      <h2>Differentiation between content categories</h2>
 
-        <h2>The evaluation framework</h2>
+      <p>We do not apply the same AI patterns across all platforms because government sensitive data about displacement operations requires different handling than public statistics that agencies share freely. For operational security classification levels, we run entirely offline models on local infrastructure without external API calls while public dashboards leverage cloud based services with encryption in transit.</p>
 
-        <p>This operates outside the hype cycle that vendors sell using benchmarks irrelevant to mission critical systems. We measure accuracy by comparing model outputs against expert annotated datasets built from peer reviewed literature, not automated metrics that reward confident wrong answers with high confidence scores.</p>
+      <h2>Educating stakeholders about AI governance</h2>
 
-        <blockquote>Achievement belongs only when you define success in ways your stakeholders care about: reducing time spent finding displacement research from weeks to hours while maintaining fidelity across languages so ministers understand documents regardless of native tongue.</blockquote>
+      <p>I have worked across organizations where technical directors wanted to deploy chat interfaces over internal documentation without understanding how training data choices affect output quality. My job involves explaining why we use curated research repositories rather than scrapes from social media platforms, and how prompt templates for academic summary tasks differ dramatically from ones optimized for blog post generation.</p>
 
-        <h2>The audit trail requirement</h2>
+      <h2>The evaluation framework</h2>
 
-        <p>Governance scale platforms need complete provenance chains documenting every decision point during content creation. This includes which LLM models participated in generating particular passages, what temperature settings influenced stylistic choices and who approved final versions before publication to public portals.</p>
+      <p>This operates outside the hype cycle that vendors sell using benchmarks irrelevant to mission critical systems. We measure accuracy by comparing model outputs against expert annotated datasets built from peer reviewed literature, not automated metrics that reward confident wrong answers with high confidence scores.</p>
 
-        <blockquote>Mission critical systems cannot afford automated hallucinations that contradict established research findings because governments will hold you accountable for statements they attribute back through citations even if those sources never existed outside training data artifacts.</blockquote>
+      <blockquote>Achievement belongs only when you define success in ways your stakeholders care about: reducing time spent finding displacement research from weeks to hours while maintaining fidelity across languages so ministers understand documents regardless of native tongue.</blockquote>
 
-        <h2>The integration with Drupal core</h2>
+      <h2>The audit trail requirement</h2>
 
-        <p>We use the AI module ecosystem where contributors maintain compatibility with Drupal 10 while extending capabilities beyond basic summarization tasks. Custom modules handle document classification for sorting incoming submissions by topic area and priority level before routing to appropriate human reviewers based on their expertise domains.</p>
+      <p>Governance scale platforms need complete provenance chains documenting every decision point during content creation. This includes which LLM models participated in generating particular passages, what temperature settings influenced stylistic choices and who approved final versions before publication to public portals.</p>
 
-        <blockquote>The best platforms integrate machine learning into existing workflows rather than asking users to adopt new tools that interrupt established research processes they already follow when writing papers or preparing briefs for policy negotiations.</blockquote>
+      <blockquote>Mission critical systems cannot afford automated hallucinations that contradict established research findings because governments will hold you accountable for statements they attribute back through citations even if those sources never existed outside training data artifacts.</blockquote>
 
-        <h2>Multimodal document processing</h2>
+      <h2>The integration with Drupal core</h2>
 
-        <p>This handles maps showing climate migration corridors alongside textual descriptions in the same database entities. GIS integration allows visual representations to coexist with narrative explanations through entity relationships that connect coordinate data structures with prose summaries written by research teams across different time zones.</p>
+      <p>We use the AI module ecosystem where contributors maintain compatibility with Drupal 10 while extending capabilities beyond basic summarization tasks. Custom modules handle document classification for sorting incoming submissions by topic area and priority level before routing to appropriate human reviewers based on their expertise domains.</p>
 
-        <blockquote>You cannot separate spatial information from contextual understanding when people move for reasons combining environmental disasters, economic necessity and conflict patterns documented differently depending on which country's classification system you use to describe displacement events.</blockquote>
+      <blockquote>The best platforms integrate machine learning into existing workflows rather than asking users to adopt new tools that interrupt established research processes they already follow when writing papers or preparing briefs for policy negotiations.</blockquote>
 
-        <h2>The next iteration</h2>
+      <h2>Multimodal document processing</h2>
 
-        <p>We are working toward systems where AI does not just summarize content but assists with discovery across organizational boundaries. When a researcher searches for climate adaptation strategies used by African nations facing desertification, the system finds relevant papers regardless of repository location or contributing agency's editorial contract.</p>
+      <p>This handles maps showing climate migration corridors alongside textual descriptions in the same database entities. GIS integration allows visual representations to coexist with narrative explanations through entity relationships that connect coordinate data structures with prose summaries written by research teams across different time zones.</p>
+
+      <blockquote>You cannot separate spatial information from contextual understanding when people move for reasons combining environmental disasters, economic necessity and conflict patterns documented differently depending on which country's classification system you use to describe displacement events.</blockquote>
+
+      <h2>The next iteration</h2>
+
+      <p>We are working toward systems where AI does not just summarize content but assists with discovery across organizational boundaries. When a researcher searches for climate adaptation strategies used by African nations facing desertification, the system finds relevant papers regardless of repository location or contributing agency's editorial contract.</p>
+
       </article>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta reveal" aria-labelledby="cta-heading">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker" id="cta-heading">Related</p>
+        <p>Skip the CMS conversation and apply governance primitives at scale.</p>
+      </div>
+      <a href="what-drupal-is-actually-good-at.html" class="btn btn--primary">What Drupal is actually good at</a>
     </div>
   </section>
 </main>
 
-<div class="cta reveal">
-  <div class="wrap cta-inner">
-    <div>
-      <p class="section-sub" >Related</p>
-      <p>Skip the CMS conversation and apply governance primitives at scale.</p>
-    </div>
-    <a href="what-drupal-is-actually-good-at.html" class="btn">What Drupal is actually good at →</a>
-  </div>
-</div>
-
-<footer>
-  <div class="wrap footer-inner">
-    <p>© 2026 Omar Farooq. Built for GitHub Pages.</p>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:contactomarfarooq-github@yahoo.com">Email</a>
-      <a href="../assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-    </div>
+<footer class="footer footer--hm-colophon" role="contentinfo">
+  <div class="wrap">
+    <p class="hm-colophon">
+      M. Omar Farooq — Senior Drupal Developer &amp; Architect, IOM · UN Migration, Geneva, Switzerland (remote). In commercial practice since 2002. Master of Computer Science, cum laude, American International University, Lahore, 2002. Bachelor of Commerce, first class, University of the Punjab, 2000. English C2, Urdu native, Punjabi native, Spanish A1, German A1. Open to remote roles globally. Built as static HTML and CSS — no framework, no build step — and served from GitHub Pages. © 2026.
+    </p>
+    <ul class="hm-colophon-links">
+      <li><a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:contactomarfarooq-github@yahoo.com">Email</a></li>
+      <li><a href="../assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV&nbsp;(PDF)</a></li>
+    </ul>
   </div>
 </footer>
 

@@ -13,16 +13,19 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Omar Farooq — Senior Platform Architect</title>
-<meta name="description" content="Senior Drupal Developer and Platform Architect with 20+ years delivering mission critical digital infrastructure for the United Nations and international development sector.">
+<title>Omar Farooq — Senior Drupal Developer &amp; Platform Architect</title>
+<meta name="description" content="Senior Drupal Developer and Platform Architect. Twenty years building mission-critical digital infrastructure for the United Nations and international development organisations. Architect of the UN Migration Network Hub and the CLIMB platform for IOM.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.className += ' js';</script>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="topbar" role="banner">
   <div class="topbar-inner">
@@ -31,22 +34,29 @@
       <span>SENIOR PLATFORM ARCHITECT</span>
     </a>
 
-    <nav class="nav" role="navigation" aria-label="Primary">
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
       <a href="index.html" aria-current="page">About</a>
       <a href="projects.html">Projects</a>
       <a href="skills.html">Skills</a>
+      <a href="dashboards.html">Dashboards</a>
       <a href="blog.html">Blog</a>
       <a href="contact.html">Contact</a>
-      <a href="dashboards.html">Dashboards</a>
+      <a href="assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
     </nav>
 
-    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
-      <kbd><span>⌘</span>K</kbd>
-    </button>
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
 
-<!-- Command Palette (Cobalt signature) -->
+<!-- Command Palette -->
 <div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
   <div class="cmdk-panel" id="cmdk-panel">
     <div class="cmdk-header">
@@ -58,12 +68,12 @@
       <section class="cmdk-section" aria-label="Navigation">
         <h3 class="cmdk-section-title">Go to</h3>
         <div class="cmdk-group" role="listbox">
-          <button class="cmdk-item" role="option" data-href="index.html">About — Profile & history</button>
-          <button class="cmdk-item" role="option" data-href="projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="index.html">About — Profile &amp; record</button>
+          <button class="cmdk-item" role="option" data-href="projects.html">Projects — UN platform case studies</button>
           <button class="cmdk-item" role="option" data-href="skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="dashboards.html">Dashboards — Data visualisations</button>
           <button class="cmdk-item" role="option" data-href="blog.html">Blog — Field notes</button>
           <button class="cmdk-item" role="option" data-href="contact.html">Contact — Open to roles</button>
-          <button class="cmdk-item" role="option" data-href="dashboards.html">Dashboards — AI & data visualizations</button>
         </div>
       </section>
       <section class="cmdk-section" aria-label="External">
@@ -81,314 +91,319 @@
   </div>
 </div>
 
-<main>
-  <!-- STAT-LED HERO -->
-  <section class="stat-hero reveal" aria-labelledby="hero-stat">
+<main id="main">
+
+  <!-- ============ HERO DIPTYCH — positioning ⇄ record ============ -->
+  <section class="hero-dip" aria-labelledby="hero-heading">
     <div class="wrap">
-      <div class="stat-hero-grid">
-        <div class="stat-hero-main">
-          <p class="kicker" id="hero-stat">System Metrics</p>
-          <div class="figure-row">
-            <div class="figure tnum" data-count="20">0</div>
-            <div class="figure-unit">years</div>
+      <div class="dip dip--hero">
+        <div class="dip__text">
+          <p class="kicker">Senior Drupal Developer &amp; Architect · IOM · UN Migration</p>
+          <h1 id="hero-heading">I architect the platforms the UN runs global migration policy on.</h1>
+          <p class="lede-hero">Twenty years of Drupal, PHP and Symfony at governance scale. Technical authority for IOM&rsquo;s flagship digital platforms on migration, climate-induced displacement and migration data — built for 195 member states and the delegations that negotiate through them.</p>
+          <div class="cta-pair">
+            <a href="assets/Omar_Farooq_CV.pdf" class="btn btn--primary" target="_blank" rel="noopener">Download&nbsp;CV</a>
+            <a href="projects.html" class="btn btn--ghost">View&nbsp;platforms</a>
           </div>
-          <p class="qualifier">Building mission-critical digital infrastructure for the United Nations and international development sector.</p>
-          <a href="projects.html" class="cta-outline">View platforms →</a>
         </div>
-        <div class="stat-hero-demo" aria-label="Platform architecture visualization">
-          <div class="code-card" role="img" aria-label="Terminal: UN Migration Hub deployment">
-            <div class="code-card-bar">
-              <span class="code-card-dot"></span>
-              <span class="code-card-dot"></span>
-              <span class="code-card-dot"></span>
-              <span class="code-card-title">deployment.log</span>
-              <span class="status status--ok">200 OK</span>
+
+        <aside class="dip__proof" aria-labelledby="record-heading">
+          <h2 class="hm-panel-title" id="record-heading">Record</h2>
+          <dl class="record">
+            <div class="record__row">
+              <dt>Role</dt>
+              <dd>Senior Drupal Developer &amp; Architect</dd>
             </div>
-            <pre class="code-card-body"><code><span class="tok-prompt">$</span><span class="tok-arg"> git push origin main</span><br><span class="tok-comment"># Code deployed</span><br><span class="tok-prompt">$</span><span class="tok-arg"> drush updatedb</span> <span class="tok-flag">--yes</span><br><span class="tok-comment"># Success</span><br><span class="tok-prompt">$</span> <span class="tok-arg">drush</span> <span class="tok-arg">cache:rebuild</span><br><span class="tok-comment"># Cache rebuilt in 2.3s</span></code>
-          </pre>
-          </div>
-        </div>
+            <div class="record__row">
+              <dt>Organisation</dt>
+              <dd>IOM · UN Migration — Geneva, Switzerland (remote)</dd>
+            </div>
+            <div class="record__row">
+              <dt>In post since</dt>
+              <dd class="tnum">January 2022</dd>
+            </div>
+            <div class="record__row">
+              <dt>Practising since</dt>
+              <dd class="tnum">2002</dd>
+            </div>
+            <div class="record__row">
+              <dt>Core stack</dt>
+              <dd>Drupal 8/9/10 · PHP 8 · Symfony · PostgreSQL · Solr</dd>
+            </div>
+            <div class="record__row">
+              <dt>Governance scope</dt>
+              <dd>Global Compact for Migration — <span class="tnum">195</span> member states</dd>
+            </div>
+            <div class="record__row">
+              <dt>Availability</dt>
+              <dd><span class="dot-live" aria-hidden="true"></span>Open to remote roles globally</dd>
+            </div>
+          </dl>
+        </aside>
       </div>
     </div>
   </section>
 
-  <hr class="rule" aria-hidden="true">
-
-  <!-- SUPPORTING STATS -->
-  <section class="supporting-stats reveal" aria-labelledby="supporting-stats-heading">
+  <!-- ============ METRICS BAND ============ -->
+  <section class="metrics reveal" aria-label="Practice at a glance">
     <div class="wrap">
-      <h2 id="supporting-stats-heading" class="section-title">Supporting metrics</h2>
-      <div class="stats-grid" style="gap: var(--space-8);">
-        <article class="stat-block" style="padding: var(--space-6);">
-          <div class="stat-block-figure" style="gap: var(--space-3);">
-            <div class="figure tnum" data-count="6">0</div>
-            <span class="figure-unit">platforms</span>
-          </div>
-          <p class="stat-block-label" style="font-size: var(--text-sm); line-height: 1.5;">UN Migration platforms architected and delivered as lead architect</p>
-        </article>
-        <article class="stat-block" style="padding: var(--space-6);">
-          <div class="stat-block-figure" style="gap: var(--space-3);">
-            <div class="figure tnum" data-count="195">0</div>
-            <span class="figure-unit">states</span>
-          </div>
-          <p class="stat-block-label" style="font-size: var(--text-sm); line-height: 1.5;">UN Migration Network Hub: serves 195 member states across the Global Compact for Migration ecosystem</p>
-        </article>
-        <article class="stat-block" style="padding: var(--space-6);">
-          <div class="stat-block-figure" style="gap: var(--space-3);">
-            <div class="figure tnum" data-count="10">0</div>
-            <span class="figure-unit">engineers</span>
-          </div>
-          <p class="stat-block-label" style="font-size: var(--text-sm); line-height: 1.5;">Largest team led (Bionorica global Drupal 8 multi-site on Pantheon)</p>
-        </article>
-        <article class="stat-block" style="padding: var(--space-6);">
-          <div class="stat-block-figure" style="gap: var(--space-3);">
-            <div class="figure tnum" data-count="99.97">0</div>
-            <span class="figure-unit">%</span>
-          </div>
-          <p class="stat-block-label" style="font-size: var(--text-sm); line-height: 1.5;">Uptime across UN platforms, measured externally (2024–2026)</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule" aria-hidden="true">
-
-  <!-- PRACTICE HISTORY (Stat-anchored timeline) -->
-  <section class="practice-history reveal" aria-labelledby="practice-heading">
-    <div class="wrap">
-      <h2 id="practice-heading" class="section-title">Practice history</h2>
-
-      <article class="history-item">
-        <div class="history-stat">
-          <span class="history-yr">2022 — present</span>
-          <div class="history-metric">
-            <b class="tnum" data-count="3">0</b>
-            <span>flagship platforms</span>
-          </div>
-        </div>
-        <div class="history-body">
-          <h3>Senior Drupal Developer & Architect</h3>
-          <p class="history-org">IOM · UN Migration · Geneva, Switzerland (Remote)</p>
-          <p>Technical authority for the UN system's flagship digital platforms on global migration, climate-induced displacement, and migration data intelligence.</p>
-          <ul>
-            <li><strong>UN Migration Network Hub:</strong> Architected the core Drupal 10 governance platform for the Global Compact for Migration, integrating dozens of UN agencies within a secure ecosystem serving 195 member states.</li>
-            <li><strong>CLIMB Platform:</strong> Architected the data-for-policy tool and its Human Mobility and Climate Change Database, turning multi-source displacement research into structured intelligence for G7 delegations.</li>
-            <li><strong>Global Migration Data Portal:</strong> Engineered dashboards that turn complex migration datasets into decision-ready intelligence for policymakers and national statistics offices.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="history-item">
-        <div class="history-stat">
-          <span class="history-yr">2021</span>
-          <div class="history-metric">
-            <b class="tnum" data-count="2">0</b>
-            <span>critical systems</span>
-          </div>
-        </div>
-        <div class="history-body">
-          <h3>Senior Drupal Architect</h3>
-          <p class="history-org">International Rescue Committee (IRC) · USA (Remote)</p>
-          <p>Senior technical architect for Ahlan Simsim, a UNICEF-funded early childhood development programme operating across conflict-affected regions.</p>
-          <ul>
-            <li><strong>Secure field data portal:</strong> Architected a role-based portal enabling IRC field staff to analyse programme data and optimise operations in real time.</li>
-            <li><strong>Mobile API backend:</strong> Engineered the Drupal REST API backend powering the mobile field application, deployed across multiple conflict-affected countries.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="history-item">
-        <div class="history-stat">
-          <span class="history-yr">2011 — 2021</span>
-          <div class="history-metric">
-            <b class="tnum" data-count="10">0</b>
-            <span>engineers led</span>
-          </div>
-        </div>
-        <div class="history-body">
-          <h3>Technical Lead and Senior Architect</h3>
-          <p class="history-org">April and June GmbH · Germany (Remote)</p>
-          <p>Led architecture and delivery for enterprise-scale Drupal, e-commerce, and CMS platforms across a decade of international client engagements.</p>
-          <ul>
-            <li><strong>Bionorica global platform:</strong> Led a ten-member team to architect a Drupal 8 multi-site platform on Pantheon, serving dozens of country and brand sites from one codebase.</li>
-            <li><strong>E-commerce & ERP integration:</strong> Developed SAP-integrated e-commerce solutions across product data, inventory, and order fulfilment for enterprise clients in Europe.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="history-item">
-        <div class="history-stat">
-          <span class="history-yr">2007 — 2011</span>
-          <div class="history-metric">
-            <b class="tnum" data-count="15">0</b>
-            <span>platforms delivered</span>
-          </div>
-        </div>
-        <div class="history-body">
-          <h3>Principal and Senior Software Engineer</h3>
-          <p class="history-org">Nextbridge · Pace Solutions · Pakistan IT Zone · Pakistan</p>
-          <p>Senior technical authority delivering Drupal-based platform migrations, custom B2B automation engines, and enterprise web applications for a diverse client portfolio.</p>
-        </div>
-      </article>
-
-      <article class="history-item">
-        <div class="history-stat">
-          <span class="history-yr">2002 — 2007</span>
-          <div class="history-metric">
-            <b class="tnum" data-count="5">0</b>
-            <span>ERP systems</span>
-          </div>
-        </div>
-        <div class="history-body">
-          <h3>Software Engineer / Senior Software Engineer</h3>
-          <p class="history-org">Diamond Group of Industries · Punjab Board of Technical Education · Pakistan</p>
-          <p>Architected enterprise ERP systems and academic examination platforms, driving digital transformation from greenfield build to production.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <hr class="rule" aria-hidden="true">
-
-  <!-- KEY ACHIEVEMENTS (each leads with a metric) -->
-  <section class="achievements reveal" aria-labelledby="achievements-heading">
-    <div class="wrap">
-      <h2 id="achievements-heading" class="section-title">Key achievements</h2>
-      <ul class="achv-list">
+      <ul class="metrics-row">
         <li>
-          <div class="achv-metric">
-            <b class="tnum" data-count="6">0</b>
-            <span>production platforms</span>
+          <div class="metrics-figure">
+            <b class="figure tnum" data-count="20">20</b><span class="figure-unit">years</span>
           </div>
-          <p>Architected, developed, and delivered six production platforms within the UN Migration ecosystem as lead architect — including the UN Migration Network Hub, CLIMB, the Migration Data Portal, the GCM Interactive Platform, the Repository of Practices, the Knowledge Hub, and the UN Migration Network Pledges system — collectively serving 195 member states and the global migration policy community.</p>
+          <p>In commercial practice since 2002, exclusively in international development since 2021.</p>
         </li>
         <li>
-          <div class="achv-metric">
-            <b class="tnum" data-count="10">0</b>
-            <span>engineer team</span>
+          <div class="metrics-figure">
+            <b class="figure tnum" data-count="195">195</b><span class="figure-unit">member states</span>
           </div>
-          <p>Led a ten-member engineering team at April and June GmbH to architect and ship a global Drupal 8 multi-site platform for Bionorica, one of the longest-running enterprise Drupal deployments in the German market.</p>
+          <p>Served by the UN Migration Network Hub, the governance platform for the Global Compact for Migration.</p>
         </li>
         <li>
-          <div class="achv-metric">
-            <b class="tnum" data-count="3">0</b>
-            <span>conflict zones</span>
+          <div class="metrics-figure">
+            <b class="figure tnum" data-count="10">10</b><span class="figure-unit">engineers led</span>
           </div>
-          <p>Developed and deployed field-critical digital systems for the International Rescue Committee in conflict-affected regions, where platform failure has direct humanitarian consequences.</p>
-        </li>
-        <li>
-          <div class="achv-metric">
-            <b class="tnum" data-count="20">0</b>
-            <span>years commercial exp.</span>
-          </div>
-          <p>Built enterprise digital transformation programmes across manufacturing, education, and ICT before moving exclusively into international development platforms, bringing commercial-grade engineering discipline to every UN engagement.</p>
+          <p>Largest team led — the Bionorica global Drupal 8 multi-site platform on Pantheon.</p>
         </li>
       </ul>
     </div>
   </section>
 
-  <hr class="rule" aria-hidden="true">
-
-  <!-- AI DASHBOARD VISUALIZATIONS -->
-  <section class="ai-dashboard reveal" aria-labelledby="ai-dashboard-heading">
+  <!-- ============ RECOGNITION — the one dark band ============ -->
+  <section class="recognition reveal" data-theme="dark" aria-labelledby="recognition-heading">
     <div class="wrap">
-      <h2 id="ai-dashboard-heading" class="section-title">AI & data visualizations</h2>
-      <p class="lede" style="margin-bottom: var(--space-8); color: var(--color-ink-soft); line-height: 1.6;">
-        Platform architecture portfolio augmented by real-time analytics dashboards built for the World Bank and international development sector. These systems translate complex migration and climate datasets into decision-ready intelligence for policymakers and G7 delegations.
-      </p>
-      <div class="dashboard-grid">
-        <article class="dashboard-card">
-          <div class="dashboard-image">
-            <span class="icon">🌍</span>
-          </div>
-          <div class="dashboard-content">
-            <h3 class="dashboard-title">The Invisible Lifeline</h3>
-            <p class="dashboard-desc">
-              Choropleth map + bar chart comparing migrant remittances against official development assistance across 195 economies (2018–2023).
-            </p>
-            <a href="dashboards/worldbank/remittances-migrant-vs-oda/" class="btn btn--ghost small">View dashboard →</a>
-          </div>
-        </article>
-
-        <article class="dashboard-card">
-          <div class="dashboard-image">
-            <span class="icon">📊</span>
-          </div>
-          <div class="dashboard-content">
-            <h3 class="dashboard-title">System Architecture</h3>
-            <p class="dashboard-desc">
-              Visualization of 6-platform architecture stack: Interface → API Layer → Data → Infrastructure with governance pin.
-            </p>
-            <a href="projects.html" class="btn btn--ghost small">View platforms →</a>
-          </div>
-        </article>
-
-        <article class="dashboard-card">
-          <div class="dashboard-image">
-            <span class="icon">🧠</span>
-          </div>
-          <div class="dashboard-content">
-            <h3 class="dashboard-title">CLIMB: Climate & Migration</h3>
-            <p class="dashboard-desc">
-              GIS-powered data-for-policy tool integrating multi-source displacement research with human mobility databases for G7 decision makers.
-            </p>
-            <a href="projects.html" class="btn btn--ghost small">View project →</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- TECHNICAL EXPERTISE (asymmetric: wide code card + narrow points) -->
-  <section class="expertise reveal" aria-labelledby="expertise-heading">
-    <div class="wrap">
-      <h2 id="expertise-heading" class="section-title">Technical expertise</h2>
-      <div class="expertise-grid">
-        <div class="expertise-demo">
-          <div class="code-card" role="img" aria-label="Code: Drupal 10 module boilerplate">
-            <div class="code-card-bar">
-              <span class="code-card-dot"></span>
-              <span class="code-card-dot"></span>
-              <span class="code-card-dot"></span>
-              <span class="code-card-title">customers.module</span>
-              <span class="status status--ok">Drupal 10</span>
+      <div class="dip dip--recognition">
+        <div class="dip__text">
+          <p class="kicker">Recognition</p>
+          <h2 id="recognition-heading">Formal appreciation from the IOM Director&nbsp;General.</h2>
+        </div>
+        <div class="dip__proof">
+          <p class="recognition-body">In 2022 I received a formal appreciation note from IOM Director General António Vitorino for strategic technical contributions at the International Migration Review Forum — the first global review of the Global Compact for Migration, attended by 195 member states.</p>
+          <dl class="record record--compact">
+            <div class="record__row">
+              <dt>Awarded by</dt>
+              <dd>António Vitorino, Director General, IOM</dd>
             </div>
-            <pre class="code-card-body"><code><span class="tok-key">use</span> <span class="tok-ns">Drupal\Core\Entity\EntityInterface</span>;
-<span class="tok-key">use</span> <span class="tok-ns">Drupal\migrate\MigrateExecutable</span>;
-<span class="tok-key">use</span> <span class="tok-ns">Drupal\customers\Service\UnDataSync</span>;
-
-<span class="tok-key">class</span> <span class="tok-class">MigrationHubService</span> {
-  <span class="tok-key">public</span> <span class="tok-key">function</span> <span class="tok-fn">syncEntityData</span>(<span class="tok-type">EntityInterface</span> <span class="tok-var">$entity</span>): <span class="tok-type">void</span> {
-    <span class="tok-var">$this</span><span class="tok-op">-></span>unDataSync<span class="tok-op">-></span>queue<span class="tok-op">-></span>addItem(<span class="tok-var">$entity</span><span class="tok-op">-></span>id());
-  }
-}</code></pre>
-          </div>
+            <div class="record__row">
+              <dt>Occasion</dt>
+              <dd>International Migration Review Forum (IMRF), <span class="tnum">2022</span></dd>
+            </div>
+          </dl>
         </div>
-        <div class="expertise-categories">
-          <article class="expertise-cat">
-            <h3>Platform architecture</h3>
-            <p>Drupal 8/9/10 at governance scale, PHP 8+, Symfony, WordPress, REST APIs, headless CMS, multi-site architecture, federated deployments.</p>
-          </article>
-          <article class="expertise-cat">
-            <h3>AI & intelligent systems</h3>
-            <p>Drupal AI module ecosystem, LLM orchestration, RAG pipelines, automated content workflows with guardrails, intelligent data pipelines preserving provenance.</p>
-          </article>
-          <article class="expertise-cat">
-            <h3>Data, GIS & visualization</h3>
-            <p>MySQL, MariaDB, PostgreSQL, Apache Solr, PostGIS spatial queries, Apache Superset, interactive mapping, policy-grade dashboards.</p>
-          </article>
-          <article class="expertise-cat">
-            <h3>Frontend technologies</h3>
-            <p>JavaScript ES6+, HTML5 semantic markup, CSS3/SASS, React integration within Drupal, responsive design, progressive enhancement.</p>
-          </article>
-          <article class="expertise-cat">
-            <h3>DevOps & infrastructure</h3>
-            <p>Docker, Git, CI/CD, Varnish, Redis, AWS, Pantheon, Acquia Cloud, infrastructure as code.</p>
-          </article>
-          <article class="expertise-cat">
-            <h3>Leadership & governance</h3>
-            <p>Technical leadership across distributed teams, Agile/Scrum, vendor management, UN/IOM governance frameworks, zero-downtime upgrades.</p>
-          </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRACTICE HISTORY — alternating diptychs ============ -->
+  <section class="history reveal" aria-labelledby="history-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="history-heading">Practice history</h2>
+
+      <!-- IOM -->
+      <article class="dip dip--role">
+        <div class="dip__text">
+          <p class="role-yr tnum">Jan 2022 — present</p>
+          <h3>Senior Drupal Developer &amp; Architect</h3>
+          <p class="role-org">IOM · UN Migration — Geneva, Switzerland (remote)</p>
+          <p>Technical authority for the UN system&rsquo;s flagship digital platforms on global migration, climate-induced displacement and migration data intelligence. The work is governance engineering as much as software: dozens of UN agencies and partners publishing into shared platforms, each with its own mandate, review chain and data provenance requirements.</p>
+          <a href="projects.html" class="btn btn--ghost">Read&nbsp;the&nbsp;case&nbsp;studies</a>
+        </div>
+        <div class="dip__proof">
+          <h4 class="hm-panel-title">Platforms</h4>
+          <ul class="proof-list">
+            <li>
+              <strong>UN Migration Network Hub</strong>
+              <span>Architected and developed the core Drupal 10 governance platform for the UN system&rsquo;s Global Compact for Migration engagement, integrating dozens of UN agencies and partners in one secure ecosystem serving 195 member states and their delegations.</span>
+            </li>
+            <li>
+              <strong>CLIMB &amp; the Human Mobility and Climate Change Database</strong>
+              <span>Architected and developed the data-for-policy platform and its integrated database, turning multi-source environmental displacement datasets and climate-migration research into queryable, structured intelligence for G7 delegations and UN policymakers. Full-stack Drupal with GIS layers and evidence-to-decision pipelines, adopted across UN agencies as a reference tool.</span>
+            </li>
+            <li>
+              <strong>Global Migration Data Portal</strong>
+              <span>Contributed key sections of IOM GMDAC&rsquo;s <a href="https://migrationdataportal.org" target="_blank" rel="noopener">migrationdataportal.org</a>, the UN system&rsquo;s public interface for global migration statistics — engineering interactive dashboards and visualisation modules for policymakers and national statistics officers.</span>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- IRC — reversed -->
+      <article class="dip dip--role dip--rev">
+        <div class="dip__text">
+          <p class="role-yr tnum">Mar 2021 — Dec 2021</p>
+          <h3>Senior Drupal Architect</h3>
+          <p class="role-org">International Rescue Committee (IRC) — USA (remote)</p>
+          <p>Senior technical architect for the digital platforms supporting Ahlan Simsim, a UNICEF-funded early childhood development programme operating across conflict-affected regions. Field systems where downtime has a humanitarian cost, not a revenue cost.</p>
+        </div>
+        <div class="dip__proof">
+          <h4 class="hm-panel-title">Delivered</h4>
+          <ul class="proof-list">
+            <li>
+              <strong>Secure field data portal</strong>
+              <span>Architected and delivered a role-based portal letting IRC field staff analyse programme data and optimise operations in real time, improving resource allocation in crisis contexts.</span>
+            </li>
+            <li>
+              <strong>Mobile API backend</strong>
+              <span>Engineered the full Drupal REST API backend powering the programme&rsquo;s mobile field application, deployed across multiple conflict-affected countries.</span>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- April & June -->
+      <article class="dip dip--role">
+        <div class="dip__text">
+          <p class="role-yr tnum">Oct 2011 — Mar 2021</p>
+          <h3>Technical Lead &amp; Senior Architect</h3>
+          <p class="role-org">April and June GmbH — Germany (remote)</p>
+          <p>A decade leading architecture and delivery for enterprise Drupal, e-commerce and CMS platforms across international client engagements — the commercial grounding that the UN work is built on.</p>
+        </div>
+        <div class="dip__proof">
+          <h4 class="hm-panel-title">Delivered</h4>
+          <ul class="proof-list">
+            <li>
+              <strong>Bionorica global multi-site platform</strong>
+              <span>Led a ten-member engineering team to architect a Drupal 8 global multi-site platform on Pantheon, serving dozens of country and brand sites from a unified codebase, with a governance model that let non-technical regional teams publish safely.</span>
+            </li>
+            <li>
+              <strong>E-commerce and SAP ERP integration</strong>
+              <span>Developed SAP-integrated e-commerce solutions covering product data pipelines, inventory management and automated order fulfilment for enterprise clients across Europe.</span>
+            </li>
+            <li>
+              <strong>Platform migration strategy</strong>
+              <span>Directed the migration of a client&rsquo;s core product configuration system from WooCommerce to Drupal — business logic redesigned, full data migration executed with zero data loss.</span>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Earlier practice — tabular, breaks the diptych rhythm -->
+      <div class="earlier">
+        <h3 class="hm-panel-title">Earlier practice</h3>
+        <table class="spec">
+          <caption class="visually-hidden">Roles held between 2002 and 2011</caption>
+          <thead>
+            <tr><th scope="col">Period</th><th scope="col">Role</th><th scope="col">Organisations</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tnum">2007 — 2011</td>
+              <td>Principal &amp; Senior Software Engineer</td>
+              <td>Nextbridge · Pace Solutions · Pakistan IT Zone — Pakistan<span class="spec-note">Drupal platform migrations, custom B2B automation engines and enterprise web applications across a diverse client portfolio.</span></td>
+            </tr>
+            <tr>
+              <td class="tnum">2002 — 2007</td>
+              <td>Software Engineer → Senior Software Engineer</td>
+              <td>Diamond Group of Industries · Punjab Board of Technical Education — Pakistan<span class="spec-note">Enterprise ERP systems and academic examination platforms, taken from greenfield build to production at both organisations.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" aria-hidden="true">
+
+  <!-- ============ PLATFORM INVENTORY — spec sheet ============ -->
+  <section class="inventory reveal" aria-labelledby="inventory-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="inventory-heading">Platform inventory — UN Migration ecosystem</h2>
+      <p class="section-lede">Platforms delivered as lead architect within the UN Migration ecosystem, collectively the technical backbone of the Global Compact for Migration.</p>
+      <table class="spec spec--inventory">
+        <caption class="visually-hidden">Platforms delivered within the UN Migration ecosystem</caption>
+        <thead>
+          <tr><th scope="col">Platform</th><th scope="col">Function</th><th scope="col">Position</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>UN Migration Network Hub</td>
+            <td>Governance platform for UN system engagement with the Global Compact for Migration</td>
+            <td>Architect &amp; developer</td>
+          </tr>
+          <tr>
+            <td>CLIMB</td>
+            <td>Data-for-policy platform for climate-induced displacement, with GIS layers</td>
+            <td>Architect &amp; developer</td>
+          </tr>
+          <tr>
+            <td>Human Mobility &amp; Climate Change Database</td>
+            <td>Structured research corpus integrated into CLIMB</td>
+            <td>Architect &amp; developer</td>
+          </tr>
+          <tr>
+            <td>Global Migration Data Portal</td>
+            <td>Public interface for global migration statistics (IOM GMDAC)</td>
+            <td>Contributor — dashboards &amp; visualisation modules</td>
+          </tr>
+          <tr>
+            <td>GCM Interactive Platform</td>
+            <td>Interactive interface to Global Compact for Migration commitments</td>
+            <td>Lead architect</td>
+          </tr>
+          <tr>
+            <td>Repository of Practices</td>
+            <td>Curated implementation practice library for member states</td>
+            <td>Lead architect</td>
+          </tr>
+          <tr>
+            <td>Knowledge Hub</td>
+            <td>Knowledge management surface across the Migration Network</td>
+            <td>Lead architect</td>
+          </tr>
+          <tr>
+            <td>UN Migration Network Pledges</td>
+            <td>Pledge registration and tracking system for member states</td>
+            <td>Lead architect</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="rule" aria-hidden="true">
+
+  <!-- ============ DASHBOARDS DIPTYCH — practice ⇄ provenance ============ -->
+  <section class="dashboards-dip reveal" aria-labelledby="dash-heading">
+    <div class="wrap">
+      <div class="dip dip--rev">
+        <div class="dip__text">
+          <p class="kicker">Independent practice</p>
+          <h2 id="dash-heading">Dashboards built on live official data.</h2>
+          <p>A working series of interactive dashboards built against the public APIs of United Nations agencies and international organisations — UNHCR, UNFCCC, the World Bank, Our World in Data. Each one fetches at runtime rather than shipping a snapshot, so the figures are the source&rsquo;s figures, not mine.</p>
+          <p>These are the same techniques the CLIMB and Migration Data Portal work depends on: multi-source ingestion, provenance kept intact through the pipeline, and visual design that lets a policymaker reach a defensible reading quickly.</p>
+          <a href="dashboards.html" class="btn btn--ghost">All&nbsp;dashboards</a>
+        </div>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Provenance</h3>
+          <table class="spec spec--provenance">
+            <caption class="visually-hidden">Dashboards and their upstream data sources</caption>
+            <thead>
+              <tr><th scope="col">Dashboard</th><th scope="col">Source</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="dashboards/owid/carbon-275-years/index.html">275 Years of Carbon</a></td>
+                <td>Our World in Data · Global Carbon Project<span class="spec-note tnum">1750 — 2024</span></td>
+              </tr>
+              <tr>
+                <td><a href="dashboards/unfccc/decisions-vs-atmosphere/index.html">Decisions vs. the Atmosphere</a></td>
+                <td>UNFCCC COPs 1–31 · OWID live data<span class="spec-note tnum">1995 — 2026</span></td>
+              </tr>
+              <tr>
+                <td><a href="dashboards/unhcr/ten-years-of-flight/index.html">Ten Years of Flight</a></td>
+                <td>UNHCR Population Statistics API<span class="spec-note tnum">2015 — 2024</span></td>
+              </tr>
+              <tr>
+                <td><a href="dashboards/worldbank/remittances-migrant-vs-oda/index.html">The Invisible Lifeline</a></td>
+                <td>World Bank Indicators API · 195 economies<span class="spec-note tnum">2018 — 2023</span></td>
+              </tr>
+              <tr>
+                <td><a href="dashboards/worldbank/climate-migration-nexus/index.html">Displaced by Disaster</a></td>
+                <td>World Bank Indicators API · disaster displacement<span class="spec-note tnum">2008 — 2024</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -396,26 +411,99 @@
 
   <hr class="rule" aria-hidden="true">
 
-  <!-- CTA BAND -->
-  <section class="cta reveal" data-theme="dark" aria-labelledby="cta-heading">
+  <!-- ============ TECHNICAL EXPERTISE — spec sheet ============ -->
+  <section class="expertise-spec reveal" aria-labelledby="expertise-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="expertise-heading">Technical expertise</h2>
+      <table class="spec spec--stack">
+        <caption class="visually-hidden">Technical expertise by domain</caption>
+        <tbody>
+          <tr>
+            <th scope="row">Platform architecture</th>
+            <td>Drupal 8/9/10 · PHP 8+ · Symfony · WordPress · REST APIs · headless CMS · multi-site architecture</td>
+          </tr>
+          <tr>
+            <th scope="row">AI &amp; intelligent systems</th>
+            <td>Drupal AI module ecosystem · LLM integration · automated content workflows · intelligent data analysis pipelines</td>
+          </tr>
+          <tr>
+            <th scope="row">Data, GIS &amp; visualisation</th>
+            <td>MySQL · MariaDB · PostgreSQL · Apache Solr · GIS integration · interactive migration data dashboards · policy-grade visualisation</td>
+          </tr>
+          <tr>
+            <th scope="row">Frontend</th>
+            <td>JavaScript ES6+ · HTML5 · CSS3 / SASS · React integration</td>
+          </tr>
+          <tr>
+            <th scope="row">DevOps &amp; infrastructure</th>
+            <td>Docker · Git · CI/CD · Varnish · Redis · AWS · Pantheon · Acquia Cloud</td>
+          </tr>
+          <tr>
+            <th scope="row">Leadership &amp; governance</th>
+            <td>Technical leadership · Agile / Scrum · vendor management · UN/IOM governance frameworks · stakeholder engagement</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="rule" aria-hidden="true">
+
+  <!-- ============ EDUCATION & LANGUAGES ============ -->
+  <section class="credentials reveal" aria-labelledby="credentials-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="credentials-heading">Education &amp; languages</h2>
+      <div class="cred-grid">
+        <div>
+          <h3 class="hm-panel-title">Education</h3>
+          <dl class="record record--compact">
+            <div class="record__row">
+              <dt class="tnum">2000 — 2002</dt>
+              <dd><strong>Master of Computer Science</strong> — cum laude<br>American International University, Lahore, Pakistan</dd>
+            </div>
+            <div class="record__row">
+              <dt class="tnum">1998 — 2000</dt>
+              <dd><strong>Bachelor of Commerce</strong> — first class<br>University of the Punjab, Lahore, Pakistan</dd>
+            </div>
+          </dl>
+        </div>
+        <div>
+          <h3 class="hm-panel-title">Languages</h3>
+          <dl class="record record--compact">
+            <div class="record__row"><dt>English</dt><dd>C2 — professional working</dd></div>
+            <div class="record__row"><dt>Urdu</dt><dd>Native</dd></div>
+            <div class="record__row"><dt>Punjabi</dt><dd>Native</dd></div>
+            <div class="record__row"><dt>Spanish</dt><dd>A1</dd></div>
+            <div class="record__row"><dt>German</dt><dd>A1</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta reveal" aria-labelledby="cta-heading">
     <div class="wrap cta-inner">
       <div>
-        <p class="kicker" id="cta-heading">Next</p>
-        <p>See how these systems were built, platform by platform.</p>
+        <p class="kicker" id="cta-heading">Open to remote roles globally</p>
+        <p>Read the platform case studies, or get in touch about a role.</p>
       </div>
-      <a href="projects.html" class="btn btn--primary">View projects →</a>
+      <a href="contact.html" class="btn btn--primary">Get&nbsp;in&nbsp;touch</a>
     </div>
   </section>
 </main>
 
-<footer class="footer" role="contentinfo">
-  <div class="wrap footer-inner">
-    <p>© 2026 Omar Farooq. Built for GitHub Pages.</p>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:contactomarfarooq-github@yahoo.com">Email</a>
-      <a href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-    </div>
+<!-- ============ Ft4 · DENSE COLOPHON ============ -->
+<footer class="footer footer--hm-colophon" role="contentinfo">
+  <div class="wrap">
+    <p class="hm-colophon">
+      M. Omar Farooq — Senior Drupal Developer &amp; Architect, IOM · UN Migration, Geneva, Switzerland (remote). In commercial practice since 2002. Master of Computer Science, cum laude, American International University, Lahore, 2002. Bachelor of Commerce, first class, University of the Punjab, 2000. English C2, Urdu native, Punjabi native, Spanish A1, German A1. Open to remote roles globally. Built as static HTML and CSS — no framework, no build step — and served from GitHub Pages. © 2026.
+    </p>
+    <ul class="hm-colophon-links">
+      <li><a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:contactomarfarooq-github@yahoo.com">Email</a></li>
+      <li><a href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV&nbsp;(PDF)</a></li>
+    </ul>
   </div>
 </footer>
 

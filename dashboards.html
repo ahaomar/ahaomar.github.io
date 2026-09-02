@@ -21,8 +21,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.className += ' js';</script>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="topbar" role="banner">
   <div class="topbar-inner">
@@ -30,17 +33,26 @@
       <strong>OMAR FAROOQ</strong>
       <span>SENIOR PLATFORM ARCHITECT</span>
     </a>
-    <nav class="nav" role="navigation" aria-label="Primary">
+
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
       <a href="index.html">About</a>
       <a href="projects.html">Projects</a>
       <a href="skills.html">Skills</a>
+      <a href="dashboards.html" aria-current="page">Dashboards</a>
       <a href="blog.html">Blog</a>
       <a href="contact.html">Contact</a>
-      <a href="dashboards.html" aria-current="page">Dashboards</a>
+      <a href="assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
     </nav>
-    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
-      <kbd><span>⌘</span>K</kbd>
-    </button>
+
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -55,12 +67,12 @@
       <section class="cmdk-section" aria-label="Navigation">
         <h3 class="cmdk-section-title">Go to</h3>
         <div class="cmdk-group" role="listbox">
-          <button class="cmdk-item" role="option" data-href="index.html">About — Profile & history</button>
-          <button class="cmdk-item" role="option" data-href="projects.html">Projects — Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="index.html">About — Profile &amp; record</button>
+          <button class="cmdk-item" role="option" data-href="projects.html">Projects — UN platform case studies</button>
           <button class="cmdk-item" role="option" data-href="skills.html">Skills — Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="dashboards.html">Dashboards — Data visualisations</button>
           <button class="cmdk-item" role="option" data-href="blog.html">Blog — Field notes</button>
           <button class="cmdk-item" role="option" data-href="contact.html">Contact — Open to roles</button>
-          <button class="cmdk-item" role="option" data-href="dashboards.html">Dashboards — AI & data visualizations</button>
         </div>
       </section>
       <section class="cmdk-section" aria-label="External">
@@ -78,152 +90,167 @@
   </div>
 </div>
 
-<main>
-  <section class="page-hero reveal">
+<main id="main">
+
+  <!-- ============ PAGE HEAD ============ -->
+  <section class="page-head" aria-labelledby="page-heading">
     <div class="wrap">
-      <p class="kicker">AI & data visualizations / platform analytics</p>
-      <h1>Decision-ready intelligence.</h1>
-      <p class="lede">Interactive dashboards built with AI to visualize data from official, free APIs — World Bank, UN, and international development sources — turning complex migration, climate, and finance data into actionable intelligence for policymakers and delegations.</p>
+      <div class="dip">
+        <div class="dip__text">
+          <p class="kicker">Independent practice · live data</p>
+          <h1 id="page-heading">Dashboards built on official APIs, fetched at runtime.</h1>
+        </div>
+        <div class="dip__proof">
+          <p class="lede">A working series of interactive dashboards built against the public APIs of United Nations agencies and international organisations. Each one fetches when you open it rather than shipping a snapshot, so the figures are the source&rsquo;s figures — not mine.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="reveal">
-    <div class="wrap col" style="max-width: 780px; margin: 0 auto;">
+  <!-- ============ PROVENANCE TABLE ============ -->
+  <section class="inventory" aria-labelledby="provenance-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="provenance-heading">Provenance</h2>
+      <p class="section-lede">Every dashboard, its upstream source, and the period it covers. Follow a source link to check any figure against the publisher.</p>
+      <table class="spec spec--provenance">
+        <caption class="visually-hidden">Dashboards, upstream data sources and coverage periods</caption>
+        <thead>
+          <tr><th scope="col">Dashboard</th><th scope="col">Source</th><th scope="col">Period</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="dashboards/owid/carbon-275-years/index.html">275 Years of Carbon</a></td>
+            <td>Our World in Data · Global Carbon Project</td>
+            <td class="tnum">1750 — 2024</td>
+          </tr>
+          <tr>
+            <td><a href="dashboards/unfccc/decisions-vs-atmosphere/index.html">Decisions vs. the Atmosphere</a></td>
+            <td>UNFCCC COPs 1–31 · OWID live data</td>
+            <td class="tnum">1995 — 2026</td>
+          </tr>
+          <tr>
+            <td><a href="dashboards/unhcr/ten-years-of-flight/index.html">Ten Years of Flight</a></td>
+            <td>UNHCR Population Statistics API</td>
+            <td class="tnum">2015 — 2024</td>
+          </tr>
+          <tr>
+            <td><a href="dashboards/worldbank/remittances-migrant-vs-oda/index.html">The Invisible Lifeline</a></td>
+            <td>World Bank Indicators API · 195 economies</td>
+            <td class="tnum">2018 — 2023</td>
+          </tr>
+          <tr>
+            <td><a href="dashboards/worldbank/climate-migration-nexus/index.html">Displaced by Disaster</a></td>
+            <td>World Bank Indicators API · disaster displacement</td>
+            <td class="tnum">2008 — 2024</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); display: flex; gap: var(--space-6); align-items: flex-start; color: inherit;">
-        <a href="dashboards/owid/carbon-275-years/index.html" aria-label="Open dashboard: 275 Years of Carbon" style="flex-shrink: 0; text-decoration: none;">
-          <div style="width: 96px; height: 96px; border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper-1); display: flex; align-items: center; justify-content: center; font-size: 40px;">🏭</div>
-        </a>
-        <div style="min-width: 0;">
-          <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">Our World in Data · Global Carbon Project · 1750–2024</p>
-          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; margin: 0;"><a href="dashboards/owid/carbon-275-years/index.html" style="color: inherit; text-decoration: none;">275 Years of Carbon: Who Emits, Who Emitted</a></h2>
-          <p style="margin: var(--space-3) 0 0; color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6;">
-            Every tonne of CO₂ since the Industrial Revolution, by country. Animated year slider from 1750 to 2024, with annual, cumulative-since-1750 and per-capita views — the annual map shows who emits today, the cumulative map inverts it into historical responsibility.
-          </p>
-          <a href="dashboards/owid/carbon-275-years/index.html" class="btn btn--ghost" style="font-size: var(--text-xs); margin-top: var(--space-4);">View dashboard →</a>
+  <hr class="rule" aria-hidden="true">
+
+  <!-- ============ THE DASHBOARDS ============ -->
+  <section class="history" aria-labelledby="dash-list-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="dash-list-heading">The dashboards</h2>
+      <ul class="entries">
+
+        <li class="entry">
+          <p class="entry-meta">Our World in Data · Global Carbon Project · <span class="tnum">1750 — 2024</span></p>
+          <h3><a href="dashboards/owid/carbon-275-years/index.html">275 Years of Carbon: who emits, who emitted</a></h3>
+          <p>Every tonne of CO₂ since the Industrial Revolution, by country. An animated year slider from 1750 to 2024 with annual, cumulative and per-capita views — the annual map shows who emits today, and the cumulative map inverts it into historical responsibility. That inversion is the whole argument of the piece.</p>
+          <a href="dashboards/owid/carbon-275-years/index.html" class="btn btn--ghost">Open dashboard</a>
+        </li>
+
+        <li class="entry">
+          <p class="entry-meta">UNFCCC COPs 1–31 · OWID live data · <span class="tnum">1995 — 2026</span></p>
+          <h3><a href="dashboards/unfccc/decisions-vs-atmosphere/index.html">Decisions vs. the Atmosphere: 31 COPs, one curve</a></h3>
+          <p>Every COP since Berlin 1995 — host, presidency and landmark decisions — plotted against the CO₂ curve those decisions were meant to bend. Play through the summits and toggle annual, cumulative and temperature views to see whether the curve responded after Kyoto, Paris or Dubai.</p>
+          <a href="dashboards/unfccc/decisions-vs-atmosphere/index.html" class="btn btn--ghost">Open dashboard</a>
+        </li>
+
+        <li class="entry">
+          <p class="entry-meta">UNHCR Population Statistics API · <span class="tnum">2015 — 2024</span></p>
+          <h3><a href="dashboards/unhcr/ten-years-of-flight/index.html">Ten Years of Flight: where refugees come from</a></h3>
+          <p>A decade of forced displacement, animated. Crises emerge, unfold and fade across the map — Ukraine 2022, Afghanistan 2021, and the long Syrian displacement — with per-country origin versus hosting analysis drawn live from the UNHCR API.</p>
+          <a href="dashboards/unhcr/ten-years-of-flight/index.html" class="btn btn--ghost">Open dashboard</a>
+        </li>
+
+        <li class="entry">
+          <p class="entry-meta">World Bank Indicators API · 195 economies · <span class="tnum">2018 — 2023</span></p>
+          <h3><a href="dashboards/worldbank/remittances-migrant-vs-oda/index.html">The Invisible Lifeline: remittances against aid</a></h3>
+          <p>What migrant workers send home, set against official development assistance across 195 economies. A choropleth map and time series, with the comparison made directly rather than left for the reader to assemble.</p>
+          <a href="dashboards/worldbank/remittances-migrant-vs-oda/index.html" class="btn btn--ghost">Open dashboard</a>
+        </li>
+
+        <li class="entry">
+          <p class="entry-meta">World Bank Indicators API · disaster displacement · <span class="tnum">2008 — 2024</span></p>
+          <h3><a href="dashboards/worldbank/climate-migration-nexus/index.html">Displaced by Disaster: who extreme weather moves</a></h3>
+          <p>People forced from their homes by floods, storms and droughts. New disaster displacement across 195 economies, with per-country trends and climate-risk context — the dataset behind the climate-migration argument, without the rhetoric.</p>
+          <a href="dashboards/worldbank/climate-migration-nexus/index.html" class="btn btn--ghost">Open dashboard</a>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <hr class="rule" aria-hidden="true">
+
+  <!-- ============ WHY THIS WORK ============ -->
+  <section class="dashboards-dip" aria-labelledby="why-heading">
+    <div class="wrap">
+      <div class="dip dip--rev">
+        <div class="dip__text">
+          <p class="kicker">Why build these</p>
+          <h2 id="why-heading">The same techniques the UN platform work depends on.</h2>
+          <p>Multi-source ingestion, provenance kept intact through the pipeline, and visual design that lets a policymaker reach a defensible reading quickly. These dashboards are where I keep those techniques sharp on data nobody commissioned.</p>
+          <p>They also make a point about verifiability: because each one reads from a public API at runtime, anyone can check a figure against the publisher. That is the same standard the CLIMB and Migration Data Portal work is held to.</p>
+          <a href="projects.html" class="btn btn--ghost">See the platform work</a>
         </div>
-      </article>
-
-      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); display: flex; gap: var(--space-6); align-items: flex-start; color: inherit;">
-        <a href="dashboards/worldbank/remittances-migrant-vs-oda/index.html" aria-label="Open dashboard: The Invisible Lifeline" style="flex-shrink: 0; text-decoration: none;">
-          <div style="width: 96px; height: 96px; border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper-1); display: flex; align-items: center; justify-content: center; font-size: 40px;">🌍</div>
-        </a>
-        <div style="min-width: 0;">
-          <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">World Bank API · 195 economies · 2018–2023</p>
-          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; margin: 0;"><a href="dashboards/worldbank/remittances-migrant-vs-oda/index.html" style="color: inherit; text-decoration: none;">The Invisible Lifeline: The Real Aid</a></h2>
-          <p style="margin: var(--space-3) 0 0; color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6;">
-            Remittances vs official development assistance. Choropleth map and time-series chart comparing what migrant workers send home against ODA across 195 economies, with auto-generated takeaways — live from the World Bank Indicators API.
-          </p>
-          <a href="dashboards/worldbank/remittances-migrant-vs-oda/index.html" class="btn btn--ghost" style="font-size: var(--text-xs); margin-top: var(--space-4);">View dashboard →</a>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Method</h3>
+          <dl class="notes">
+            <div>
+              <dt>Live fetch, not snapshots</dt>
+              <dd>Each dashboard calls its source API on load. Nothing is baked in, so nothing silently goes stale.</dd>
+            </div>
+            <div>
+              <dt>Official sources only</dt>
+              <dd>UNHCR, UNFCCC, the World Bank and Our World in Data. No aggregators, no scraped intermediaries.</dd>
+            </div>
+            <div>
+              <dt>Self-contained</dt>
+              <dd>Each is plain HTML, CSS and JavaScript with no build step — the same constraint as the rest of this site.</dd>
+            </div>
+          </dl>
         </div>
-      </article>
+      </div>
+    </div>
+  </section>
 
-      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); display: flex; gap: var(--space-6); align-items: flex-start; color: inherit;">
-        <a href="dashboards/unfccc/decisions-vs-atmosphere/index.html" aria-label="Open dashboard: Decisions vs the Atmosphere" style="flex-shrink: 0; text-decoration: none;">
-          <div style="width: 96px; height: 96px; border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper-1); display: flex; align-items: center; justify-content: center; font-size: 40px;">🌡️</div>
-        </a>
-        <div style="min-width: 0;">
-          <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">UNFCCC COPs 1–31 · OWID live data · 1995–2026</p>
-          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; margin: 0;"><a href="dashboards/unfccc/decisions-vs-atmosphere/index.html" style="color: inherit; text-decoration: none;">Decisions vs. the Atmosphere: 31 COPs, One Curve</a></h2>
-          <p style="margin: var(--space-3) 0 0; color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6;">
-            Every COP since Berlin 1995 — host, presidency and landmark decisions — plotted against the CO₂ curve those decisions were meant to bend. Play through 31 summits, toggle annual, cumulative and temperature views, and let the data deliver each verdict: did the curve bend after Kyoto, Paris or Dubai?
-          </p>
-          <a href="dashboards/unfccc/decisions-vs-atmosphere/index.html" class="btn btn--ghost" style="font-size: var(--text-xs); margin-top: var(--space-4);">View dashboard →</a>
-        </div>
-      </article>
-
-      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); display: flex; gap: var(--space-6); align-items: flex-start; color: inherit;">
-        <a href="dashboards/unhcr/ten-years-of-flight/index.html" aria-label="Open dashboard: Ten Years of Flight" style="flex-shrink: 0; text-decoration: none;">
-          <div style="width: 96px; height: 96px; border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper-1); display: flex; align-items: center; justify-content: center; font-size: 40px;">🕊️</div>
-        </a>
-        <div style="min-width: 0;">
-          <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">UNHCR API · Refugee origins & hosts · 2015–2024</p>
-          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; margin: 0;"><a href="dashboards/unhcr/ten-years-of-flight/index.html" style="color: inherit; text-decoration: none;">Ten Years of Flight: Where Refugees Come From</a></h2>
-          <p style="margin: var(--space-3) 0 0; color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6;">
-            A decade of forced displacement, animated. Press play and watch crises emerge, unfold and fade across the map — Ukraine 2022, Afghanistan 2021, and the long Syrian displacement — with per-country origin vs. hosting analysis and auto-generated takeaways, live from the UNHCR Population Statistics API.
-          </p>
-          <a href="dashboards/unhcr/ten-years-of-flight/index.html" class="btn btn--ghost" style="font-size: var(--text-xs); margin-top: var(--space-4);">View dashboard →</a>
-        </div>
-      </article>
-
-      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); display: flex; gap: var(--space-6); align-items: flex-start; color: inherit;">
-        <a href="dashboards/worldbank/climate-migration-nexus/index.html" aria-label="Open dashboard: Displaced by Disaster" style="flex-shrink: 0; text-decoration: none;">
-          <div style="width: 96px; height: 96px; border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper-1); display: flex; align-items: center; justify-content: center; font-size: 40px;">🔥</div>
-        </a>
-        <div style="min-width: 0;">
-          <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">World Bank API · Disaster displacement · 2008–2024</p>
-          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; margin: 0;"><a href="dashboards/worldbank/climate-migration-nexus/index.html" style="color: inherit; text-decoration: none;">Displaced by Disaster: Who Extreme Weather Moves</a></h2>
-          <p style="margin: var(--space-3) 0 0; color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6;">
-            People forced to leave their homes by floods, storms and droughts. Choropleth map of new disaster displacement across 195 economies, with per-country trends and climate-risk context — live from the World Bank Indicators API.
-          </p>
-          <a href="dashboards/worldbank/climate-migration-nexus/index.html" class="btn btn--ghost" style="font-size: var(--text-xs); margin-top: var(--space-4);">View dashboard →</a>
-        </div>
-      </article>
-
-      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); display: flex; gap: var(--space-6); align-items: flex-start; color: inherit;">
-        <a href="projects.html" aria-label="Open project: UN Migration Platform Architecture" style="flex-shrink: 0; text-decoration: none;">
-          <div style="width: 96px; height: 96px; border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper-1); display: flex; align-items: center; justify-content: center; font-size: 40px;">📊</div>
-        </a>
-        <div style="min-width: 0;">
-          <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">UN Migration Network Hub · Six platforms</p>
-          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; margin: 0;"><a href="projects.html" style="color: inherit; text-decoration: none;">UN Migration Platform Architecture</a></h2>
-          <p style="margin: var(--space-3) 0 0; color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6;">
-            Six-platform architecture visualization: Interface → API Layer → Data → Infrastructure. Interactive stack showing governance model, API ecosystem, data pipelines, and infrastructure layer serving 195 member states.
-          </p>
-          <a href="projects.html" class="btn btn--ghost" style="font-size: var(--text-xs); margin-top: var(--space-4);">View platforms →</a>
-        </div>
-      </article>
-
-      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); display: flex; gap: var(--space-6); align-items: flex-start; color: inherit;">
-        <a href="projects.html" aria-label="Open project: CLIMB Climate and Migration Intelligence" style="flex-shrink: 0; text-decoration: none;">
-          <div style="width: 96px; height: 96px; border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper-1); display: flex; align-items: center; justify-content: center; font-size: 40px;">🧠</div>
-        </a>
-        <div style="min-width: 0;">
-          <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">Climate & mobility data · G7 briefings</p>
-          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; margin: 0;"><a href="projects.html" style="color: inherit; text-decoration: none;">CLIMB: Climate & Migration Intelligence</a></h2>
-          <p style="margin: var(--space-3) 0 0; color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6;">
-            Data-for-policy platform integrating multi-source climate and migration datasets with GIS layers and human mobility databases. Built for G7 delegations and UN decision makers to act on climate-induced displacement intelligence.
-          </p>
-          <a href="projects.html" class="btn btn--ghost" style="font-size: var(--text-xs); margin-top: var(--space-4);">View project →</a>
-        </div>
-      </article>
-
-      <article class="post-card reveal" style="padding: var(--space-8) 0; border-top: 1px solid var(--color-rule); border-bottom: 1px solid var(--color-rule); display: flex; gap: var(--space-6); align-items: flex-start; color: inherit;">
-        <a href="projects.html" aria-label="Open project: Global Migration Data Portal" style="flex-shrink: 0; text-decoration: none;">
-          <div style="width: 96px; height: 96px; border: 1px solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper-1); display: flex; align-items: center; justify-content: center; font-size: 40px;">📈</div>
-        </a>
-        <div style="min-width: 0;">
-          <p class="post-meta" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">IOM · 50+ data sources</p>
-          <h2 style="font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; margin: 0;"><a href="projects.html" style="color: inherit; text-decoration: none;">Global Migration Data Portal</a></h2>
-          <p style="margin: var(--space-3) 0 0; color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.6;">
-            Authoritative one-stop shop for global migration statistics. Interactive visualization and custom analytics from 50+ data sources. Decision-ready intelligence for policymakers, researchers, and the international development community.
-          </p>
-          <a href="projects.html" class="btn btn--ghost" style="font-size: var(--text-xs); margin-top: var(--space-4);">View portal →</a>
-        </div>
-      </article>
-
+  <!-- ============ CTA ============ -->
+  <section class="cta reveal" aria-labelledby="cta-heading">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker" id="cta-heading">Next</p>
+        <p>Read the thinking behind the platform architecture.</p>
+      </div>
+      <a href="blog.html" class="btn btn--primary">Read the field notes</a>
     </div>
   </section>
 </main>
 
-<section class="cta reveal" data-theme="dark">
-  <div class="wrap cta-inner">
-    <div>
-      <p class="kicker">Next</p>
-      <p>Read the field notes on platform architecture.</p>
-    </div>
-    <a href="blog.html" class="btn btn--primary">Read the blog →</a>
-  </div>
-</section>
-
-<footer class="footer" role="contentinfo">
-  <div class="wrap footer-inner">
-    <p>© 2026 Omar Farooq. Built for GitHub Pages.</p>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:contactomarfarooq-github@yahoo.com">Email</a>
-      <a href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-    </div>
+<footer class="footer footer--hm-colophon" role="contentinfo">
+  <div class="wrap">
+    <p class="hm-colophon">
+      M. Omar Farooq — Senior Drupal Developer &amp; Architect, IOM · UN Migration, Geneva, Switzerland (remote). In commercial practice since 2002. Master of Computer Science, cum laude, American International University, Lahore, 2002. Bachelor of Commerce, first class, University of the Punjab, 2000. English C2, Urdu native, Punjabi native, Spanish A1, German A1. Open to remote roles globally. Built as static HTML and CSS — no framework, no build step — and served from GitHub Pages. © 2026.
+    </p>
+    <ul class="hm-colophon-links">
+      <li><a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:contactomarfarooq-github@yahoo.com">Email</a></li>
+      <li><a href="assets/Omar_Farooq_CV.pdf" target="_blank" rel="noopener">CV&nbsp;(PDF)</a></li>
+    </ul>
   </div>
 </footer>
 
