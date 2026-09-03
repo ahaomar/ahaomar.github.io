@@ -12,8 +12,8 @@ var monthChart = null;
 var annualChart = null;
 var debounceTimer = null;
 
-var THEN_FROM = 1941, THEN_TO = 1950;
-var NOW_FROM = 2015, NOW_TO = 2024;
+var THEN_FROM = 2010, THEN_TO = 2015;
+var NOW_FROM = 2016, NOW_TO = 2024;
 
 /* ---------- helpers ---------- */
 function setStatus(txt) {
@@ -98,7 +98,7 @@ function selectCity(r) {
   document.getElementById("cityInput").value = r.name;
   document.getElementById("cityDisplay").textContent = r.name;
   document.getElementById("cityCaption").textContent =
-    (r.admin1 ? r.admin1 + ", " : "") + r.country + " — loading 85 years of daily data…";
+    (r.admin1 ? r.admin1 + ", " : "") + r.country + " — loading 14 years of daily data…";
   loadCity(r);
 }
 
@@ -124,7 +124,7 @@ async function loadCity(r) {
     var nowData = await fetchDecade(r.latitude, r.longitude, NOW_FROM, NOW_TO);
 
     /* full annual series for the year-by-year chart: fetch 1940–2024 in 9 chunks */
-    setStatus("Loading full 85-year series…");
+    setStatus("Loading full 14-year series…");
     var annualTemps = {};   /* year: mean */
     var chunks = [];
     for (var start = 1940; start <= 2024; start += 10) {
@@ -163,7 +163,7 @@ async function loadCity(r) {
     document.getElementById("cityCaption").textContent =
       (r.admin1 ? r.admin1 + ", " : "") + r.country +
       " — " + (r.population ? Number(r.population).toLocaleString() + " people · " : "") +
-      "85 years of daily data, live from Copernicus ERA5.";
+      "14 years of daily data, live from Copernicus ERA5.";
 
     renderAll();
   } catch (e) {
@@ -201,7 +201,7 @@ function renderAll() {
   document.getElementById("deltaNum").innerHTML =
     (delta >= 0 ? "+" : "") + delta.toFixed(2) + "&deg;C";
   document.getElementById("deltaLabel").innerHTML =
-    "warming in " + currentCity.name + " — 1941&ndash;1950 vs 2015&ndash;2024 average";
+    "warming in " + currentCity.name + " — 2010&ndash;2015 vs 2016&ndash;2024 average";
 
   buildDistChart();
   buildMonthChart(thenMean, nowMean);
@@ -234,13 +234,13 @@ function buildDistChart() {
       labels: labels,
       datasets: [
         {
-          label: "1941–1950 (days)",
+          label: "2010–2015 (days)",
           data: hist(currentCity.thenTemps),
           backgroundColor: "rgba(99,177,224,.6)",
           borderRadius: 3
         },
         {
-          label: "2015–2024 (days)",
+          label: "2016–2024 (days)",
           data: hist(currentCity.nowTemps),
           backgroundColor: "rgba(220,107,90,.7)",
           borderRadius: 3
