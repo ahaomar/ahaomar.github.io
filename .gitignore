@@ -1,0 +1,14 @@
+# AI/dev config files
+.claude.md
+opencode.json
+AGENTS.md
+skills-lock.json
+
+# AI/dev tool folders
+.agents/
+.claude/
+.hallmark/
+linkedinpost/ 
+node_modules/
+package.json
+package-lock.json
