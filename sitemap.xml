@@ -1,9 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <url>
-    <loc>https://ahaomar.github.io/</loc>
+       <loc>https://ahaomar.github.io/</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>1.0000</priority>
   </url>
   <url>
-    <loc>https://ahaomar.github.io/dashboards.html</loc>
+       <loc>https://ahaomar.github.io/projects.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/skills.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/dashboards.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/blog.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/contact.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/assets/Omar_Farooq_CV.pdf</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/dashboards/owid/carbon-275-years/index.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/dashboards/unfccc/decisions-vs-atmosphere/index.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/dashboards/unhcr/ten-years-of-flight/index.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/dashboards/worldbank/remittances-migrant-vs-oda/index.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/dashboards/worldbank/climate-migration-nexus/index.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/blog/drupal-ai-content-pipelines-at-governance-scale.html</loc>
+       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/dashboards/worldbank/too-hot-to-stay/index.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/dashboards/owid/methane-moment/index.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/dashboards/openmeteo/city-hotter/index.html</loc>
+       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/blog/distributed-authority-models-for-migration-data.html</loc>
+       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/blog/governance-first-architecture.html</loc>
+       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://ahaomar.github.io/blog/what-drupal-is-actually-good-at.html</loc>
+       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
+       <priority>0.6400</priority>
   </url>
 </urlset>
