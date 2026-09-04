@@ -1,100 +1,232 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-  <url>
-       <loc>https://ahaomar.github.io/</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>1.0000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/projects.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/skills.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/dashboards.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/blog.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/contact.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/assets/Omar_Farooq_CV.pdf</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/dashboards/owid/carbon-275-years/index.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/dashboards/unfccc/decisions-vs-atmosphere/index.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/dashboards/unhcr/ten-years-of-flight/index.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/dashboards/worldbank/remittances-migrant-vs-oda/index.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/dashboards/worldbank/climate-migration-nexus/index.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/blog/drupal-ai-content-pipelines-at-governance-scale.html</loc>
-       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/dashboards/worldbank/too-hot-to-stay/index.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/dashboards/owid/methane-moment/index.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/dashboards/openmeteo/city-hotter/index.html</loc>
-       <lastmod>2026-09-04T09:47:47+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/blog/distributed-authority-models-for-migration-data.html</loc>
-       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/blog/governance-first-architecture.html</loc>
-       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://ahaomar.github.io/blog/what-drupal-is-actually-good-at.html</loc>
-       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
+
+<url>
+  <loc>https://kaen7.github.io/</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/aboutme.html</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/categories/JavaScript</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/categories/HTML</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/categories/CSS</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/categories/GIT</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/categories/SCSS</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/categories/markdown</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/useMemo</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/useEffect</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/useCallback</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/useRef</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/reactRouterDom</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/setState</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/propstyle</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/liteCycle</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/axios&amp;&amp;async</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/%EC%A1%B0%EA%B1%B4%EB%AC%B8%EC%8B%AC%ED%99%94</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/%EA%B0%9D%EC%B2%B4%EC%83%9D%EC%84%B1%EC%9E%90</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/sort</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/reduce</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/forEach</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/%EC%99%84%EC%A3%BC%ED%95%98%EC%A7%80%EB%AA%BB%ED%95%9C%EC%84%A0%EC%88%98</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/%EB%91%90%EA%B0%9C%EB%BD%91%EC%95%84%EC%84%9C%EB%8D%94%ED%95%98%EA%B8%B0</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/splice</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2021-01/map</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-12/%EB%81%9D%EB%A7%90%EC%9E%87%EA%B8%B0</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-12/%EA%B5%AC%EA%B5%AC%EB%8B%A8</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-12/javascript</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-12/%EA%B0%80%EC%9A%B4%EB%8D%B0%EA%B8%80%EC%9E%90%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-12/toDoList</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-12/clock</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-12/calculator</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-11/markdown-basic</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-11/SCSS</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-11/iframe-size</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-11/javascript__changeForCss</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-11/HowToUseGit</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-11/input__action</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-11/FlexBox</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-11/input-form</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-11/Event</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-11/canvasAPI</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kaen7.github.io/2020-11/react</loc>
+  <lastmod>2021-02-02T04:38:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
 </urlset>
