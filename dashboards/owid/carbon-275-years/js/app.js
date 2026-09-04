@@ -1,7 +1,7 @@
 "use strict";
 
 /* ============================================================
-   275 Years of Carbon — annual / cumulative / per-capita CO2
+   275 Years of Carbon: annual / cumulative / per-capita CO2
    Data: Our World in Data (Global Carbon Project), 1750–2024
    ============================================================ */
 
@@ -117,26 +117,26 @@ async function fetchFirstWorking(urls) {
 }
 
 async function loadAll() {
-  setStatus("Step 1/4 — loading annual CO₂ (1750–2024)");
+  setStatus("Step 1/4: loading annual CO₂ (1750–2024)");
   var annualCsv = await fetchFirstWorking(OWID_SOURCES.annual);
   parseOWID(annualCsv, DATA.annual, true);
 
-  setStatus("Step 2/4 — loading cumulative CO₂");
+  setStatus("Step 2/4: loading cumulative CO₂");
   var cumCsv = await fetchFirstWorking(OWID_SOURCES.cumulative);
   parseOWID(cumCsv, DATA.cumulative, false);
 
-  setStatus("Step 3/4 — loading per-capita CO₂");
+  setStatus("Step 3/4: loading per-capita CO₂");
   var capCsv = await fetchFirstWorking(OWID_SOURCES.perCapita);
   parseOWID(capCsv, DATA.perCapita, false);
 
   if (!Object.keys(DATA.annual).length) throw new Error("No country data parsed from OWID sources");
 
-  console.log("DATA CHECK — annual:", Object.keys(DATA.annual).length,
+  console.log("DATA CHECK: annual:", Object.keys(DATA.annual).length,
               "| cumulative:", Object.keys(DATA.cumulative).length,
               "| perCapita:", Object.keys(DATA.perCapita).length,
               "| world years:", Object.keys(WORLD).length);
 
-  setStatus("Step 4/4 — loading map boundaries");
+  setStatus("Step 4/4: loading map boundaries");
   var geo = await fetchJSONSafe("https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json");
 
   setStatus("");
@@ -241,7 +241,7 @@ function initMap(geo) {
       layer.bindTooltip(function(ev) {
         var v = metricFor(f.id, currentYear);
         var label = mode === "perCapita" ? "t per person" : mode === "cumulative" ? " since 1750" : " in " + currentYear;
-        return NAMES[f.id] + (v !== null ? " — " + (mode === "perCapita" ? fmtCapita(v) : fmtFull(Math.round(v)) + "t") + label : " — no data");
+        return NAMES[f.id] + (v !== null ? ": " + (mode === "perCapita" ? fmtCapita(v) : fmtFull(Math.round(v)) + "t") + label : ": no data");
       }, { sticky: true });
       layer.on("click", function() { selectCountry(f.id); });
     }
@@ -268,18 +268,18 @@ function restyleMap() {
    YEAR ENGINE
    ============================================================ */
 var ERAS = [
-  { y: 1750, label: "The Industrial Revolution begins — the entire world emits less than a small city does today." },
+  { y: 1750, label: "The Industrial Revolution begins: the entire world emits less than a small city does today." },
   { y: 1800, label: "Steam and coal: Britain alone leads the world into the fossil age." },
   { y: 1850, label: "Railways spread; Germany and the US begin to industrialise." },
-  { y: 1900, label: "A new century — the US has overtaken every nation in annual emissions." },
+  { y: 1900, label: "A new century: the US has overtaken every nation in annual emissions." },
   { y: 1913, label: "Peak coal-era Europe on the eve of WWI." },
   { y: 1930, label: "The Great Depression cuts emissions worldwide." },
-  { y: 1950, label: "The Great Acceleration — postwar boom, oil age, emissions explode." },
-  { y: 1971, label: "UK hits its all-time annual peak — and never returns to it." },
+  { y: 1950, label: "The Great Acceleration: postwar boom, oil age, emissions explode." },
+  { y: 1971, label: "UK hits its all-time annual peak: and never returns to it." },
   { y: 1988, label: "NASA's James Hansen testifies to the US Senate; the IPCC is born." },
   { y: 2006, label: "China overtakes the US as the world's largest annual emitter." },
   { y: 2015, label: "The Paris Agreement year." },
-  { y: 2020, label: "COVID-19 cuts emissions — the largest annual drop ever recorded." },
+  { y: 2020, label: "COVID-19 cuts emissions: the largest annual drop ever recorded." },
   { y: 2024, label: "Latest year: record world emissions, 38.6 billion tonnes." }
 ];
 
@@ -433,11 +433,11 @@ function refreshDetail() {
   if (ann !== null && cum !== null && cap !== null) {
     ratioEl.innerHTML =
       'In ' + currentYear + ', <b>' + name + '</b> emitted <b>' + fmtTonnes(ann) + '</b> of CO<sub>2</sub>' +
-      ' — <b>' + fmtCapita(cap) + '</b> per person. Its total since 1750: <b>' + fmtTonnes(cum) + '</b>.';
+      ': <b>' + fmtCapita(cap) + '</b> per person. Its total since 1750: <b>' + fmtTonnes(cum) + '</b>.';
   } else if (ann !== null) {
     ratioEl.innerHTML = 'In ' + currentYear + ', <b>' + name + '</b> emitted <b>' + fmtTonnes(ann) + '</b> of CO<sub>2</sub>.';
   } else {
-    ratioEl.innerHTML = 'No emission data for ' + name + ' in ' + currentYear + ' — try another year or metric.';
+    ratioEl.innerHTML = 'No emission data for ' + name + ' in ' + currentYear + ': try another year or metric.';
   }
 
   renderChart(iso);
@@ -549,7 +549,7 @@ function renderTakeaways(iso) {
   if (cumC !== null) {
     var gtc = cumC / 1e9;
     if (gtc < 16.8) {
-      items.push("Entire history since 1750: <b>" + fmtTonnes(cumC) + "</b> — less than the United Kingdom had emitted by 1900.");
+      items.push("Entire history since 1750: <b>" + fmtTonnes(cumC) + "</b>: less than the United Kingdom had emitted by 1900.");
     } else {
       items.push("Entire history since 1750: <b>" + gtc.toFixed(0) + " Gt</b> of CO<sub>2</sub>.");
     }
@@ -578,6 +578,6 @@ document.addEventListener("DOMContentLoaded", function() {
   loadAll().catch(function(err) {
     console.error(err);
     document.getElementById("status").textContent =
-      "ERROR: " + err.message + " — see Console (F12)";
+      "ERROR: " + err.message + ": see Console (F12)";
   });
 });

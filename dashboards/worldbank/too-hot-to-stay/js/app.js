@@ -1,7 +1,7 @@
 "use strict";
 
 /* ============================================================
-   Too Hot to Stay — climate exposure x disaster displacement
+   Too Hot to Stay: climate exposure x disaster displacement
    Data: World Bank Indicators API (EN.CLC.MDAT.ZS, VC.IDP.NWDS)
    ============================================================ */
 
@@ -55,7 +55,7 @@ async function fetchJSON(url) {
 
 /* ---------- data loading ---------- */
 async function loadAll() {
-  setStatus("Step 1/3 — loading climate exposure (droughts, floods, extreme temps)");
+  setStatus("Step 1/3: loading climate exposure (droughts, floods, extreme temps)");
   var eData = await fetchJSON("https://api.worldbank.org/v2/country/all/indicator/EN.CLC.MDAT.ZS?format=json&per_page=20000");
   (eData[1] || []).forEach(function(r) {
     if (r.value === null || !r.countryiso3code) return;
@@ -65,7 +65,7 @@ async function loadAll() {
     }
   });
 
-  setStatus("Step 2/3 — loading disaster displacement (2015–2023)");
+  setStatus("Step 2/3: loading disaster displacement (2015–2023)");
   var dData = await fetchJSON("https://api.worldbank.org/v2/country/all/indicator/VC.IDP.NWDS?format=json&date=" + YEAR_FROM + ":" + YEAR_TO + "&per_page=20000");
   (dData[1] || []).forEach(function(r) {
     if (r.value === null || !r.countryiso3code) return;
@@ -74,7 +74,7 @@ async function loadAll() {
     NAMES[r.countryiso3code] = r.country.value;
   });
 
-  setStatus("Step 3/3 — loading populations");
+  setStatus("Step 3/3: loading populations");
   var pData = await fetchJSON("https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&date=" + (YEAR_TO - 1) + ":" + YEAR_TO + "&per_page=20000");
   (pData[1] || []).forEach(function(r) {
     if (r.value === null || !r.countryiso3code) return;
@@ -82,7 +82,7 @@ async function loadAll() {
     if (!NAMES[r.countryiso3code]) NAMES[r.countryiso3code] = r.country.value;
   });
 
-  console.log("DATA CHECK — exposure:", Object.keys(exposure).length,
+  console.log("DATA CHECK: exposure:", Object.keys(exposure).length,
               "| displaced:", Object.keys(displaced).length,
               "| pop:", Object.keys(pop).length);
 
@@ -219,7 +219,7 @@ function buildChart() {
 }
 
 /* ============================================================
-   YEAR ENGINE — slider + autoplay
+   YEAR ENGINE: slider + autoplay
    ============================================================ */
 var playing = false;
 var playTimer = null;
@@ -267,7 +267,7 @@ function onYearChange(y) {
   var captions = {
     2015: "Cyclone Pam, Nepal earthquake year.",
     2016: "",
-    2017: "Atlantic hurricane season — Harvey, Irma, Maria.",
+    2017: "Atlantic hurricane season: Harvey, Irma, Maria.",
     2018: "",
     2019: "Cyclones Idai and Fani.",
     2020: "Displacement compounded by pandemic year.",
@@ -289,6 +289,6 @@ document.addEventListener("DOMContentLoaded", function() {
   loadAll().catch(function(err) {
     console.error(err);
     document.getElementById("status").textContent =
-      "ERROR: " + err.message + " — see Console (F12)";
+      "ERROR: " + err.message + ": see Console (F12)";
   });
 });

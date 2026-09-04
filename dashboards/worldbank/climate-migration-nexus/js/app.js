@@ -1,11 +1,11 @@
-/* Dashboard application logic — extracted from inline script */
+/* Dashboard application logic: extracted from inline script */
 "use strict";
 
 /* ---------- state ---------- */
 var countriesMeta = {};
-var displaced = {};        /* VC.IDP.NWDS — people newly displaced by disasters */
-var climateExposure = {};  /* EN.CLC.MDAT.ZS — climate context for detail panel */
-var refugeeByOrigin = {};  /* SM.POP.RHCR.EO — refugees abroad, context */
+var displaced = {};        /* VC.IDP.NWDS: people newly displaced by disasters */
+var climateExposure = {};  /* EN.CLC.MDAT.ZS: climate context for detail panel */
+var refugeeByOrigin = {};  /* SM.POP.RHCR.EO: refugees abroad, context */
 var geoLayer = null;
 var chart = null;
 var selected = null;
@@ -55,16 +55,16 @@ function fmtNum(v) {
 async function loadAll() {
   var BASE = "https://api.worldbank.org/v2/country/all/indicator/";
 
-  setStatus("Step 1/5 — loading disaster displacement");
+  setStatus("Step 1/5: loading disaster displacement");
   displaced = reshape((await fetchJSON(BASE + "VC.IDP.NWDS?format=json&date=2008:2024&per_page=20000"))[1] || []);
 
-  setStatus("Step 2/5 — loading climate context");
+  setStatus("Step 2/5: loading climate context");
   climateExposure = reshape((await fetchJSON(BASE + "EN.CLC.MDAT.ZS?format=json&date=1990:2009&per_page=20000"))[1] || []);
 
-  setStatus("Step 3/5 — loading refugee context");
+  setStatus("Step 3/5: loading refugee context");
   refugeeByOrigin = reshape((await fetchJSON(BASE + "SM.POP.RHCR.EO?format=json&date=2024&per_page=20000"))[1] || []);
 
-  setStatus("Step 4/5 — loading country metadata");
+  setStatus("Step 4/5: loading country metadata");
   var crows = (await fetchJSON("https://api.worldbank.org/v2/country?format=json&per_page=400"))[1] || [];
   for (var i = 0; i < crows.length; i++) {
     var r = crows[i];
@@ -72,7 +72,7 @@ async function loadAll() {
     countriesMeta[r.id] = { name: r.name, region: r.region.value.trim() };
   }
 
-  setStatus("Step 5/5 — loading map boundaries");
+  setStatus("Step 5/5: loading map boundaries");
   var geo = await fetchJSON("https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json");
 
   /* latest reported year among real countries */
@@ -92,7 +92,7 @@ async function loadAll() {
   availableYears = Object.keys(yearSet).map(Number).sort(function(a,b){return a-b;});
   currentYear = availableYears.length ? availableYears[availableYears.length-1] : latestYear;
 
-  console.log("DATA CHECK — displaced:", Object.keys(displaced).length,
+  console.log("DATA CHECK: displaced:", Object.keys(displaced).length,
               "| exposure:", Object.keys(climateExposure).length,
               "| refugees:", Object.keys(refugeeByOrigin).length,
               "| meta:", Object.keys(countriesMeta).length,
@@ -442,6 +442,6 @@ document.addEventListener("DOMContentLoaded", function() {
   loadAll().catch(function(err) {
     console.error(err);
     document.getElementById("status").textContent =
-      "ERROR: " + err.message + " — see Console (F12)";
+      "ERROR: " + err.message + ": see Console (F12)";
   });
     });

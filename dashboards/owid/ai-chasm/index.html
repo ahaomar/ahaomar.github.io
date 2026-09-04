@@ -13,26 +13,22 @@
   });
 </script>
 <!-- Google tag (gtag.js) end -->
- 
+
 <meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Displaced by Disaster · Who Extreme Weather Moves</title>
-<meta name="description" content="When floods, storms and droughts hit, people are forced to leave their homes. Explore who extreme weather displaces, country by country, live from World Bank and IDMC data.">
-<link rel="canonical" href="https://ahaomar.github.io/dashboards/worldbank/climate-migration-nexus/index.html">
-<meta property="og:title" content="Displaced by Disaster · Who Extreme Weather Moves">
-<meta property="og:description" content="Who extreme weather displaces, country by country, live World Bank data.">
+<title>The AI Chasm · Who Builds AI, Who Waits for It</title>
+<meta name="description" content="Private AI investment, large-scale AI systems and research output: the concentration of artificial intelligence capability, live from Our World in Data. Interactive dashboard.">
+<link rel="canonical" href="https://ahaomar.github.io/dashboards/owid/ai-chasm/index.html">
+<meta property="og:title" content="The AI Chasm · Who builds AI, who waits for it">
+<meta property="og:description" content="Two countries versus everyone else: the concentration of AI capability in live charts.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://ahaomar.github.io/dashboards/worldbank/climate-migration-nexus/index.html">
+<meta property="og:url" content="https://ahaomar.github.io/dashboards/owid/ai-chasm/index.html">
 <meta name="twitter:card" content="summary">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="stylesheet" href="css/style.css">
-
-<script>document.documentElement.className += ' js';</script>
 <meta name="google-site-verification" content="dd7btgdjbyout2SAEqaEsy3hUZacslRGlOOpHnx-4xY" />
 </head>
 
@@ -43,26 +39,17 @@
       <strong>OMAR FAROOQ</strong>
       <span>SENIOR DRUPAL DEVELOPER &amp; PLATFORM ARCHITECT</span>
     </a>
-
-    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
+    <nav class="nav" role="navigation" aria-label="Primary">
       <a href="../../../index.html">About</a>
       <a href="../../../projects.html">Projects</a>
       <a href="../../../skills.html">Skills</a>
-      <a href="../../../dashboards.html" aria-current="page">AI Dashboards</a>
       <a href="../../../blog.html">Blog</a>
       <a href="../../../contact.html">Contact</a>
-      <a href="../../../assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
+      <a href="../../../dashboards.html" aria-current="page">AI Dashboards</a>
     </nav>
-
-    <div class="topbar-actions">
-      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
-        <kbd><span>⌘</span>K</kbd>
-      </button>
-      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-        <span class="nav-toggle-text">Menu</span>
-      </button>
-    </div>
+    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
+      <kbd><span>⌘</span>K</kbd>
+    </button>
   </div>
 </header>
 
@@ -102,17 +89,19 @@
 
 <header class="masthead">
   <div class="shell masthead-inner">
-    <div class="kicker">Disaster Displacement &middot; Interactive Data Brief</div>
-    <h1>Displaced by Disaster: <em>Who Extreme Weather Moves</em></h1>
+    <div class="kicker">Our World in Data &middot; AI Economy &middot; Interactive Data Brief</div>
+    <h1>The AI Chasm: <em>who builds, who waits</em></h1>
     <p class="standfirst">
-      When floods, storms and droughts hit, people are forced to leave their homes.
-      This dashboard shows <b>how many people each country's disasters have newly displaced</b>. 
-      the millions who move within their own country because of extreme weather.
+      Every LinkedIn feed argues about artificial intelligence. The data argues something
+      narrower: the capability to build frontier AI is concentrating in a handful of countries,
+      while everyone else consumes what those few produce. Three live series, one chasm.
+      Fetched at runtime from Our World in Data.
     </p>
     <div class="meta-strip">
-      <div class="meta-cell stat"><span>Newly displaced worldwide</span><b id="totalDisplaced">&mdash;</b></div>
-      <div class="meta-cell stat"><span>Displaced since 2008</span><b id="totalCumulative">&mdash;</b></div>
-      <div class="meta-cell stat"><span>Countries affected</span><b id="totalCountries">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Private AI investment, latest</span><b id="statInvest">&mdash;</b></div>
+      <div class="meta-cell stat"><span>US share of large-scale AI systems</span><b id="statUs">&mdash;</b></div>
+      <div class="meta-cell stat"><span>China systems, cumulative</span><b id="statCn">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Rest of world combined</span><b id="statRow">&mdash;</b></div>
     </div>
   </div>
 </header>
@@ -120,38 +109,37 @@
 <main class="shell">
   <div id="status">Loading data&hellip;</div>
   <div id="app" style="display:none;">
-    <div class="controls">
-      <label for="yearSelect">Year</label>
-      <select id="yearSelect"><option value="">Select a year</option></select>
-      <label for="regionSelect">Region</label>
-      <select id="regionSelect"><option value="">Select a region</option></select>
-      <label for="countrySelect">Country</label>
-      <select id="countrySelect" disabled><option value="">Select a country</option></select>
-      <span id="countNote"></span>
-    </div>
+
+    <section class="panel" style="margin:var(--space-6) 0 var(--space-8);">
+      <div class="panel-head">
+        <span class="panel-title">Private investment in AI, by region</span>
+        <span class="panel-sub">annual, US$ billions · hover for values</span>
+      </div>
+      <div class="chart-xl"><canvas id="investChart"></canvas></div>
+      <div class="chart-foot">
+        <span class="chart-note">United States vs China vs Europe vs World total. The gap between the bars is the chasm.</span>
+      </div>
+    </section>
+
     <div class="content">
       <section class="panel">
         <div class="panel-head">
-          <span class="panel-title" id="mapTitle">People newly displaced by disasters (latest year)</span>
-          <span class="panel-sub">click a country</span>
+          <span class="panel-title">Large-scale AI systems, cumulative</span>
+          <span class="panel-sub">notable systems by country of origin</span>
         </div>
-        <div id="map"></div>
+        <div class="chart-holder"><canvas id="systemsChart"></canvas></div>
       </section>
-      <aside class="panel">
-        <div class="insight-body">
-          <div id="countryPanel">
-            <div class="empty-note">&#9664;&nbsp; Click any country to see how many people were newly displaced there by floods, storms and droughts &mdash; and the trend over time.</div>
-          </div>
-          <div id="chartWrap" style="display:none;">
-            <div class="country-name" id="countryName"></div>
-            <div class="country-year" id="countryYear"></div>
-            <div class="ratio-callout" id="ratioLine"></div>
-            <div class="chart-holder"><canvas id="countryChart"></canvas></div>
-            <ul class="takeaways" id="takeaways"></ul>
-          </div>
+
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title">AI job postings, share</span>
+          <span class="panel-sub">% of all postings · selected countries</span>
         </div>
-      </aside>
+        <div class="chart-holder"><canvas id="jobsChart"></canvas></div>
+        <ul class="takeaways" id="takeaways"></ul>
+      </section>
     </div>
+
   </div>
 </main>
 
@@ -159,18 +147,21 @@
   <div class="shell footer-inner">
     <h3>Data Sources &amp; Methodology</h3>
     <div class="source-block">
-      <div><b>Disaster displacement</b>
-        <p>World Bank Indicators API &mdash; VC.IDP.NWDS: people newly displaced within their own country by disasters such as floods, storms and droughts, 2008&ndash;2024.</p>
+      <div><b>Private investment</b>
+        <p>Our World in Data grapher CSV &mdash; private-investment-in-artificial-intelligence (Stanford AI Index), annual by region.</p>
       </div>
-      <div><b>Climate context</b>
-        <p>World Bank Indicators API &mdash; EN.CLC.MDAT.ZS: share of population affected by droughts, floods and extreme temperatures (annual average 1990&ndash;2009), shown in the country detail panel.</p>
+      <div><b>Large-scale AI systems</b>
+        <p>Our World in Data grapher CSV &mdash; cumulative-number-of-large-scale-ai-systems-by-country (Epoch AI), cumulative notable systems.</p>
       </div>
-      <div><b>License</b>
-        <p>CC BY 4.0 &middot; Boundaries from the open world.geo.json dataset.</p>
+      <div><b>AI job postings</b>
+        <p>Our World in Data grapher CSV &mdash; share-artificial-intelligence-job-postings, % of postings mentioning AI.</p>
+      </div>
+      <div><b>Method</b>
+        <p>CSVs are fetched live at page load with open CORS. All figures and takeaways are computed from the responses in the browser, never hard-coded.</p>
       </div>
     </div>
     <div class="colophon">
-      <span>Displaced by Disaster &mdash; an independent data explainer</span>
+      <span>The AI Chasm &mdash; an independent data explainer</span>
       <span>Refreshed automatically on each page load</span>
     </div>
   </div>

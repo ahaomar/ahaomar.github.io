@@ -13,57 +13,43 @@
   });
 </script>
 <!-- Google tag (gtag.js) end -->
- 
+
 <meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Invisible Lifeline - The Real Aid · Remittances vs Official Development Assistance</title>
-<meta name="description" content="Remittances vs official development assistance, migrant workers now send home far more than all donor countries combined in foreign aid. Interactive dashboard live from the World Bank Indicators API.">
-<link rel="canonical" href="https://ahaomar.github.io/dashboards/worldbank/remittances-migrant-vs-oda/index.html">
-<meta property="og:title" content="The Invisible Lifeline · Remittances vs Official Development Assistance">
-<meta property="og:description" content="Migrant workers send home more than all donor countries combined give in aid.">
+<title>The Water Line · Renewable Water per Person, Running Down</title>
+<meta name="description" content="Renewable freshwater per person has halved in a generation for some countries. Interactive dashboard live from the World Bank Indicators API, 2000 to 2022.">
+<link rel="canonical" href="https://ahaomar.github.io/dashboards/worldbank/water-line/index.html">
+<meta property="og:title" content="The Water Line · Nations running dry, in one chart">
+<meta property="og:description" content="Renewable water per person, falling for a generation. Live World Bank data, country by country.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://ahaomar.github.io/dashboards/worldbank/remittances-migrant-vs-oda/index.html">
+<meta property="og:url" content="https://ahaomar.github.io/dashboards/worldbank/water-line/index.html">
 <meta name="twitter:card" content="summary">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="stylesheet" href="css/style.css">
-
-<script>document.documentElement.className += ' js';</script>
 <meta name="google-site-verification" content="dd7btgdjbyout2SAEqaEsy3hUZacslRGlOOpHnx-4xY" />
 </head>
 
 <body>
-
 <header class="topbar" role="banner">
   <div class="topbar-inner">
     <a href="../../../index.html" class="wordmark" aria-label="Omar Farooq, home">
       <strong>OMAR FAROOQ</strong>
       <span>SENIOR DRUPAL DEVELOPER &amp; PLATFORM ARCHITECT</span>
     </a>
-
-    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
+    <nav class="nav" role="navigation" aria-label="Primary">
       <a href="../../../index.html">About</a>
       <a href="../../../projects.html">Projects</a>
       <a href="../../../skills.html">Skills</a>
-      <a href="../../../dashboards.html" aria-current="page">AI Dashboards</a>
       <a href="../../../blog.html">Blog</a>
       <a href="../../../contact.html">Contact</a>
-      <a href="../../../assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
+      <a href="../../../dashboards.html" aria-current="page">AI Dashboards</a>
     </nav>
-
-    <div class="topbar-actions">
-      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
-        <kbd><span>⌘</span>K</kbd>
-      </button>
-      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-        <span class="nav-toggle-text">Menu</span>
-      </button>
-    </div>
+    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
+      <kbd><span>⌘</span>K</kbd>
+    </button>
   </div>
 </header>
 
@@ -103,16 +89,18 @@
 
 <header class="masthead">
   <div class="shell masthead-inner">
-    <div class="kicker">Development Finance &middot; Interactive Data Brief</div>
-    <h1>The Invisible Lifeline: <em>The Real Aid</em></h1>
+    <div class="kicker">SDG 6 &middot; Water Security &middot; Interactive Data Brief</div>
+    <h1>The Water Line: <em>nations running dry</em></h1>
     <p class="standfirst">
-      Remittances vs official development assistance &mdash; migrant workers now send home
-      far more than the world gives in aid.
+      The world's renewable freshwater barely changes. The population drinking it doubles.
+      Divide one by the other, country by country, and the water line falls: in several nations
+      it has halved within a single generation. Live from the World Bank Indicators API.
     </p>
     <div class="meta-strip">
-      <div class="meta-cell stat"><span>World remittances</span><b id="totalRemit">&mdash;</b></div>
-      <div class="meta-cell stat"><span>World ODA</span><b id="totalODA">&mdash;</b></div>
-      <div class="meta-cell stat"><span>Remittances vs aid</span><b id="totalRatio">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Countries tracked</span><b id="statCountries">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Steepest decline since 2000</span><b id="statWorst">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Below the scarcity line</span><b id="statScarce">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Countries, 2000 vs 2022</span><b id="statRange">&mdash;</b></div>
     </div>
   </div>
 </header>
@@ -120,36 +108,40 @@
 <main class="shell">
   <div id="status">Loading data&hellip;</div>
   <div id="app" style="display:none;">
-    <div class="controls">
-      <label for="regionSelect">Region</label>
-      <select id="regionSelect"><option value="">Select a region</option></select>
-      <label for="countrySelect">Country</label>
-      <select id="countrySelect" disabled><option value="">Select a country</option></select>
-      <span id="countNote"></span>
-    </div>
-    <div class="content">
-      <section class="panel">
-        <div class="panel-head">
-          <span class="panel-title">Remittances as share of GDP</span>
-          <span class="panel-sub">click a country</span>
-        </div>
-        <div id="map"></div>
-      </section>
-      <aside class="panel">
-        <div class="insight-body">
-          <div id="countryPanel">
-            <div class="empty-note">&#9664;&nbsp; Click any country to compare what its diaspora sends home with what it receives in aid.</div>
-          </div>
-          <div id="chartWrap" style="display:none;">
-            <div class="country-name" id="countryName"></div>
-            <div class="country-year" id="countryYear"></div>
-            <div class="ratio-callout" id="ratioLine"></div>
-            <div class="chart-holder"><canvas id="countryChart"></canvas></div>
-            <ul class="takeaways" id="takeaways"></ul>
-          </div>
-        </div>
-      </aside>
-    </div>
+
+    <section class="timeline" aria-label="Controls">
+      <div class="timeline-top">
+        <div class="timeline-year" id="yearDisplay">2022</div>
+        <div class="timeline-caption" id="yearCaption">Renewable freshwater per person, cubic metres. Drag to watch the line fall.</div>
+      </div>
+      <div class="timeline-track">
+        <input type="range" id="yearSlider" min="2000" max="2022" step="1" value="2022"
+               aria-label="Water year" oninput="onSlide(this.value)">
+      </div>
+      <div class="timeline-buttons">
+        <button type="button" class="tl-btn active" id="playBtn" onclick="togglePlay()">&#9654; Play years</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2022)">&#8634; Latest year</button>
+        <span class="tl-note">Scarcity threshold: 1,000 m&sup3; per person per year</span>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-bottom:var(--space-8);">
+      <div class="panel-head">
+        <span class="panel-title">Steepest fallers: renewable water per person</span>
+        <span class="panel-sub">m&sup3; per capita · countries with the largest decline since 2000</span>
+      </div>
+      <div class="chart-xl"><canvas id="declineChart"></canvas></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <span class="panel-title">The scarcity ledger, <span id="yrInline">2022</span></span>
+        <span class="panel-sub">countries below the 1,000 m&sup3; water-scarcity threshold</span>
+      </div>
+      <div class="chart-holder"><canvas id="scarceChart"></canvas></div>
+      <ul class="takeaways" id="takeaways"></ul>
+    </section>
+
   </div>
 </main>
 
@@ -157,18 +149,18 @@
   <div class="shell footer-inner">
     <h3>Data Sources &amp; Methodology</h3>
     <div class="source-block">
-      <div><b>Remittances</b>
-        <p>World Bank Indicators API &mdash; BX.TRF.PWKR.CD (US$) and BX.TRF.PWKR.DT.GD.ZS (% of GDP), 2018&ndash;2023.</p>
+      <div><b>Renewable freshwater</b>
+        <p>World Bank Indicators API &mdash; ER.H2O.INTR.PC: renewable internal freshwater resources, cubic metres per person per year, 2000&ndash;2022.</p>
       </div>
-      <div><b>Official development assistance</b>
-        <p>World Bank Indicators API &mdash; DT.ODA.ODAT.CD, 2018&ndash;2023.</p>
+      <div><b>Scarcity threshold</b>
+        <p>The UN water-scarcity line of 1,000 m&sup3; per person per year is used to sort the ledger. Population change does the rest of the work.</p>
       </div>
-      <div><b>License</b>
-        <p>CC BY 4.0 &middot; Boundaries from the open world.geo.json dataset.</p>
+      <div><b>Method</b>
+        <p>Every bar, count and takeaway is computed live from the API response on page load. No hard-coded figures.</p>
       </div>
     </div>
     <div class="colophon">
-      <span>The Invisible Lifeline &mdash; an independent data explainer</span>
+      <span>The Water Line &mdash; an independent data explainer</span>
       <span>Refreshed automatically on each page load</span>
     </div>
   </div>
@@ -178,4 +170,3 @@
 <script src="../../../js/main.js"></script>
 </body>
 </html>
-
