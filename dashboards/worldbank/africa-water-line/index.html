@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js)  Google Analytics start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQ7ME7B2GR', {
+    cookie_domain: 'ahaomar.github.io'
+  });
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta name="robots" content="index, follow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Water Line Is Moving · Africa's Groundwater &amp; Urban Collision</title>
+<meta name="description" content="Africa's cities are among the fastest growing on Earth while renewable freshwater per person keeps shrinking. Interactive choropleth dashboard live from the World Bank Indicators API, 2010 to 2022.">
+<link rel="canonical" href="https://ahaomar.github.io/dashboards/worldbank/africa-water-line/index.html">
+<meta property="og:title" content="The Water Line Is Moving · Africa's groundwater and urban collision">
+<meta property="og:description" content="Where shrinking water per person meets fast-growing cities: 25 African countries already sit below the scarcity line.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ahaomar.github.io/dashboards/worldbank/africa-water-line/index.html">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="stylesheet" href="css/style.css">
+<meta name="google-site-verification" content="dd7btgdjbyout2SAEqaEsy3hUZacslRGlOOpHnx-4xY" />
+</head>
+
+<body>
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="../../../index.html" class="wordmark" aria-label="Omar Farooq, home">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR DRUPAL DEVELOPER &amp; PLATFORM ARCHITECT</span>
+    </a>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a href="../../../index.html">About</a>
+      <a href="../../../projects.html">Projects</a>
+      <a href="../../../skills.html">Skills</a>
+      <a href="../../../blog.html">Blog</a>
+      <a href="../../../contact.html">Contact</a>
+      <a href="../../../dashboards.html" aria-current="page">AI Dashboards</a>
+    </nav>
+    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
+      <kbd><span>⌘</span>K</kbd>
+    </button>
+  </div>
+</header>
+
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="../../../index.html">About · Profile &amp; history</button>
+          <button class="cmdk-item" role="option" data-href="../../../projects.html">Projects · Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="../../../skills.html">Skills · Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../../../blog.html">Blog · Field notes</button>
+          <button class="cmdk-item" role="option" data-href="../../../contact.html">Contact · Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="../../../dashboards.html">AI Dashboards · live data briefs</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="../../../assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div class="kicker">Water Security &middot; Interactive Data Brief</div>
+    <h1>The Water Line Is Moving: <em>Africa's Groundwater &amp; Urban Collision</em></h1>
+    <p class="standfirst">
+      Africa's cities are among the fastest-growing on Earth &mdash; while the renewable
+      freshwater available to each citizen keeps shrinking. Two curves are converging.
+      This dashboard shows where the collision will hit first.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-cell stat"><span>Scarcity line crossed</span><b id="statScarce">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Fastest-shrinking water, shown</span><b id="statWorst">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Africa avg urban growth</span><b id="statUrb">&mdash;</b></div>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+
+  <div id="status">Loading data from the World Bank API&hellip;</div>
+
+  <div id="app" style="display:none;">
+
+    <div class="content">
+
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Renewable freshwater per person, m&sup3;/year</span>
+          <span class="panel-sub">latest available year &middot; click a country</span>
+        </div>
+        <div id="map"></div>
+      </section>
+
+      <aside class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Country profile</span>
+          <span class="panel-sub">click any country on the map</span>
+        </div>
+        <div class="insight-body">
+
+          <div id="countryPanel">
+            <div class="empty-note">
+              &#9664;&nbsp; Click any African country to see its water per person
+              colliding with its urban growth.
+            </div>
+          </div>
+
+          <div id="chartWrap" style="display:none;">
+            <div class="country-name" id="countryName"></div>
+            <div class="country-year" id="countryYear"></div>
+            <div class="callout" id="countryCallout"></div>
+            <div class="chart-holder"><canvas id="countryChart"></canvas></div>
+            <div class="panel-title" style="margin:6px 0 8px;">Urban growth vs. water stress (latest)</div>
+            <div class="chart-holder" style="height:260px;"><canvas id="contextChart"></canvas></div>
+            <ul class="takeaways" id="takeaways"></ul>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="shell footer-inner">
+    <h3>Data Sources &amp; Methodology</h3>
+    <div class="source-block">
+      <div><b>Renewable freshwater &amp; water stress</b>
+        <p>Internal renewable freshwater resources per capita (cubic metres per person per year) and freshwater withdrawal as a share of total renewable resources. FAO AQUASTAT via the World Bank Indicators API: ER.H2O.INTR.PC, ER.H2O.FWTL.ZS.</p>
+      </div>
+      <div><b>Urban population growth</b>
+        <p>Annual percentage growth rate of urban populations, UN World Urbanization Prospects via the World Bank Indicators API: SP.URB.GROW.</p>
+      </div>
+      <div><b>API &amp; Licensing</b>
+        <p>Retrieved live from the World Bank Indicators API v2 under CC BY 4.0; boundaries from the open world.geo.json dataset. Water stress above 25% is internationally recognised as high; above 70%, critical.</p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>The Water Line Is Moving &mdash; an independent data explainer</span>
+      <span>Refreshed automatically on each page load</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="../../../js/main.js"></script>
+</body>
+</html>

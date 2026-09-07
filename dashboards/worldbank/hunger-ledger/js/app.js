@@ -189,8 +189,42 @@ function buildIncomeChart() {
 }
 
 /* ---------- timeline controls ---------- */
-function onSlide(v) { jumpYear(parseInt(v, 10)); }
+var playing = false;
+var playTimer = null;
+
+function onSlide(y) {
+  stopPlay();
+  onYearChange(Number(y));
+}
+
 function jumpYear(y) {
+  stopPlay();
+  onYearChange(y);
+}
+
+function togglePlay() {
+  if (playing) { stopPlay(); return; }
+  playing = true;
+  var btn = document.getElementById("playBtn");
+  btn.classList.remove("active");
+  btn.innerHTML = "&#9632; Pause";
+  if (currentYear >= YEAR_TO) currentYear = YEAR_FROM;
+  playTimer = setInterval(function () {
+    currentYear++;
+    if (currentYear > YEAR_TO) { stopPlay(); onYearChange(YEAR_TO); return; }
+    onYearChange(currentYear);
+  }, 1800);
+}
+
+function stopPlay() {
+  playing = false;
+  if (playTimer) { clearInterval(playTimer); playTimer = null; }
+  var btn = document.getElementById("playBtn");
+  btn.classList.add("active");
+  btn.innerHTML = "&#9654; Play years";
+}
+
+function onYearChange(y) {
   currentYear = y;
   document.getElementById("yearDisplay").textContent = y;
   document.getElementById("yearSlider").value = y;
@@ -198,23 +232,6 @@ function jumpYear(y) {
   document.getElementById("yearSlider").style.setProperty("--fill", fill + "%");
   buildBar(y);
   renderHeadline();
-  if (playTimer) { stopPlay(); }
-}
-function togglePlay() {
-  if (playTimer) { stopPlay(); return; }
-  document.getElementById("playBtn").classList.add("active");
-  var y = YEAR_FROM;
-  jumpYear(y);
-  playTimer = setInterval(function () {
-    y += 1;
-    if (y > YEAR_TO) { stopPlay(); return; }
-    jumpYear(y);
-  }, 1700);
-}
-function stopPlay() {
-  if (playTimer) { clearInterval(playTimer); playTimer = null; }
-  var btn = document.getElementById("playBtn");
-  if (btn) btn.classList.remove("active");
 }
 
 loadAll().catch(function (e) {
