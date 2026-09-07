@@ -231,12 +231,17 @@ cite, address { font-style: normal; }
 .metrics-row p { font-size: var(--text-sm); line-height: 1.6; color: var(--color-ink-soft); margin: 0; max-width: 34ch; }
 
 /* ---------- Recognition — the one graphite band ---------- */
-.recognition { background: var(--color-paper); color: var(--color-ink-2); padding: var(--space-16) 0; }
+/* DG recognition band — the strongest credential on the site.
+   data-theme="dark" flips the tokens to graphite ground + light ink;
+   the accent rule + display-scale pull-quote do the emphasis work. */
+.recognition { background: var(--color-paper); color: var(--color-ink); padding: var(--space-16) 0; }
 .recognition .kicker { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); margin-bottom: var(--space-4); }
 .recognition h2 { font-size: var(--text-3xl); line-height: 1.2; color: var(--color-ink); margin: 0; overflow-wrap: anywhere; min-width: 0; }
-.recognition-body { font-size: var(--text-lg); line-height: 1.6; color: var(--color-ink-2); margin-bottom: var(--space-8); }
-.recognition .record { border-top-color: var(--color-rule); }
+.recognition-body { font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.45; color: var(--color-ink); border-left: 2px solid var(--color-accent); padding-left: var(--space-5); margin-bottom: var(--space-8); max-width: 46ch; }
+.recognition .record { border-top-color: var(--color-rule); max-width: 46ch; }
 .recognition .record__row { border-bottom-color: var(--color-rule); }
+.recognition .record__row dt { color: var(--color-ink-muted); }
+.recognition .record__row dd { color: var(--color-ink-2); }
 .dip--recognition { gap: var(--space-14); }
 
 /* ---------- Practice history — alternating role diptychs ---------- */
@@ -420,7 +425,8 @@ cite, address { font-style: normal; }
   .hero-dip h1 { font-size: clamp(1.75rem, 8vw, 2.25rem); }
   .lede-hero { font-size: var(--text-md); }
   .cta-pair .btn { width: 100%; justify-content: center; }
-  .recognition h2 { font-size: var(--text-2xl); }
+  .recognition-body { font-size: var(--text-xl); }
+  .recognition .record { max-width: none; }
   .dip--role h3 { font-size: var(--text-xl); }
   .hm-colophon { line-height: 1.85; }
   .page-head h1 { font-size: clamp(1.625rem, 7.5vw, 2rem); }
@@ -449,3 +455,53 @@ cite, address { font-style: normal; }
  * note: theme axis held constant — one stylesheet, so rotation would
  *        fragment the site rather than vary it.
  */
+
+/* ============================================================
+   HOW I WORK WITH AI — numbered method band
+   Breaks the diptych rhythm: 2-col asymmetric step grid, no cards,
+   ordinal numbering carried by the rule-drawn column, not badges.
+   ============================================================ */
+.ai-method { padding: var(--space-16) 0; }
+.ai-method .section-lede { margin-bottom: var(--space-10); }
+.ai-steps {
+  list-style: none;
+  margin: 0 0 var(--space-10) 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-10) var(--space-14);
+  counter-reset: ai-step;
+}
+.ai-steps li {
+  counter-increment: ai-step;
+  border-top: 1px solid var(--color-rule);
+  padding-top: var(--space-5);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--space-5);
+  align-items: baseline;
+}
+.ai-steps li::before {
+  content: counter(ai-step, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+.ai-steps h3 { margin: 0; font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; color: var(--color-ink); grid-column: 2; }
+.ai-steps li p { grid-column: 2; margin: var(--space-2) 0 0 0; font-size: var(--text-md); line-height: 1.6; color: var(--color-ink-soft); max-width: 52ch; }
+.ai-method-links { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+@media (max-width: 768px) {
+  .ai-steps { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+}
+
+/* ============================================================
+   CASE-STUDY EVIDENCE FIGURE — real screenshot in a typographic frame
+   (top rule + label + hairline box; no re-drawn browser chrome)
+   ============================================================ */
+.case-shot { margin: 0 0 var(--space-6); border-top: 1px solid var(--color-rule); padding-top: var(--space-4); }
+.case-shot img, .case-shot a { display: block; }
+.case-shot img { width: 100%; height: auto; border: 1px solid var(--color-rule); }
+.case-shot figcaption { font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.6; color: var(--color-ink-muted); padding-top: var(--space-3); }
+.case-shot figcaption a { display: inline; color: var(--color-accent); }

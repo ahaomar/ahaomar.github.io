@@ -1,8 +1,8 @@
-/* Dashboard application logic — extracted from inline script */
+/* Dashboard application logic: extracted from inline script */
 "use strict";
 
 /* ============================================================
-   Decisions vs. the Atmosphere — COP timeline vs CO2 curve
+   Decisions vs. the Atmosphere: COP timeline vs CO2 curve
    Data: OWID (live) + curated COP record (embedded)
    ============================================================ */
 
@@ -10,7 +10,7 @@
 var COPS = [
 {n:1, year:1995, city:"Berlin", country:"Germany", president:"Angela Merkel", presCountry:"Germany",
  dates:"28 Mar – 7 Apr 1995", milestone:false,
- decisions:["First COP: 117 parties attend", "Berlin Mandate — talks on binding targets beyond 2000", "UNFCCC Secretariat seated in Bonn"],
+ decisions:["First COP: 117 parties attend", "Berlin Mandate: talks on binding targets beyond 2000", "UNFCCC Secretariat seated in Bonn"],
  co2:23.5},
 {n:2, year:1996, city:"Geneva", country:"Switzerland", president:"Chen Chimutengwende", presCountry:"Zimbabwe",
  dates:"8–19 Jul 1996", milestone:false,
@@ -18,27 +18,27 @@ var COPS = [
  co2:23.6},
 {n:3, year:1997, city:"Kyoto", country:"Japan", president:"Hiroshi Ohki", presCountry:"Japan",
  dates:"1–11 Dec 1997", milestone:true,
- decisions:["Kyoto Protocol adopted — binding cuts for developed nations", "Average 5.2% below 1990 levels for 2008–2012", "Flexible mechanisms: emissions trading, CDM, joint implementation"],
+ decisions:["Kyoto Protocol adopted: binding cuts for developed nations", "Average 5.2% below 1990 levels for 2008–2012", "Flexible mechanisms: emissions trading, CDM, joint implementation"],
  co2:24.4},
 {n:4, year:1998, city:"Buenos Aires", country:"Argentina", president:"María Julia Alsogaray", presCountry:"Argentina",
  dates:"2–14 Nov 1998", milestone:false,
- decisions:["Buenos Aires Plan of Action — two-year roadmap", "First non-Annex volunteers: Argentina & Kazakhstan"],
+ decisions:["Buenos Aires Plan of Action: two-year roadmap", "First non-Annex volunteers: Argentina & Kazakhstan"],
  co2:24.6},
 {n:5, year:1999, city:"Bonn", country:"Germany", president:"Jan Szyszko", presCountry:"Poland",
  dates:"25 Oct – 5 Nov 1999", milestone:false,
- decisions:["Technical session — 32 draft decisions adopted", " groundwork for finalising Kyoto rulebook"],
+ decisions:["Technical session: 32 draft decisions adopted", " groundwork for finalising Kyoto rulebook"],
  co2:24.9},
 {n:6, year:2000, city:"The Hague", country:"Netherlands", president:"Jan Pronk", presCountry:"Netherlands",
  dates:"13–25 Nov 2000", milestone:false,
- decisions:["Talks collapse over carbon sinks and compliance", "COP suspended without agreement — resumed as COP 6-2"],
+ decisions:["Talks collapse over carbon sinks and compliance", "COP suspended without agreement: resumed as COP 6-2"],
  co2:25.5},
 {n:"6-2", nDisp:"COP 6-2", year:2001, city:"Bonn", country:"Germany", president:"Jan Pronk", presCountry:"Netherlands",
  dates:"16–27 Jul 2001", milestone:false,
- decisions:["Kyoto survives US withdrawal — Bonn Agreements", "Sinks credit, compliance outlines, three new funds"],
+ decisions:["Kyoto survives US withdrawal: Bonn Agreements", "Sinks credit, compliance outlines, three new funds"],
  co2:25.5},
 {n:7, nDisp:"COP 7", year:2001, city:"Marrakesh", country:"Morocco", president:"Mohamed Elyazghi", presCountry:"Morocco",
  dates:"29 Oct – 10 Nov 2001", milestone:false,
- decisions:["Marrakesh Accords — Kyoto rulebook completed", "Stage set for ratification (55 parties / 55% of 1990 emissions)"],
+ decisions:["Marrakesh Accords: Kyoto rulebook completed", "Stage set for ratification (55 parties / 55% of 1990 emissions)"],
  co2:25.5},
 {n:8, nDisp:"COP 8", year:2002, city:"New Delhi", country:"India", president:"T. R. Baalu", presCountry:"India",
  dates:"23 Oct – 1 Nov 2002", milestone:false,
@@ -50,11 +50,11 @@ var COPS = [
  co2:27.4},
 {n:10, nDisp:"COP 10", year:2004, city:"Buenos Aires", country:"Argentina", president:"Ginés González García", presCountry:"Argentina",
  dates:"6–17 Dec 2004", milestone:false,
- decisions:["Ten-year stocktake since COP 1", "First post-2012 talks open — Kyoto's first period ends 2012"],
+ decisions:["Ten-year stocktake since COP 1", "First post-2012 talks open: Kyoto's first period ends 2012"],
  co2:28.8},
 {n:11, nDisp:"COP 11", year:2005, city:"Montreal", country:"Canada", president:"Stéphane Dion", presCountry:"Canada",
  dates:"28 Nov – 9 Dec 2005", milestone:false,
- decisions:["Kyoto Protocol enters into force — first CMP held", "Montreal Action Plan: talks on deeper post-2012 cuts"],
+ decisions:["Kyoto Protocol enters into force: first CMP held", "Montreal Action Plan: talks on deeper post-2012 cuts"],
  co2:30.1},
 {n:12, nDisp:"COP 12", year:2006, city:"Nairobi", country:"Kenya", president:"Kivutha Kibwana", presCountry:"Kenya",
  dates:"6–17 Nov 2006", milestone:false,
@@ -62,7 +62,7 @@ var COPS = [
  co2:31.3},
 {n:13, nDisp:"COP 13", year:2007, city:"Bali", country:"Indonesia", president:"Rachmat Witoelar", presCountry:"Indonesia",
  dates:"3–15 Dec 2007", milestone:true,
- decisions:["Bali Action Plan — roadmap to a 2009 deal", "Two-year negotiating track toward Copenhagen", "REDD+ groundwork"],
+ decisions:["Bali Action Plan: roadmap to a 2009 deal", "Two-year negotiating track toward Copenhagen", "REDD+ groundwork"],
  co2:32.3},
 {n:14, nDisp:"COP 14", year:2008, city:"Poznań", country:"Poland", president:"Maciej Nowicki", presCountry:"Poland",
  dates:"1–12 Dec 2008", milestone:false,
@@ -70,7 +70,7 @@ var COPS = [
  co2:32.7},
 {n:15, nDisp:"COP 15", year:2009, city:"Copenhagen", country:"Denmark", president:"Connie Hedegaard", presCountry:"Denmark",
  dates:"7–18 Dec 2009", milestone:false,
- decisions:["Copenhagen Accord only 'noted' — not adopted", "US$30bn fast-start finance pledged 2010–2012", "2 °C goal first written into a UN text"],
+ decisions:["Copenhagen Accord only 'noted': not adopted", "US$30bn fast-start finance pledged 2010–2012", "2 °C goal first written into a UN text"],
  co2:32.8},
 {n:16, nDisp:"COP 16", year:2010, city:"Cancún", country:"Mexico", president:"Patricia Espinosa", presCountry:"Mexico",
  dates:"28 Nov – 10 Dec 2010", milestone:false,
@@ -90,11 +90,11 @@ var COPS = [
  co2:35.7},
 {n:20, nDisp:"COP 20", year:2014, city:"Lima", country:"Peru", president:"Manuel Pulgar-Vidal", presCountry:"Peru",
  dates:"1–12 Dec 2014", milestone:false,
- decisions:["Lima Call for Climate Action — national pledges invited", "Groundwork for the Paris text"],
+ decisions:["Lima Call for Climate Action: national pledges invited", "Groundwork for the Paris text"],
  co2:35.7},
 {n:21, nDisp:"COP 21", year:2015, city:"Paris", country:"France", president:"Laurent Fabius", presCountry:"France",
  dates:"30 Nov – 12 Dec 2015", milestone:true,
- decisions:["Paris Agreement adopted — all countries, 1.5–2 °C", "Nationally Determined Contributions invented", "Ratified in under a year; in force Nov 2016"],
+ decisions:["Paris Agreement adopted: all countries, 1.5–2 °C", "Nationally Determined Contributions invented", "Ratified in under a year; in force Nov 2016"],
  co2:35.4},
 {n:22, nDisp:"COP 22", year:2016, city:"Marrakesh", country:"Morocco", president:"Salaheddine Mezouar", presCountry:"Morocco",
  dates:"7–18 Nov 2016", milestone:false,
@@ -106,27 +106,27 @@ var COPS = [
  co2:36.2},
 {n:24, nDisp:"COP 24", year:2018, city:"Katowice", country:"Poland", president:"Michał Kurtyka", presCountry:"Poland",
  dates:"3–14 Dec 2018", milestone:false,
- decisions:["Katowice Rulebook — Paris implementation rules", "IPCC 1.5 °C report 'noted' after oil-states pushback"],
+ decisions:["Katowice Rulebook: Paris implementation rules", "IPCC 1.5 °C report 'noted' after oil-states pushback"],
  co2:36.7},
 {n:25, nDisp:"COP 25", year:2019, city:"Madrid", country:"Spain", president:"Carolina Schmidt", presCountry:"Chile",
  dates:"2–13 Dec 2019", milestone:false,
- decisions:["Chilean presidency relocated to Madrid", "Article 6 carbon-market talks fail — punted to Glasgow"],
+ decisions:["Chilean presidency relocated to Madrid", "Article 6 carbon-market talks fail: punted to Glasgow"],
  co2:37.1},
 {n:26, nDisp:"COP 26", year:2021, city:"Glasgow", country:"United Kingdom", president:"Alok Sharma", presCountry:"United Kingdom",
  dates:"31 Oct – 12 Nov 2021", milestone:true,
- decisions:["Glasgow Climate Pact — coal 'phased down'", "Article 6 carbon markets finalised", "Methane Pledge & zero-emission vehicles push"],
+ decisions:["Glasgow Climate Pact: coal 'phased down'", "Article 6 carbon markets finalised", "Methane Pledge & zero-emission vehicles push"],
  co2:37.1},
 {n:27, nDisp:"COP 27", year:2022, city:"Sharm El Sheikh", country:"Egypt", president:"Sameh Shoukry", presCountry:"Egypt",
  dates:"6–18 Nov 2022", milestone:true,
- decisions:["Loss and Damage Fund agreed — 30-year fight won", "Fossil-fuel 'phase-down' language blocked", "'Implementation COP' — pledges vs. delivery gap"],
+ decisions:["Loss and Damage Fund agreed: 30-year fight won", "Fossil-fuel 'phase-down' language blocked", "'Implementation COP': pledges vs. delivery gap"],
  co2:37.5},
 {n:28, nDisp:"COP 28", year:2023, city:"Dubai", country:"United Arab Emirates", president:"Sultan Al Jaber", presCountry:"United Arab Emirates",
  dates:"30 Nov – 12 Dec 2023", milestone:true,
- decisions:["First Global Stocktake concluded", "'Transitioning away from fossil fuels' — first in COP text", "Tripling renewables & doubling efficiency pledges"],
+ decisions:["First Global Stocktake concluded", "'Transitioning away from fossil fuels': first in COP text", "Tripling renewables & doubling efficiency pledges"],
  co2:38.1},
 {n:29, nDisp:"COP 29", year:2024, city:"Baku", country:"Azerbaijan", president:"Mukhtar Babayev", presCountry:"Azerbaijan",
  dates:"11–22 Nov 2024", milestone:false,
- decisions:["NCQG: US$300bn/yr climate finance by 2035", "Carbon-credit registry established", "'Finance COP' — developing-world needs largely unmet"],
+ decisions:["NCQG: US$300bn/yr climate finance by 2035", "Carbon-credit registry established", "'Finance COP': developing-world needs largely unmet"],
  co2:38.6},
 {n:30, nDisp:"COP 30", year:2025, city:"Belém", country:"Brazil", president:"André Corrêa do Lago", presCountry:"Brazil",
  dates:"10–21 Nov 2025", milestone:true,
@@ -134,7 +134,7 @@ var COPS = [
  co2:38.7},
 {n:31, nDisp:"COP 31", year:2026, city:"Antalya", country:"Türkiye", president:"Murat Kurum", presCountry:"Türkiye",
  dates:"9–20 Nov 2026", milestone:false,
- decisions:["Upcoming — Antalya, with Pacific-led pre-COP", "Turkish presidency of the WEOG rotation"],
+ decisions:["Upcoming: Antalya, with Pacific-led pre-COP", "Turkish presidency of the WEOG rotation"],
  co2:38.6, upcoming:true}
 ];
 
@@ -189,7 +189,7 @@ function parseOWID(txt, valueColName) {
    DATA LOADING
    ============================================================ */
 async function loadAll() {
-  setStatus("Step 1/2 — loading CO₂ & temperature series (Our World in Data)");
+  setStatus("Step 1/2: loading CO₂ & temperature series (Our World in Data)");
   var co2Csv = await fetchText("https://ourworldindata.org/grapher/annual-co2-emissions-per-country.csv");
   var co2Parsed = parseOWID(co2Csv, "Annual CO₂ emissions");
   for (var k in co2Parsed) {
@@ -207,7 +207,7 @@ async function loadAll() {
     }
   }
 
-  console.log("DATA CHECK — CO2 years:", Object.keys(co2World).length,
+  console.log("DATA CHECK: CO2 years:", Object.keys(co2World).length,
               "| temp years:", Object.keys(tempWorld).length);
 
   setStatus("");
@@ -239,7 +239,7 @@ function renderHeadlineStats() {
 }
 
 /* ============================================================
-   CHART — CO2 with COP markers
+   CHART: CO2 with COP markers
    ============================================================ */
 function buildChart() {
   if (chart) chart.destroy();
@@ -312,7 +312,7 @@ function buildChart() {
             label: function(ctx) {
               if (ctx.dataset.label === "COP summits") {
                 var p = ctx.raw;
-                return "COP " + (p.cop.nDisp || p.cop.n) + " — " + p.cop.city + " " + p.cop.year;
+                return "COP " + (p.cop.nDisp || p.cop.n) + ": " + p.cop.city + " " + p.cop.year;
               }
               var v = ctx.parsed.y;
               return ctx.dataset.label + ": " + v;
@@ -379,9 +379,9 @@ function selectCop(idx, first) {
   /* header */
   var disp = c.nDisp || ("COP " + c.n);
   document.getElementById("yearDisplay").innerHTML = disp + " &middot; " + c.year;
-  document.getElementById("yearCaption").textContent = c.city + ", " + c.country + " — " + (c.decisions[0] || "");
+  document.getElementById("yearCaption").textContent = c.city + ", " + c.country + ": " + (c.decisions[0] || "");
   document.getElementById("copNote").textContent =
-    (c.upcoming ? "Upcoming conference — Nov 2026" : "Attended decisions embedded · atmosphere data live");
+    (c.upcoming ? "Upcoming conference: Nov 2026" : "Attended decisions embedded · atmosphere data live");
 
   /* detail card */
   document.getElementById("copTag").textContent = disp + " · " + c.year;
@@ -389,7 +389,7 @@ function selectCop(idx, first) {
   document.getElementById("copMeta").innerHTML =
     "President: <b>" + c.president + "</b> (" + c.presCountry + ") &middot; " + c.dates;
 
-  /* verdict — computed from live data */
+  /* verdict: computed from live data */
   var g = fiveYrGrowth(c.year);
   var verdictEl = document.getElementById("copVerdict");
   if (c.upcoming) {
@@ -402,7 +402,7 @@ function selectCop(idx, first) {
       "CO<sub>2</sub> growth " + word + " after " + c.city +
       ": <b>" + fmtPct(g.post) + "</b> in the 5 years after vs " + fmtPct(g.pre) + " in the 5 years before.";
   } else {
-    verdictEl.innerHTML = "Verdict pending — insufficient data window around " + c.year + ".";
+    verdictEl.innerHTML = "Verdict pending: insufficient data window around " + c.year + ".";
   }
 
   /* delta grid */
@@ -453,7 +453,7 @@ function buildAllCopsTable() {
     div.className = "cop-row" + (c.milestone ? " milestone" : "");
     div.setAttribute("data-idx", i);
     div.innerHTML =
-      "<span class='r-name'>" + (c.nDisp || ("COP " + c.n)) + " — " + c.city + ", " + c.country + " (" + c.year + ")</span>" +
+      "<span class='r-name'>" + (c.nDisp || ("COP " + c.n)) + ": " + c.city + ", " + c.country + " (" + c.year + ")</span>" +
       "<span class='r-val'>" + (at !== undefined ? (at / 1e9).toFixed(1) + " Gt" : "—") + "</span>";
     div.addEventListener("click", function() {
       stopPlay();
@@ -505,6 +505,6 @@ document.addEventListener("DOMContentLoaded", function() {
   loadAll().catch(function(err) {
     console.error(err);
     document.getElementById("status").textContent =
-      "ERROR: " + err.message + " — see Console (F12)";
+      "ERROR: " + err.message + ": see Console (F12)";
   });
 });

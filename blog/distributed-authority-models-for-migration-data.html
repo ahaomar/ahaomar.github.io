@@ -14,10 +14,10 @@
 <!-- Google tag (gtag.js) end -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Distributed authority models — Omar Farooq</title>
+<title>Distributed authority models · Omar Farooq</title>
 <meta name="description" content="How 64 UN agencies coordinate on a shared knowledge graph without a central database: role based access control, entity reference caching, and multi level editorial workflows at scale.">
 <link rel="canonical" href="https://ahaomar.github.io/blog/distributed-authority-models-for-migration-data.html">
-<meta property="og:title" content="Distributed authority models for migration data — Omar Farooq">
+<meta property="og:title" content="Distributed authority models for migration data · Omar Farooq">
 <meta property="og:description" content="How 64 UN agencies coordinate on a shared knowledge graph without a central database.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://ahaomar.github.io/blog/distributed-authority-models-for-migration-data.html">
@@ -56,9 +56,9 @@
 
 <header class="topbar" role="banner">
   <div class="topbar-inner">
-    <a href="../index.html" class="wordmark" aria-label="Omar Farooq — Home">
+    <a href="../index.html" class="wordmark" aria-label="Omar Farooq, home">
       <strong>OMAR FAROOQ</strong>
-      <span>SENIOR PLATFORM ARCHITECT</span>
+      <span>SENIOR DRUPAL DEVELOPER &amp; PLATFORM ARCHITECT</span>
     </a>
 
     <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
@@ -94,12 +94,12 @@
       <section class="cmdk-section" aria-label="Navigation">
         <h3 class="cmdk-section-title">Go to</h3>
         <div class="cmdk-group" role="listbox">
-          <button class="cmdk-item" role="option" data-href="../index.html">About — Profile &amp; record</button>
-          <button class="cmdk-item" role="option" data-href="../projects.html">Projects — UN platform case studies</button>
-          <button class="cmdk-item" role="option" data-href="../skills.html">Skills — Technical practice</button>
-          <button class="cmdk-item" role="option" data-href="../dashboards.html">AI Dashboards — Data visualisations</button>
-          <button class="cmdk-item" role="option" data-href="../blog.html">Blog — Field notes</button>
-          <button class="cmdk-item" role="option" data-href="../contact.html">Contact — Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="../index.html">About · Profile &amp; record</button>
+          <button class="cmdk-item" role="option" data-href="../projects.html">Projects · UN platform case studies</button>
+          <button class="cmdk-item" role="option" data-href="../skills.html">Skills · Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../dashboards.html">AI Dashboards · Data visualisations</button>
+          <button class="cmdk-item" role="option" data-href="../blog.html">Blog · Field notes</button>
+          <button class="cmdk-item" role="option" data-href="../contact.html">Contact · Open to roles</button>
         </div>
       </section>
       <section class="cmdk-section" aria-label="External">
@@ -137,9 +137,9 @@
 
 
 
-      <p>The UN Migration Network Hub is not a multi tenant SaaS with configuration tables for each agency. It is 64 distinct organizations — the IOM itself, United Nations entities like OCHA and UNEP, intergovernmental bodies such as OECD and World Bank, plus country level chapters from Argentina to Zambia all contributing different types of content under mutually agreed editorial contracts.</p>
+      <p>The UN Migration Network Hub is not a multi tenant SaaS with configuration tables for each agency. It is 64 distinct organizations: the IOM itself, United Nations entities like OCHA and UNEP, intergovernmental bodies such as OECD and World Bank, plus country level chapters from Argentina to Zambia all contributing different types of content under mutually agreed editorial contracts.</p>
 
-      <p>This coordination happens without a central database. Each agency owns its own instances while referencing shared concepts — refugees, forced displacement scenarios, climate migration events — through entity relationships that traverse institutional boundaries. The question is not how you replicate data across replicas; it is where authority lives for each piece of information and what rules enforce the boundary between who can author content versus who can see it.</p>
+      <p>This coordination happens without a central database. Each agency owns its own instances while referencing shared concepts such as refugees, forced displacement scenarios and climate migration events, through entity relationships that traverse institutional boundaries. The question is not how you replicate data across replicas; it is where authority lives for each piece of information and what rules enforce the boundary between who can author content versus who can see it.</p>
 
       <h2>The architecture pattern</h2>
 
@@ -154,10 +154,10 @@
       <h2>The three layer permission pattern</h2>
 
       <h3>Datum level (entity fields)</h3>
-      <p>This is where a country chapter author can edit only their own displacement reports while leaving shared vocabulary tables untouched. Each entity type defines its own field permissions — the metadata schema for refugee flows differs from editorial notes on humanitarian corridors.</p>
+      <p>This is where a country chapter author can edit only their own displacement reports while leaving shared vocabulary tables untouched. Each entity type defines its own field permissions. The metadata schema for refugee flows differs from editorial notes on humanitarian corridors.</p>
 
       <h3>Type level (content types and bundles)</h3>
-      <p>An intergovernmental body might have write access to all displacement scenario entities but not migration statistics, since national statistical offices guard their methodologies. Within content types themselves you can define subtypes that further partition authority — an OCHA user could manage situation reports within the broader humanitarian intelligence model without affecting policy documents maintained by IOM headquarters.</p>
+      <p>An intergovernmental body might have write access to all displacement scenario entities but not migration statistics, since national statistical offices guard their methodologies. Within content types themselves you can define subtypes that further partition authority. An OCHA user could manage situation reports within the broader humanitarian intelligence model without affecting policy documents maintained by IOM headquarters.</p>
 
       <h3>Suite level (sites and administrative domains)</h3>
       <p>This is where each member state defines their own organizational boundaries, whether as separate Drupal instances federated through entity API calls or modules installed across multiple systems. A World Bank economist reviewing global migration statistics might only have visibility into datasets marked for public consumption while the internal analytical workspaces remain isolated to agencies that classified them there.</p>
@@ -211,7 +211,7 @@
 <footer class="footer footer--hm-colophon" role="contentinfo">
   <div class="wrap">
     <p class="hm-colophon">
-      M. Omar Farooq — Senior Drupal Developer &amp; Architect, IOM · UN Migration, Geneva, Switzerland (remote). In commercial practice since 2002. Master of Computer Science, cum laude, American International University, Lahore, 2002. Bachelor of Commerce, first class, University of the Punjab, 2000. English C2, Urdu native, Punjabi native, Spanish A1, German A1. Open to remote roles globally. Built as static HTML and CSS — no framework, no build step — and served from GitHub Pages. © 2026.
+      M. Omar Farooq, Senior Drupal Developer &amp; Platform Architect, IOM · UN Migration, Geneva, Switzerland (remote). In commercial practice since 2002. Master of Computer Science, cum laude, American International University, Lahore, 2002. Bachelor of Commerce, first class, University of the Punjab, 2000. English C2, Urdu native, Punjabi native, Spanish A1, German A1. Open to remote roles globally. Built as static HTML and CSS, no framework and no build step, served from GitHub Pages. © 2026.
     </p>
     <ul class="hm-colophon-links">
       <li><a href="https://linkedin.com/in/ahaomar" target="_blank" rel="noopener">LinkedIn</a></li>

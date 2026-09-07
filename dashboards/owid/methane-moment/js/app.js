@@ -1,7 +1,7 @@
 "use strict";
 
 /* ============================================================
-   The Methane Moment — CH4 vs CO2, 1850–2024
+   The Methane Moment: CH4 vs CO2, 1850–2024
    Data: Our World in Data (Global Carbon Project)
    ============================================================ */
 
@@ -59,7 +59,7 @@ async function fetchFirstWorking(urls) {
   throw lastErr || new Error("All source URLs failed");
 }
 
-/* parse OWID CSV — value is last column; keep countries + World */
+/* parse OWID CSV: value is last column; keep countries + World */
 function parseOWID(txt, out, worldOut) {
   var lines = txt.trim().split(/\r?\n/);
   if (lines.length < 2) return;
@@ -84,20 +84,20 @@ function parseOWID(txt, out, worldOut) {
 
 /* ---------- data loading ---------- */
 async function loadAll() {
-  setStatus("Step 1/2 — loading methane emissions (1850–2024)");
+  setStatus("Step 1/2: loading methane emissions (1850–2024)");
   var ch4Csv = await fetchFirstWorking([
     "https://ourworldindata.org/grapher/methane-emissions.csv"
   ]);
   parseOWID(ch4Csv, CH4, WORLD_CH4);
 
-  setStatus("Step 2/2 — loading CO2 emissions for comparison");
+  setStatus("Step 2/2: loading CO2 emissions for comparison");
   var co2Csv = await fetchFirstWorking([
     "https://ourworldindata.org/grapher/annual-co2-emissions-per-country.csv",
     "https://ourworldindata.org/grapher/annual-co-emissions-per-country.csv"
   ]);
   parseOWID(co2Csv, CO2, WORLD_CO2);
 
-  console.log("DATA CHECK — CH4 countries:", Object.keys(CH4).length,
+  console.log("DATA CHECK: CH4 countries:", Object.keys(CH4).length,
               "| CO2 countries:", Object.keys(CO2).length,
               "| world CH4 years:", Object.keys(WORLD_CH4).length);
 
@@ -248,15 +248,15 @@ function renderTopEmitters() {
    YEAR ENGINE
    ============================================================ */
 var ERAS = [
-  { y: 1850, label: "Agriculture and wetlands — humanity's methane story begins with rice and cattle." },
+  { y: 1850, label: "Agriculture and wetlands: humanity's methane story begins with rice and cattle." },
   { y: 1880, label: "Coal rises; gas streetlights leak methane across industrial cities." },
-  { y: 1900, label: "A new century — the fossil era accelerates both gases." },
+  { y: 1900, label: "A new century: the fossil era accelerates both gases." },
   { y: 1945, label: "The Great Acceleration: mechanised farming, cheap oil, exploding herds." },
-  { y: 1970, label: "Green Revolution — rice yields and cattle herds surge." },
+  { y: 1970, label: "Green Revolution: rice yields and cattle herds surge." },
   { y: 2000, label: "China's industrial boom reshapes the methane map." },
-  { y: 2015, label: "The Paris Agreement year — methane barely features in it." },
+  { y: 2015, label: "The Paris Agreement year: methane barely features in it." },
   { y: 2021, label: "COP26 Glasgow: over 100 countries sign the Global Methane Pledge." },
-  { y: 2024, label: "Latest year — methane concentrations still rising at record pace." }
+  { y: 2024, label: "Latest year: methane concentrations still rising at record pace." }
 ];
 
 function eraCaption(y) {
@@ -460,6 +460,6 @@ document.addEventListener("DOMContentLoaded", function() {
   loadAll().catch(function(err) {
     console.error(err);
     document.getElementById("status").textContent =
-      "ERROR: " + err.message + " — see Console (F12)";
+      "ERROR: " + err.message + ": see Console (F12)";
   });
 });

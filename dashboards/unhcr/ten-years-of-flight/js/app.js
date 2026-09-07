@@ -1,8 +1,8 @@
-/* Dashboard application logic — extracted from inline script */
+/* Dashboard application logic: extracted from inline script */
 "use strict";
 
 /* ============================================================
-   Ten Years of Flight — UNHCR Population Statistics API
+   Ten Years of Flight: UNHCR Population Statistics API
    refugees by origin (map) + by asylum (detail), 2015–2024
    ============================================================ */
 
@@ -72,7 +72,7 @@ async function loadAll() {
   for (var y = YEAR_FROM; y <= YEAR_TO; y++) YEARS.push(y);
 
   /* country list */
-  setStatus("Step 1/4 — loading country list");
+  setStatus("Step 1/4: loading country list");
   var crows = (await fetchJSON("https://api.unhcr.org/population/v1/countries/?output_format=JSON&limit=400")).items || [];
   var isoList = [];
   for (var c = 0; c < crows.length; c++) {
@@ -83,8 +83,8 @@ async function loadAll() {
   }
   var allCodes = isoList.join(",");
 
-  /* refugees by ORIGIN — batches of 120 codes to keep URLs sane */
-  setStatus("Step 2/4 — loading refugees by origin (2015–2024)");
+  /* refugees by ORIGIN: batches of 120 codes to keep URLs sane */
+  setStatus("Step 2/4: loading refugees by origin (2015–2024)");
   byOrigin = {};
   for (var b = 0; b < isoList.length; b += 120) {
     var batch = isoList.slice(b, b + 120).join(",");
@@ -100,8 +100,8 @@ async function loadAll() {
     }
   }
 
-  /* refugees by ASYLUM — same batching */
-  setStatus("Step 3/4 — loading refugees by host country");
+  /* refugees by ASYLUM: same batching */
+  setStatus("Step 3/4: loading refugees by host country");
   byAsylum = {};
   for (var b2 = 0; b2 < isoList.length; b2 += 120) {
     var batch2 = isoList.slice(b2, b2 + 120).join(",");
@@ -118,7 +118,7 @@ async function loadAll() {
   }
 
   /* world totals per year (from the unfiltered aggregate rows already seen: fetch directly) */
-  setStatus("Step 4/4 — computing totals");
+  setStatus("Step 4/4: computing totals");
   var wd = await fetchJSON("https://api.unhcr.org/population/v1/population/?yearFrom=" + YEAR_FROM + "&yearTo=" + YEAR_TO + "&limit=100&output_format=JSON");
   var witems = wd.items || [];
   for (var w = 0; w < witems.length; w++) {
@@ -126,7 +126,7 @@ async function loadAll() {
     if (wi.coo === "-" && wi.refugees) worldOrigin[wi.year] = Number(wi.refugees);
   }
 
-  console.log("DATA CHECK — origins:", Object.keys(byOrigin).length,
+  console.log("DATA CHECK: origins:", Object.keys(byOrigin).length,
               "| hosts:", Object.keys(byAsylum).length,
               "| world years:", Object.keys(worldOrigin).length,
               "| meta:", Object.keys(countriesMeta).length);
@@ -169,7 +169,7 @@ function renderTotals() {
 }
 
 /* ============================================================
-   MAP — choropleth of refugees by origin
+   MAP: choropleth of refugees by origin
    ============================================================ */
 function shadeColor(n) {
   if (n === null || n === undefined) return "#d5dbe0";
@@ -231,7 +231,7 @@ function initMapReady() {
         if (!m) return;
         layer.bindTooltip(function(ev) {
           var n = at(byOrigin[f.id], currentYear);
-          return m.name + (n ? " — " + fmtFull(n) + " refugees" : " — no data");
+          return m.name + (n ? ": " + fmtFull(n) + " refugees" : ": no data");
         }, { sticky: true });
         layer.on("click", function() { selectCountry(f.id); });
       }
@@ -241,7 +241,7 @@ function initMapReady() {
 }
 
 /* ============================================================
-   YEAR ENGINE — slider + play
+   YEAR ENGINE: slider + play
    ============================================================ */
 function onSlide(y) {
   stopPlay();
@@ -293,8 +293,8 @@ function onYearChange(y, first) {
   if (cur && prev) {
     var delta = ((cur - prev) / prev) * 100;
     note = delta >= 0
-      ? "Global refugees " + fmtNum(cur) + " — up " + Math.abs(delta).toFixed(0) + "% on " + (y - 1)
-      : "Global refugees " + fmtNum(cur) + " — down " + Math.abs(delta).toFixed(0) + "% on " + (y - 1);
+      ? "Global refugees " + fmtNum(cur) + ": up " + Math.abs(delta).toFixed(0) + "% on " + (y - 1)
+      : "Global refugees " + fmtNum(cur) + ": down " + Math.abs(delta).toFixed(0) + "% on " + (y - 1);
   } else if (cur) {
     note = "Global refugees " + fmtNum(cur);
   }
@@ -573,7 +573,7 @@ function renderTakeaways(iso, oVal, hVal) {
   }
 
   if (!items.length) {
-    items.push("Limited data for " + name + " — try another year or country.");
+    items.push("Limited data for " + name + ": try another year or country.");
   }
 
   var ul = document.getElementById("takeaways");
@@ -592,6 +592,6 @@ document.addEventListener("DOMContentLoaded", function() {
   loadAll().catch(function(err) {
     console.error(err);
     document.getElementById("status").textContent =
-      "ERROR: " + err.message + " — see Console (F12)";
+      "ERROR: " + err.message + ": see Console (F12)";
   });
 });

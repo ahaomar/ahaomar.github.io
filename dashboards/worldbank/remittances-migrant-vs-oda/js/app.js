@@ -1,4 +1,4 @@
-/* Dashboard application logic — extracted from inline script */
+/* Dashboard application logic: extracted from inline script */
 "use strict";
 
 /* ---------- state ---------- */
@@ -46,16 +46,16 @@ async function loadAll() {
   var YEARS = "2018:2023";
   var BASE = "https://api.worldbank.org/v2/country/all/indicator/";
 
-  setStatus("Step 1/5 — loading remittances ($)");
+  setStatus("Step 1/5: loading remittances ($)");
   remitUSD = reshape((await fetchJSON(BASE + "BX.TRF.PWKR.CD?format=json&date=" + YEARS + "&per_page=20000"))[1] || []);
 
-  setStatus("Step 2/5 — loading remittances (% of GDP)");
+  setStatus("Step 2/5: loading remittances (% of GDP)");
   remitPct = reshape((await fetchJSON(BASE + "BX.TRF.PWKR.DT.GD.ZS?format=json&date=" + YEARS + "&per_page=20000"))[1] || []);
 
-  setStatus("Step 3/5 — loading ODA");
+  setStatus("Step 3/5: loading ODA");
   odaUSD = reshape((await fetchJSON(BASE + "DT.ODA.ODAT.CD?format=json&date=" + YEARS + "&per_page=20000"))[1] || []);
 
-  setStatus("Step 4/5 — loading country metadata");
+  setStatus("Step 4/5: loading country metadata");
   var crows = (await fetchJSON("https://api.worldbank.org/v2/country?format=json&per_page=400"))[1] || [];
   for (var i = 0; i < crows.length; i++) {
     var r = crows[i];
@@ -63,10 +63,10 @@ async function loadAll() {
     countriesMeta[r.id] = { name: r.name, region: r.region.value.trim() };
   }
 
-  setStatus("Step 5/5 — loading map boundaries");
+  setStatus("Step 5/5: loading map boundaries");
   var geo = await fetchJSON("https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json");
 
-  console.log("DATA CHECK — remitUSD:", Object.keys(remitUSD).length,
+  console.log("DATA CHECK: remitUSD:", Object.keys(remitUSD).length,
               "| remitPct:", Object.keys(remitPct).length,
               "| odaUSD:", Object.keys(odaUSD).length,
               "| meta:", Object.keys(countriesMeta).length);
@@ -403,6 +403,6 @@ document.addEventListener("DOMContentLoaded", function() {
   loadAll().catch(function(err) {
     console.error(err);
     document.getElementById("status").textContent =
-      "ERROR: " + err.message + " — see Console (F12)";
+      "ERROR: " + err.message + ": see Console (F12)";
   });
     });

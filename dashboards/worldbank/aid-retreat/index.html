@@ -13,57 +13,43 @@
   });
 </script>
 <!-- Google tag (gtag.js) end -->
- 
+
 <meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Invisible Lifeline - The Real Aid · Remittances vs Official Development Assistance</title>
-<meta name="description" content="Remittances vs official development assistance, migrant workers now send home far more than all donor countries combined in foreign aid. Interactive dashboard live from the World Bank Indicators API.">
-<link rel="canonical" href="https://ahaomar.github.io/dashboards/worldbank/remittances-migrant-vs-oda/index.html">
-<meta property="og:title" content="The Invisible Lifeline · Remittances vs Official Development Assistance">
-<meta property="og:description" content="Migrant workers send home more than all donor countries combined give in aid.">
+<title>The Aid Retreat · Global Aid Rises, Help per Displaced Person Falls</title>
+<meta name="description" content="Global humanitarian needs keep climbing while aid per displaced person keeps falling. Interactive dashboard live from the World Bank Indicators API and the UNHCR Population Statistics API.">
+<link rel="canonical" href="https://ahaomar.github.io/dashboards/worldbank/aid-retreat/index.html">
+<meta property="og:title" content="The Aid Retreat · Global aid rises, help per displaced person falls">
+<meta property="og:description" content="Two curves diverging: displacement climbs, aid per displaced person falls. Live World Bank and UNHCR data.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://ahaomar.github.io/dashboards/worldbank/remittances-migrant-vs-oda/index.html">
+<meta property="og:url" content="https://ahaomar.github.io/dashboards/worldbank/aid-retreat/index.html">
 <meta name="twitter:card" content="summary">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="stylesheet" href="css/style.css">
-
-<script>document.documentElement.className += ' js';</script>
 <meta name="google-site-verification" content="dd7btgdjbyout2SAEqaEsy3hUZacslRGlOOpHnx-4xY" />
 </head>
 
 <body>
-
 <header class="topbar" role="banner">
   <div class="topbar-inner">
     <a href="../../../index.html" class="wordmark" aria-label="Omar Farooq, home">
       <strong>OMAR FAROOQ</strong>
       <span>SENIOR DRUPAL DEVELOPER &amp; PLATFORM ARCHITECT</span>
     </a>
-
-    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
+    <nav class="nav" role="navigation" aria-label="Primary">
       <a href="../../../index.html">About</a>
       <a href="../../../projects.html">Projects</a>
       <a href="../../../skills.html">Skills</a>
-      <a href="../../../dashboards.html" aria-current="page">AI Dashboards</a>
       <a href="../../../blog.html">Blog</a>
       <a href="../../../contact.html">Contact</a>
-      <a href="../../../assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
+      <a href="../../../dashboards.html" aria-current="page">AI Dashboards</a>
     </nav>
-
-    <div class="topbar-actions">
-      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
-        <kbd><span>⌘</span>K</kbd>
-      </button>
-      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-        <span class="nav-toggle-text">Menu</span>
-      </button>
-    </div>
+    <button type="button" class="cmdk-trigger" aria-label="Command palette" aria-expanded="false" aria-controls="cmdk-panel">
+      <kbd><span>⌘</span>K</kbd>
+    </button>
   </div>
 </header>
 
@@ -104,15 +90,18 @@
 <header class="masthead">
   <div class="shell masthead-inner">
     <div class="kicker">Development Finance &middot; Interactive Data Brief</div>
-    <h1>The Invisible Lifeline: <em>The Real Aid</em></h1>
+    <h1>The Aid Retreat: <em>needs rise, money leaves</em></h1>
     <p class="standfirst">
-      Remittances vs official development assistance &mdash; migrant workers now send home
-      far more than the world gives in aid.
+      Global aid spending sets records on paper, yet the people it is meant for keep multiplying.
+      Plot total ODA against the displaced population it must serve and the story inverts:
+      aid per displaced person has been falling for years. Live from the World Bank Indicators
+      API and the UNHCR Population Statistics API.
     </p>
     <div class="meta-strip">
-      <div class="meta-cell stat"><span>World remittances</span><b id="totalRemit">&mdash;</b></div>
-      <div class="meta-cell stat"><span>World ODA</span><b id="totalODA">&mdash;</b></div>
-      <div class="meta-cell stat"><span>Remittances vs aid</span><b id="totalRatio">&mdash;</b></div>
+      <div class="meta-cell stat"><span>ODA, latest</span><b id="statOda">&mdash;</b></div>
+      <div class="meta-cell stat"><span>People displaced, latest</span><b id="statDisplaced">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Aid per displaced person</span><b id="statPerHead">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Change since 2015</span><b id="statDelta">&mdash;</b></div>
     </div>
   </div>
 </header>
@@ -120,36 +109,27 @@
 <main class="shell">
   <div id="status">Loading data&hellip;</div>
   <div id="app" style="display:none;">
-    <div class="controls">
-      <label for="regionSelect">Region</label>
-      <select id="regionSelect"><option value="">Select a region</option></select>
-      <label for="countrySelect">Country</label>
-      <select id="countrySelect" disabled><option value="">Select a country</option></select>
-      <span id="countNote"></span>
-    </div>
-    <div class="content">
-      <section class="panel">
-        <div class="panel-head">
-          <span class="panel-title">Remittances as share of GDP</span>
-          <span class="panel-sub">click a country</span>
-        </div>
-        <div id="map"></div>
-      </section>
-      <aside class="panel">
-        <div class="insight-body">
-          <div id="countryPanel">
-            <div class="empty-note">&#9664;&nbsp; Click any country to compare what its diaspora sends home with what it receives in aid.</div>
-          </div>
-          <div id="chartWrap" style="display:none;">
-            <div class="country-name" id="countryName"></div>
-            <div class="country-year" id="countryYear"></div>
-            <div class="ratio-callout" id="ratioLine"></div>
-            <div class="chart-holder"><canvas id="countryChart"></canvas></div>
-            <ul class="takeaways" id="takeaways"></ul>
-          </div>
-        </div>
-      </aside>
-    </div>
+
+    <section class="panel" style="margin:var(--space-6) 0 var(--space-8);">
+      <div class="panel-head">
+        <span class="panel-title">Two curves, one gap: total ODA vs people displaced</span>
+        <span class="panel-sub">World Bank ODA (left axis) · UNHCR people of concern (right axis)</span>
+      </div>
+      <div class="chart-xl"><canvas id="dualChart"></canvas></div>
+      <div class="chart-foot">
+        <span class="chart-note">ODA = official development assistance received, all donors, current US$. Displaced = refugees, asylum-seekers, IDPs and others of concern to UNHCR.</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <span class="panel-title">Aid per displaced person, indexed</span>
+        <span class="panel-sub">2015 = 100 · what the money is actually worth per head</span>
+      </div>
+      <div class="chart-holder"><canvas id="perHeadChart"></canvas></div>
+      <ul class="takeaways" id="takeaways"></ul>
+    </section>
+
   </div>
 </main>
 
@@ -157,18 +137,18 @@
   <div class="shell footer-inner">
     <h3>Data Sources &amp; Methodology</h3>
     <div class="source-block">
-      <div><b>Remittances</b>
-        <p>World Bank Indicators API &mdash; BX.TRF.PWKR.CD (US$) and BX.TRF.PWKR.DT.GD.ZS (% of GDP), 2018&ndash;2023.</p>
-      </div>
       <div><b>Official development assistance</b>
-        <p>World Bank Indicators API &mdash; DT.ODA.ODAT.CD, 2018&ndash;2023.</p>
+        <p>World Bank Indicators API &mdash; DT.ODA.ODAT.CD: net ODA received, current US$, World aggregate, 2000&ndash;2023.</p>
       </div>
-      <div><b>License</b>
-        <p>CC BY 4.0 &middot; Boundaries from the open world.geo.json dataset.</p>
+      <div><b>Displaced population</b>
+        <p>UNHCR Population Statistics API &mdash; global aggregate of refugees, asylum-seekers, internally displaced people and others of concern, 2015&ndash;2024.</p>
+      </div>
+      <div><b>Method</b>
+        <p>Aid per displaced person = ODA received (World) divided by UNHCR people of concern (World). Both series are fetched live on page load; all takeaways are computed from the responses, never hard-coded.</p>
       </div>
     </div>
     <div class="colophon">
-      <span>The Invisible Lifeline &mdash; an independent data explainer</span>
+      <span>The Aid Retreat &mdash; an independent data explainer</span>
       <span>Refreshed automatically on each page load</span>
     </div>
   </div>
@@ -178,4 +158,3 @@
 <script src="../../../js/main.js"></script>
 </body>
 </html>
-

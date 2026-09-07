@@ -98,12 +98,12 @@ function selectCity(r) {
   document.getElementById("cityInput").value = r.name;
   document.getElementById("cityDisplay").textContent = r.name;
   document.getElementById("cityCaption").textContent =
-    (r.admin1 ? r.admin1 + ", " : "") + r.country + " — loading 14 years of daily data…";
+    (r.admin1 ? r.admin1 + ", " : "") + r.country + ": loading 14 years of daily data…";
   loadCity(r);
 }
 
 /* ============================================================
-   DATA LOADING — ERA5 archive in 2 decade fetches
+   DATA LOADING: ERA5 archive in 2 decade fetches
    ============================================================ */
 async function fetchDecade(lat, lon, fromY, toY) {
   var url = "https://archive-api.open-meteo.com/v1/archive" +
@@ -162,14 +162,14 @@ async function loadCity(r) {
     document.getElementById("resultArea").style.display = "block";
     document.getElementById("cityCaption").textContent =
       (r.admin1 ? r.admin1 + ", " : "") + r.country +
-      " — " + (r.population ? Number(r.population).toLocaleString() + " people · " : "") +
+      ": " + (r.population ? Number(r.population).toLocaleString() + " people · " : "") +
       "14 years of daily data, live from Copernicus ERA5.";
 
     renderAll();
   } catch (e) {
     console.error(e);
     document.getElementById("status").style.display = "block";
-    document.getElementById("status").textContent = "ERROR: " + e.message + " — see Console (F12)";
+    document.getElementById("status").textContent = "ERROR: " + e.message + ": see Console (F12)";
   }
 }
 
@@ -197,11 +197,11 @@ function renderAll() {
 
   /* hero delta */
   document.getElementById("tempTitle").textContent =
-    currentCity.name + " — temperature distribution, then vs now";
+    currentCity.name + ": temperature distribution, then vs now";
   document.getElementById("deltaNum").innerHTML =
     (delta >= 0 ? "+" : "") + delta.toFixed(2) + "&deg;C";
   document.getElementById("deltaLabel").innerHTML =
-    "warming in " + currentCity.name + " — 2010&ndash;2015 vs 2016&ndash;2024 average";
+    "warming in " + currentCity.name + ": 2010&ndash;2015 vs 2016&ndash;2024 average";
 
   buildDistChart();
   buildMonthChart(thenMean, nowMean);
@@ -381,7 +381,7 @@ function renderTakeaways(thenMean, nowMean, delta) {
   var name = currentCity.name;
 
   items.push("In the 1940s, " + name + "'s average daily temperature was <b>" + thenMean.toFixed(1) + "&deg;C</b>. " +
-    "In the most recent decade it is <b>" + nowMean.toFixed(1) + "&deg;C</b> — a shift of <b>" +
+    "In the most recent decade it is <b>" + nowMean.toFixed(1) + "&deg;C</b>: a shift of <b>" +
     (delta >= 0 ? "+" : "") + delta.toFixed(2) + "&deg;C</b>.");
 
   /* hottest decade */
@@ -411,7 +411,7 @@ function renderTakeaways(thenMean, nowMean, delta) {
   }));
   if (thenSummer !== null && nowSummer !== null) {
     items.push("Summer (Jun&ndash;Aug) has warmed by <b>" + (nowSummer - thenSummer).toFixed(2) + "&deg;C</b> " +
-      "— from " + thenSummer.toFixed(1) + "&deg;C to " + nowSummer.toFixed(1) + "&deg;C on average.");
+      "That is a shift from " + thenSummer.toFixed(1) + "&deg;C to " + nowSummer.toFixed(1) + "&deg;C on average.");
   }
 
   /* context vs global average */
