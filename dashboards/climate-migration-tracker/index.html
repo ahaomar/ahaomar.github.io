@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js)  Google Analytics start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQ7ME7B2GR', {
+    cookie_domain: 'ahaomar.github.io'
+  });
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta name="robots" content="index, follow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Migration &amp; Displacement Tracker · 2015–2024</title>
+<meta name="description" content="Disaster displacement against refugee flows, 2015-2024. New internal displacement from floods, storms and droughts from the World Bank, set against refugees by origin from UNHCR, country by country.">
+<link rel="canonical" href="https://ahaomar.github.io/dashboards/climate-migration-tracker/index.html">
+<meta property="og:title" content="Climate Migration &amp; Displacement Tracker">
+<meta property="og:description" content="Ten years of disaster displacement and refugee flows, side by side.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ahaomar.github.io/dashboards/climate-migration-tracker/index.html">
+<meta name="twitter:card" content="summary">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="css/style.css">
+
+<script>document.documentElement.className += ' js';</script>
+<meta name="google-site-verification" content="dd7btgdjbyout2SAEqaEsy3hUZacslRGlOOpHnx-4xY" />
+</head>
+
+<body>
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="../../index.html" class="wordmark" aria-label="Omar Farooq, home">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR DRUPAL DEVELOPER &amp; PLATFORM ARCHITECT</span>
+    </a>
+
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
+      <a href="../../index.html">About</a>
+      <a href="../../projects.html">Projects</a>
+      <a href="../../skills.html">Skills</a>
+      <a href="../../dashboards.html" aria-current="page">AI Dashboards</a>
+      <a href="../../blog.html">Blog</a>
+      <a href="../../contact.html">Contact</a>
+      <a href="../../assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
+    </nav>
+
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="../../index.html">About · Profile &amp; history</button>
+          <button class="cmdk-item" role="option" data-href="../../projects.html">Projects · Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="../../skills.html">Skills · Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../../blog.html">Blog · Field notes</button>
+          <button class="cmdk-item" role="option" data-href="../../contact.html">Contact · Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="../../dashboards.html">AI Dashboards · live data briefs</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="../../assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div class="kicker">Displacement &middot; Interactive Data Brief</div>
+    <h1>Climate Migration &amp; <em>Displacement Tracker</em></h1>
+    <p class="standfirst">
+      Two different kinds of displacement, ten years, one screen. New internal displacement caused by
+      floods, storms and droughts from the World Bank, set against refugees who crossed a border by
+      origin from UNHCR. The disaster series moves first and hardest; the refugee series carries the
+      slower, longer conflicts. Press play and watch them diverge.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-cell stat"><span>Refugees 2015</span><b id="stat2015">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Refugees 2024</span><b id="stat2024">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Peak disaster displacement</span><b id="statDisaster">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Countries reporting</span><b id="statCountries">&mdash;</b></div>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div id="status">Loading data&hellip;</div>
+  <div id="app" style="display:none;">
+
+    <section class="timeline" aria-label="Year timeline">
+      <div class="timeline-top">
+        <div class="timeline-year" id="yearDisplay">2015</div>
+        <div class="timeline-caption" id="yearCaption">The start of the decade.</div>
+      </div>
+      <div class="timeline-track">
+        <input type="range" id="yearSlider" min="2015" max="2024" step="1" value="2015"
+               aria-label="Select year" oninput="onSlide(this.value)">
+      </div>
+      <div class="timeline-buttons">
+        <button type="button" class="tl-btn active" id="playBtn" onclick="togglePlay()">&#9654; Play decade</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2020)">&#8593; Disaster peak 2020</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2022)">&#8593; Refugee surge 2022</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2024)">&#8634; Latest</button>
+        <span class="tl-note" id="worldNote"></span>
+      </div>
+    </section>
+
+    <div class="controls">
+      <label for="regionSelect">Region</label>
+      <select id="regionSelect"><option value="">All regions</option></select>
+      <label for="countrySelect">Country</label>
+      <select id="countrySelect" disabled><option value="">Select a country</option></select>
+      <span id="countNote"></span>
+    </div>
+
+    <div class="content">
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Two displacements, 2015&ndash;2024</span>
+          <span class="panel-sub">click a year on the chart</span>
+        </div>
+        <div class="chart-holder chart-holder--tall"><canvas id="globalChart"></canvas></div>
+      </section>
+
+      <aside class="panel">
+        <div class="insight-body">
+          <div id="countryPanel">
+            <div class="country-name" id="panelYearTitle">2015</div>
+            <div class="country-year" id="panelYearSub">Global totals, both series</div>
+
+            <div class="stat-grid">
+              <div class="stat-cell"><span>Refugees by origin</span><b id="panelRefugees">&mdash;</b></div>
+              <div class="stat-cell"><span>New disaster displacement</span><b id="panelDisplaced">&mdash;</b></div>
+            </div>
+
+            <div class="ratio-callout" id="ratioLine">&mdash;</div>
+
+            <div class="top-list">
+              <h4 id="topListTitle">Top countries this year</h4>
+              <div id="topList"></div>
+            </div>
+
+            <ul class="takeaways" id="takeaways"></ul>
+          </div>
+
+          <div id="chartWrap" style="display:none;">
+            <div class="country-name" id="countryName"></div>
+            <div class="country-year" id="countryYear"></div>
+            <div class="ratio-callout" id="countryRatio"></div>
+            <div class="chart-holder"><canvas id="countryChart"></canvas></div>
+            <ul class="takeaways" id="countryTakeaways"></ul>
+            <div class="top-list">
+              <h4 id="countryPeersTitle">Peers in the region</h4>
+              <div id="countryPeers"></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell footer-inner">
+    <h3>Data Sources &amp; Methodology</h3>
+    <div class="source-block">
+      <div><b>Refugees by origin (live)</b>
+        <p><a href="https://www.unhcr.org/refugee-statistics" rel="noopener">UNHCR Population Statistics</a> &mdash; refugees by country of origin, 2015&ndash;2024, via the UNHCR Population Statistics API. Refugee figures are end-year stocks, not annual flows.</p>
+      </div>
+      <div><b>Disaster displacement (live)</b>
+        <p><a href="https://data.worldbank.org/indicator/VC.IDP.NWDS" rel="noopener">World Bank Indicators API</a> &mdash; VC.IDP.NWDS, new internal displacement associated with disasters (number of cases), published 2015&ndash;2023. 2024 has not been reported yet and is shown as a gap.</p>
+      </div>
+      <div><b>Method</b>
+        <p>Global disaster figures sum the country-level series only; World Bank regional and income aggregates are excluded to avoid double counting. All takeaways and rankings are computed live in the browser from the two APIs.</p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Climate Migration &amp; Displacement Tracker &mdash; an independent data explainer built on UNHCR and World Bank open data</span>
+      <span>Refreshed automatically on each page load</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="../../js/main.js"></script>
+</body>
+</html>

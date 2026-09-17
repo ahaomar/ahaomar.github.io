@@ -402,7 +402,12 @@ function renderTotals() {
 document.addEventListener("DOMContentLoaded", function() {
   loadAll().catch(function(err) {
     console.error(err);
+    setStatus("Live data unavailable. Dashboard structure remains, but live data could not be loaded.");
+    document.getElementById("status").style.display = "block";
+    document.getElementById("app").style.display = "none";
     document.getElementById("status").textContent =
-      "ERROR: " + err.message + ": see Console (F12)";
+      "Unable to load live data from World Bank Indicators API. " +
+      "This dashboard shows the structure without live data. " +
+      "Changes may reflect in a few moments. Please try again later.";
   });
     });

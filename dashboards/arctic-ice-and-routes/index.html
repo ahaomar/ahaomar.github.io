@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js)  Google Analytics start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQ7ME7B2GR', {
+    cookie_domain: 'ahaomar.github.io'
+  });
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta name="robots" content="index, follow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arctic Sea Ice &amp; Northern Shipping Routes · 1979–2025</title>
+<meta name="description" content="Arctic sea ice extent from 1979 to 2025: September minimum and March maximum from the satellite record, with the ice-free window and threshold-based Northern Sea Route and Northwest Passage status. Live data from Our World in Data.">
+<link rel="canonical" href="https://ahaomar.github.io/dashboards/arctic-ice-and-routes/index.html">
+<meta property="og:title" content="Arctic Sea Ice &amp; Northern Shipping Routes">
+<meta property="og:description" content="47 years of Arctic sea ice extent, and what it means for the Northern Sea Route and Northwest Passage.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ahaomar.github.io/dashboards/arctic-ice-and-routes/index.html">
+<meta name="twitter:card" content="summary">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="css/style.css">
+
+<script>document.documentElement.className += ' js';</script>
+<meta name="google-site-verification" content="dd7btgdjbyout2SAEqaEsy3hUZacslRGlOOpHnx-4xY" />
+</head>
+
+<body>
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="../../index.html" class="wordmark" aria-label="Omar Farooq, home">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR DRUPAL DEVELOPER &amp; PLATFORM ARCHITECT</span>
+    </a>
+
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
+      <a href="../../index.html">About</a>
+      <a href="../../projects.html">Projects</a>
+      <a href="../../skills.html">Skills</a>
+      <a href="../../dashboards.html" aria-current="page">AI Dashboards</a>
+      <a href="../../blog.html">Blog</a>
+      <a href="../../contact.html">Contact</a>
+      <a href="../../assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
+    </nav>
+
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="../../index.html">About · Profile &amp; history</button>
+          <button class="cmdk-item" role="option" data-href="../../projects.html">Projects · Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="../../skills.html">Skills · Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../../blog.html">Blog · Field notes</button>
+          <button class="cmdk-item" role="option" data-href="../../contact.html">Contact · Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="../../dashboards.html">AI Dashboards · live data briefs</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="../../assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div class="kicker">Cryosphere &middot; Interactive Data Brief</div>
+    <h1>Arctic Sea Ice &amp; <em>Northern Shipping Routes</em></h1>
+    <p class="standfirst">
+      Forty-seven years of the satellite record, September minimum and March maximum, 1979&ndash;2025.
+      Press play and watch the summer ice retreat; the panel tracks what that does to the
+      Northern Sea Route and the Northwest Passage &mdash; and how many days a year the ice
+      now sits below the old navigability threshold.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-cell stat"><span>September 1979</span><b id="stat1979">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Record low</span><b id="statLow">&mdash;</b></div>
+      <div class="meta-cell stat"><span>September 2025</span><b id="stat2025">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Trend</span><b id="statDecade">&mdash;</b></div>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div id="status">Loading data&hellip;</div>
+  <div id="app" style="display:none;">
+
+    <section class="timeline" aria-label="Year timeline">
+      <div class="timeline-top">
+        <div class="timeline-year" id="yearDisplay">1979</div>
+        <div class="timeline-caption" id="yearCaption">The start of the reliable satellite record.</div>
+      </div>
+      <div class="timeline-track">
+        <input type="range" id="yearSlider" min="1979" max="2025" step="1" value="1979"
+               aria-label="Select year" oninput="onSlide(this.value)">
+      </div>
+      <div class="timeline-buttons">
+        <button type="button" class="tl-btn active" id="playBtn" onclick="togglePlay()">&#9654; Play 47 years</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2012)">&#8595; Record low 2012</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2007)">&#8595; 2007 step change</button>
+        <button type="button" class="tl-btn" onclick="jumpYear(2025)">&#8634; Latest</button>
+        <span class="tl-note" id="worldNote"></span>
+      </div>
+    </section>
+
+    <div class="content">
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Arctic sea ice extent, <span id="mapYearLabel">1979</span> &middot; million km<sup>2</sup></span>
+          <span class="panel-sub">click the chart or drag the slider</span>
+        </div>
+        <div class="chart-holder chart-holder--tall"><canvas id="mainChart"></canvas></div>
+      </section>
+
+      <aside class="panel">
+        <div class="insight-body">
+          <div class="country-name" id="panelYearTitle">1979</div>
+          <div class="country-year" id="panelYearSub">Arctic Ocean &middot; NSIDC satellite record via Our World in Data</div>
+
+          <div class="stat-grid">
+            <div class="stat-cell"><span>September minimum</span><b id="panelYearMin">&mdash;</b></div>
+            <div class="stat-cell"><span>March maximum</span><b id="panelYearMax">&mdash;</b></div>
+            <div class="stat-cell"><span>Rank (1 = lowest)</span><b id="panelYearRank">&mdash;</b></div>
+            <div class="stat-cell"><span>vs 1979</span><b id="panelYearChange">&mdash;</b></div>
+          </div>
+
+          <div class="ratio-callout" id="ratioLine">&mdash;</div>
+
+          <div class="route-cards">
+            <div class="route-card">
+              <div class="route-head"><span>Northern Sea Route</span><b id="nsrStatus">&mdash;</b></div>
+              <div class="route-body">Ice below 7.0M km<sup>2</sup>: <b id="nsrDays">&mdash;</b></div>
+            </div>
+            <div class="route-card">
+              <div class="route-head"><span>Northwest Passage</span><b id="nwpStatus">&mdash;</b></div>
+              <div class="route-body">Ice below 8.0M km<sup>2</sup>: <b id="nwpDays">&mdash;</b></div>
+            </div>
+            <div class="route-card">
+              <div class="route-head"><span>Ice-free window</span><b id="iceFreeDays">&mdash;</b></div>
+              <div class="route-body">Days per year the extent model sits below 7.0M km<sup>2</sup></div>
+            </div>
+          </div>
+
+          <ul class="takeaways" id="takeaways"></ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell footer-inner">
+    <h3>Data Sources &amp; Methodology</h3>
+    <div class="source-block">
+      <div><b>Sea ice extent (live)</b>
+        <p><a href="https://ourworldindata.org/grapher/arctic-sea-ice" rel="noopener">Our World in Data</a> &mdash; Arctic Ocean September minimum and March maximum extent, 1979&ndash;2025, from the NSIDC satellite record. CC BY 4.0.</p>
+      </div>
+      <div><b>Route thresholds</b>
+        <p>Northern Sea Route is classed from the September minimum: extended season &le; 4.0M km<sup>2</sup>, open &le; 5.0, marginal &le; 6.0, otherwise closed. Northwest Passage: open &le; 4.0, marginal &le; 4.8, otherwise closed. These are published navigability thresholds, not observed traffic.</p>
+      </div>
+      <div><b>Ice-free window (modelled)</b>
+        <p>Days below 7.0M km<sup>2</sup> are estimated by fitting a cosine through that year's March maximum and September minimum. It is a seasonal proxy derived from two real observations per year &mdash; not a count of observed shipping days.</p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Arctic Sea Ice &amp; Northern Shipping Routes &mdash; an independent data explainer built on the NSIDC record via Our World in Data</span>
+      <span>Refreshed automatically on each page load</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="../../js/main.js"></script>
+</body>
+</html>

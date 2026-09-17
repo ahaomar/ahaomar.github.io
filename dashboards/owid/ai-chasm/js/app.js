@@ -238,6 +238,8 @@ function buildJobsChart() {
 }
 
 loadAll().catch(function (e) {
-  setStatus("Could not load live data: " + e.message);
+  setStatus("Live data unavailable. Dashboard structure remains, but live data could not be loaded.");
   console.error(e);
+  document.getElementById("status").style.display = "block";
+  document.getElementById("app").style.display = "none";
 });

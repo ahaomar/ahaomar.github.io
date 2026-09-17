@@ -403,6 +403,7 @@ function renderCharts(iso) {
 /* ---------- go ---------- */
 loadAll().catch(function(err) {
   console.error(err);
-  document.getElementById("status").textContent =
-    "ERROR: " + err.message + " \u2014 see Console (F12)";
+  setStatus("Live data unavailable. Dashboard structure remains, but live data could not be loaded.");
+  document.getElementById("status").style.display = "block";
+  document.getElementById("app").style.display = "none";
 });

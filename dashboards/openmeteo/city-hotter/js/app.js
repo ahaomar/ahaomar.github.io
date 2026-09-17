@@ -168,8 +168,12 @@ async function loadCity(r) {
     renderAll();
   } catch (e) {
     console.error(e);
+    setStatus("Live data unavailable for this city. Dashboard structure remains, but live data could not be loaded.");
     document.getElementById("status").style.display = "block";
-    document.getElementById("status").textContent = "ERROR: " + e.message + ": see Console (F12)";
+    document.getElementById("app").style.display = "none";
+    document.getElementById("status").textContent =
+      "Unable to load weather data for this location from Open-Meteo. " +
+      "This dashboard shows the structure without live data. Please try another city.";
   }
 }
 
