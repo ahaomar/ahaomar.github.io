@@ -17,14 +17,14 @@ var currentIdx = YEARS.length - 1;   /* 2025 */
 var IND = {
   work: {
     code: "SL.TLF.CACT.FE.ZS",
-    title: "Women in the labour force",
-    short: "female labour-force participation",
-    unit: "% of women aged 15+",
+    title: "Women's labour force",
+    short: "female labour-force participation rate",
+    unit: "% of women aged 15 and over",
     better: "high",
     decimals: 1,
-    mapTitle: "Women in the labour force",
-    rankTitle: "Furthest behind",
-    rankSub: "% of women aged 15+ in the labour force, 12 lowest",
+    mapTitle: "Labour-force participation rate, women",
+    rankTitle: "Lowest participation",
+    rankSub: "per cent of women aged 15 and over in the labour force; 12 lowest values",
     bands: [[60, "#0d3b66"], [50, "#1a5c9e"], [40, "#3187c4"], [30, "#63b1e0"], [20, "#a8d4f0"], [-1, "#d3ebfa"]],
     legend: ["60% and over", "50-60%", "40-50%", "30-40%", "20-30%", "under 20%"],
     color: "#b91c1c",
@@ -32,14 +32,14 @@ var IND = {
   },
   health: {
     code: "SH.STA.MMRT",
-    title: "Maternal deaths",
+    title: "Maternal mortality",
     short: "maternal mortality ratio",
-    unit: "deaths per 100,000 live births",
+    unit: "maternal deaths per 100,000 live births",
     better: "low",
     decimals: 0,
-    mapTitle: "Maternal deaths per 100,000 births",
+    mapTitle: "Maternal mortality ratio, per 100,000 live births",
     rankTitle: "Highest maternal mortality",
-    rankSub: "deaths per 100,000 live births, 12 highest",
+    rankSub: "maternal deaths per 100,000 live births; 12 highest values",
     bands: [[1000, "#991b1b"], [500, "#dc2626"], [200, "#f87171"], [100, "#fca5a5"], [50, "#fecaca"], [-1, "#fee2e2"]],
     legend: ["1000 and over", "500-1000", "200-500", "100-200", "50-100", "under 50"],
     color: "#b91c1c",
@@ -47,14 +47,14 @@ var IND = {
   },
   school: {
     code: "SE.SEC.CMPT.LO.FE.ZS",
-    title: "Girls completing lower secondary",
-    short: "girls' lower-secondary completion",
-    unit: "% of the relevant age group",
+    title: "Girls' schooling",
+    short: "lower-secondary completion rate, girls",
+    unit: "% of girls of official secondary-school leaving age",
     better: "high",
     decimals: 1,
-    mapTitle: "Girls completing lower secondary",
-    rankTitle: "Furthest behind",
-    rankSub: "% of girls completing lower secondary, 12 lowest",
+    mapTitle: "Lower-secondary completion rate, girls",
+    rankTitle: "Lowest completion",
+    rankSub: "per cent of girls completing lower secondary; 12 lowest values",
     bands: [[90, "#0d3b66"], [75, "#1a5c9e"], [60, "#3187c4"], [45, "#63b1e0"], [30, "#a8d4f0"], [-1, "#d3ebfa"]],
     legend: ["90% and over", "75-90%", "60-75%", "45-60%", "30-45%", "under 30%"],
     color: "#0d9488",
@@ -63,13 +63,13 @@ var IND = {
   seats: {
     code: "SG.GEN.PARL.ZS",
     title: "Women in parliament",
-    short: "women's share of parliamentary seats",
+    short: "share of parliamentary seats held by women",
     unit: "% of seats",
     better: "high",
     decimals: 1,
     mapTitle: "Share of parliamentary seats held by women",
-    rankTitle: "Fewest women in parliament",
-    rankSub: "% of seats held by women, 12 lowest",
+    rankTitle: "Lowest representation",
+    rankSub: "per cent of seats held by women; 12 lowest values",
     bands: [[40, "#0d3b66"], [30, "#1a5c9e"], [20, "#3187c4"], [15, "#63b1e0"], [10, "#a8d4f0"], [-1, "#d3ebfa"]],
     legend: ["40% and over", "30-40%", "20-30%", "15-20%", "10-15%", "under 10%"],
     color: "#3a6eff",
@@ -114,6 +114,10 @@ function fmtVal(v, cfg) {
   return cfg.unit.charAt(0) === "%" ? s + "%" : s;
 }
 function unitSuffix(cfg) { return cfg.unit.charAt(0) === "%" ? "" : " " + cfg.unit; }
+/* UN editorial style: "per cent" spelled out inside running text */
+function pct(v, cfg) {
+  return cfg.unit.charAt(0) === "%" ? v.toFixed(cfg.decimals) + " per cent" : v.toFixed(cfg.decimals) + " " + cfg.unit;
+}
 
 async function fetchJSON(url) {
   var res = await fetch(url);
@@ -152,7 +156,7 @@ function parseRows(rows, valid, target, worldTarget) {
    ============================================================ */
 async function loadAll() {
   setStatus("Loading country boundaries…");
-  var geoP = fetchJSON("https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json");
+  var geoP = fetchJSON("https://raw.githubusercontent.com/johan/world.geo.json/34c96bba9c07d2ceb30696c599bb51a5b939b20f/countries.geo.json");
 
   setStatus("Loading five indicator series (World Bank Indicators API)…");
   var refP = fetchJSON("https://api.worldbank.org/v2/country?format=json&per_page=400");
@@ -258,8 +262,13 @@ function initMap(geo) {
       layer.bindTooltip(function () {
         var lv = latestAt(DATA[MODE][f.id], curYear());
         var nm = NAMES[f.id] || geoNames[f.id] || f.id;
-        if (!lv) return nm + ": no data";
-        return nm + ": " + fmtVal(lv.value, IND[MODE]) + unitSuffix(IND[MODE]) + " (" + lv.year + ")";
+        var el = document.createElement("span");
+        if (!lv) {
+          el.textContent = nm + ": no value reported on or before " + curYear();
+        } else {
+          el.textContent = nm + ": " + fmtVal(lv.value, IND[MODE]) + unitSuffix(IND[MODE]) + " (" + lv.year + ")";
+        }
+        return el;
       }, { sticky: true });
       layer.on("click", function () { selectCountry(f.id); });
     }
@@ -291,15 +300,15 @@ function curYear() { return YEARS[currentIdx]; }
 function renderHeadline() {
   var fe = latestAt(WORLD.work, YEAR_TO);
   if (fe) {
-    document.getElementById("statWork").innerHTML = fe.value.toFixed(1) + "%<small>of women 15+</small>";
+    document.getElementById("statWork").innerHTML = fe.value.toFixed(1) + "%<small>of women aged 15+</small>";
     document.getElementById("lblWork").textContent = fe.year;
     var ma = latestAt(MALE_WORLD, fe.year);
     if (ma) {
-      document.getElementById("statGap").innerHTML = (ma.value - fe.value).toFixed(1) + "<small>points, vs men</small>";
+      document.getElementById("statGap").innerHTML = (ma.value - fe.value).toFixed(1) + "<small>points, compared with men</small>";
     }
   }
   var mmr = latestAt(WORLD.health, YEAR_TO);
-  if (mmr) document.getElementById("statMMR").innerHTML = mmr.value.toFixed(0) + "<small>world, " + mmr.year + "</small>";
+  if (mmr) document.getElementById("statMMR").innerHTML = mmr.value.toFixed(0) + "<small>per 100,000 births, " + mmr.year + "</small>";
   var seats = latestAt(WORLD.seats, YEAR_TO);
   if (seats) {
     document.getElementById("statParl").innerHTML = seats.value.toFixed(1) + "%<small>of seats</small>";
@@ -325,19 +334,20 @@ function selectCountry(iso) {
   document.getElementById("countryYear").textContent = cfg.short + " · " + (lv ? lv.year : y);
 
   if (!lv) {
-    document.getElementById("ratioLine").innerHTML = "<b>&mdash;</b> no data for this indicator on or before " + y;
+    document.getElementById("ratioLine").innerHTML = "<b>&mdash;</b> no value reported on or before " + y + ".";
   } else if (MODE === "work") {
-    var m = latestAt(MALE[iso], y);
-    var wv = latestAt(WORLD.work, y);
-    var html = "<b>" + lv.value.toFixed(1) + "%</b> of women here are in the labour force (" + lv.year + ")";
-    if (m) html += " — versus <b>" + m.value.toFixed(1) + "%</b> of men, a gap of " + (m.value - lv.value).toFixed(1) + " points";
-    if (wv) html += ". World: " + wv.value.toFixed(1) + "% (" + wv.year + ").";
+    /* compare like-for-like: male and world values are taken at the country's own reporting year */
+    var m = latestAt(MALE[iso], lv.year);
+    var wv = latestAt(WORLD.work, lv.year);
+    var html = "<b>" + fmtVal(lv.value, cfg) + "</b> of women are in the labour force (" + lv.year + ")";
+    if (m) html += "; the figure for men is <b>" + fmtVal(m.value, cfg) + "</b> (" + m.year + "), a gap of " + (m.value - lv.value).toFixed(1) + " points";
+    if (wv) html += ". Global figure: " + fmtVal(wv.value, cfg) + " (" + wv.year + ").";
     document.getElementById("ratioLine").innerHTML = html;
   } else {
-    var w = latestAt(WORLD[MODE], y);
+    var w = latestAt(WORLD[MODE], lv.year);
     document.getElementById("ratioLine").innerHTML =
-      "<b>" + fmtVal(lv.value, cfg) + "</b>" + unitSuffix(cfg) + (lv.year < y ? " (latest reported " + lv.year + ")" : "") +
-      (w ? ". World: " + fmtVal(w.value, cfg) + unitSuffix(cfg) + " (" + w.year + ")." : "");
+      "<b>" + fmtVal(lv.value, cfg) + "</b>" + unitSuffix(cfg) + (lv.year < y ? ", the latest value reported (for " + lv.year + ")" : "") +
+      (w ? ". Global figure: " + fmtVal(w.value, cfg) + unitSuffix(cfg) + " (" + w.year + ")." : "");
   }
 
   buildCountryChart(iso);
@@ -394,21 +404,21 @@ function buildTakeaways(iso, y, lv) {
   for (var yr = YEAR_FROM; yr <= lv.year; yr++) { if (at(DATA[MODE][iso], yr) !== null) { first = { year: yr, value: at(DATA[MODE][iso], yr) }; break; } }
   if (first && first.year !== lv.year) {
     var d = lv.value - first.value;
-    add(cfg.short.charAt(0).toUpperCase() + cfg.short.slice(1) + " moved from " + fmtVal(first.value, cfg) +
-        " in " + first.year + " to " + fmtVal(lv.value, cfg) + " in " + lv.year +
-        (d >= 0 ? " (+" + d.toFixed(cfg.decimals) + " points)." : " (" + d.toFixed(cfg.decimals) + " points)."));
+    add(cfg.short.charAt(0).toUpperCase() + cfg.short.slice(1) + " moved from " + pct(first.value, cfg) +
+        " in " + first.year + " to " + pct(lv.value, cfg) + " in " + lv.year +
+        (d >= 0 ? ", an increase of " + d.toFixed(cfg.decimals) + " points." : ", a decrease of " + Math.abs(d).toFixed(cfg.decimals) + " points."));
   }
 
   var w = latestAt(WORLD[MODE], lv.year);
   if (w) {
     var gap = lv.value - w.value;
-    add("World in " + w.year + ": " + fmtVal(w.value, cfg) + " — " + name + " is " +
-        (gap >= 0 ? gap.toFixed(cfg.decimals) + " above" : Math.abs(gap).toFixed(cfg.decimals) + " below") + " the world level.");
+    add("The global figure in " + w.year + " was " + pct(w.value, cfg) + ". " + name + " is " +
+        (gap >= 0 ? gap.toFixed(cfg.decimals) + " points above" : Math.abs(gap).toFixed(cfg.decimals) + " points below") + " that level.");
   }
 
   if (MODE === "work") {
     var m = latestAt(MALE[iso], lv.year);
-    if (m) add("Gender gap here: " + (m.value - lv.value).toFixed(1) + " points (men " + m.value.toFixed(1) + "%, women " + lv.value.toFixed(1) + "%).");
+    if (m) add("Gender gap: " + (m.value - lv.value).toFixed(1) + " points (men " + m.value.toFixed(1) + " per cent, women " + lv.value.toFixed(1) + " per cent, " + lv.year + ").");
   }
 
   var rank = 0, total = 0;
@@ -420,8 +430,8 @@ function buildTakeaways(iso, y, lv) {
   }
   if (total > 1) {
     add(cfg.better === "low"
-      ? rank + " of " + total + " economies reporting at " + y + " had a higher rate."
-      : rank + " of " + total + " economies reporting at " + y + " were lower.");
+      ? rank + " of " + total + " economies with a value reported on or before " + y + " recorded a higher rate."
+      : rank + " of " + total + " economies with a value reported on or before " + y + " recorded a lower rate.");
   }
 }
 
@@ -443,7 +453,6 @@ function buildRank() {
   var labels = rows.map(function (r) { return r.name.replace(", Fed. Rep.", "").replace("Dem. Rep.", "DRC"); });
   var vals = rows.map(function (r) { return +r.value.toFixed(cfg.decimals); });
   document.getElementById("chartNote").textContent = rows.length + " economies shown · values carried forward to " + y;
-
   if (chartRank) {
     chartRank.data.labels = labels;
     chartRank.data.datasets[0].data = vals;
@@ -530,28 +539,27 @@ function buildTrendTakeaways() {
   }
   if (first && last) {
     if (MODE === "health") {
-      add("World maternal deaths fell from " + first.value.toFixed(0) + " per 100,000 births in " + first.year +
-          " to " + last.value.toFixed(0) + " in " + last.year + " — a fall of " +
-          Math.round((1 - last.value / first.value) * 100) + "% across the series.");
+      add("The global maternal mortality ratio fell from " + first.value.toFixed(0) + " maternal deaths per 100,000 live births in " + first.year +
+          " to " + last.value.toFixed(0) + " in " + last.year + ", a reduction of " +
+          Math.round((1 - last.value / first.value) * 100) + " per cent.");
     } else {
-      add("World " + cfg.short + " moved from " + fmtVal(first.value, cfg) + " in " + first.year +
-          " to " + fmtVal(last.value, cfg) + " in " + last.year + ".");
+      add("The global " + cfg.short + " was " + pct(first.value, cfg) + " in " + first.year +
+          " and " + pct(last.value, cfg) + " in " + last.year + ".");
     }
   }
   if (MODE === "work") {
     var fe = latestAt(WORLD.work, YEAR_TO), ma = latestAt(MALE_WORLD, YEAR_TO);
-    if (fe && ma) add("The global gender work gap is " + (ma.value - fe.value).toFixed(1) + " points: " + ma.value.toFixed(1) + "% of men versus " + fe.value.toFixed(1) + "% of women in " + fe.year + ".");
+    if (fe && ma) add("The global gender gap in labour-force participation is " + (ma.value - fe.value).toFixed(1) + " points: " + ma.value.toFixed(1) + " per cent for men and " + fe.value.toFixed(1) + " per cent for women in " + fe.year + ".");
   }
   if (MODE === "seats") {
     var s1997 = at(WORLD.seats, 1997);
-    if (s1997 && last) add("Women held " + s1997.toFixed(1) + "% of the world's parliamentary seats in 1997 and " + last.value.toFixed(1) + "% in " + last.year + " — progress, from a very low base.");
-  }
+    if (s1997 && last) add("Women held " + s1997.toFixed(1) + " per cent of the world's parliamentary seats in 1997 and " + last.value.toFixed(1) + " per cent in " + last.year + ".");  }
 
   var odaLast = latestAt(ODA, YEAR_TO), oda2020 = at(ODA, 2020);
   if (odaLast) {
-    add("Official development assistance received worldwide reached " + (odaLast.value / 1e9).toFixed(1) +
-        " billion US dollars in " + odaLast.year + (oda2020 ? ", up from " + (oda2020 / 1e9).toFixed(1) + " billion in 2020" : "") +
-        ". The series ends at " + odaLast.year + " — the 2025-26 donor cuts are not yet in this data.");
+    add("Official development assistance received worldwide was " + (odaLast.value / 1e9).toFixed(1) +
+        " billion United States dollars in " + odaLast.year + (oda2020 ? ", compared with " + (oda2020 / 1e9).toFixed(1) + " billion in 2020" : "") +
+        ". The series ends in " + odaLast.year + "; reductions in funding announced for 2025 and 2026 are not yet reflected in these data.");
   }
 }
 
@@ -632,7 +640,7 @@ function onYearChange(idx) {
 
   var reporting = 0;
   for (var iso in DATA[MODE]) { if (latestAt(DATA[MODE][iso], y)) reporting++; }
-  document.getElementById("countNote").textContent = reporting + " economies mapped · carry-forward values";
+  document.getElementById("countNote").textContent = reporting + " economies with a value reported on or before " + y;
 
   restyleMap();
   buildRank();
@@ -640,8 +648,8 @@ function onYearChange(idx) {
 
   var w = latestAt(WORLD[MODE], y);
   document.getElementById("yearCaption").textContent = w
-    ? "World " + cfg.short + ": " + fmtVal(w.value, cfg) + unitSuffix(cfg) + " (latest reported " + w.year + ")."
-    : "No world value reported for " + y + ".";
+    ? "Global " + cfg.short + ": " + fmtVal(w.value, cfg) + unitSuffix(cfg) + (w.year < y ? " (latest value reported for " + w.year + ")" : "") + "."
+    : "No global value is reported for " + y + ".";
 }
 
 /* ---------- boot ---------- */

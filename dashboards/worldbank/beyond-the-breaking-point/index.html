@@ -17,18 +17,21 @@
 <meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beyond the Breaking Point &middot; Women&rsquo;s Gains on the Line</title>
-<meta name="description" content="Four long-run series behind the 2026 funding crisis: women's work, maternal deaths, girls' schooling and women in parliament, 1990-2025.">
+<title>Beyond the Breaking Point · Women’s Gains and Aid Flows</title>
+<meta name="description" content="Four long-run series behind the 2026 funding crisis: women's labour force participation, maternal mortality, girls' schooling and women in parliament.">
 <link rel="canonical" href="https://ahaomar.github.io/dashboards/worldbank/beyond-the-breaking-point/index.html">
-<meta property="og:title" content="Beyond the Breaking Point &middot; Women&rsquo;s Gains on the Line">
-<meta property="og:description" content="35 years of work, health, schooling and political power for women &mdash; plus the aid flows behind them. Live from the World Bank.">
+<meta property="og:title" content="Beyond the Breaking Point · Women’s Gains and Aid Flows">
+<meta property="og:description" content="Three decades of work, health, schooling and political power for women, with the aid flows that support them. Live from the World Bank.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://ahaomar.github.io/dashboards/worldbank/beyond-the-breaking-point/index.html">
 <meta name="twitter:card" content="summary">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"
+        integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="stylesheet" href="css/style.css">
 
@@ -102,20 +105,22 @@
 
 <header class="masthead">
   <div class="shell masthead-inner">
-    <div class="kicker">Gender &amp; Development &middot; Interactive Data Brief</div>
-    <h1>Beyond the Breaking Point: <em>the gains now on the line</em></h1>
+    <div class="kicker">Gender Equality and Development &middot; Interactive Data Brief</div>
+    <h1>Beyond the breaking point: <em>the indicators now at risk</em></h1>
     <p class="standfirst">
-      In July 2026 UN Women warned that more than a million women and girls have already lost
-      access to critical support as donors retreat, with 120 million women and girls needing
-      assistance. Behind that warning sit four long-run series &mdash; work, maternal health,
-      girls&rsquo; schooling and political power &mdash; and the aid flows that finance them.
-      Drag from 1990 to 2025 and watch what three decades of progress actually rest on.
-      Live from the World Bank.
+      In a report published on 10 July 2026, UN Women found that at least one million women and girls
+      had lost access to critical support since January 2025, based on responses from 855 women-led
+      and women&rsquo;s rights organisations in 52 crisis-affected countries. Some 120 million women
+      and girls require humanitarian assistance and protection. Behind that warning stand four
+      long-term series &mdash; labour-force participation, maternal health, girls&rsquo; schooling and
+      representation in parliament &mdash; together with the aid flows that support them. Select a
+      year between 1990 and 2025 to review each series. All values are retrieved directly from the
+      World Bank.
     </p>
     <div class="meta-strip">
-      <div class="meta-cell stat"><span>Women in the workforce, <span id="lblWork">2025</span></span><b id="statWork">&mdash;</b></div>
-      <div class="meta-cell stat"><span>Gender work gap, world</span><b id="statGap">&mdash;</b></div>
-      <div class="meta-cell stat"><span>Maternal deaths /100k</span><b id="statMMR">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Women in the labour force, <span id="lblWork">2025</span></span><b id="statWork">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Gender gap in labour-force participation</span><b id="statGap">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Maternal deaths per 100,000 live births</span><b id="statMMR">&mdash;</b></div>
       <div class="meta-cell stat"><span>Women in parliament, <span id="lblParl">2025</span></span><b id="statParl">&mdash;</b></div>
     </div>
   </div>
@@ -143,8 +148,8 @@
 
     <div class="controls">
       <div class="mode-toggle" role="group" aria-label="Indicator">
-        <button type="button" class="tgl-btn active" id="tglWork" onclick="setMode('work')">Women&rsquo;s work</button>
-        <button type="button" class="tgl-btn" id="tglHealth" onclick="setMode('health')">Maternal deaths</button>
+        <button type="button" class="tgl-btn active" id="tglWork" onclick="setMode('work')">Women&rsquo;s labour force</button>
+        <button type="button" class="tgl-btn" id="tglHealth" onclick="setMode('health')">Maternal mortality</button>
         <button type="button" class="tgl-btn" id="tglSchool" onclick="setMode('school')">Girls&rsquo; schooling</button>
         <button type="button" class="tgl-btn" id="tglSeats" onclick="setMode('seats')">Parliament</button>
       </div>
@@ -154,15 +159,15 @@
     <div class="content">
       <section class="panel">
         <div class="panel-head">
-          <span class="panel-title"><span id="mapTitleText">Women in the labour force</span>, <span id="mapYearLabel">2025</span></span>
-          <span class="panel-sub">click a country</span>
+          <span class="panel-title"><span id="mapTitleText">Labour-force participation rate, women</span>, <span id="mapYearLabel">2025</span></span>
+          <span class="panel-sub">select a country</span>
         </div>
         <div id="map"></div>
       </section>
       <aside class="panel">
         <div class="insight-body">
           <div id="countryPanel">
-            <div class="empty-note">&#9664;&nbsp; Click any country, drag the year slider, or press Play to watch 35 years. Values are carried forward from the latest year reported.</div>
+            <div class="empty-note">&#9664;&nbsp; Select a country, use the year slider, or press Play to review the 1990&ndash;2025 series. Where a country has not reported a value for the selected year, the latest reported value is carried forward and the year it refers to is shown.</div>
           </div>
           <div id="chartWrap" style="display:none;">
             <div class="country-name" id="countryName"></div>
@@ -177,16 +182,16 @@
 
     <section class="panel" style="margin-bottom:var(--space-8);">
       <div class="panel-head">
-        <span class="panel-title" id="rankTitle">Furthest behind, <span id="rankYearLabel">2025</span></span>
-        <span class="panel-sub" id="rankSub">% of women aged 15+ in the labour force, 12 lowest</span>
+        <span class="panel-title" id="rankTitle">Lowest participation, <span id="rankYearLabel">2025</span></span>
+        <span class="panel-sub" id="rankSub">per cent of women aged 15 and over in the labour force; 12 lowest values</span>
       </div>
       <div class="chart-xl"><canvas id="rankChart"></canvas></div>
     </section>
 
     <section class="panel" style="margin-bottom:var(--space-8);">
       <div class="panel-head">
-        <span class="panel-title">The world line, and the money behind it</span>
-        <span class="panel-sub">indicator in percent (left) &middot; official development assistance received, US$ bn (right)</span>
+        <span class="panel-title">Indicator and aid flows, 1990&ndash;2025</span>
+        <span class="panel-sub">indicator, per cent or ratio (left axis) &middot; official development assistance received, billions of United States dollars (right axis)</span>
       </div>
       <div class="chart-holder"><canvas id="trendChart"></canvas></div>
       <ul class="takeaways" id="trendTakeaways" style="padding:0 var(--space-5) var(--space-4);"></ul>
@@ -200,21 +205,24 @@
     <h3>Data Sources &amp; Methodology</h3>
     <div class="source-block">
       <div><b>Indicators</b>
-        <p>World Bank Indicators API &mdash; SL.TLF.CACT.FE.ZS (female labour force participation) and SL.TLF.CACT.MA.ZS (male), SH.STA.MMRT (maternal mortality ratio), SE.SEC.CMPT.LO.FE.ZS (lower-secondary completion, female), SG.GEN.PARL.ZS (women in parliament), 1990&ndash;2025. Aggregates are excluded &mdash; only the 217 World Bank member economies are mapped.</p>
+        <p>World Bank Indicators API, 1990&ndash;2025: SL.TLF.CACT.FE.ZS (labour-force participation rate, female) and SL.TLF.CACT.MA.ZS (male), SH.STA.MMRT (maternal mortality ratio), SE.SEC.CMPT.LO.FE.ZS (lower-secondary completion rate, female) and SG.GEN.PARL.ZS (seats held by women in national parliaments). Regional and income aggregates are excluded, leaving the 217 World Bank member economies; fewer can be drawn on the map because the boundary data set contains fewer countries. The number of economies with a value is shown in the panel above.</p>
       </div>
-      <div><b>Money backdrop</b>
-        <p>DT.ODA.ODAT.CD, net official development assistance received by the world, 1990&ndash;2023 (latest available in the World Bank series).</p>
+      <div><b>Aid flows</b>
+        <p>World Bank indicator DT.ODA.ODAT.CD, net official development assistance received by the world, 1990&ndash;2023, which is the latest year available in the series. Reductions in funding announced for 2025 and 2026 are not yet reflected in these data and are not shown.</p>
+      </div>
+      <div><b>Context cited in the introduction</b>
+        <p><a href="https://www.unwomen.org/en/digital-library/publications/2026/07/beyond-the-breaking-point-the-continuing-impact-of-funding-cuts-on-womens-organizations-in-humanitarian-settings" rel="noopener">UN Women, <i>Beyond the breaking point: the continuing impact of funding cuts on women&rsquo;s organizations in humanitarian settings</i></a>, 10 July 2026, and the accompanying press release. The figures quoted in the introduction are taken from that report and are not recalculated here.</p>
       </div>
       <div><b>Method</b>
-        <p>Reporting years differ by indicator, so the map carries the latest value reported on or before the selected year and labels the year it came from. Rankings, callouts, the world line and every takeaway are computed from the API response on page load &mdash; no figure is hard-coded.</p>
+        <p>Reporting years differ between indicators, so the map carries the latest value reported on or before the selected year and labels the year to which that value refers. Comparisons between a country and a global figure are made using the same reporting year. Rankings, callouts, the global series and all explanatory text are calculated from the API response when the page is loaded. No figure is hard-coded.</p>
       </div>
-      <div><b>Boundaries &amp; license</b>
-        <p>Boundaries from the open world.geo.json dataset. World Bank data &copy; World Bank, CC BY 4.0.</p>
+      <div><b>Boundaries and licence</b>
+        <p>Boundaries are taken from the open world.geo.json data set, retrieved at a fixed revision. World Bank data &copy; World Bank, CC BY 4.0.</p>
       </div>
     </div>
     <div class="colophon">
-      <span>Beyond the Breaking Point &mdash; an independent data explainer</span>
-      <span>Refreshed automatically on each page load</span>
+      <span>Beyond the breaking point &mdash; an independent data analysis</span>
+      <span>Data are retrieved from the source APIs on each page load; no server-side database is used</span>
     </div>
   </div>
 </footer>

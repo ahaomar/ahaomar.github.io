@@ -70,7 +70,7 @@ async function fetchText(url) {
    ============================================================ */
 async function loadAll() {
   setStatus("Loading country boundaries…");
-  var geoPromise = fetchJSON("https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json");
+  var geoPromise = fetchJSON("https://raw.githubusercontent.com/johan/world.geo.json/34c96bba9c07d2ceb30696c599bb51a5b939b20f/countries.geo.json");
 
   setStatus("Loading electricity access and population (World Bank Indicators API)…");
   var accessPromise = fetchJSON("https://api.worldbank.org/v2/country/all/indicator/EG.ELC.ACCS.ZS?format=json&date=" + YEAR_FROM + ":" + YEAR_TO + "&per_page=10000");
@@ -128,6 +128,8 @@ async function loadAll() {
   /* year array for the access timeline */
   YEARS_A = [];
   for (var y = YEAR_FROM; y <= YEAR_TO; y++) YEARS_A.push(y);
+
+  (geo.features || []).forEach(function (f) { if (f.id) geoNames[f.id] = f.properties && f.properties.name; });
 
   console.log("DATA CHECK countries:", Object.keys(series).length,
               "| world access years:", Object.keys(worldAccess).length,
@@ -198,8 +200,10 @@ function initMap(geo) {
     onEachFeature: function (f, layer) {
       layer.bindTooltip(function () {
         var v = at(series[f.id], curYear());
-        return (NAMES[f.id] || geoNames[f.id] || f.id) +
-          (v !== null ? ": " + v.toFixed(1) + "% with electricity (" + curYear() + ")" : ": no data");
+        var el = document.createElement("span");
+        el.textContent = (NAMES[f.id] || geoNames[f.id] || f.id) +
+          (v !== null ? ": " + v.toFixed(1) + "% with electricity (" + curYear() + ")" : ": no data reported");
+        return el;
       }, { sticky: true });
       layer.on("click", function () { selectCountry(f.id); });
     }
@@ -233,14 +237,13 @@ function renderHeadline() {
     var p = latestAt(worldPop, acc.year);
     if (p) {
       var without = p.value * (100 - acc.value) / 100;
-      document.getElementById("statDark").innerHTML = "~" + fmtPeople(without) + "<small>people, " + acc.year + "</small>";
-    }
+      document.getElementById("statDark").innerHTML = "~" + fmtPeople(without) + "<small>people, " + acc.year + "</small>";    }
   }
 
   var wdc = latestAt(dc["World"], 9999);
-  if (wdc) document.getElementById("statDC").innerHTML = wdc.value.toFixed(2) + "%<small>" + wdc.year + ", world grid</small>";
+  if (wdc) document.getElementById("statDC").innerHTML = wdc.value.toFixed(2) + "%<small>global, " + wdc.year + "</small>";
   var usdc = latestAt(dc["United States"], 9999);
-  if (usdc) document.getElementById("statUS").innerHTML = usdc.value.toFixed(1) + "%<small>" + usdc.year + ", US demand</small>";
+  if (usdc) document.getElementById("statUS").innerHTML = usdc.value.toFixed(1) + "%<small>United States, " + usdc.year + "</small>";
 }
 
 /* ============================================================
@@ -263,19 +266,19 @@ function selectCountry(iso) {
   var v = at(series[iso], y);
   var p = at(pop[iso], y);
   if (v === null) {
-    document.getElementById("ratioLine").innerHTML = "<b>&mdash;</b> no data for " + y;
+    document.getElementById("ratioLine").innerHTML = "<b>&mdash;</b> no value reported for " + y;
   } else if (p !== null) {
     var without = p * (100 - v) / 100;
-    document.getElementById("ratioLine").innerHTML = "<b>" + v.toFixed(1) + "%</b> have electricity &mdash; about " + fmtPeople(without) + " people do not";
+    document.getElementById("ratioLine").innerHTML = "<b>" + v.toFixed(1) + " per cent</b> of the population has access to electricity &mdash; approximately " + fmtPeople(without) + " people do not.";
   } else {
-    document.getElementById("ratioLine").innerHTML = "<b>" + v.toFixed(1) + "%</b> have electricity";
+    document.getElementById("ratioLine").innerHTML = "<b>" + v.toFixed(1) + " per cent</b> of the population has access to electricity.";
   }
 
-  buildCountryChart(iso, y);
+  buildCountryChart(iso);
   buildTakeaways(iso, y);
 }
 
-function buildCountryChart(iso, y) {
+function buildCountryChart(iso) {
   var labels = [];
   for (var yy = YEAR_FROM; yy <= YEAR_TO; yy++) labels.push(yy);
   var data = labels.map(function (yr) { var v = at(series[iso], yr); return v === null ? null : +v.toFixed(1); });
@@ -325,16 +328,16 @@ function buildTakeaways(iso, y) {
 
   if (v !== null && v0 !== null) {
     var d = v - v0;
-    add("Access moved from " + v0.toFixed(1) + "% in " + YEAR_FROM + " to " + v.toFixed(1) + "% in " + y +
-        (d >= 0 ? " (+" + d.toFixed(1) + " points)." : " (" + d.toFixed(1) + " points)."));
+    add("Access to electricity rose from " + v0.toFixed(1) + " per cent in " + YEAR_FROM + " to " + v.toFixed(1) + " per cent in " + y +
+        (d >= 0 ? ", an increase of " + d.toFixed(1) + " points." : ", a decrease of " + Math.abs(d).toFixed(1) + " points."));
   }
   if (v !== null && w !== null) {
     var gap = v - w;
-    add("World average in " + y + " was " + w.toFixed(1) + "% — " + name + " is " +
-        (gap >= 0 ? gap.toFixed(1) + " points above" : Math.abs(gap).toFixed(1) + " points below") + " the world line.");
+    add("The global average in " + y + " was " + w.toFixed(1) + " per cent. " + name + " is " +
+        (gap >= 0 ? gap.toFixed(1) + " points above" : Math.abs(gap).toFixed(1) + " points below") + " that level.");
   }
   if (v !== null && v < 100 && p !== null) {
-    add("About " + fmtPeople(p * (100 - v) / 100) + " people in " + name + " had no electricity in " + y + ".");
+    add("Approximately " + fmtPeople(p * (100 - v) / 100) + " people in " + name + " had no access to electricity in " + y + ".");
   }
   if (v !== null) {
     var rank = 1, total = 0;
@@ -344,7 +347,7 @@ function buildTakeaways(iso, y) {
       total++;
       if (v2 < v) rank++;
     }
-    add(rank + " of " + total + " economies on this map in " + y + " had lower electricity access.");
+    add("Ranked " + rank + " of " + total + " economies with data in " + y + ", from the lowest access rate upwards.");
   }
 }
 
@@ -363,7 +366,7 @@ function buildLow() {
 
   var labels = rows.map(function (r) { return (r.name || r.iso).replace(", Fed. Rep.", "").replace("Dem. Rep.", "DRC"); });
   var vals = rows.map(function (r) { return +r.value.toFixed(1); });
-  document.getElementById("chartNote").textContent = rows.length + " economies shown · click the map for detail";
+  document.getElementById("chartNote").textContent = rows.length + " economies shown · select a country on the map for detail";
 
   if (chartLow) {
     chartLow.data.labels = labels;
@@ -392,6 +395,13 @@ function buildLow() {
    ============================================================ */
 function cleanEntity(e) {
   return e.replace(" (IEA)", "").replace("World excl. United States and China", "World excl. US & China");
+}
+
+/* article-aware label for use inside a sentence */
+function proseName(e) {
+  var n = cleanEntity(e);
+  if (n === "United States" || n === "China") return "the " + n;
+  return n;
 }
 
 function buildDC(year) {
@@ -430,30 +440,43 @@ function buildDC(year) {
 
 function renderDCInsight(year) {
   var box = document.getElementById("dcInsight");
-  var w = at(dc["World"], year), us = at(dc["United States"], year), cn = at(dc["China"], year);
-  var af = at(dc["Africa (IEA)"], year), ap = at(dc["Asia Pacific (IEA)"], year);
-  var eu = at(dc["Europe (IEA)"], year), na = at(dc["North America (IEA)"], year);
+  var order = ["World", "United States", "North America (IEA)", "Europe (IEA)", "China",
+               "Asia Pacific (IEA)", "Africa (IEA)", "Middle East (IEA)",
+               "Central and South America (IEA)", "World excl. United States and China"];
+  var w = at(dc["World"], year), us = at(dc["United States"], year), af = at(dc["Africa (IEA)"], year);
 
-  if (w === null) { box.innerHTML = '<div class="empty-note">No estimate for ' + year + '.</div>'; return; }
+  if (w === null) {
+    box.innerHTML = '<div class="empty-note">No estimate is available for ' + year + ".</div>";
+    return;
+  }
 
+  var rows = [];
+  order.forEach(function (e) {
+    var v = at(dc[e], year);
+    if (v !== null) rows.push({ e: e, value: v });
+  });
+  var lowest = null;
+  rows.forEach(function (r) { if (!lowest || r.value < lowest.value) lowest = r; });
   var ratio = (us !== null && af) ? (us / af).toFixed(0) : null;
+
   var html = "";
-  html += '<div class="country-name">The machine&rsquo;s appetite</div>';
-  html += '<div class="country-year">data-centre share of electricity &middot; ' + year + "</div>";
+  html += '<div class="country-name">Data-centre electricity demand</div>';
+  html += '<div class="country-year">' + year + " estimate</div>";
   if (us !== null) {
-    html += '<div class="ratio-callout"><b>' + us.toFixed(1) + '%</b> of US electricity now runs data centres' +
-            (ratio ? " &mdash; about <b>" + ratio + "&times;</b> Africa&rsquo;s share" : "") + "</div>";
+    html += '<div class="ratio-callout"><b>' + us.toFixed(1) + "%</b> of electricity demand in the United States was consumed by data centres" +
+            (ratio ? " &mdash; <b>" + ratio + "&times;</b> the share reported for Africa" : "") + ".</div>";
   } else {
-    html += '<div class="ratio-callout"><b>' + w.toFixed(2) + '%</b> of the world grid feeds data centres</div>';
+    html += '<div class="ratio-callout"><b>' + w.toFixed(2) + "%</b> of global electricity demand was consumed by data centres.</div>";
   }
   html += '<ul class="takeaways">';
-  html += "<li>World average " + w.toFixed(2) + "% in " + year + ".</li>";
-  if (us !== null) html += "<li>United States " + us.toFixed(2) + "% — the highest share in this dataset.</li>";
-  if (na !== null) html += "<li>North America (IEA) " + na.toFixed(2) + "%.</li>";
-  if (eu !== null) html += "<li>Europe (IEA) " + eu.toFixed(2) + "%.</li>";
-  if (cn !== null) html += "<li>China " + cn.toFixed(2) + "%.</li>";
-  if (ap !== null) html += "<li>Asia Pacific (IEA) " + ap.toFixed(2) + "%.</li>";
-  if (af !== null) html += "<li>Africa (IEA) " + af.toFixed(2) + "% — the smallest share on the board.</li>";
+  rows.forEach(function (r) {
+    if (r.e === "World excl. United States and China") return;
+    html += "<li>" + cleanEntity(r.e) + ": " + r.value.toFixed(2) + " per cent.</li>";
+  });
+  if (lowest && us !== null && lowest.e !== "United States") {
+    html += "<li>The United States share is " + (us / lowest.value).toFixed(0) + " times the lowest share in the series, " +
+            proseName(lowest.e) + " at " + lowest.value.toFixed(3) + " per cent.</li>";
+  }
   html += "</ul>";
   box.innerHTML = html;
 }
@@ -506,23 +529,47 @@ function buildTrend() {
   var first = years[0], last = years[years.length - 1];
   var wF = at(dc["World"], first), wL = at(dc["World"], last);
   if (wF !== null && wL !== null) {
-    add("The world share of electricity consumed by data centres went from " + wF.toFixed(2) + "% in " + first +
-        " to " + wL.toFixed(2) + "% in " + last + " — a rise of " + Math.round((wL / wF - 1) * 100) + "% in five years.");
+    add("The global share of electricity demand consumed by data centres rose from " + wF.toFixed(2) + " per cent in " + first +
+        " to " + wL.toFixed(2) + " per cent in " + last + ", an increase of " + Math.round((wL / wF - 1) * 100) + " per cent.");
   }
-  var uF = at(dc["United States"], first), uL = at(dc["United States"], last);
-  if (uF !== null && uL !== null) {
-    add("The United States roughly doubled its data-centre share, " + uF.toFixed(2) + "% to " + uL.toFixed(2) + "%, a larger absolute jump than any other economy here.");
+
+  /* largest absolute change over the period, computed from the same rows */
+  var biggest = null;
+  for (var e in dc) {
+    var f0 = at(dc[e], first), f1 = at(dc[e], last);
+    if (f0 === null || f1 === null) continue;
+    var d = f1 - f0;
+    if (!biggest || Math.abs(d) > Math.abs(biggest.delta)) biggest = { e: e, delta: d, from: f0, to: f1 };
   }
+  if (biggest) {
+    add("The largest absolute change was in " + proseName(biggest.e) + ", from " + biggest.from.toFixed(2) +
+        " to " + biggest.to.toFixed(2) + " per cent (" + (biggest.delta >= 0 ? "+" : "") + biggest.delta.toFixed(2) + " points).");
+  }
+
   var cF = at(dc["China"], first), cL = at(dc["China"], last);
-  if (cF !== null && cL !== null) {
-    add("China grew more slowly: " + cF.toFixed(2) + "% to " + cL.toFixed(2) + "%, still below the world average.");
+  if (cF !== null && cL !== null && wL !== null) {
+    add("China rose from " + cF.toFixed(2) + " to " + cL.toFixed(2) + " per cent, " +
+        (cL < wL ? "below" : "above") + " the global average of " + wL.toFixed(2) + " per cent.");
   }
-  var aF = at(dc["Africa (IEA)"], first), aL = at(dc["Africa (IEA)"], last);
-  if (aL !== null) {
-    add("Africa (IEA) remains the smallest consumer of data-centre power at " + aL.toFixed(2) + "% in " + last +
-        (aF !== null ? ", up from " + aF.toFixed(2) + "% in " + first + "." : "."));
+
+  var lowest = null;
+  for (var e2 in dc) {
+    var vLast = at(dc[e2], last);
+    if (vLast === null) continue;
+    if (!lowest || vLast < lowest.value) lowest = { e: e2, value: vLast, first: at(dc[e2], first) };
   }
-  add("The IEA estimates this series for " + first + " and " + years.slice(1).join(", ") + " only — 2021 and 2022 are not estimated, so the line bridges them.");
+  if (lowest) {
+    var dir = (lowest.first === null) ? ""
+      : ", compared with " + lowest.first.toFixed(3) + " per cent in " + first;
+    add("The lowest share in " + last + " was " + proseName(lowest.e) + ", at " + lowest.value.toFixed(3) + " per cent" + dir + ".");
+  }
+
+  var missing = [];
+  for (var y2 = first + 1; y2 < last; y2++) { if (at(dc["World"], y2) === null) missing.push(y2); }
+  if (missing.length) {
+    add("The source provides estimates for " + years.join(", ") + " only. The years " + missing.join(" and ") +
+        " are not estimated, so the line connects " + (missing.length > 1 ? "them" : "it") + " without an intermediate point.");
+  }
 }
 
 /* ============================================================
@@ -534,6 +581,7 @@ function onSlide(v) {
 }
 
 function setMode(m) {
+  stopPlay();
   var yearsArr = (m === "a") ? YEARS_A : DC_YEARS;
   if (!yearsArr.length) return;
   MODE = m;
@@ -558,11 +606,11 @@ function renderJumpButtons() {
   var wrap = document.getElementById("jumpWrap");
   if (MODE === "a") {
     wrap.innerHTML =
-      '<button type="button" class="tl-btn" onclick="jumpToYear(2022)">&#8593; ChatGPT 2022</button>' +
+      '<button type="button" class="tl-btn" onclick="jumpToYear(2022)">&#8593; 2022</button>' +
       '<button type="button" class="tl-btn" onclick="jumpToYear(2000)">&#8634; 2000</button>';
   } else {
     wrap.innerHTML =
-      '<button type="button" class="tl-btn" onclick="jumpToYear(2020)">&#8593; 2020 baseline</button>' +
+      '<button type="button" class="tl-btn" onclick="jumpToYear(2020)">&#8593; 2020</button>' +
       '<button type="button" class="tl-btn" onclick="jumpToYear(2025)">&#8634; 2025</button>';
   }
 }
@@ -619,10 +667,10 @@ function onYearChange(idx) {
     if (wa !== null) {
       var without = wp !== null ? wp * (100 - wa) / 100 : null;
       document.getElementById("yearCaption").textContent =
-        wa.toFixed(1) + "% of the world had electricity in " + y +
-        (without !== null ? " — about " + fmtPeople(without) + " people did not." : ".");
+        wa.toFixed(1) + " per cent of the world had access to electricity in " + y +
+        (without !== null ? "; approximately " + fmtPeople(without) + " people did not." : ".");
     } else {
-      document.getElementById("yearCaption").textContent = "Electricity access, " + y + ".";
+      document.getElementById("yearCaption").textContent = "Access to electricity, " + y + ".";
     }
   } else {
     document.getElementById("dcYearLabel").textContent = y;
@@ -630,9 +678,10 @@ function onYearChange(idx) {
     buildDC(y);
     var w = at(dc["World"], y), us = at(dc["United States"], y);
     document.getElementById("yearCaption").textContent =
-      w !== null ? "Data centres took " + w.toFixed(2) + "% of world electricity in " + y + "." : "IEA estimate for " + y + ".";
+      w !== null ? "Data centres accounted for " + w.toFixed(2) + " per cent of global electricity demand in " + y +
+        (us !== null ? "; the share in the United States was " + us.toFixed(2) + " per cent." : ".") : "IEA estimate for " + y + ".";
     document.getElementById("chartNote").textContent =
-      "IEA estimates for " + y + " · 2021 and 2022 are not estimated";
+      "IEA estimates for " + y + "; 2021 and 2022 are not estimated";
     document.getElementById("countNote").textContent = "10 regions and economies";
   }
 }
