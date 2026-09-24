@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js)  Google Analytics start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQ7ME7B2GR', {
+    cookie_domain: 'ahaomar.github.io'
+  });
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta name="robots" content="index, follow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Power Divide · Who Powers the AI Boom, Who Waits</title>
+<meta name="description" content="Data centres take 4.9% of US electricity while 657 million people have none. A live map and charts from the World Bank and Our World in Data.">
+<link rel="canonical" href="https://ahaomar.github.io/dashboards/owid/ai-power-divide/index.html">
+<meta property="og:title" content="The AI Power Divide · Who Powers the AI Boom, Who Waits">
+<meta property="og:description" content="Data centres take 4.9% of US electricity while 657 million people worldwide have none. Live from official APIs.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ahaomar.github.io/dashboards/owid/ai-power-divide/index.html">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="stylesheet" href="css/style.css">
+
+<script>document.documentElement.className += ' js';</script>
+<meta name="google-site-verification" content="dd7btgdjbyout2SAEqaEsy3hUZacslRGlOOpHnx-4xY" />
+</head>
+
+<body>
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="../../../index.html" class="wordmark" aria-label="Omar Farooq, home">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR DRUPAL DEVELOPER &amp; PLATFORM ARCHITECT</span>
+    </a>
+
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
+      <a href="../../../index.html">About</a>
+      <a href="../../../projects.html">Projects</a>
+      <a href="../../../skills.html">Skills</a>
+      <a href="../../../dashboards.html" aria-current="page">AI Dashboards</a>
+      <a href="../../../blog.html">Blog</a>
+      <a href="../../../contact.html">Contact</a>
+      <a href="../../../assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
+    </nav>
+
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="../../../index.html">About · Profile &amp; history</button>
+          <button class="cmdk-item" role="option" data-href="../../../projects.html">Projects · Six UN platforms</button>
+          <button class="cmdk-item" role="option" data-href="../../../skills.html">Skills · Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../../../blog.html">Blog · Field notes</button>
+          <button class="cmdk-item" role="option" data-href="../../../contact.html">Contact · Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="../../../dashboards.html">AI Dashboards · live data briefs</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="../../../assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div class="kicker">Energy &amp; AI &middot; Interactive Data Brief</div>
+    <h1>The AI Power Divide: <em>who powers the boom, who waits</em></h1>
+    <p class="standfirst">
+      As COP31 in Antalya puts AI&rsquo;s electricity appetite on the agenda for the first time, the
+      split underneath is older than the boom: data centres already take 4.9% of all electricity in
+      the United States, while roughly 657 million people &mdash; 8% of humanity &mdash; still have
+      no power at all. Play through the divide: access from 2000, the AI build-out from 2020.
+      Live from the World Bank and Our World in Data.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-cell stat"><span>World on electricity, <span id="lblGrid">2024</span></span><b id="statGrid">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Living without power</span><b id="statDark">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Data centres, world grid</span><b id="statDC">&mdash;</b></div>
+      <div class="meta-cell stat"><span>US data-centre share</span><b id="statUS">&mdash;</b></div>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div id="status">Loading data&hellip;</div>
+  <div id="app" style="display:none;">
+
+    <div class="controls">
+      <label>View</label>
+      <div class="mode-toggle">
+        <button type="button" class="tgl-btn active" id="modeA" onclick="setMode('a')">Who has power</button>
+        <button type="button" class="tgl-btn" id="modeB" onclick="setMode('b')">What AI feeds on</button>
+      </div>
+      <span id="countNote"></span>
+    </div>
+
+    <section class="timeline" aria-label="Year timeline">
+      <div class="timeline-top">
+        <div class="timeline-year" id="yearDisplay">2024</div>
+        <div class="timeline-caption" id="yearCaption">Loading&hellip;</div>
+      </div>
+      <div class="timeline-track">
+        <input type="range" id="yearSlider" min="0" max="24" step="1" value="24"
+               aria-label="Select year" oninput="onSlide(this.value)">
+      </div>
+      <div class="timeline-buttons">
+        <button type="button" class="tl-btn active" id="playBtn" onclick="togglePlay()">&#9654; Play years</button>
+        <span id="jumpWrap"></span>
+        <span class="tl-note" id="chartNote"></span>
+      </div>
+    </section>
+
+    <!-- ============ VIEW A: ELECTRICITY ACCESS ============ -->
+    <div id="viewA">
+      <div class="content">
+        <section class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Access to electricity, <span id="mapYearLabel">2024</span></span>
+            <span class="panel-sub">click a country</span>
+          </div>
+          <div id="map"></div>
+        </section>
+        <aside class="panel">
+          <div class="insight-body">
+            <div id="countryPanel">
+              <div class="empty-note">&#9664;&nbsp; Click any country, drag the year slider, or press Play to watch 25 years of electrification. The palest countries are the ones still waiting.</div>
+            </div>
+            <div id="chartWrap" style="display:none;">
+              <div class="country-name" id="countryName"></div>
+              <div class="country-year" id="countryYear"></div>
+              <div class="ratio-callout" id="ratioLine"></div>
+              <div class="chart-holder"><canvas id="countryChart"></canvas></div>
+              <ul class="takeaways" id="takeaways"></ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <section class="panel" style="margin-bottom:var(--space-8);">
+        <div class="panel-head">
+          <span class="panel-title">Least connected, <span id="lowYearLabel">2024</span></span>
+          <span class="panel-sub">% of population with electricity, 12 lowest</span>
+        </div>
+        <div class="chart-xl"><canvas id="lowChart"></canvas></div>
+      </section>
+    </div>
+
+    <!-- ============ VIEW B: DATA-CENTRE DEMAND ============ -->
+    <div id="viewB" style="display:none;">
+      <div class="content">
+        <section class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Data-centre share of electricity, <span id="dcYearLabel">2025</span></span>
+            <span class="panel-sub">% of national/regional demand · IEA via Our World in Data</span>
+          </div>
+          <div class="chart-holder"><canvas id="dcBars"></canvas></div>
+        </section>
+        <aside class="panel">
+          <div class="insight-body" id="dcInsight"></div>
+        </aside>
+      </div>
+
+      <section class="panel" style="margin-bottom:var(--space-8);">
+        <div class="panel-head">
+          <span class="panel-title">The boom&rsquo;s trajectory, 2020&ndash;2025</span>
+          <span class="panel-sub">share of electricity going to data centres</span>
+        </div>
+        <div class="chart-holder"><canvas id="dcTrend"></canvas></div>
+        <ul class="takeaways" id="dcTakeaways" style="padding:0 var(--space-5) var(--space-4);"></ul>
+      </section>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell footer-inner">
+    <h3>Data Sources &amp; Methodology</h3>
+    <div class="source-block">
+      <div><b>Data-centre electricity share</b>
+        <p><a href="https://ourworldindata.org/grapher/data-centers-share-electricity-demand" rel="noopener">Our World in Data</a>, based on the IEA <i>Energy and AI</i> analysis &mdash; 10 regions and economies, estimates for 2020, 2023, 2024 and 2025 (2021&ndash;2022 are not estimated).</p>
+      </div>
+      <div><b>Electricity access &amp; population</b>
+        <p>World Bank Indicators API &mdash; EG.ELC.ACCS.ZS: access to electricity, % of population, 2000&ndash;2024 (258 economies); SP.POP.TOTL: total population, same period.</p>
+      </div>
+      <div><b>Method</b>
+        <p>Population without power is derived live: (100 &minus; access%) &times; total population for the same year. Map shading, bars, rankings and every takeaway are computed from the API response on page load &mdash; no figure is hard-coded.</p>
+      </div>
+      <div><b>Boundaries &amp; license</b>
+        <p>Boundaries from the open world.geo.json dataset. World Bank data &copy; World Bank, CC BY 4.0; OWID data &copy; Our World in Data.</p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>The AI Power Divide &mdash; an independent data explainer</span>
+      <span>Refreshed automatically on each page load</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="../../../js/main.js"></script>
+</body>
+</html>
