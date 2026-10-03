@@ -176,8 +176,20 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    /* Failsafe: if something goes wrong, content must still be readable. */
-    setTimeout(revealAll, 3000);
+    /* Failsafe: if something goes wrong, content must still be readable.
+       Gated on user input rather than a timer — a timed reveal paints every
+       hidden section in one burst with no scroll to stop LCP recording, which
+       pushed the largest-contentful paint several seconds out. Scrolling both
+       triggers the observer and ends LCP recording, so the two paths agree. */
+    var revealFailsafe = function () {
+      revealAll();
+      window.removeEventListener('scroll', revealFailsafe);
+      window.removeEventListener('keydown', revealFailsafe);
+      window.removeEventListener('touchstart', revealFailsafe);
+    };
+    window.addEventListener('scroll', revealFailsafe, { passive: true });
+    window.addEventListener('keydown', revealFailsafe);
+    window.addEventListener('touchstart', revealFailsafe, { passive: true });
   } else {
     revealAll();
   }
