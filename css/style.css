@@ -225,6 +225,7 @@ cite, address { font-style: normal; }
 /* ---------- Metrics band ---------- */
 .metrics { padding: var(--space-12) 0; border-top: 1px solid var(--color-rule); border-bottom: 1px solid var(--color-rule); }
 .metrics-row { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-12); margin: 0; padding: 0; }
+.metrics-row--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .metrics-figure { display: flex; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-3); flex-wrap: wrap; }
 .metrics-row .figure { font-size: var(--text-4xl); font-weight: 600; line-height: 1; color: var(--color-ink); }
 .metrics-row .figure-unit { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent); }
@@ -390,6 +391,7 @@ cite, address { font-style: normal; }
   .dip--rev .dip__text, .dip--rev .dip__proof { order: 0; }
   .js .dip.is-in .dip__proof { transition-delay: 0ms; }
   .metrics-row { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  .metrics-row--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .metrics-row p { max-width: 52ch; }
   .cred-grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-12); }
   .page-head .dip { gap: var(--space-8); }
