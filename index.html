@@ -20,11 +20,11 @@
 <title>Omar Farooq · Platform Architect — Drupal &amp; AI</title>
 <meta name="description" content="Twenty years of governance-scale Drupal for the United Nations, paired with AI-assisted data platforms and open-source agent skills. Open to remote roles.">
 <link rel="canonical" href="https://ahaomar.github.io/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/space-grotesk-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.min.css">
+<link rel="stylesheet" href="css/style.min.css">
 
 <meta property="og:title" content="Omar Farooq · Platform Architect — Drupal & AI">
 <meta property="og:description" content="Twenty years of governance-scale Drupal for the UN, paired with AI-assisted data platforms and open-source agent skills.">
@@ -36,6 +36,15 @@
 {
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://ahaomar.github.io/#webpage",
+      "url": "https://ahaomar.github.io/",
+      "name": "Omar Farooq · Platform Architect — Drupal & AI",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://ahaomar.github.io/#website" },
+      "mainEntity": { "@id": "https://ahaomar.github.io/#person" }
+    },
     {
       "@type": "Person",
       "@id": "https://ahaomar.github.io/#person",
@@ -586,6 +595,6 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script defer src="js/main.min.js"></script>
 </body>
 </html>
