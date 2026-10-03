@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js)  Google Analytics start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ7ME7B2GR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQ7ME7B2GR', {
+    cookie_domain: 'ahaomar.github.io'
+  });
+</script>
+<!-- Google tag (gtag.js) end -->
+
+<meta name="robots" content="index, follow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Country Climate Profile · Interactive Tool</title>
+<meta name="description" content="Type a country name and generate a live climate risk profile: NASA temperature and rainfall, World Bank exposure indicators, ND-GAIN standing. Export to PDF.">
+<link rel="canonical" href="https://ahaomar.github.io/tools/country-climate-profile/index.html">
+<meta property="og:title" content="Country Climate Profile · Interactive Tool">
+<meta property="og:description" content="Type a country name and generate a live climate risk profile from NASA POWER, World Bank and ND-GAIN data. Export to PDF.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ahaomar.github.io/tools/country-climate-profile/index.html">
+<meta name="twitter:card" content="summary">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1" integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="css/style.css">
+
+<script>document.documentElement.className += ' js';</script>
+<meta name="google-site-verification" content="dd7btgdjbyout2SAEqaEsy3hUZacslRGlOOpHnx-4xY" />
+</head>
+
+
+<body>
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="../../index.html" class="wordmark" aria-label="Omar Farooq, home">
+      <strong>OMAR FAROOQ</strong>
+      <span>SENIOR DRUPAL DEVELOPER &amp; PLATFORM ARCHITECT</span>
+    </a>
+
+    <nav class="nav" id="primary-nav" role="navigation" aria-label="Primary">
+      <a href="../../index.html">About</a>
+      <a href="../../projects.html">Projects</a>
+      <a href="../../skills.html">Skills</a>
+      <a href="../../dashboards.html">AI Dashboards</a>
+      <a href="../../blog.html">Blog</a>
+      <a href="../../contact.html">Contact</a>
+      <a href="../../assets/Omar_Farooq_CV.pdf" class="nav-cv" target="_blank" rel="noopener">CV&nbsp;(PDF)</a>
+    </nav>
+
+    <div class="topbar-actions">
+      <button type="button" class="cmdk-trigger" aria-label="Open command palette" aria-expanded="false" aria-controls="cmdk-panel">
+        <kbd><span>⌘</span>K</kbd>
+      </button>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cmdk-overlay" id="cmdk-overlay" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="cmdk-panel" id="cmdk-panel">
+    <div class="cmdk-header">
+      <label class="cmdk-search-label" for="cmdk-search">Search</label>
+      <input type="search" id="cmdk-search" placeholder="Type a command or search…" autocomplete="off" spellcheck="false" autocapitalize="off">
+      <kbd class="cmdk-hint"><span>⌘</span>K</kbd>
+    </div>
+    <div class="cmdk-content">
+      <section class="cmdk-section" aria-label="Navigation">
+        <h3 class="cmdk-section-title">Go to</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="../../index.html">About · Profile &amp; history</button>
+          <button class="cmdk-item" role="option" data-href="../../projects.html">Projects · Platforms &amp; tools</button>
+          <button class="cmdk-item" role="option" data-href="../../skills.html">Skills · Technical practice</button>
+          <button class="cmdk-item" role="option" data-href="../../blog.html">Blog · Field notes</button>
+          <button class="cmdk-item" role="option" data-href="../../contact.html">Contact · Open to roles</button>
+          <button class="cmdk-item" role="option" data-href="../../dashboards.html">AI Dashboards · live data briefs</button>
+        </div>
+      </section>
+      <section class="cmdk-section" aria-label="External">
+        <h3 class="cmdk-section-title">External</h3>
+        <div class="cmdk-group" role="listbox">
+          <button class="cmdk-item" role="option" data-href="https://linkedin.com/in/ahaomar" data-external>LinkedIn</button>
+          <button class="cmdk-item" role="option" data-href="mailto:contactomarfarooq-github@yahoo.com" data-external>Email</button>
+          <button class="cmdk-item" role="option" data-href="../../assets/Omar_Farooq_CV.pdf" data-external>Download CV (PDF)</button>
+        </div>
+      </section>
+    </div>
+    <div class="cmdk-footer">
+      <kbd><span>⌘</span>K</kbd> to open · <kbd>Esc</kbd> to close
+    </div>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div class="kicker">Country Climate Profile &middot; Interactive Tool</div>
+    <h1>Country Climate Profile: <em>type a name, get the brief</em></h1>
+    <p class="standfirst">
+      Enter a country to generate a climate risk profile from live data &mdash; 40 years of NASA
+      temperature and rainfall observations, World Bank exposure indicators and the ND-GAIN
+      vulnerability index. Every figure is computed from the same records the charts render.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-cell stat"><span>Climate record</span><b>1985&ndash;2024</b></div>
+      <div class="meta-cell stat"><span>Countries available</span><b id="countryCount">&mdash;</b></div>
+      <div class="meta-cell stat"><span>Data sources</span><b>4</b></div>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div id="status" role="status" aria-live="polite">Loading country list&hellip;</div>
+
+  <section class="panel search-panel" aria-label="Country search">
+    <div class="panel-head">
+      <span class="panel-title">Choose a country</span>
+      <span class="panel-sub">type at least two letters; use &uarr;&darr; and Enter</span>
+    </div>
+    <div class="search-body">
+      <div class="combobox" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="suggestList">
+        <input type="text" id="countryInput" autocomplete="off" spellcheck="false"
+               placeholder="e.g. Burkina Faso, Senegal, Bangladesh&hellip;"
+               aria-label="Country name" aria-autocomplete="list"
+               aria-controls="suggestList" aria-expanded="false"
+               oninput="onTypeahead(this.value)" onkeydown="onComboKey(event)" onfocus="onTypeahead(this.value)">
+        <ul id="suggestList" class="suggest-list" role="listbox" aria-label="Country suggestions" hidden></ul>
+      </div>
+      <button type="button" class="tl-btn active" id="goBtn" onclick="generateProfile()" disabled>Generate profile</button>
+      <button type="button" class="tl-btn print-btn" id="printBtn" onclick="window.print()" style="display:none;">&#8681; Download PDF</button>
+    </div>
+  </section>
+
+  <div id="app" style="display:none;">
+
+    <section class="panel" aria-label="Key findings">
+      <div class="panel-head">
+        <span class="panel-title" id="profileTitle">Key findings</span>
+        <span class="panel-sub" id="profileMeta"></span>
+      </div>
+      <div class="cards" id="cards"></div>
+      <p class="framing" id="framing"></p>
+    </section>
+
+    <div class="content">
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Mean annual temperature, 1985&ndash;2024</span>
+          <span class="panel-sub" id="tempSub">NASA POWER, representative location</span>
+        </div>
+        <div class="chart-holder"><canvas id="tempChart" aria-label="Annual mean temperature chart" role="img"></canvas></div>
+      </section>
+      <aside class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Observed trends</span>
+          <span class="panel-sub" id="locLabel"></span>
+        </div>
+        <div class="insight-body">
+          <ul class="takeaways" id="takeaways"></ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="content">
+      <section class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Monthly rainfall: 1985&ndash;2014 baseline vs 2015&ndash;2024</span>
+          <span class="panel-sub">millimetres per day</span>
+        </div>
+        <div class="chart-holder"><canvas id="rainChart" aria-label="Monthly rainfall baseline versus recent decade chart" role="img"></canvas></div>
+      </section>
+      <aside class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Context and exposure</span>
+          <span class="panel-sub">World Bank, latest reporting year</span>
+        </div>
+        <div class="insight-body">
+          <div class="record" id="wbRecord"></div>
+          <ul class="takeaways" id="exposureNote"></ul>
+        </div>
+      </aside>
+    </div>
+
+    <section class="panel" aria-label="Vulnerability and national response">
+      <div class="panel-head">
+        <span class="panel-title">Vulnerability standing &amp; national response</span>
+        <span class="panel-sub">ND-GAIN &middot; UNFCCC</span>
+      </div>
+      <div class="insight-body two-col">
+        <div>
+          <h4 class="sub-title">Vulnerability standing</h4>
+          <p id="ndgainText" class="prose"></p>
+        </div>
+        <div>
+          <h4 class="sub-title">National response</h4>
+          <p id="ndcText" class="prose"></p>
+          <p class="prose-link" id="ndcLink"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="Sources">
+      <div class="panel-head">
+        <span class="panel-title">Sources</span>
+        <span class="panel-sub">retrieved <span id="retrievedAt">&mdash;</span></span>
+      </div>
+      <ol class="sources" id="sources"></ol>
+      <p class="gaps" id="gaps" hidden></p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="shell footer-inner">
+    <h3>Data Sources &amp; Methodology</h3>
+    <div class="source-block">
+      <div><b>Climate observations</b>
+        <p><a href="https://power.larc.nasa.gov/" rel="noopener">NASA POWER agroclimatology API</a> &mdash; monthly mean temperature (T2M) and corrected precipitation (PRECTOTCORR) at the country's capital coordinates, 1985&ndash;2024 (MERRA-2). Values represent a single grid point; regional averages may differ.</p>
+      </div>
+      <div><b>Exposure indicators</b>
+        <p><a href="https://api.worldbank.org/v2" rel="noopener">World Bank Open Data API</a> &mdash; population, GDP, rural population, arable land and population growth. Also the source of the country list and capital coordinates. CC BY 4.0.</p>
+      </div>
+      <div><b>Vulnerability index</b>
+        <p><a href="https://gain.nd.edu/our-work/country-index/" rel="noopener">ND-GAIN Country Index</a> &mdash; 2024 scores and ranks, bundled as a static snapshot at build time (190 countries). Higher score = less vulnerable / more ready.</p>
+      </div>
+      <div><b>National commitments</b>
+        <p><a href="https://unfccc.int/NDCREG" rel="noopener">UNFCCC NDC Registry</a> &mdash; direct link to each country's submission. Adaptation priorities are detailed in the country's National Adaptation Plan documents.</p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Country Climate Profile &mdash; the browser edition of the open-source <a href="https://github.com/ahaomar/climate-profile-generator" rel="noopener">climate-profile-generator</a> skill</span>
+      <span>Figures computed live on each profile generation &middot; PDF via your browser's print dialog</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="../../js/main.js"></script>
+</body>
+</html>

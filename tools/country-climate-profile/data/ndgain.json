@@ -1,0 +1,769 @@
+{
+ "generated": "2026-10-03 07:48 UTC",
+ "source": "ND-GAIN Country Index, https://gain.nd.edu/assets/647440/ndgain_countryindex_2026.zip",
+ "latest_year": 2024,
+ "count": 190,
+ "note": "higher score = less vulnerable / more ready; rank 1 = highest score; countries with equal scores share the same rank",
+ "countries": {
+  "AFG": {
+   "score": 33.0,
+   "rank": 180
+  },
+  "ALB": {
+   "score": 52.6,
+   "rank": 63
+  },
+  "DZA": {
+   "score": 47.4,
+   "rank": 97
+  },
+  "AND": {
+   "score": 63.0,
+   "rank": 24
+  },
+  "AGO": {
+   "score": 36.4,
+   "rank": 163
+  },
+  "ATG": {
+   "score": 47.8,
+   "rank": 89
+  },
+  "ARG": {
+   "score": 50.4,
+   "rank": 75
+  },
+  "ARM": {
+   "score": 53.2,
+   "rank": 60
+  },
+  "AUS": {
+   "score": 67.9,
+   "rank": 10
+  },
+  "AUT": {
+   "score": 67.8,
+   "rank": 12
+  },
+  "AZE": {
+   "score": 50.1,
+   "rank": 76
+  },
+  "BHS": {
+   "score": 48.7,
+   "rank": 83
+  },
+  "BHR": {
+   "score": 48.3,
+   "rank": 86
+  },
+  "BGD": {
+   "score": 37.0,
+   "rank": 160
+  },
+  "BRB": {
+   "score": 58.6,
+   "rank": 36
+  },
+  "BLR": {
+   "score": 54.0,
+   "rank": 54
+  },
+  "BEL": {
+   "score": 62.0,
+   "rank": 28
+  },
+  "BLZ": {
+   "score": 44.2,
+   "rank": 114
+  },
+  "BEN": {
+   "score": 39.4,
+   "rank": 145
+  },
+  "BTN": {
+   "score": 44.3,
+   "rank": 113
+  },
+  "BOL": {
+   "score": 42.9,
+   "rank": 125
+  },
+  "BIH": {
+   "score": 50.0,
+   "rank": 77
+  },
+  "BWA": {
+   "score": 45.0,
+   "rank": 111
+  },
+  "BRA": {
+   "score": 50.7,
+   "rank": 72
+  },
+  "BRN": {
+   "score": 49.6,
+   "rank": 80
+  },
+  "BGR": {
+   "score": 56.3,
+   "rank": 46
+  },
+  "BFA": {
+   "score": 37.4,
+   "rank": 158
+  },
+  "BDI": {
+   "score": 32.0,
+   "rank": 182
+  },
+  "KHM": {
+   "score": 42.4,
+   "rank": 127
+  },
+  "CMR": {
+   "score": 39.9,
+   "rank": 144
+  },
+  "CAN": {
+   "score": 68.0,
+   "rank": 9
+  },
+  "CPV": {
+   "score": 45.1,
+   "rank": 108
+  },
+  "CAF": {
+   "score": 27.4,
+   "rank": 187
+  },
+  "TCD": {
+   "score": 26.4,
+   "rank": 190
+  },
+  "CHL": {
+   "score": 60.1,
+   "rank": 34
+  },
+  "CHN": {
+   "score": 53.0,
+   "rank": 61
+  },
+  "COL": {
+   "score": 50.5,
+   "rank": 74
+  },
+  "COM": {
+   "score": 38.5,
+   "rank": 150
+  },
+  "COG": {
+   "score": 33.7,
+   "rank": 176
+  },
+  "COD": {
+   "score": 30.4,
+   "rank": 185
+  },
+  "CRI": {
+   "score": 54.5,
+   "rank": 53
+  },
+  "CIV": {
+   "score": 41.0,
+   "rank": 138
+  },
+  "HRV": {
+   "score": 57.1,
+   "rank": 42
+  },
+  "CUB": {
+   "score": 43.4,
+   "rank": 123
+  },
+  "CYP": {
+   "score": 57.5,
+   "rank": 39
+  },
+  "CZE": {
+   "score": 65.1,
+   "rank": 19
+  },
+  "DNK": {
+   "score": 68.3,
+   "rank": 8
+  },
+  "DJI": {
+   "score": 36.4,
+   "rank": 164
+  },
+  "DMA": {
+   "score": 58.5,
+   "rank": 37
+  },
+  "DOM": {
+   "score": 46.7,
+   "rank": 100
+  },
+  "ECU": {
+   "score": 43.6,
+   "rank": 121
+  },
+  "EGY": {
+   "score": 45.4,
+   "rank": 106
+  },
+  "SLV": {
+   "score": 43.8,
+   "rank": 118
+  },
+  "GNQ": {
+   "score": 35.6,
+   "rank": 171
+  },
+  "ERI": {
+   "score": 27.4,
+   "rank": 188
+  },
+  "EST": {
+   "score": 62.4,
+   "rank": 26
+  },
+  "ETH": {
+   "score": 37.7,
+   "rank": 155
+  },
+  "FJI": {
+   "score": 47.5,
+   "rank": 95
+  },
+  "FIN": {
+   "score": 71.1,
+   "rank": 2
+  },
+  "FRA": {
+   "score": 65.9,
+   "rank": 16
+  },
+  "GAB": {
+   "score": 42.6,
+   "rank": 126
+  },
+  "GMB": {
+   "score": 36.1,
+   "rank": 166
+  },
+  "GEO": {
+   "score": 55.3,
+   "rank": 48
+  },
+  "DEU": {
+   "score": 69.2,
+   "rank": 3
+  },
+  "GHA": {
+   "score": 45.1,
+   "rank": 109
+  },
+  "GRC": {
+   "score": 60.4,
+   "rank": 31
+  },
+  "GRD": {
+   "score": 55.2,
+   "rank": 49
+  },
+  "GTM": {
+   "score": 43.6,
+   "rank": 120
+  },
+  "GIN": {
+   "score": 40.7,
+   "rank": 140
+  },
+  "GNB": {
+   "score": 32.7,
+   "rank": 181
+  },
+  "GUY": {
+   "score": 45.9,
+   "rank": 103
+  },
+  "HTI": {
+   "score": 33.3,
+   "rank": 178
+  },
+  "HND": {
+   "score": 41.3,
+   "rank": 136
+  },
+  "HUN": {
+   "score": 57.4,
+   "rank": 40
+  },
+  "ISL": {
+   "score": 64.7,
+   "rank": 20
+  },
+  "IND": {
+   "score": 44.4,
+   "rank": 112
+  },
+  "IDN": {
+   "score": 48.3,
+   "rank": 85
+  },
+  "IRN": {
+   "score": 47.5,
+   "rank": 93
+  },
+  "IRQ": {
+   "score": 35.6,
+   "rank": 170
+  },
+  "IRL": {
+   "score": 64.4,
+   "rank": 22
+  },
+  "ISR": {
+   "score": 59.8,
+   "rank": 35
+  },
+  "ITA": {
+   "score": 62.2,
+   "rank": 27
+  },
+  "JAM": {
+   "score": 47.5,
+   "rank": 92
+  },
+  "JPN": {
+   "score": 65.7,
+   "rank": 18
+  },
+  "JOR": {
+   "score": 49.9,
+   "rank": 78
+  },
+  "KAZ": {
+   "score": 56.4,
+   "rank": 44
+  },
+  "KEN": {
+   "score": 39.3,
+   "rank": 147
+  },
+  "KIR": {
+   "score": 42.3,
+   "rank": 131
+  },
+  "PRK": {
+   "score": 43.3,
+   "rank": 124
+  },
+  "KOR": {
+   "score": 68.3,
+   "rank": 7
+  },
+  "KWT": {
+   "score": 49.2,
+   "rank": 82
+  },
+  "KGZ": {
+   "score": 51.4,
+   "rank": 69
+  },
+  "LAO": {
+   "score": 42.4,
+   "rank": 128
+  },
+  "LVA": {
+   "score": 60.1,
+   "rank": 33
+  },
+  "LBN": {
+   "score": 43.7,
+   "rank": 119
+  },
+  "LSO": {
+   "score": 38.4,
+   "rank": 151
+  },
+  "LBR": {
+   "score": 35.7,
+   "rank": 169
+  },
+  "LBY": {
+   "score": 40.0,
+   "rank": 143
+  },
+  "LTU": {
+   "score": 60.2,
+   "rank": 32
+  },
+  "LUX": {
+   "score": 66.0,
+   "rank": 15
+  },
+  "MKD": {
+   "score": 52.4,
+   "rank": 65
+  },
+  "MDG": {
+   "score": 35.0,
+   "rank": 174
+  },
+  "MWI": {
+   "score": 35.7,
+   "rank": 168
+  },
+  "MYS": {
+   "score": 55.0,
+   "rank": 51
+  },
+  "MDV": {
+   "score": 43.6,
+   "rank": 122
+  },
+  "MLI": {
+   "score": 34.1,
+   "rank": 175
+  },
+  "MLT": {
+   "score": 56.8,
+   "rank": 43
+  },
+  "MHL": {
+   "score": 46.1,
+   "rank": 102
+  },
+  "MRT": {
+   "score": 31.9,
+   "rank": 183
+  },
+  "MUS": {
+   "score": 51.2,
+   "rank": 70
+  },
+  "MEX": {
+   "score": 47.6,
+   "rank": 91
+  },
+  "FSM": {
+   "score": 37.0,
+   "rank": 161
+  },
+  "MDA": {
+   "score": 51.7,
+   "rank": 68
+  },
+  "MCO": {
+   "score": 66.2,
+   "rank": 14
+  },
+  "MNG": {
+   "score": 49.7,
+   "rank": 79
+  },
+  "MNE": {
+   "score": 52.1,
+   "rank": 67
+  },
+  "MAR": {
+   "score": 47.7,
+   "rank": 90
+  },
+  "MOZ": {
+   "score": 36.1,
+   "rank": 165
+  },
+  "MMR": {
+   "score": 36.5,
+   "rank": 162
+  },
+  "NAM": {
+   "score": 41.9,
+   "rank": 133
+  },
+  "NRU": {
+   "score": 53.4,
+   "rank": 59
+  },
+  "NPL": {
+   "score": 41.1,
+   "rank": 137
+  },
+  "NLD": {
+   "score": 64.4,
+   "rank": 21
+  },
+  "NZL": {
+   "score": 66.2,
+   "rank": 13
+  },
+  "NIC": {
+   "score": 44.1,
+   "rank": 115
+  },
+  "NER": {
+   "score": 35.4,
+   "rank": 173
+  },
+  "NGA": {
+   "score": 37.6,
+   "rank": 157
+  },
+  "NOR": {
+   "score": 71.8,
+   "rank": 1
+  },
+  "OMN": {
+   "score": 49.3,
+   "rank": 81
+  },
+  "PAK": {
+   "score": 39.3,
+   "rank": 148
+  },
+  "PLW": {
+   "score": 55.0,
+   "rank": 50
+  },
+  "PAN": {
+   "score": 47.5,
+   "rank": 94
+  },
+  "PNG": {
+   "score": 33.7,
+   "rank": 177
+  },
+  "PRY": {
+   "score": 47.8,
+   "rank": 88
+  },
+  "PER": {
+   "score": 48.3,
+   "rank": 87
+  },
+  "PHL": {
+   "score": 47.1,
+   "rank": 98
+  },
+  "POL": {
+   "score": 62.8,
+   "rank": 25
+  },
+  "PRT": {
+   "score": 61.0,
+   "rank": 30
+  },
+  "QAT": {
+   "score": 52.2,
+   "rank": 66
+  },
+  "ROU": {
+   "score": 56.0,
+   "rank": 47
+  },
+  "RUS": {
+   "score": 56.3,
+   "rank": 45
+  },
+  "RWA": {
+   "score": 40.6,
+   "rank": 141
+  },
+  "KNA": {
+   "score": 57.3,
+   "rank": 41
+  },
+  "LCA": {
+   "score": 53.6,
+   "rank": 57
+  },
+  "VCT": {
+   "score": 52.7,
+   "rank": 62
+  },
+  "WSM": {
+   "score": 40.1,
+   "rank": 142
+  },
+  "STP": {
+   "score": 41.6,
+   "rank": 134
+  },
+  "SAU": {
+   "score": 51.1,
+   "rank": 71
+  },
+  "SEN": {
+   "score": 42.3,
+   "rank": 129
+  },
+  "SRB": {
+   "score": 50.5,
+   "rank": 73
+  },
+  "SYC": {
+   "score": 48.7,
+   "rank": 84
+  },
+  "SLE": {
+   "score": 33.2,
+   "rank": 179
+  },
+  "SGP": {
+   "score": 68.5,
+   "rank": 6
+  },
+  "SVK": {
+   "score": 58.3,
+   "rank": 38
+  },
+  "SVN": {
+   "score": 63.2,
+   "rank": 23
+  },
+  "SLB": {
+   "score": 38.0,
+   "rank": 153
+  },
+  "SOM": {
+   "score": 27.0,
+   "rank": 189
+  },
+  "ZAF": {
+   "score": 44.0,
+   "rank": 116
+  },
+  "ESP": {
+   "score": 61.7,
+   "rank": 29
+  },
+  "LKA": {
+   "score": 45.5,
+   "rank": 105
+  },
+  "SDN": {
+   "score": 28.3,
+   "rank": 186
+  },
+  "SUR": {
+   "score": 46.4,
+   "rank": 101
+  },
+  "SWZ": {
+   "score": 40.9,
+   "rank": 139
+  },
+  "SWE": {
+   "score": 67.9,
+   "rank": 11
+  },
+  "CHE": {
+   "score": 68.9,
+   "rank": 4
+  },
+  "SYR": {
+   "score": 38.0,
+   "rank": 152
+  },
+  "TJK": {
+   "score": 47.4,
+   "rank": 96
+  },
+  "TZA": {
+   "score": 41.5,
+   "rank": 135
+  },
+  "THA": {
+   "score": 45.4,
+   "rank": 107
+  },
+  "TLS": {
+   "score": 37.0,
+   "rank": 159
+  },
+  "TGO": {
+   "score": 42.2,
+   "rank": 132
+  },
+  "TON": {
+   "score": 37.9,
+   "rank": 154
+  },
+  "TTO": {
+   "score": 47.1,
+   "rank": 99
+  },
+  "TUN": {
+   "score": 45.0,
+   "rank": 110
+  },
+  "TUR": {
+   "score": 53.8,
+   "rank": 55
+  },
+  "TKM": {
+   "score": 39.4,
+   "rank": 146
+  },
+  "TUV": {
+   "score": 43.9,
+   "rank": 117
+  },
+  "UGA": {
+   "score": 35.9,
+   "rank": 167
+  },
+  "UKR": {
+   "score": 53.5,
+   "rank": 58
+  },
+  "ARE": {
+   "score": 53.7,
+   "rank": 56
+  },
+  "GBR": {
+   "score": 68.6,
+   "rank": 5
+  },
+  "USA": {
+   "score": 65.7,
+   "rank": 17
+  },
+  "URY": {
+   "score": 54.7,
+   "rank": 52
+  },
+  "UZB": {
+   "score": 52.5,
+   "rank": 64
+  },
+  "VUT": {
+   "score": 37.7,
+   "rank": 156
+  },
+  "VEN": {
+   "score": 42.3,
+   "rank": 130
+  },
+  "VNM": {
+   "score": 45.9,
+   "rank": 104
+  },
+  "YEM": {
+   "score": 31.3,
+   "rank": 184
+  },
+  "ZMB": {
+   "score": 39.1,
+   "rank": 149
+  },
+  "ZWE": {
+   "score": 35.4,
+   "rank": 172
+  }
+ }
+}

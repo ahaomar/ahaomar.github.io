@@ -9,7 +9,7 @@
   </url>
   <url>
     <loc>https://ahaomar.github.io/projects.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -21,7 +21,7 @@
   </url>
   <url>
     <loc>https://ahaomar.github.io/dashboards.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -144,6 +144,12 @@
   <url>
     <loc>https://ahaomar.github.io/dashboards/worldbank/beyond-the-breaking-point/</loc>
     <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ahaomar.github.io/tools/country-climate-profile/</loc>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

@@ -16,10 +16,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects · Omar Farooq</title>
-<meta name="description" content="Six production platforms architected for the United Nations and international development sector, from the UN Migration Network Hub to the CLIMB data-for-policy tool.">
+<meta name="description" content="Six production platforms architected for the United Nations and international development sector, plus open-source AI tools and agent skills.">
 <link rel="canonical" href="https://ahaomar.github.io/projects.html">
 <meta property="og:title" content="Projects · Omar Farooq">
-<meta property="og:description" content="Six production platforms architected for the United Nations and international development sector.">
+<meta property="og:description" content="Six production platforms architected for the United Nations and international development sector, plus open-source AI tools and agent skills.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ahaomar.github.io/projects.html">
 <meta name="twitter:card" content="summary">
@@ -105,7 +105,7 @@
     <div class="wrap">
       <div class="dip">
         <div class="dip__text">
-          <p class="kicker">Case studies · six platforms</p>
+          <p class="kicker">Case studies · six platforms, one tool &amp; two agent skills</p>
           <h1 id="page-heading">Systems I architected, still in production.</h1>
         </div>
         <div class="dip__proof">
@@ -121,7 +121,7 @@
       <!-- 01 — UN Migration Network Hub -->
       <article class="case dip">
         <div class="dip__text">
-          <p class="case-num">01 / 06</p>
+          <p class="case-num">01 / 09</p>
           <h2>UN Migration Network Hub</h2>
           <!-- EVIDENCE SLOT 1: drop a real screenshot at assets/shots/migration-network-hub.png
                (full-page capture of migrationnetwork.un.org, ~1600px wide) then uncomment:-->
@@ -163,7 +163,7 @@
       <!-- 02 — CLIMB -->
       <article class="case dip dip--rev">
         <div class="dip__text">
-          <p class="case-num">02 / 06</p>
+          <p class="case-num">02 / 09</p>
           <h2>CLIMB, climate, migration &amp; biodiversity data-for-policy tool</h2>
           
           <figure class="case-shot">
@@ -204,7 +204,7 @@
       <!-- 03 — Global Migration Data Portal -->
       <article class="case dip">
         <div class="dip__text">
-          <p class="case-num">03 / 06</p>
+          <p class="case-num">03 / 09</p>
           <h2>Global Migration Data Portal</h2>
           <!-- EVIDENCE SLOT 2: drop a real screenshot at assets/shots/migration-data-portal.png
                (a dashboard view of migrationdataportal.org showing a live chart) then uncomment:-->
@@ -246,7 +246,7 @@
       <!-- 04 — Ahlan Simsim -->
       <article class="case dip dip--rev">
         <div class="dip__text">
-          <p class="case-num">04 / 06</p>
+          <p class="case-num">04 / 09</p>
           <h2>Ahlan Simsim, early childhood development platform</h2>
           <figure class="case-shot">
             <img src="assets/shots/simsim.png" alt="The IRC is working with Sesame Workshop, the nonprofit, educational organization behind “Sesame Street,” in support of millions of children in Syria, Jordan, Lebanon and Iraq." width="1600" height="1000" loading="lazy">
@@ -281,7 +281,7 @@
       <!-- 05 — Pledging Dashboard -->
       <article class="case dip">
         <div class="dip__text">
-          <p class="case-num">05 / 06</p>
+          <p class="case-num">05 / 09</p>
           <h2>UN Migration Network, the Pledging Dashboard</h2>
           <!-- EVIDENCE SLOT 3: drop a real screenshot at assets/shots/pledging-dashboard.png
                (the global pledge map view) then uncomment:-->
@@ -322,7 +322,7 @@
       <!-- 06 — Moving Voices -->
       <article class="case dip dip--rev">
         <div class="dip__text">
-          <p class="case-num">06 / 06</p>
+          <p class="case-num">06 / 09</p>
           <h2>Moving Voices, interactive migrant storytelling platform</h2>
           <figure class="case-shot">
             <img src="assets/shots/movingvoices.png" alt="An interactive storytelling platform carrying migrant experience through immersive media and personal narrative, built to connect policymakers and public audiences with the human dimension of migration along the world&rsquo;s most dangerous routes" width="1600" height="1000" loading="lazy">
@@ -348,6 +348,126 @@
             <div>
               <dt>Hard problem</dt>
               <dd>Multimedia that loads reliably across widely varying global connection speeds, with large video assets handled efficiently at scale.</dd>
+            </div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 07 — Country Climate Profile tool -->
+      <article class="case dip">
+        <div class="dip__text">
+          <p class="case-num">07 / 09</p>
+          <h2>Country Climate Profile, open-source generator &amp; browser tool</h2>
+          <figure class="case-shot">
+            <img src="assets/shots/country-climate-profile.png" alt="Country Climate Profile browser tool showing a generated Burkina Faso profile: three key-finding stat cards, a 40-year mean annual temperature chart with linear trend, observed trends takeaways and a monthly rainfall baseline comparison" width="1600" height="1000" loading="lazy">
+            <figcaption>The browser edition on this site, generating a live profile for Burkina Faso from NASA POWER, World Bank and ND-GAIN data. Every figure is computed at generation time and exportable to PDF.</figcaption>
+          </figure>
+          <p class="case-role">Independent open-source project &middot; MIT licence</p>
+          <ul class="tags">
+            <li class="tag">Python</li>
+            <li class="tag">NASA POWER API</li>
+            <li class="tag">World Bank API</li>
+            <li class="tag">Chart.js</li>
+            <li class="tag">Static site</li>
+          </ul>
+          <p class="case-summary">A tool that turns one country name into a cited climate risk brief: 40 years of NASA temperature and rainfall observations, World Bank exposure indicators and the ND-GAIN vulnerability index, assembled into a three-to-six page profile with charts and a numbered source list. Ships two ways &mdash; as a ZCode skill that generates PDF and Word documents, and as the interactive browser edition on this site, where the profile is computed live and exportable to PDF.</p>
+          <a class="case-link" href="https://github.com/ahaomar/climate-profile-generator" target="_blank" rel="noopener">github.com/ahaomar/climate-profile-generator →</a>
+          <a class="case-link" href="tools/country-climate-profile/index.html">Try the browser edition →</a>
+        </div>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Detail</h3>
+          <dl class="notes">
+            <div>
+              <dt>Contribution</dt>
+              <dd>Designed and built the full pipeline: data layer fetching NASA POWER monthly point observations and five World Bank indicators, ND-GAIN index parsing, chart generation, and deterministic document renderers for PDF and Word. Every printed figure traces to a fetched record; anything unavailable is recorded as a stated gap rather than estimated.</dd>
+            </div>
+            <div>
+              <dt>Hard problem</dt>
+              <dd>Honest data under real-world conditions: single grid points versus regional averages, indicator deprecations, snapshot formats that change without notice, and a report layout that must hold together when a dataset is missing.</dd>
+            </div>
+            <div>
+              <dt>Edition on this site</dt>
+              <dd>The browser edition fetches the same sources live on each profile generation, computes all narrative figures from the same rows the charts render, and exports to PDF through a dedicated print stylesheet. <a href="tools/country-climate-profile/index.html">Open the tool</a>.</dd>
+            </div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 08 — un-editorial-check agent skill -->
+      <article class="case dip dip--rev">
+        <div class="dip__text">
+          <p class="case-num">08 / 09</p>
+          <h2>un-editorial-check, AI agent skill for United Nations editorial standards</h2>
+          <figure class="case-shot">
+            <img src="assets/shots/un-editorial-check.png" alt="un-editorial-check editorial review report, version 1.7.0: a summary with zero errors and one finding routed to agent review, and a table of thirteen checked categories including spelling, grammar, numerals, terminology, register, diplomacy and accessibility" width="1744" height="1912" loading="lazy">
+            <figcaption>An editorial review report as the skill produces it: thirteen categories checked, findings separated into deterministic rules and judgement calls routed to human review.</figcaption>
+          </figure>
+          <p class="case-role">Creator &amp; maintainer &middot; open source, MIT licence</p>
+          <ul class="tags">
+            <li class="tag">Node.js</li>
+            <li class="tag">npm</li>
+            <li class="tag">Agent skill</li>
+            <li class="tag">CLI</li>
+            <li class="tag">Editorial QA</li>
+          </ul>
+          <p class="case-summary">An AI agent skill that reads user-visible copy the way a United Nations editor would: 42 editorial rules covering British English, &ldquo;per cent&rdquo; written out, indicator terminology, date formats, numbers, tone and sourcing claims. Installable in one command from skills.sh and published on npm, it reached more than 70 downloads in its first week. The dashboards on this site are checked against it before every publish.</p>
+          <a class="case-link" href="https://www.skills.sh/ahaomar/un-editorial-check/un-editorial-check" target="_blank" rel="noopener">skills.sh/ahaomar/un-editorial-check →</a>
+          <a class="case-link" href="https://github.com/ahaomar/un-editorial-check" target="_blank" rel="noopener">github.com/ahaomar/un-editorial-check →</a>
+        </div>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Detail</h3>
+          <dl class="notes">
+            <div>
+              <dt>Contribution</dt>
+              <dd>Designed the rule engine and the UN v1 rule profile, with Word, web page and standard-input modes and a security-audit profile that flags dangerous patterns such as innerHTML assignment and eval in agent-generated code.</dd>
+            </div>
+            <div>
+              <dt>Hard problem</dt>
+              <dd>A dependency scanner flagged the project&rsquo;s own security test fixture as malicious code. The fixture is inert by construction, so it is now generated at test runtime from harmless fragments &mdash; nothing in the repository pattern-matches a dangerous sink.</dd>
+            </div>
+            <div>
+              <dt>Why an agent skill</dt>
+              <dd>AI writes most first drafts now, including the strings a script generates. The skill puts the editorial standard inside the agent&rsquo;s loop, so drafts are corrected before a human ever reads them &mdash; the same human-in-the-loop governance as the platform work.</dd>
+            </div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 09 — tor-to-proposal agent skill -->
+      <article class="case dip">
+        <div class="dip__text">
+          <p class="case-num">09 / 09</p>
+          <h2>tor-to-proposal, AI agent skill for consultant bid preparation</h2>
+          <figure class="case-shot">
+            <img src="assets/shots/tor-to-proposal.png" alt="Illustrative rendering of a verified bid pack: a technical proposal page with a verified badge, a compliance checklist with four met criteria and one outstanding item, and a financial proposal spreadsheet with a visible SUM formula and a highlighted total row" width="1586" height="992" loading="lazy">
+            <figcaption>* Illustrative rendering of the bid pack &mdash; technical proposal, compliance checklist and financial proposal with visible formulas. The working tool&rsquo;s output may differ in appearance.</figcaption>
+          </figure>
+          <p class="case-role">Creator &middot; open source, MIT licence</p>
+          <ul class="tags">
+            <li class="tag">Node.js</li>
+            <li class="tag">MCP server</li>
+            <li class="tag">Agent skill</li>
+            <li class="tag">PDF generation</li>
+            <li class="tag">Document automation</li>
+          </ul>
+          <p class="case-summary">A bid tool that refuses to lie: it turns a United Nations or NGO terms of reference (including scanned PDFs through OCR) plus a consultant CV into a verified submission pack &mdash; cover letter, tailored CV, technical proposal, financial proposal with visible formulas, compliance checklist and calendar invite. The agent drafts; deterministic tools verify. Every factual claim must trace to a page of the ToR, user input or a cited source, or it stays an explicit placeholder.</p>
+          <a class="case-link" href="https://www.skills.sh/ahaomar/tor-to-proposal/tor-to-proposal" target="_blank" rel="noopener">skills.sh/ahaomar/tor-to-proposal →</a>
+          <a class="case-link" href="https://github.com/ahaomar/tor-to-proposal" target="_blank" rel="noopener">github.com/ahaomar/tor-to-proposal →</a>
+        </div>
+        <div class="dip__proof">
+          <h3 class="hm-panel-title">Detail</h3>
+          <dl class="notes">
+            <div>
+              <dt>Contribution</dt>
+              <dd>Built the full pipeline as pure Node.js with no LLM calls at runtime: a CLI router, a 21-tool MCP server and a Claude Code plugin surface, including a dependency-free PDF writer verified by pdf.js round-trip extraction. The test suite spawns the real command line and passes end to end.</dd>
+            </div>
+            <div>
+              <dt>Hard problem</dt>
+              <dd>Honesty gating. Before a bid pack is built, the rendered client-facing files are re-extracted and re-audited &mdash; not the markdown sources &mdash; and a pack with a surviving placeholder or an unverified claim is refused with a non-zero exit code.</dd>
+            </div>
+            <div>
+              <dt>Availability</dt>
+              <dd>Version 2.0.0 on npm; installable as an agent skill with npx skills add ahaomar/tor-to-proposal.</dd>
             </div>
           </dl>
         </div>
